@@ -42,16 +42,22 @@ PERIOD_MAP = {
     0: None, 1: "1", 2: "1~3", 3: "3~5", 4: "5~10", 5: "10+",
 }
 
-# ── 速度設定（保守版，不容易被封）────────────────────────────────
-DEFAULT_LIST_SLEEP_MIN    = 3.0    # 列表頁之間
-DEFAULT_LIST_SLEEP_MAX    = 7.0
-DEFAULT_DETAIL_SLEEP_MIN  = 5.0    # detail 之間
-DEFAULT_DETAIL_SLEEP_MAX  = 12.0
-DEFAULT_KEYWORD_SLEEP_MIN = 8.0    # keyword 之間
-DEFAULT_KEYWORD_SLEEP_MAX = 18.0
-BATCH_SIZE                = 30     # 每幾筆 detail 大休息一次
-BATCH_SLEEP_MIN           = 120.0  # 大休息 2~5 分鐘
-BATCH_SLEEP_MAX           = 300.0
+# ── 速度設定（中速安全版）────────────────────────────────
+DEFAULT_LIST_SLEEP_MIN    = 1.5    # 列表頁之間
+DEFAULT_LIST_SLEEP_MAX    = 4.0
+
+DEFAULT_DETAIL_SLEEP_MIN  = 2.5    # detail 之間
+DEFAULT_DETAIL_SLEEP_MAX  = 6.0
+
+DEFAULT_KEYWORD_SLEEP_MIN = 6.0    # keyword 之間
+DEFAULT_KEYWORD_SLEEP_MAX = 12.0
+
+BATCH_SIZE                = 40     # 每幾筆 detail 大休息一次
+BATCH_SLEEP_MIN           = 60.0   # 大休息 1~2.5 分鐘
+BATCH_SLEEP_MAX           = 150.0
+
+
+
 
 DEFAULT_BACKOFF_BASE  = 10.0
 DEFAULT_MAX_PAGES     = 5
