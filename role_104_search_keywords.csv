@@ -1,0 +1,254 @@
+﻿job_skill_name,primary_keyword_1,primary_keyword_2,search_keywords,notes
+Account Executive,業務專員,客戶業務,"業務專員, 客戶業務",保留中文/中英混合關鍵字；已排除純英文 role title
+Account Manager,客戶經理,帳戶經理,"客戶經理, 帳戶經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Accountant,會計專員,會計人員,"會計專員, 會計人員",保留中文/中英混合關鍵字；已排除純英文 role title
+Accounting Analyst,會計分析師,財會分析師,"會計分析師, 財會分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Actuarial Analyst,精算分析師,精算人員,"精算分析師, 精算人員",保留中文/中英混合關鍵字；已排除純英文 role title
+Actuary,精算師,,精算師,保留中文/中英混合關鍵字；已排除純英文 role title
+Analytics Consultant,數據分析顧問,分析顧問,"數據分析顧問, 分析顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Analytics Engineer,分析工程師,,分析工程師,保留中文/中英混合關鍵字；已排除純英文 role title
+Applied Scientist,應用科學家,,應用科學家,保留中文/中英混合關鍵字；已排除純英文 role title
+Asset Management Analyst,資產管理分析師,,資產管理分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Assistant Manager,助理經理,副理,"助理經理, 副理",保留中文/中英混合關鍵字；已排除純英文 role title
+Associate Consultant,助理顧問,初階顧問,"助理顧問, 初階顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Associate Product Manager,助理產品經理,初階產品經理,"助理產品經理, 初階產品經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Assurance Associate,審計專員,確信服務專員,"審計專員, 確信服務專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Audit Associate,審計專員,審計助理,"審計專員, 審計助理",保留中文/中英混合關鍵字；已排除純英文 role title
+BI Analyst,商業智慧分析師,BI分析師,"商業智慧分析師, BI分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+BI Developer,商業智慧開發工程師,BI開發工程師,"商業智慧開發工程師, BI開發工程師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+BI Engineer,商業智慧工程師,BI工程師,"商業智慧工程師, BI工程師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Backend Engineer,後端工程師,,後端工程師,保留中文/中英混合關鍵字；已排除純英文 role title
+Banking Risk Analyst,銀行風險分析師,金融風險分析師,"銀行風險分析師, 金融風險分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Brand Manager,品牌經理,品牌行銷經理,"品牌經理, 品牌行銷經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Brand Specialist,品牌專員,品牌行銷專員,"品牌專員, 品牌行銷專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Budget Analyst,預算分析師,預算管理師,"預算分析師, 預算管理師",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Analyst,商業分析師,,商業分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Business Consultant,商業顧問,企業顧問,"商業顧問, 企業顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Development Associate,商務開發專員,業務開發專員,"商務開發專員, 業務開發專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Development Manager,商務開發經理,業務開發經理,"商務開發經理, 業務開發經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Development Representative,業務開發代表,商務開發代表,"業務開發代表, 商務開發代表",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Intelligence Analyst,商業智慧分析師,BI分析師,"商業智慧分析師, BI分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Business Management Associate,商業管理專員,,商業管理專員,保留中文/中英混合關鍵字；已排除純英文 role title
+Business Operations Analyst,商業營運分析師,BizOps分析師,"商業營運分析師, BizOps分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Business Operations Associate,商業營運專員,BizOps專員,"商業營運專員, BizOps專員",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Business Program Manager,商業專案經理,,商業專案經理,保留中文/中英混合關鍵字；已排除純英文 role title
+Business Strategy Associate,商業策略專員,策略專員,"商業策略專員, 策略專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Systems Analyst,商業系統分析師,,商業系統分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Business Technology Analyst,商業科技分析師,科技分析師,"商業科技分析師, 科技分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Transformation Analyst,企業轉型分析師,商業轉型分析師,"企業轉型分析師, 商業轉型分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Business Transformation Consultant,商業轉型顧問,企業轉型顧問,"商業轉型顧問, 企業轉型顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+CEO Office Analyst,總經理室分析師,經營企劃分析師,"總經理室分析師, 經營企劃分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+CRM Analyst,CRM分析師,CRM系統分析師,"CRM分析師, CRM系統分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+CRM Marketing Specialist,會員行銷專員,顧客經營行銷專員,"會員行銷專員, 顧客經營行銷專員",保留中文/中英混合關鍵字；已排除純英文 role title
+CRM Specialist,顧客關係管理專員,會員經營專員,"顧客關係管理專員, 會員經營專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Campaign Specialist,活動行銷專員,專案行銷專員,"活動行銷專員, 專案行銷專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Capital Markets Analyst,資本市場分析師,,資本市場分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Channel Sales Manager,通路業務經理,渠道銷售經理,"通路業務經理, 渠道銷售經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Chief of Staff Associate,幕僚專員,總經理室專員,"幕僚專員, 總經理室專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Claims Analyst,理賠分析師,理賠專員,"理賠分析師, 理賠專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Commercial Banking Analyst,企金分析師,商業銀行分析師,"企金分析師, 商業銀行分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Commercial Finance Analyst,商業財務分析師,業務財務分析師,"商業財務分析師, 業務財務分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Compensation & Benefits Analyst,薪酬福利分析師,薪資福利分析師,"薪酬福利分析師, 薪資福利分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Competitive Intelligence Analyst,競品分析師,競爭情報分析師,"競品分析師, 競爭情報分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Compliance Analyst,法遵分析師,合規分析師,"法遵分析師, 合規分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Compliance Consultant,法遵顧問,合規顧問,"法遵顧問, 合規顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Consumer Insights Analyst,消費者研究分析師,消費者洞察分析師,"消費者研究分析師, 消費者洞察分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Consumer Research Analyst,消費者研究分析師,消費者洞察分析師,"消費者研究分析師, 消費者洞察分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Content Marketing Specialist,內容行銷專員,內容企劃,"內容行銷專員, 內容企劃",保留中文/中英混合關鍵字；已排除純英文 role title
+Corporate Banking Analyst,法金分析師,企業金融分析師,"法金分析師, 企業金融分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Corporate Development Analyst,企業發展分析師,公司發展分析師,"企業發展分析師, 公司發展分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Corporate Finance Analyst,企業財務分析師,公司財務分析師,"企業財務分析師, 公司財務分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Corporate Strategy Analyst,企業策略分析師,公司策略分析師,"企業策略分析師, 公司策略分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Cost Accountant,成本會計專員,成本會計,"成本會計專員, 成本會計",保留中文/中英混合關鍵字；已排除純英文 role title
+Cost Accounting Analyst,成本會計分析師,成本分析師,"成本會計分析師, 成本分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Credit Analyst,信用分析師,授信分析師,"信用分析師, 授信分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Credit Research Analyst,信用研究分析師,債信分析師,"信用研究分析師, 債信分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Credit Risk Analyst,信用風險分析師,,信用風險分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Customer Insights Analyst,顧客洞察分析師,客戶洞察分析師,"顧客洞察分析師, 客戶洞察分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Customer Success Manager,客戶成功經理,客戶經營經理,"客戶成功經理, 客戶經營經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Dashboard Analyst,儀表板分析師,Dashboard開發分析師,"儀表板分析師, Dashboard開發分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Data Analyst,資料分析師,數據分析師,"資料分析師, 數據分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Engineer,資料工程師,數據工程師,"資料工程師, 數據工程師",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Operations Analyst,資料營運分析師,數據營運分析師,"資料營運分析師, 數據營運分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Pipeline Engineer,資料管線工程師,數據管線工程師,"資料管線工程師, 數據管線工程師",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Platform Analyst,資料平台分析師,數據平台分析師,"資料平台分析師, 數據平台分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Product Manager,資料產品經理,數據產品經理,"資料產品經理, 數據產品經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Scientist,資料科學家,數據科學家,"資料科學家, 數據科學家",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Visualization Analyst,資料視覺化分析師,數據視覺化分析師,"資料視覺化分析師, 數據視覺化分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Data Warehouse Analyst,資料倉儲分析師,數據倉儲分析師,"資料倉儲分析師, 數據倉儲分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Database Analyst,資料庫分析師,,資料庫分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Decision Scientist,決策分析師,決策科學家,"決策分析師, 決策科學家",保留中文/中英混合關鍵字；已排除純英文 role title
+Demand Planner,需求規劃師,需求計畫專員,"需求規劃師, 需求計畫專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Developer Relations Associate,開發者關係專員,DevRel專員,"開發者關係專員, DevRel專員",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Digital Marketing Specialist,數位行銷專員,線上行銷專員,"數位行銷專員, 線上行銷專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Digital Transformation Consultant,數位轉型顧問,DX顧問,"數位轉型顧問, DX顧問",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Distribution Analyst,配送分析師,通路配送分析師,"配送分析師, 通路配送分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+ERP Analyst,ERP分析師,ERP顧問,"ERP分析師, ERP顧問",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+ESG Consultant,永續顧問,ESG顧問,"永續顧問, ESG顧問",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+ETL Developer,ETL開發工程師,ETL工程師,"ETL開發工程師, ETL工程師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Enterprise Risk Analyst,企業風險分析師,ERM分析師,"企業風險分析師, ERM分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Entrepreneur in Residence,駐站創業家,,駐站創業家,保留中文/中英混合關鍵字；已排除純英文 role title
+Equity Research Analyst,股票研究分析師,,股票研究分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Executive Search Associate,高階獵才顧問,獵才專員,"高階獵才顧問, 獵才專員",保留中文/中英混合關鍵字；已排除純英文 role title
+External Auditor,外部審計員,外部稽核員,"外部審計員, 外部稽核員",保留中文/中英混合關鍵字；已排除純英文 role title
+FP&A Analyst,財務規劃分析師,財務計畫分析師,"財務規劃分析師, 財務計畫分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Finance Analyst,財務分析師,財務專員,"財務分析師, 財務專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Financial Advisor,理財顧問,財務顧問,"理財顧問, 財務顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Financial Analyst,財務分析師,財務企劃分析師,"財務分析師, 財務企劃分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Financial Data Analyst,財務數據分析師,,財務數據分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Financial Planning Analyst,財務規劃分析師,財務計畫分析師,"財務規劃分析師, 財務計畫分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Financial Risk Analyst,金融風險分析師,財務風險分析師,"金融風險分析師, 財務風險分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Fixed Income Analyst,固定收益分析師,債券分析師,"固定收益分析師, 債券分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Forecasting Analyst,預測分析師,需求預測分析師,"預測分析師, 需求預測分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Founder,共同創辦人,,共同創辦人,保留中文/中英混合關鍵字；已排除純英文 role title
+Frontend Engineer,前端工程師,,前端工程師,保留中文/中英混合關鍵字；已排除純英文 role title
+Full Stack Engineer,全端工程師,,全端工程師,保留中文/中英混合關鍵字；已排除純英文 role title
+GTM Manager,上市策略經理,GTM經理,"上市策略經理, GTM經理",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+GTM Strategy Analyst,上市策略分析師,GTM策略分析師,"上市策略分析師, GTM策略分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+General Management Associate,綜合管理專員,經營管理專員,"綜合管理專員, 經營管理專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Go-to-Market Analyst,上市分析師,市場進入分析師,"上市分析師, 市場進入分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Go-to-Market Specialist,上市策略專員,GTM專員,"上市策略專員, GTM專員",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Graduate Trainee,畢業生培訓計畫,儲備人才,"畢業生培訓計畫, 儲備人才",保留中文/中英混合關鍵字；已排除純英文 role title
+Growth Associate,成長專員,增長專員,"成長專員, 增長專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Growth Marketing Analyst,成長行銷分析師,增長行銷分析師,"成長行銷分析師, 增長行銷分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Growth Product Analyst,成長產品分析師,用戶成長產品分析師,"成長產品分析師, 用戶成長產品分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+HR Analyst,人資分析師,HR分析師,"人資分析師, HR分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+HR Business Partner,人資夥伴,,人資夥伴,保留中文/中英混合關鍵字；已排除純英文 role title
+HR Specialist,人資專員,HR專員,"人資專員, HR專員",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Headhunter,獵才顧問,獵頭,"獵才顧問, 獵頭",保留中文/中英混合關鍵字；已排除純英文 role title
+Human Capital Consultant,人力資本顧問,HR顧問,"人力資本顧問, HR顧問",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+IT Auditor,資訊稽核,IT稽核,"資訊稽核, IT稽核",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+IT Business Analyst,IT商業分析師,,IT商業分析師,保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+IT Consultant,資訊顧問,系統顧問,"資訊顧問, 系統顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Implementation Consultant,導入顧問,系統導入顧問,"導入顧問, 系統導入顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Industry Research Analyst,產業研究分析師,行業研究員,"產業研究分析師, 行業研究員",保留中文/中英混合關鍵字；已排除純英文 role title
+Insurance Analyst,保險分析師,保險商品分析師,"保險分析師, 保險商品分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Integrated Marketing Specialist,整合行銷專員,整合行銷企劃,"整合行銷專員, 整合行銷企劃",保留中文/中英混合關鍵字；已排除純英文 role title
+Internal Auditor,內稽專員,內部稽核,"內稽專員, 內部稽核",保留中文/中英混合關鍵字；已排除純英文 role title
+Inventory Analyst,庫存分析師,存貨分析師,"庫存分析師, 存貨分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Investment Analyst,投資分析師,,投資分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Investment Associate,投資專員,投資經理,"投資專員, 投資經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Investment Banking Analyst,投資銀行分析師,投行分析師,"投資銀行分析師, 投行分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Investment Consultant,投資顧問,,投資顧問,保留中文/中英混合關鍵字；已排除純英文 role title
+Investment Research Analyst,投資研究分析師,投資分析師,"投資研究分析師, 投資分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Junior Consultant,初階顧問,顧問助理,"初階顧問, 顧問助理",保留中文/中英混合關鍵字；已排除純英文 role title
+Key Account Manager,大客戶經理,關鍵客戶經理,"大客戶經理, 關鍵客戶經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Leadership Development Program Analyst,領導力發展計畫分析師,儲備主管計畫,"領導力發展計畫分析師, 儲備主管計畫",保留中文/中英混合關鍵字；已排除純英文 role title
+Learning & Development Specialist,學習發展專員,訓練發展專員,"學習發展專員, 訓練發展專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Lifecycle Marketing Specialist,生命週期行銷專員,用戶生命週期行銷,"生命週期行銷專員, 用戶生命週期行銷",保留中文/中英混合關鍵字；已排除純英文 role title
+Loan Officer,貸款專員,授信專員,"貸款專員, 授信專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Logistics Analyst,物流分析師,,物流分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Machine Learning Analyst,機器學習分析師,ML分析師,"機器學習分析師, ML分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Management Accountant,管理會計專員,管理會計,"管理會計專員, 管理會計",保留中文/中英混合關鍵字；已排除純英文 role title
+Management Consultant,管理顧問,,管理顧問,保留中文/中英混合關鍵字；已排除純英文 role title
+Management Trainee,儲備幹部,管理培訓生,"儲備幹部, 管理培訓生",保留中文/中英混合關鍵字；已排除純英文 role title
+Market Intelligence Analyst,市場情報分析師,市場洞察分析師,"市場情報分析師, 市場洞察分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Market Research Analyst,市場研究分析師,市調分析師,"市場研究分析師, 市調分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Market Risk Analyst,市場風險分析師,,市場風險分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Marketing Analyst,行銷分析師,行銷數據分析師,"行銷分析師, 行銷數據分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Marketing Associate,初階行銷專員,行銷專員,"初階行銷專員, 行銷專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Marketing Consultant,行銷顧問,,行銷顧問,保留中文/中英混合關鍵字；已排除純英文 role title
+Marketing Manager,行銷經理,行銷主管,"行銷經理, 行銷主管",保留中文/中英混合關鍵字；已排除純英文 role title
+Marketing Specialist,行銷專員,行銷企劃,"行銷專員, 行銷企劃",保留中文/中英混合關鍵字；已排除純英文 role title
+Operational Risk Analyst,作業風險分析師,營運風險分析師,"作業風險分析師, 營運風險分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Operations Analyst,營運分析師,運營分析師,"營運分析師, 運營分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Operations Associate,營運專員,運營專員,"營運專員, 運營專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Operations Consultant,營運顧問,運營顧問,"營運顧問, 運營顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Operations Excellence Analyst,營運卓越分析師,營運優化分析師,"營運卓越分析師, 營運優化分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Operations Manager,營運經理,運營經理,"營運經理, 運營經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Organizational Development Analyst,組織發展分析師,OD分析師,"組織發展分析師, OD分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+PMO Analyst,專案管理分析師,專案管理辦公室分析師,"專案管理分析師, 專案管理辦公室分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Paid Media Specialist,廣告投放專員,媒體投放專員,"廣告投放專員, 媒體投放專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Partnership Manager,合作夥伴經理,異業合作經理,"合作夥伴經理, 異業合作經理",保留中文/中英混合關鍵字；已排除純英文 role title
+People Analyst,人員分析師,人資數據分析師,"人員分析師, 人資數據分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+People Operations Analyst,人員營運分析師,人資營運分析師,"人員營運分析師, 人資營運分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Performance Marketing Analyst,成效行銷分析師,績效行銷分析師,"成效行銷分析師, 績效行銷分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Platform Product Manager,平台產品經理,平台PM,"平台產品經理, 平台PM",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Portfolio Analyst,投資組合分析師,資產配置分析師,"投資組合分析師, 資產配置分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Predictive Analytics Analyst,預測分析分析師,預測模型分析師,"預測分析分析師, 預測模型分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Pricing Analyst,定價分析師,價格分析師,"定價分析師, 價格分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Private Banking Associate,私人銀行專員,私銀專員,"私人銀行專員, 私銀專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Private Equity Analyst,私募股權分析師,,私募股權分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Process Improvement Consultant,流程改善顧問,流程優化顧問,"流程改善顧問, 流程優化顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Procurement Analyst,採購分析師,,採購分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Procurement Specialist,採購專員,,採購專員,保留中文/中英混合關鍵字；已排除純英文 role title
+Product Analyst,產品分析師,產品數據分析師,"產品分析師, 產品數據分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Product Manager,產品經理,,產品經理,保留中文/中英混合關鍵字；已排除純英文 role title
+Product Marketing Manager,產品行銷經理,,產品行銷經理,保留中文/中英混合關鍵字；已排除純英文 role title
+Product Marketing Specialist,產品行銷專員,PMM專員,"產品行銷專員, PMM專員",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Product Operations Analyst,產品營運分析師,產品運營分析師,"產品營運分析師, 產品運營分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Product Operations Manager,產品營運經理,產品運營經理,"產品營運經理, 產品運營經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Product Owner,產品負責人,,產品負責人,保留中文/中英混合關鍵字；已排除純英文 role title
+Product Strategy Analyst,產品策略分析師,產品企劃分析師,"產品策略分析師, 產品企劃分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Product Support Analyst,產品支援分析師,技術支援分析師,"產品支援分析師, 技術支援分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Program Manager,計畫經理,專案群經理,"計畫經理, 專案群經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Project Manager,專案經理,,專案經理,保留中文/中英混合關鍵字；已排除純英文 role title
+Purchasing Specialist,採購專員,,採購專員,保留中文/中英混合關鍵字；已排除純英文 role title
+QA Analyst,品保分析師,測試分析師,"品保分析師, 測試分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+QA Engineer,測試工程師,品保工程師,"測試工程師, 品保工程師",保留中文/中英混合關鍵字；已排除純英文 role title
+Quantitative Analyst,量化分析師,,量化分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Quantitative Research Analyst,量化研究分析師,,量化研究分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Recruiter,招募顧問,招募專員,"招募顧問, 招募專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Recruitment Consultant,招募顧問,獵才顧問,"招募顧問, 獵才顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Reinsurance Analyst,再保險分析師,再保險專員,"再保險分析師, 再保險專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Relationship Manager,客戶關係經理,,客戶關係經理,保留中文/中英混合關鍵字；已排除純英文 role title
+Reporting Analyst,報表分析師,數據報表分析師,"報表分析師, 數據報表分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Research Associate,研究專員,產業研究員,"研究專員, 產業研究員",保留中文/中英混合關鍵字；已排除純英文 role title
+Reserving Analyst,準備金分析師,精算準備金分析師,"準備金分析師, 精算準備金分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Retention Marketing Specialist,留存行銷專員,用戶留存行銷,"留存行銷專員, 用戶留存行銷",保留中文/中英混合關鍵字；已排除純英文 role title
+Revenue Accountant,收入會計,營收會計,"收入會計, 營收會計",保留中文/中英混合關鍵字；已排除純英文 role title
+Revenue Analyst,營收分析師,收入分析師,"營收分析師, 收入分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Revenue Operations Analyst,營收營運分析師,RevOps分析師,"營收營運分析師, RevOps分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Risk Consultant,風險顧問,,風險顧問,保留中文/中英混合關鍵字；已排除純英文 role title
+Risk Management Analyst,風險管理分析師,風控分析師,"風險管理分析師, 風控分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Risk Modeling Analyst,風險模型分析師,,風險模型分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Rotational Program Associate,輪調計畫專員,儲備輪調專員,"輪調計畫專員, 儲備輪調專員",保留中文/中英混合關鍵字；已排除純英文 role title
+SEM Specialist,搜尋引擎行銷專員,關鍵字廣告專員,"搜尋引擎行銷專員, 關鍵字廣告專員",保留中文/中英混合關鍵字；已排除純英文 role title
+SEO Specialist,搜尋引擎優化專員,SEO專員,"搜尋引擎優化專員, SEO專員",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+SEO/SEM Specialist,搜尋行銷專員,搜尋引擎行銷專員,"搜尋行銷專員, 搜尋引擎行銷專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Sales & Trading Analyst,銷售交易分析師,交易分析師,"銷售交易分析師, 交易分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Sales Analyst,銷售分析師,業務分析師,"銷售分析師, 業務分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Sales Engineer,業務工程師,售前工程師,"業務工程師, 售前工程師",保留中文/中英混合關鍵字；已排除純英文 role title
+Sales Executive,業務專員,銷售專員,"業務專員, 銷售專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Software Engineer,軟體工程師,,軟體工程師,保留中文/中英混合關鍵字；已排除純英文 role title
+Software Product Manager,軟體產品經理,軟體PM,"軟體產品經理, 軟體PM",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Solutions Analyst,解決方案分析師,方案分析師,"解決方案分析師, 方案分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Solutions Consultant,解決方案顧問,售前顧問,"解決方案顧問, 售前顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Solutions Engineer,解決方案工程師,售前工程師,"解決方案工程師, 售前工程師",保留中文/中英混合關鍵字；已排除純英文 role title
+Solutions Marketing Manager,解決方案行銷經理,方案行銷經理,"解決方案行銷經理, 方案行銷經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Sourcing Specialist,採購開發專員,尋源專員,"採購開發專員, 尋源專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Startup Investment Analyst,新創投資分析師,創投投資分析師,"新創投資分析師, 創投投資分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Startup Operations Associate,新創營運專員,新創運營專員,"新創營運專員, 新創運營專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Statistical Analyst,統計分析師,,統計分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Statistician,統計師,,統計師,保留中文/中英混合關鍵字；已排除純英文 role title
+Strategic Finance Analyst,策略財務分析師,財務策略分析師,"策略財務分析師, 財務策略分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Strategic Initiatives Analyst,策略專案分析師,策略推進分析師,"策略專案分析師, 策略推進分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Strategic Partnerships Analyst,策略合作分析師,商務合作分析師,"策略合作分析師, 商務合作分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Strategic Planning Analyst,策略規劃分析師,戰略規劃分析師,"策略規劃分析師, 戰略規劃分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Strategy & Operations Analyst,策略營運分析師,S&O分析師,"策略營運分析師, S&O分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Strategy Analyst,策略分析師,商業策略分析師,"策略分析師, 商業策略分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Strategy Associate,策略專員,,策略專員,保留中文/中英混合關鍵字；已排除純英文 role title
+Strategy Consultant,策略顧問,,策略顧問,保留中文/中英混合關鍵字；已排除純英文 role title
+Supply Chain Analyst,供應鏈分析師,,供應鏈分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Survey Analyst,問卷分析師,調查分析師,"問卷分析師, 調查分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Sustainability Consultant,永續顧問,永續發展顧問,"永續顧問, 永續發展顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+System Analyst,系統分析師,,系統分析師,保留中文/中英混合關鍵字；已排除純英文 role title
+Systems Consultant,系統顧問,資訊系統顧問,"系統顧問, 資訊系統顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Talent Acquisition Specialist,招募專員,人才招募專員,"招募專員, 人才招募專員",保留中文/中英混合關鍵字；已排除純英文 role title
+Tax Analyst,稅務分析師,稅務管理師,"稅務分析師, 稅務管理師",保留中文/中英混合關鍵字；已排除純英文 role title
+Tax Associate,稅務專員,稅務助理,"稅務專員, 稅務助理",保留中文/中英混合關鍵字；已排除純英文 role title
+Tax Consultant,稅務顧問,,稅務顧問,保留中文/中英混合關鍵字；已排除純英文 role title
+Technical Product Manager,技術產品經理,技術PM,"技術產品經理, 技術PM",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Technical Program Manager,技術專案經理,,技術專案經理,保留中文/中英混合關鍵字；已排除純英文 role title
+Technical Support Engineer,技術支援工程師,客服工程師,"技術支援工程師, 客服工程師",保留中文/中英混合關鍵字；已排除純英文 role title
+Technology Consultant,科技顧問,技術顧問,"科技顧問, 技術顧問",保留中文/中英混合關鍵字；已排除純英文 role title
+Trader,金融交易員,,金融交易員,保留中文/中英混合關鍵字；已排除純英文 role title
+Transfer Pricing Analyst,移轉訂價分析師,移轉定價分析師,"移轉訂價分析師, 移轉定價分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Treasury Analyst,資金管理分析師,財資分析師,"資金管理分析師, 財資分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+Underwriting Analyst,核保分析師,承銷分析師,"核保分析師, 承銷分析師",保留中文/中英混合關鍵字；已排除純英文 role title
+User Research Analyst,使用者研究分析師,用戶研究員,"使用者研究分析師, 用戶研究員",保留中文/中英混合關鍵字；已排除純英文 role title
+User Researcher,使用者研究員,用戶研究員,"使用者研究員, 用戶研究員",保留中文/中英混合關鍵字；已排除純英文 role title
+Vendor Manager,供應商管理經理,廠商管理經理,"供應商管理經理, 廠商管理經理",保留中文/中英混合關鍵字；已排除純英文 role title
+Venture Builder,新創孵化專員,創業建構者,"新創孵化專員, 創業建構者",保留中文/中英混合關鍵字；已排除純英文 role title
+Venture Capital Analyst,創投分析師,VC分析師,"創投分析師, VC分析師",保留中文/中英混合關鍵字；已排除純英文 role title；含英文縮寫但具中文職稱語境
+Wealth Management Associate,財富管理專員,理財專員,"財富管理專員, 理財專員",保留中文/中英混合關鍵字；已排除純英文 role title

@@ -1,0 +1,528 @@
+﻿skill_parent_category,skill_sub_category,canonical_skill_name
+Finance & Accounting,Accounting,Accounting
+Finance & Accounting,Accounting,Financial Reporting
+Finance & Accounting,Accounting,Cost Accounting
+Finance & Accounting,Accounting,Revenue Recognition
+Finance & Accounting,Accounting,Management Accounting
+Finance & Accounting,Accounting,IFRS
+Finance & Accounting,Accounting,GAAP
+Finance & Accounting,Accounting,Financial Accounting
+Finance & Accounting,Accounting,Accounting Standards
+Project / Program Management,Agile / Scrum,Agile
+Project / Program Management,Agile / Scrum,Scrum
+Project / Program Management,Agile / Scrum,Jira
+Project / Program Management,Agile / Scrum,Confluence
+Data Engineering & Cloud,Analytics Engineering,dbt
+Data Engineering & Cloud,Analytics Engineering,Semantic Layer
+Data Engineering & Cloud,Analytics Engineering,Data Mart
+Statistics & Experimentation,Analytics Methods,Segmentation
+Statistics & Experimentation,Analytics Methods,Cohort Analysis
+Statistics & Experimentation,Analytics Methods,Funnel Analysis
+Statistics & Experimentation,Analytics Methods,Churn Analysis
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis
+Data Engineering & Cloud,API / Integration,REST API
+Data Engineering & Cloud,API / Integration,API Integration
+Finance & Accounting,Audit / Tax,Auditing
+Finance & Accounting,Audit / Tax,Internal Audit
+Finance & Accounting,Audit / Tax,Tax
+Finance & Accounting,Audit / Tax,Transfer Pricing
+Software & Technical Delivery,Automation / RPA,Automation
+Software & Technical Delivery,Automation / RPA,RPA
+Software & Technical Delivery,Automation / RPA,Power Automate
+Software & Technical Delivery,Automation / RPA,UiPath
+Software & Technical Delivery,Automation / RPA,Automation Anywhere
+Software & Technical Delivery,Automation / RPA,Blue Prism
+BI & Data Visualization,BI Tools,Tableau
+BI & Data Visualization,BI Tools,Power BI
+BI & Data Visualization,BI Tools,Looker
+BI & Data Visualization,BI Tools,Looker Studio
+BI & Data Visualization,BI Tools,Qlik
+BI & Data Visualization,BI Tools,Metabase
+BI & Data Visualization,BI Tools,Apache Superset
+BI & Data Visualization,BI Tools,MicroStrategy
+BI & Data Visualization,BI Tools,Grafana
+BI & Data Visualization,BI Tools,Kibana
+BI & Data Visualization,BI Tools,Google Analytics
+BI & Data Visualization,BI Tools,Google Tag Manager
+BI & Data Visualization,BI Tools,Amplitude
+BI & Data Visualization,BI Tools,Mixpanel
+BI & Data Visualization,BI Tools,Hotjar
+BI & Data Visualization,BI Tools,Clarity
+BI & Data Visualization,BI Tools,Google Search Console
+BI & Data Visualization,BI Tools,Ahrefs
+BI & Data Visualization,BI Tools,SEMrush
+Data Engineering & Cloud,Big Data Processing,Spark
+Data Engineering & Cloud,Big Data Processing,PySpark
+Marketing & Growth,Brand / Campaign,Brand Management
+Marketing & Growth,Brand / Campaign,Campaign Management
+Marketing & Growth,Brand / Campaign,Integrated Marketing
+Marketing & Growth,Brand / Campaign,Marketing Communications
+Programming & Scripting,Business Automation,VBA
+Programming & Scripting,Business Automation,Google Apps Script
+Sales / BD / Customer Success,Business Development,Business Development
+Sales / BD / Customer Success,Business Development,Partnership Management
+Sales / BD / Customer Success,Business Development,Channel Sales
+Sales / BD / Customer Success,Business Development,Lead Generation
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis
+Information Systems & Enterprise Tools,Business Systems,Requirements Gathering
+Information Systems & Enterprise Tools,Business Systems,Solution Design
+Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing
+Information Systems & Enterprise Tools,Business Systems,System Design
+Information Systems & Enterprise Tools,Business Systems,System Architecture
+Information Systems & Enterprise Tools,Business Systems,Functional Specification
+Information Systems & Enterprise Tools,Business Systems,System Integration
+Information Systems & Enterprise Tools,Business Systems,API Design
+Database & Query Languages,Cloud Data Warehouses,BigQuery
+Database & Query Languages,Cloud Data Warehouses,Snowflake
+Database & Query Languages,Cloud Data Warehouses,Amazon Redshift
+Database & Query Languages,Cloud Data Warehouses,Databricks
+Data Engineering & Cloud,Cloud Platforms,AWS
+Data Engineering & Cloud,Cloud Platforms,GCP
+Data Engineering & Cloud,Cloud Platforms,Azure
+Data Engineering & Cloud,Cloud Services,Amazon S3
+Data Engineering & Cloud,Cloud Services,Amazon EC2
+Data Engineering & Cloud,Cloud Services,AWS Lambda
+Data Engineering & Cloud,Cloud Services,Google Cloud Storage
+Data Engineering & Cloud,Cloud Services,Cloud Architecture
+Data Engineering & Cloud,Cloud Services,Cloud Storage
+Communication & Languages,Communication,Communication
+Communication & Languages,Communication,Presentation Skills
+Communication & Languages,Communication,Written Communication
+Communication & Languages,Communication,English Communication
+Human Resources & People,Compensation / Benefits,Compensation Analysis
+Human Resources & People,Compensation / Benefits,Benefits Administration
+Risk / Compliance / Actuarial,Compliance,Compliance
+Risk / Compliance / Actuarial,Compliance,Internal Control
+Risk / Compliance / Actuarial,Compliance,AML
+Risk / Compliance / Actuarial,Compliance,KYC
+Risk / Compliance / Actuarial,Compliance,Regulatory Reporting
+Consulting & Strategy,Consulting Toolkit,Market Sizing
+Consulting & Strategy,Consulting Toolkit,Business Case
+Consulting & Strategy,Consulting Toolkit,Benchmarking
+Consulting & Strategy,Consulting Toolkit,Problem Structuring
+Consulting & Strategy,Consulting Toolkit,Executive Presentation
+Consulting & Strategy,Consulting Toolkit,Feasibility Analysis
+Consulting & Strategy,Consulting Toolkit,Case Study
+Consulting & Strategy,Corporate Development,Corporate Development
+Consulting & Strategy,Corporate Development,M&A Analysis
+Consulting & Strategy,Corporate Development,Strategic Initiatives
+Consulting & Strategy,Corporate Development,Chief of Staff Operations
+Finance & Accounting,Corporate Finance,Corporate Finance
+Finance & Accounting,Corporate Finance,Strategic Finance
+Finance & Accounting,Corporate Finance,Treasury Management
+Finance & Accounting,Corporate Finance,Capital Budgeting
+Finance & Accounting,Corporate Finance,Working Capital Management
+Marketing & Growth,CRM / Lifecycle,CRM
+Marketing & Growth,CRM / Lifecycle,Email Marketing
+Marketing & Growth,CRM / Lifecycle,Lifecycle Marketing
+Marketing & Growth,CRM / Lifecycle,Retention Marketing
+Marketing & Growth,CRM / Lifecycle,Customer Segmentation
+Sales / BD / Customer Success,Customer Success,Customer Success
+Sales / BD / Customer Success,Customer Success,Customer Onboarding
+Sales / BD / Customer Success,Customer Success,Customer Retention
+BI & Data Visualization,Dashboarding,Dashboard Development
+BI & Data Visualization,Dashboarding,KPI Reporting
+BI & Data Visualization,Dashboarding,Executive Reporting
+BI & Data Visualization,Dashboarding,Management Reporting
+Data Engineering & Cloud,Data Governance,Data Governance
+Data Engineering & Cloud,Data Governance,Master Data Management
+Data Engineering & Cloud,Data Governance,Data Lineage
+Data Engineering & Cloud,Data Governance,Data Catalog
+Data Engineering & Cloud,Data Governance,Data Dictionary
+Data Engineering & Cloud,Data Governance,Data Integrity
+Data Engineering & Cloud,Data Governance,Data Wrangling
+Database & Query Languages,Data Modeling,Data Modeling
+Database & Query Languages,Data Modeling,Dimensional Modeling
+Database & Query Languages,Data Modeling,Star Schema
+Database & Query Languages,Data Modeling,Entity Relationship Diagram
+Data Engineering & Cloud,Data Pipeline,ETL
+Data Engineering & Cloud,Data Pipeline,ELT
+Data Engineering & Cloud,Data Pipeline,Data Pipeline
+Data Engineering & Cloud,Data Pipeline,Data Ingestion
+Data Engineering & Cloud,Data Pipeline,Data Transformation
+Data Engineering & Cloud,Data Pipeline,Data Cleaning
+Data Engineering & Cloud,Data Pipeline,Data Quality
+Data Engineering & Cloud,Data Storage,Data Warehouse
+Data Engineering & Cloud,Data Storage,Data Lake
+Data Engineering & Cloud,Data Storage,Data Lakehouse
+BI & Data Visualization,Data Visualization,Data Visualization
+BI & Data Visualization,Data Visualization,Data Storytelling
+BI & Data Visualization,Data Visualization,Chart Design
+BI & Data Visualization,Data Visualization,Interactive Dashboard
+Database & Query Languages,Database Engineering,Query Optimization
+Database & Query Languages,Database Engineering,Stored Procedure
+Database & Query Languages,Database Engineering,Database Design
+Database & Query Languages,Database Engineering,Database Schema
+Machine Learning & AI,Deep Learning,Deep Learning
+Machine Learning & AI,Deep Learning,Neural Network
+Machine Learning & AI,Deep Learning,TensorFlow
+Machine Learning & AI,Deep Learning,PyTorch
+Machine Learning & AI,Deep Learning,Keras
+Machine Learning & AI,Deep Learning,Computer Vision
+Machine Learning & AI,Deep Learning,Transformer
+Machine Learning & AI,Deep Learning,BERT
+Machine Learning & AI,Deep Learning,Fine-tuning
+Machine Learning & AI,Deep Learning,Object Detection
+Data Engineering & Cloud,DevOps / Infrastructure,Docker
+Data Engineering & Cloud,DevOps / Infrastructure,Kubernetes
+Data Engineering & Cloud,DevOps / Infrastructure,Containerization
+Data Engineering & Cloud,DevOps / Infrastructure,Microservices
+Marketing & Growth,Digital Marketing,Digital Marketing
+Marketing & Growth,Digital Marketing,SEO
+Marketing & Growth,Digital Marketing,SEM
+Marketing & Growth,Digital Marketing,Paid Media
+Marketing & Growth,Digital Marketing,Google Ads
+Marketing & Growth,Digital Marketing,Meta Ads
+Marketing & Growth,Digital Marketing,Content Marketing
+Domain Knowledge,E-commerce,E-commerce
+Domain Knowledge,E-commerce,Marketplace Operations
+Domain Knowledge,E-commerce,Customer Journey
+Information Systems & Enterprise Tools,ERP / CRM,SAP
+Information Systems & Enterprise Tools,ERP / CRM,Oracle ERP
+Information Systems & Enterprise Tools,ERP / CRM,NetSuite
+Information Systems & Enterprise Tools,ERP / CRM,Salesforce
+Information Systems & Enterprise Tools,ERP / CRM,HubSpot
+Information Systems & Enterprise Tools,ERP / CRM,Workday
+Information Systems & Enterprise Tools,ERP / CRM,SAP FI
+Information Systems & Enterprise Tools,ERP / CRM,SAP CO
+Information Systems & Enterprise Tools,ERP / CRM,SAP MM
+Information Systems & Enterprise Tools,ERP / CRM,SAP SD
+Information Systems & Enterprise Tools,ERP / CRM,SAP BW
+Information Systems & Enterprise Tools,ERP / CRM,SAP HANA
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA
+Information Systems & Enterprise Tools,ERP / CRM,Oracle Financials
+Information Systems & Enterprise Tools,ERP / CRM,Oracle EBS
+Information Systems & Enterprise Tools,ERP / CRM,Sales Cloud
+Information Systems & Enterprise Tools,ERP / CRM,Service Cloud
+Information Systems & Enterprise Tools,ERP / CRM,Workday
+Statistics & Experimentation,Experimentation,A/B Testing
+Statistics & Experimentation,Experimentation,Hypothesis Testing
+Statistics & Experimentation,Experimentation,Experimental Design
+Statistics & Experimentation,Experimentation,Multivariate Testing
+Statistics & Experimentation,Experimentation,Causal Inference
+Finance & Accounting,Financial Analysis,Cost Analysis
+Finance & Accounting,Financial Analysis,Cost Control
+Finance & Accounting,Financial Analysis,Cost Reduction
+Finance & Accounting,Financial Analysis,Margin Analysis
+Finance & Accounting,Financial Analysis,Gross Margin Analysis
+Finance & Accounting,Financial Modeling,Financial Modeling
+Finance & Accounting,Financial Modeling,Valuation
+Finance & Accounting,Financial Modeling,DCF Valuation
+Finance & Accounting,Financial Modeling,Comparable Company Analysis
+Finance & Accounting,Financial Modeling,Unit Economics
+Finance & Accounting,Financial Modeling,Pricing Analysis
+Finance & Accounting,Financial Modeling,Sensitivity Analysis
+Finance & Accounting,Financial Modeling,Monte Carlo Simulation
+Finance & Accounting,Financial Modeling,LBO Modeling
+Finance & Accounting,Financial Modeling,M&A Modeling
+Finance & Accounting,Financial Modeling,ROI Analysis
+Finance & Accounting,Financial Modeling,NPV
+Finance & Accounting,Financial Modeling,IRR
+Finance & Accounting,Financial Modeling,Payback Period
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis
+Domain Knowledge,Financial Services,Banking
+Domain Knowledge,Financial Services,Insurance
+Domain Knowledge,Financial Services,Wealth Management
+Domain Knowledge,Financial Services,Consumer Finance
+Finance & Accounting,Financial Statements,Balance Sheet
+Finance & Accounting,Financial Statements,Cash Flow Statement
+Finance & Accounting,Financial Statements,P&L
+Machine Learning & AI,Forecasting,Forecasting
+Machine Learning & AI,Forecasting,Demand Forecasting
+Machine Learning & AI,Forecasting,Time Series Forecasting
+Machine Learning & AI,Forecasting,Predictive Modeling
+Finance & Accounting,FP&A,Budgeting
+Finance & Accounting,FP&A,Forecasting
+Finance & Accounting,FP&A,Variance Analysis
+Finance & Accounting,FP&A,Financial Planning
+Finance & Accounting,FP&A,Management Reporting
+Finance & Accounting,FP&A,Scenario Analysis
+Finance & Accounting,FP&A,CAPEX
+Finance & Accounting,FP&A,OPEX
+Machine Learning & AI,GenAI / LLM,Large Language Models
+Machine Learning & AI,GenAI / LLM,Prompt Engineering
+Machine Learning & AI,GenAI / LLM,RAG
+Machine Learning & AI,GenAI / LLM,NLP
+Machine Learning & AI,GenAI / LLM,Text Analytics
+Machine Learning & AI,GenAI / LLM,Generative AI
+Machine Learning & AI,GenAI / LLM,LangChain
+Machine Learning & AI,GenAI / LLM,OpenAI API
+Machine Learning & AI,GenAI / LLM,LLM Fine-tuning
+Machine Learning & AI,GenAI / LLM,AI Workflow
+Machine Learning & AI,GenAI / LLM,Multimodal AI
+Machine Learning & AI,GenAI / LLM,Stable Diffusion
+Machine Learning & AI,GenAI / LLM,ComfyUI
+Marketing & Growth,Growth,Growth Marketing
+Marketing & Growth,Growth,Conversion Optimization
+Marketing & Growth,Growth,User Acquisition
+Marketing & Growth,Growth,Marketing Analytics
+Domain Knowledge,Healthcare / Pharma,Healthcare
+Domain Knowledge,Healthcare / Pharma,Pharmaceutical Industry
+Domain Knowledge,Healthcare / Pharma,Life Sciences
+Domain Knowledge,Healthcare / Pharma,Bioinformatics
+Domain Knowledge,Healthcare / Pharma,Drug Discovery
+Domain Knowledge,Healthcare / Pharma,Real World Evidence
+Domain Knowledge,Healthcare / Pharma,Patent Analysis
+Human Resources & People,HR Operations,HR Operations
+Human Resources & People,HR Operations,People Operations
+Human Resources & People,HR Operations,HRIS
+Information Systems & Enterprise Tools,Implementation,Implementation
+Information Systems & Enterprise Tools,Implementation,System Configuration
+Information Systems & Enterprise Tools,Implementation,Process Mapping
+Information Systems & Enterprise Tools,Implementation,Technical Support
+Risk / Compliance / Actuarial,Insurance / Actuarial,Actuarial Modeling
+Risk / Compliance / Actuarial,Insurance / Actuarial,Insurance Pricing
+Risk / Compliance / Actuarial,Insurance / Actuarial,Reserving
+Risk / Compliance / Actuarial,Insurance / Actuarial,Underwriting
+Risk / Compliance / Actuarial,Insurance / Actuarial,Claims Analysis
+Finance & Accounting,Investment / Markets,Investment Analysis
+Finance & Accounting,Investment / Markets,Equity Research
+Finance & Accounting,Investment / Markets,Fixed Income Analysis
+Finance & Accounting,Investment / Markets,Portfolio Management
+Finance & Accounting,Investment / Markets,Capital Markets
+Finance & Accounting,Investment / Markets,Trading
+Communication & Languages,Languages,English
+Communication & Languages,Languages,Japanese
+Human Resources & People,Learning & Development,Learning & Development
+Human Resources & People,Learning & Development,Organizational Development
+Machine Learning & AI,Machine Learning,Machine Learning
+Machine Learning & AI,Machine Learning,Supervised Learning
+Machine Learning & AI,Machine Learning,Unsupervised Learning
+Machine Learning & AI,Machine Learning,Classification
+Machine Learning & AI,Machine Learning,Clustering
+Machine Learning & AI,Machine Learning,Recommendation System
+Machine Learning & AI,Machine Learning,XGBoost
+Machine Learning & AI,Machine Learning,LightGBM
+Machine Learning & AI,Machine Learning,Random Forest
+Machine Learning & AI,Machine Learning,Anomaly Detection
+Machine Learning & AI,Machine Learning,Churn Prediction
+Marketing & Growth,Market Research,Market Research
+Marketing & Growth,Market Research,Consumer Insights
+Marketing & Growth,Market Research,Customer Insights
+Marketing & Growth,Market Research,Survey Design
+Marketing & Growth,Market Research,Competitive Intelligence
+Marketing & Growth,Market Research,TAM SAM SOM
+Marketing & Growth,Marketing Analytics,Marketing Analytics
+Marketing & Growth,Marketing Analytics,ROAS
+Marketing & Growth,Marketing Analytics,CTR
+Marketing & Growth,Marketing Analytics,CPC
+Marketing & Growth,Marketing Analytics,CPM
+Marketing & Growth,Marketing Analytics,CPL
+Marketing & Growth,Marketing Technology,Marketing Automation
+Marketing & Growth,Marketing Technology,Decision Engine
+Marketing & Growth,Marketing Technology,Google Marketing Platform
+Marketing & Growth,Marketing Technology,Meta Pixel
+Machine Learning & AI,Model Operations,Model Evaluation
+Machine Learning & AI,Model Operations,Feature Engineering
+Machine Learning & AI,Model Operations,Model Deployment
+Database & Query Languages,NoSQL Databases,MongoDB
+Operations & Supply Chain,Operations,Operations Management
+Operations & Supply Chain,Operations,Operations Analysis
+Operations & Supply Chain,Operations,Process Improvement
+Operations & Supply Chain,Operations,SOP Development
+Operations & Supply Chain,Operations,Capacity Planning
+Operations & Supply Chain,Operations,Workforce Planning
+Human Resources & People,People Analytics,People Analytics
+Human Resources & People,People Analytics,Workforce Analytics
+Human Resources & People,People Analytics,HR Analytics
+Human Resources & People,People Analytics,Performance Management
+Human Resources & People,People Analytics,Workforce Planning
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Slides
+Spreadsheet & Office Productivity,Presentation & Documentation,Word
+Spreadsheet & Office Productivity,Presentation & Documentation,Notion
+Spreadsheet & Office Productivity,Presentation & Documentation,Confluence
+Spreadsheet & Office Productivity,Presentation & Documentation,Keynote
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Docs
+Communication & Languages,Problem Solving,Problem Solving
+Communication & Languages,Problem Solving,Analytical Thinking
+Communication & Languages,Problem Solving,Critical Thinking
+Operations & Supply Chain,Process Excellence,Lean
+Operations & Supply Chain,Process Excellence,Six Sigma
+Operations & Supply Chain,Process Excellence,Continuous Improvement
+Operations & Supply Chain,Process Excellence,Operational Excellence
+Operations & Supply Chain,Process Excellence,Business Process Reengineering
+Operations & Supply Chain,Process Excellence,Standardization
+Operations & Supply Chain,Process Excellence,Workflow Mapping
+Operations & Supply Chain,Process Excellence,Requirement Analysis
+Operations & Supply Chain,Process Excellence,User Acceptance Testing
+Product & User Analytics,Product Analytics,Product Analytics
+Product & User Analytics,Product Analytics,User Behavior Analysis
+Product & User Analytics,Product Analytics,Event Tracking
+Product & User Analytics,Product Analytics,Funnel Analysis
+Product & User Analytics,Product Analytics,Cohort Analysis
+Product & User Analytics,Product Analytics,Retention Analysis
+Product & User Analytics,Product Analytics,Customer Analytics
+Product & User Analytics,Product Analytics,Customer Journey Analysis
+Product & User Analytics,Product Analytics,User Journey Analysis
+Product & User Analytics,Product Analytics,LTV
+Product & User Analytics,Product Analytics,CLV
+Product & User Analytics,Product Analytics,Subscription Analytics
+Product & User Analytics,Product Analytics,Content Analytics
+Product & User Analytics,Product Analytics,Game Analytics
+Product & User Analytics,Product Management,Product Management
+Product & User Analytics,Product Management,Product Strategy
+Product & User Analytics,Product Management,Product Roadmap
+Product & User Analytics,Product Management,PRD
+Product & User Analytics,Product Management,User Stories
+Product & User Analytics,Product Management,Feature Prioritization
+Product & User Analytics,Product Management,Go-to-Market Strategy
+Product & User Analytics,Product Metrics,KPI
+Product & User Analytics,Product Metrics,OKR
+Product & User Analytics,Product Metrics,North Star Metric
+Product & User Analytics,Product Metrics,GMV
+Product & User Analytics,Product Metrics,DAU
+Product & User Analytics,Product Metrics,MAU
+Product & User Analytics,Product Metrics,Conversion Rate
+Product & User Analytics,Product Operations,Product Operations
+Product & User Analytics,Product Operations,Product Metrics
+Product & User Analytics,Product Operations,Product Launch
+Spreadsheet & Office Productivity,Productivity Tools,Airtable
+Programming & Scripting,Programming Languages,Python
+Programming & Scripting,Programming Languages,R
+Programming & Scripting,Programming Languages,JavaScript
+Programming & Scripting,Programming Languages,Java
+Programming & Scripting,Programming Languages,C++
+Programming & Scripting,Programming Languages,HTML
+Programming & Scripting,Programming Languages,CSS
+Programming & Scripting,Programming Languages,Scala
+Programming & Scripting,Programming Languages,TypeScript
+Project / Program Management,Project Management,Project Management
+Project / Program Management,Project Management,Program Management
+Project / Program Management,Project Management,PMO
+Project / Program Management,Project Management,Project Planning
+Project / Program Management,Project Management,Roadmap Planning
+Project / Program Management,Project Management,Kanban
+Project / Program Management,Project Management,Asana
+Project / Program Management,Project Management,Trello
+Project / Program Management,Project Management,Monday.com
+Project / Program Management,Project Management,Scope Management
+Project / Program Management,Project Management,Risk Management
+Programming & Scripting,Python Libraries,pandas
+Programming & Scripting,Python Libraries,NumPy
+Programming & Scripting,Python Libraries,scikit-learn
+Programming & Scripting,Python Libraries,matplotlib
+Programming & Scripting,Python Libraries,Seaborn
+Programming & Scripting,Python Libraries,Plotly
+Programming & Scripting,Python Libraries,SciPy
+Software & Technical Delivery,Quality Assurance,QA Testing
+Software & Technical Delivery,Quality Assurance,Test Automation
+Software & Technical Delivery,Quality Assurance,Bug Tracking
+Software & Technical Delivery,Quality Assurance,UAT
+Software & Technical Delivery,Quality Assurance,Bug Tracking
+Database & Query Languages,Query Engines,Presto
+Database & Query Languages,Query Engines,Trino
+Database & Query Languages,Query Languages,SQL
+Database & Query Languages,Query Languages,T-SQL
+Database & Query Languages,Query Languages,PL/SQL
+Database & Query Languages,Query Languages,Hive SQL
+Programming & Scripting,R Libraries,tidyverse
+Programming & Scripting,R Libraries,ggplot2
+Database & Query Languages,Relational Databases,MySQL
+Database & Query Languages,Relational Databases,PostgreSQL
+Database & Query Languages,Relational Databases,SQL Server
+Database & Query Languages,Relational Databases,Oracle Database
+Consulting & Strategy,Research,Industry Research
+Consulting & Strategy,Research,Competitive Analysis
+Consulting & Strategy,Research,Company Research
+Sales / BD / Customer Success,Revenue Operations,Revenue Operations
+Sales / BD / Customer Success,Revenue Operations,Sales Operations
+Sales / BD / Customer Success,Revenue Operations,CRM Tools
+Risk / Compliance / Actuarial,Risk Management,Risk Management
+Risk / Compliance / Actuarial,Risk Management,Enterprise Risk Management
+Risk / Compliance / Actuarial,Risk Management,Operational Risk
+Risk / Compliance / Actuarial,Risk Management,Credit Risk
+Risk / Compliance / Actuarial,Risk Management,Market Risk
+Risk / Compliance / Actuarial,Risk Management,Financial Risk
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics
+Risk / Compliance / Actuarial,Risk Management,Security Monitoring
+Risk / Compliance / Actuarial,Risk Management,Threat Intelligence
+Risk / Compliance / Actuarial,Risk Management,SIEM
+Risk / Compliance / Actuarial,Risk Modeling,Risk Modeling
+Risk / Compliance / Actuarial,Risk Modeling,Credit Scoring
+Risk / Compliance / Actuarial,Risk Modeling,Stress Testing
+Risk / Compliance / Actuarial,Risk Modeling,Scorecard
+Sales / BD / Customer Success,Sales,Sales
+Sales / BD / Customer Success,Sales,Account Management
+Sales / BD / Customer Success,Sales,Key Account Management
+Sales / BD / Customer Success,Sales,Sales Pipeline
+Sales / BD / Customer Success,Sales,Sales Forecasting
+Programming & Scripting,Scripting / Command Line,Bash/Shell
+Programming & Scripting,Scripting / Command Line,Linux
+Programming & Scripting,Scripting / Command Line,Command Line
+Software & Technical Delivery,Software Development,Software Engineering
+Software & Technical Delivery,Software Development,Backend Development
+Software & Technical Delivery,Software Development,Frontend Development
+Software & Technical Delivery,Software Development,Full Stack Development
+Software & Technical Delivery,Software Development,API
+Software & Technical Delivery,Software Development,REST API
+Software & Technical Delivery,Software Development,Software Design
+Software & Technical Delivery,Software Development,Node.js
+Software & Technical Delivery,Software Development,API Design
+Software & Technical Delivery,Software Development,Code Review
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Query
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Pivot
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel
+Spreadsheet & Office Productivity,Spreadsheet Tools,Google Sheets
+Project / Program Management,Stakeholder Management,Stakeholder Management
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration
+Project / Program Management,Stakeholder Management,Meeting Facilitation
+Project / Program Management,Stakeholder Management,Change Management
+Entrepreneurship & Venture,Startup Operations,Startup Operations
+Entrepreneurship & Venture,Startup Operations,Business Operations
+Entrepreneurship & Venture,Startup Operations,Founder Mindset
+Statistics & Experimentation,Statistics,Descriptive Statistics
+Statistics & Experimentation,Statistics,Inferential Statistics
+Statistics & Experimentation,Statistics,Regression Analysis
+Statistics & Experimentation,Statistics,Logistic Regression
+Statistics & Experimentation,Statistics,Time Series Analysis
+Statistics & Experimentation,Statistics,Correlation Analysis
+Statistics & Experimentation,Statistics,Statistical Modeling
+Consulting & Strategy,Strategy,Business Strategy
+Consulting & Strategy,Strategy,Corporate Strategy
+Consulting & Strategy,Strategy,Strategic Planning
+Consulting & Strategy,Strategy,Market Entry Strategy
+Consulting & Strategy,Strategy,Growth Strategy
+Consulting & Strategy,Strategy,Business Transformation
+Consulting & Strategy,Strategy,Digital Transformation
+Consulting & Strategy,Strategy,Business Model Design
+Data Engineering & Cloud,Streaming / Messaging,Kafka
+Data Engineering & Cloud,Streaming / Messaging,Message Queue
+Data Engineering & Cloud,Streaming / Messaging,Event Streaming
+Data Engineering & Cloud,Streaming / Messaging,Pub/Sub
+Data Engineering & Cloud,Streaming / Messaging,RabbitMQ
+Operations & Supply Chain,Supply Chain,Supply Chain Management
+Operations & Supply Chain,Supply Chain,Logistics
+Operations & Supply Chain,Supply Chain,Procurement
+Operations & Supply Chain,Supply Chain,Sourcing
+Operations & Supply Chain,Supply Chain,Vendor Management
+Operations & Supply Chain,Supply Chain,Inventory Management
+Operations & Supply Chain,Supply Chain,Demand Planning
+Operations & Supply Chain,Supply Chain,Distribution Management
+Operations & Supply Chain,Supply Chain,S&OP
+Domain Knowledge,Sustainability,ESG
+Domain Knowledge,Sustainability,Sustainable Finance
+Human Resources & People,Talent Acquisition,Talent Acquisition
+Human Resources & People,Talent Acquisition,Recruiting
+Human Resources & People,Talent Acquisition,Interviewing
+Human Resources & People,Talent Acquisition,Sourcing
+Software & Technical Delivery,Technical Program,Technical Program Management
+Software & Technical Delivery,Technical Program,Developer Relations
+Software & Technical Delivery,Technical Program,Solutions Engineering
+Domain Knowledge,Technology,SaaS
+Domain Knowledge,Technology,Cloud Computing
+Domain Knowledge,Technology,Cybersecurity
+Product & User Analytics,User Research,User Research
+Product & User Analytics,User Research,Usability Testing
+Product & User Analytics,User Research,Voice of Customer
+Entrepreneurship & Venture,Venture Building,Venture Building
+Entrepreneurship & Venture,Venture Building,Business Model Design
+Entrepreneurship & Venture,Venture Building,Lean Startup
+Entrepreneurship & Venture,Venture Investment,Venture Capital
+Entrepreneurship & Venture,Venture Investment,Startup Investment Analysis
+Entrepreneurship & Venture,Venture Investment,Due Diligence
+Data Engineering & Cloud,Version Control,Git
+Data Engineering & Cloud,Version Control,GitHub
+Data Engineering & Cloud,Workflow Orchestration,Airflow
+Data Engineering & Cloud,Workflow Orchestration,Dagster
+Data Engineering & Cloud,Workflow Orchestration,Prefect

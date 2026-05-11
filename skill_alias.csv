@@ -1,0 +1,1700 @@
+﻿skill_parent_category,skill_sub_category,canonical_skill_name,alias,lang,notes
+BI & Data Visualization,BI Tools,Ahrefs,ahrefs,en,exact_lower
+BI & Data Visualization,BI Tools,Amplitude,amplitude,en,exact_lower
+BI & Data Visualization,BI Tools,Apache Superset,apache superset,en,exact_lower
+BI & Data Visualization,BI Tools,Apache Superset,Superset,en,from_SKILL_CATALOG; catalog_key=Superset
+BI & Data Visualization,BI Tools,Clarity,clarity,en,exact_lower
+BI & Data Visualization,BI Tools,Google Analytics,\bga\b,en,from_SKILL_CATALOG; regex; catalog_key=Marketing Analytics Tools
+BI & Data Visualization,BI Tools,Google Analytics,ga,en,abbrev
+BI & Data Visualization,BI Tools,Google Analytics,ga4,en,product
+BI & Data Visualization,BI Tools,Google Analytics,google analytics,en,exact_lower
+BI & Data Visualization,BI Tools,Google Analytics,google analytics 4,en,product
+BI & Data Visualization,BI Tools,Google Search Console,google search console,en,exact_lower
+BI & Data Visualization,BI Tools,Google Search Console,gsc,en,abbrev
+BI & Data Visualization,BI Tools,Google Search Console,search console,en,from_SKILL_CATALOG; catalog_key=Marketing Analytics Tools
+BI & Data Visualization,BI Tools,Google Tag Manager,google tag manager,en,exact_lower
+BI & Data Visualization,BI Tools,Google Tag Manager,gtm,en,abbrev
+BI & Data Visualization,BI Tools,Grafana,grafana,en,exact_lower
+BI & Data Visualization,BI Tools,Grafana,grafana dashboard,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Hotjar,hotjar,en,exact_lower
+BI & Data Visualization,BI Tools,Kibana,elastic stack,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Kibana,elasticsearch,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Kibana,elk,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Kibana,kibana,en,exact_lower
+BI & Data Visualization,BI Tools,Looker,looker,en,exact_lower
+BI & Data Visualization,BI Tools,Looker,lookml,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Looker Studio,data studio,en,old name
+BI & Data Visualization,BI Tools,Looker Studio,google data studio,en,old name
+BI & Data Visualization,BI Tools,Looker Studio,locker studio,en,from_SKILL_CATALOG; catalog_key=Looker
+BI & Data Visualization,BI Tools,Looker Studio,looker studio,en,exact_lower
+BI & Data Visualization,BI Tools,Metabase,metabase,en,exact_lower
+BI & Data Visualization,BI Tools,MicroStrategy,microstrategy,en,exact_lower
+BI & Data Visualization,BI Tools,MicroStrategy,mstr,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Mixpanel,mixpanel,en,exact_lower
+BI & Data Visualization,BI Tools,Power BI,dax,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Power BI,microsoft power bi,en,vendor
+BI & Data Visualization,BI Tools,Power BI,pbi,en,abbrev
+BI & Data Visualization,BI Tools,Power BI,power bi,en,exact_lower
+BI & Data Visualization,BI Tools,Power BI,power bi desktop,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Power BI,power bi service,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Power BI,power-bi,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Power BI,powerbi,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Qlik,qlik,en,exact_lower
+BI & Data Visualization,BI Tools,Qlik,qlik sense,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Qlik,qliksense,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Qlik,qlikview,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,SEMrush,sem rush,en,spacing
+BI & Data Visualization,BI Tools,SEMrush,semrush,en,exact_lower
+BI & Data Visualization,BI Tools,Tableau,tableau,en,exact_lower
+BI & Data Visualization,BI Tools,Tableau,tableau desktop,en,product
+BI & Data Visualization,BI Tools,Tableau,tableau prep,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Tableau,tableau public,en,from_SKILL_CATALOG
+BI & Data Visualization,BI Tools,Tableau,tableau server,en,product
+BI & Data Visualization,Dashboarding,Dashboard Development,dashboard,en,short
+BI & Data Visualization,Dashboarding,Dashboard Development,dashboard development,en,exact_lower
+BI & Data Visualization,Dashboarding,Dashboard Development,儀表板開發,zh,中文
+BI & Data Visualization,Dashboarding,Dashboard Development,看板開發,zh,中文
+BI & Data Visualization,Dashboarding,Executive Reporting,executive reporting,en,exact_lower
+BI & Data Visualization,Dashboarding,Executive Reporting,management reporting,en,related
+BI & Data Visualization,Dashboarding,Executive Reporting,高階主管報告,zh,中文
+BI & Data Visualization,Dashboarding,KPI Reporting,kpi report,en,variant
+BI & Data Visualization,Dashboarding,KPI Reporting,kpi reporting,en,exact_lower
+BI & Data Visualization,Dashboarding,KPI Reporting,kpi 報表,mixed,常見混寫
+BI & Data Visualization,Dashboarding,Management Reporting,management report,en,variant
+BI & Data Visualization,Dashboarding,Management Reporting,management reporting,en,exact_lower
+BI & Data Visualization,Dashboarding,Management Reporting,管理報表,zh,中文
+BI & Data Visualization,Data Visualization,Chart Design,chart design,en,exact_lower
+BI & Data Visualization,Data Visualization,Chart Design,dashboard design,en,from_SKILL_CATALOG; catalog_key=Data Visualization
+BI & Data Visualization,Data Visualization,Chart Design,圖表設計,zh,中文
+BI & Data Visualization,Data Visualization,Data Storytelling,business insight,en,from_SKILL_CATALOG
+BI & Data Visualization,Data Visualization,Data Storytelling,data storytelling,en,exact_lower
+BI & Data Visualization,Data Visualization,Data Storytelling,insight communication,en,from_SKILL_CATALOG
+BI & Data Visualization,Data Visualization,Data Storytelling,數據敘事,zh,中文
+BI & Data Visualization,Data Visualization,Data Visualization,d3.js,en,from_SKILL_CATALOG
+BI & Data Visualization,Data Visualization,Data Visualization,data visualisation,en,UK spelling
+BI & Data Visualization,Data Visualization,Data Visualization,data visualization,en,exact_lower
+BI & Data Visualization,Data Visualization,Data Visualization,dataviz,en,short
+BI & Data Visualization,Data Visualization,Data Visualization,visualization,en,from_SKILL_CATALOG
+BI & Data Visualization,Data Visualization,Data Visualization,資料視覺化,zh,中文
+BI & Data Visualization,Data Visualization,Interactive Dashboard,dashboard,en,from_SKILL_CATALOG; catalog_key=Data Visualization
+BI & Data Visualization,Data Visualization,Interactive Dashboard,interactive dashboard,en,exact_lower
+BI & Data Visualization,Data Visualization,Interactive Dashboard,互動式儀表板,zh,中文
+BI & Data Visualization,Data Visualization,Interactive Dashboard,互動式看板,zh,中文
+Communication & Languages,Communication,Communication,communication,en,exact_lower
+Communication & Languages,Communication,Communication,communication skills,en,variant
+Communication & Languages,Communication,Communication,verbal communication,en,from_SKILL_CATALOG
+Communication & Languages,Communication,Communication,溝通能力,zh,中文
+Communication & Languages,Communication,English Communication,business english,en,related
+Communication & Languages,Communication,English Communication,english communication,en,exact_lower
+Communication & Languages,Communication,English Communication,英文溝通,zh,中文
+Communication & Languages,Communication,Presentation Skills,presentation,en,short
+Communication & Languages,Communication,Presentation Skills,presentation skills,en,exact_lower
+Communication & Languages,Communication,Presentation Skills,簡報能力,zh,中文
+Communication & Languages,Communication,Written Communication,business writing,en,related
+Communication & Languages,Communication,Written Communication,written communication,en,exact_lower
+Communication & Languages,Communication,Written Communication,書面溝通,zh,中文
+Communication & Languages,Languages,English,\b英文\b,mixed,from_SKILL_CATALOG; regex
+Communication & Languages,Languages,English,\b英語\b,mixed,from_SKILL_CATALOG; regex
+Communication & Languages,Languages,English,english,en,exact_lower
+Communication & Languages,Languages,English,英文,zh,中文
+Communication & Languages,Languages,Japanese,\b日文\b,mixed,from_SKILL_CATALOG; regex
+Communication & Languages,Languages,Japanese,\b日語\b,mixed,from_SKILL_CATALOG; regex
+Communication & Languages,Languages,Japanese,japanese,en,exact_lower
+Communication & Languages,Languages,Japanese,jlpt,en,from_SKILL_CATALOG
+Communication & Languages,Languages,Japanese,日文,zh,中文
+Communication & Languages,Languages,Japanese,日語,zh,中文
+Communication & Languages,Problem Solving,Analytical Thinking,analytical thinking,en,exact_lower
+Communication & Languages,Problem Solving,Analytical Thinking,分析思維,zh,中文
+Communication & Languages,Problem Solving,Critical Thinking,critical thinking,en,exact_lower
+Communication & Languages,Problem Solving,Critical Thinking,批判性思考,zh,中文
+Communication & Languages,Problem Solving,Problem Solving,problem solving,en,exact_lower
+Communication & Languages,Problem Solving,Problem Solving,problem-solving,en,hyphen
+Communication & Languages,Problem Solving,Problem Solving,self-motivated,en,from_SKILL_CATALOG
+Communication & Languages,Problem Solving,Problem Solving,問題解決,zh,中文
+Consulting & Strategy,Consulting Toolkit,Benchmarking,benchmark,en,short
+Consulting & Strategy,Consulting Toolkit,Benchmarking,benchmark analysis,en,from_SKILL_CATALOG; catalog_key=Competitive Analysis
+Consulting & Strategy,Consulting Toolkit,Benchmarking,benchmarking,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Benchmarking,標竿分析,zh,中文
+Consulting & Strategy,Consulting Toolkit,Business Case,business case,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Business Case,商業案例,zh,中文
+Consulting & Strategy,Consulting Toolkit,Business Case,商業論證,zh,中文
+Consulting & Strategy,Consulting Toolkit,Case Study,case study,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Case Study,個案分析,zh,中文
+Consulting & Strategy,Consulting Toolkit,Executive Presentation,exec presentation,en,short
+Consulting & Strategy,Consulting Toolkit,Executive Presentation,executive presentation,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Executive Presentation,高階簡報,zh,中文
+Consulting & Strategy,Consulting Toolkit,Feasibility Analysis,feasibility analysis,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Feasibility Analysis,feasibility study,en,from_SKILL_CATALOG; catalog_key=Systems Analysis
+Consulting & Strategy,Consulting Toolkit,Feasibility Analysis,可行性分析,zh,中文
+Consulting & Strategy,Consulting Toolkit,Market Sizing,market sizing,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Market Sizing,市場規模估算,zh,中文
+Consulting & Strategy,Consulting Toolkit,Problem Structuring,issue tree,en,related
+Consulting & Strategy,Consulting Toolkit,Problem Structuring,problem structuring,en,exact_lower
+Consulting & Strategy,Consulting Toolkit,Problem Structuring,問題拆解,zh,中文
+Consulting & Strategy,Corporate Development,Chief of Staff Operations,chief of staff operations,en,exact_lower
+Consulting & Strategy,Corporate Development,Chief of Staff Operations,幕僚營運,zh,中文
+Consulting & Strategy,Corporate Development,Chief of Staff Operations,總經理室專案,zh,中文
+Consulting & Strategy,Corporate Development,Corporate Development,corporate development,en,exact_lower
+Consulting & Strategy,Corporate Development,Corporate Development,企業發展,zh,中文
+Consulting & Strategy,Corporate Development,Corporate Development,公司發展,zh,中文
+Consulting & Strategy,Corporate Development,M&A Analysis,m a analysis,en,punctuation_variant
+Consulting & Strategy,Corporate Development,M&A Analysis,m&a,en,short
+Consulting & Strategy,Corporate Development,M&A Analysis,m&a analysis,en,exact_lower
+Consulting & Strategy,Corporate Development,M&A Analysis,maanalysis,en,no_space
+Consulting & Strategy,Corporate Development,M&A Analysis,mergers and acquisitions,en,full name
+Consulting & Strategy,Corporate Development,M&A Analysis,併購分析,zh,中文
+Consulting & Strategy,Corporate Development,Strategic Initiatives,strategic initiatives,en,exact_lower
+Consulting & Strategy,Corporate Development,Strategic Initiatives,策略專案,zh,中文
+Consulting & Strategy,Research,Company Research,company research,en,exact_lower
+Consulting & Strategy,Research,Company Research,公司研究,zh,中文
+Consulting & Strategy,Research,Competitive Analysis,competitive analysis,en,exact_lower
+Consulting & Strategy,Research,Competitive Analysis,competitor analysis,en,variant
+Consulting & Strategy,Research,Competitive Analysis,競品分析,zh,中文
+Consulting & Strategy,Research,Industry Research,industry research,en,exact_lower
+Consulting & Strategy,Research,Industry Research,產業研究,zh,中文
+Consulting & Strategy,Strategy,Business Model Design,business model,en,short
+Consulting & Strategy,Strategy,Business Model Design,business model design,en,exact_lower
+Consulting & Strategy,Strategy,Business Model Design,商業模式設計,zh,中文
+Consulting & Strategy,Strategy,Business Strategy,business strategy,en,exact_lower
+Consulting & Strategy,Strategy,Business Strategy,data-driven,en,from_SKILL_CATALOG
+Consulting & Strategy,Strategy,Business Strategy,商業策略,zh,中文
+Consulting & Strategy,Strategy,Business Transformation,business transformation,en,exact_lower
+Consulting & Strategy,Strategy,Business Transformation,企業轉型,zh,中文
+Consulting & Strategy,Strategy,Corporate Strategy,corporate strategy,en,exact_lower
+Consulting & Strategy,Strategy,Corporate Strategy,公司策略,zh,中文
+Consulting & Strategy,Strategy,Digital Transformation,digital transformation,en,exact_lower
+Consulting & Strategy,Strategy,Digital Transformation,dx,en,abbrev
+Consulting & Strategy,Strategy,Digital Transformation,數位轉型,zh,中文
+Consulting & Strategy,Strategy,Growth Strategy,growth strategy,en,exact_lower
+Consulting & Strategy,Strategy,Growth Strategy,成長策略,zh,中文
+Consulting & Strategy,Strategy,Market Entry Strategy,market entry,en,short
+Consulting & Strategy,Strategy,Market Entry Strategy,market entry strategy,en,exact_lower
+Consulting & Strategy,Strategy,Market Entry Strategy,市場進入策略,zh,中文
+Consulting & Strategy,Strategy,Strategic Planning,strategic planning,en,exact_lower
+Consulting & Strategy,Strategy,Strategic Planning,策略規劃,zh,中文
+Data Engineering & Cloud,API / Integration,API Integration,api integration,en,exact_lower
+Data Engineering & Cloud,API / Integration,API Integration,api 串接,mixed,常見混寫
+Data Engineering & Cloud,API / Integration,API Integration,system integration,en,related
+Data Engineering & Cloud,API / Integration,API Integration,第三方串接,zh,中文
+Data Engineering & Cloud,API / Integration,REST API,rest api,en,exact_lower
+Data Engineering & Cloud,API / Integration,REST API,rest api integration,en,variant
+Data Engineering & Cloud,API / Integration,REST API,restful,en,short
+Data Engineering & Cloud,API / Integration,REST API,restful api,en,variant
+Data Engineering & Cloud,Analytics Engineering,Data Mart,data mart,en,exact_lower
+Data Engineering & Cloud,Analytics Engineering,Data Mart,datamart,en,no space
+Data Engineering & Cloud,Analytics Engineering,Data Mart,fact table,en,from_SKILL_CATALOG; catalog_key=Data Warehouse
+Data Engineering & Cloud,Analytics Engineering,Data Mart,資料市集,zh,中文
+Data Engineering & Cloud,Analytics Engineering,dbt,\bdbt\b,en,from_SKILL_CATALOG; regex
+Data Engineering & Cloud,Analytics Engineering,dbt,data build tool,en,full name
+Data Engineering & Cloud,Analytics Engineering,dbt,dbt,en,exact_lower
+Data Engineering & Cloud,Analytics Engineering,dbt,dbt cloud,en,product
+Data Engineering & Cloud,Analytics Engineering,dbt,dbt core,en,product
+Data Engineering & Cloud,Analytics Engineering,Semantic Layer,metrics layer,en,related
+Data Engineering & Cloud,Analytics Engineering,Semantic Layer,semantic layer,en,exact_lower
+Data Engineering & Cloud,Analytics Engineering,Semantic Layer,語意層,zh,中文
+Data Engineering & Cloud,Analytics Engineering,Semantic Layer,語義層,zh,中文
+Data Engineering & Cloud,Big Data Processing,PySpark,py spark,en,spacing
+Data Engineering & Cloud,Big Data Processing,PySpark,pyspark,en,exact_lower
+Data Engineering & Cloud,Big Data Processing,PySpark,spark python,en,variant
+Data Engineering & Cloud,Big Data Processing,Spark,\bspark\b,en,from_SKILL_CATALOG; regex
+Data Engineering & Cloud,Big Data Processing,Spark,apache spark,en,full name
+Data Engineering & Cloud,Big Data Processing,Spark,spark,en,exact_lower
+Data Engineering & Cloud,Big Data Processing,Spark,spark streaming,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Cloud Platforms,AWS,amazon web services,en,full name
+Data Engineering & Cloud,Cloud Platforms,AWS,aws,en,exact_lower
+Data Engineering & Cloud,Cloud Platforms,AWS,aws cloud,en,variant
+Data Engineering & Cloud,Cloud Platforms,Azure,azure,en,exact_lower
+Data Engineering & Cloud,Cloud Platforms,Azure,microsoft azure,en,vendor
+Data Engineering & Cloud,Cloud Platforms,GCP,gcp,en,exact_lower
+Data Engineering & Cloud,Cloud Platforms,GCP,google cloud,en,variant
+Data Engineering & Cloud,Cloud Platforms,GCP,google cloud platform,en,full name
+Data Engineering & Cloud,Cloud Services,Amazon EC2,amazon ec2,en,exact_lower
+Data Engineering & Cloud,Cloud Services,Amazon EC2,aws ec2,en,variant
+Data Engineering & Cloud,Cloud Services,Amazon EC2,ec2,en,short
+Data Engineering & Cloud,Cloud Services,Amazon S3,amazon s3,en,exact_lower
+Data Engineering & Cloud,Cloud Services,Amazon S3,aws s3,en,variant
+Data Engineering & Cloud,Cloud Services,Amazon S3,s3,en,short
+Data Engineering & Cloud,Cloud Services,AWS Lambda,aws lambda,en,exact_lower
+Data Engineering & Cloud,Cloud Services,AWS Lambda,lambda,en,short
+Data Engineering & Cloud,Cloud Services,Cloud Architecture,cloud architecture,en,exact_lower
+Data Engineering & Cloud,Cloud Services,Cloud Architecture,雲端架構,zh,中文
+Data Engineering & Cloud,Cloud Services,Cloud Storage,cloud storage,en,exact_lower
+Data Engineering & Cloud,Cloud Services,Cloud Storage,雲端儲存,zh,中文
+Data Engineering & Cloud,Cloud Services,Google Cloud Storage,gcs,en,abbrev
+Data Engineering & Cloud,Cloud Services,Google Cloud Storage,google cloud storage,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Catalog,data catalog,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Catalog,資料目錄,zh,中文
+Data Engineering & Cloud,Data Governance,Data Dictionary,data dictionary,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Dictionary,資料字典,zh,中文
+Data Engineering & Cloud,Data Governance,Data Governance,data governance,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Governance,data management,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Data Governance,Data Governance,data steward,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Data Governance,Data Governance,dmp,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Data Governance,Data Governance,資料治理,zh,中文
+Data Engineering & Cloud,Data Governance,Data Integrity,data integrity,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Integrity,資料完整性,zh,中文
+Data Engineering & Cloud,Data Governance,Data Lineage,data lineage,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Lineage,資料溯源,zh,中文
+Data Engineering & Cloud,Data Governance,Data Lineage,資料血緣,zh,中文
+Data Engineering & Cloud,Data Governance,Data Wrangling,data munging,en,variant
+Data Engineering & Cloud,Data Governance,Data Wrangling,data wrangling,en,exact_lower
+Data Engineering & Cloud,Data Governance,Data Wrangling,資料整理,zh,中文
+Data Engineering & Cloud,Data Governance,Master Data Management,master data,en,from_SKILL_CATALOG; catalog_key=Data Governance
+Data Engineering & Cloud,Data Governance,Master Data Management,master data management,en,exact_lower
+Data Engineering & Cloud,Data Governance,Master Data Management,mdm,en,abbrev
+Data Engineering & Cloud,Data Governance,Master Data Management,主數據管理,zh,中文
+Data Engineering & Cloud,Data Governance,Master Data Management,主資料管理,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Cleaning,data cleaning,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,Data Cleaning,data cleansing,en,variant
+Data Engineering & Cloud,Data Pipeline,Data Cleaning,資料清洗,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Cleaning,資料清理,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Ingestion,data ingestion,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,Data Ingestion,資料匯入,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Ingestion,資料擷取,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,Data Engineering,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,data flow,en,from_SKILL_CATALOG; catalog_key=Data Warehouse
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,data pipeline,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,data pipelines,en,plural
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,data processing,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,data storage,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,database,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,ods,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,structured data,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,unstructured data,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Data Engineering & Cloud,Data Pipeline,Data Pipeline,資料管線,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Quality,data quality,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,Data Quality,dq,en,abbrev
+Data Engineering & Cloud,Data Pipeline,Data Quality,資料品質,zh,中文
+Data Engineering & Cloud,Data Pipeline,Data Transformation,data transformation,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,Data Transformation,資料轉換,zh,中文
+Data Engineering & Cloud,Data Pipeline,ELT,elt,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,ELT,elt pipeline,en,variant
+Data Engineering & Cloud,Data Pipeline,ELT,extract load transform,en,full name
+Data Engineering & Cloud,Data Pipeline,ETL,etl,en,exact_lower
+Data Engineering & Cloud,Data Pipeline,ETL,etl pipeline,en,variant
+Data Engineering & Cloud,Data Pipeline,ETL,extract transform load,en,full name
+Data Engineering & Cloud,Data Storage,Data Lake,data lake,en,exact_lower
+Data Engineering & Cloud,Data Storage,Data Lake,資料湖,zh,中文
+Data Engineering & Cloud,Data Storage,Data Lakehouse,data lakehouse,en,exact_lower
+Data Engineering & Cloud,Data Storage,Data Lakehouse,lakehouse,en,short
+Data Engineering & Cloud,Data Storage,Data Lakehouse,湖倉,zh,中文
+Data Engineering & Cloud,Data Storage,Data Warehouse,data warehouse,en,exact_lower
+Data Engineering & Cloud,Data Storage,Data Warehouse,dwh,en,abbrev
+Data Engineering & Cloud,Data Storage,Data Warehouse,資料倉儲,zh,中文
+Data Engineering & Cloud,DevOps / Infrastructure,Containerization,container,en,from_SKILL_CATALOG; catalog_key=Docker/K8s
+Data Engineering & Cloud,DevOps / Infrastructure,Containerization,containerisation,en,UK spelling
+Data Engineering & Cloud,DevOps / Infrastructure,Containerization,containerization,en,exact_lower
+Data Engineering & Cloud,DevOps / Infrastructure,Containerization,容器化,zh,中文
+Data Engineering & Cloud,DevOps / Infrastructure,Docker,docker,en,exact_lower
+Data Engineering & Cloud,DevOps / Infrastructure,Docker,docker container,en,variant
+Data Engineering & Cloud,DevOps / Infrastructure,Docker,Docker/K8s,en,from_SKILL_CATALOG; catalog_key=Docker/K8s
+Data Engineering & Cloud,DevOps / Infrastructure,Kubernetes,\bk8s\b,en,from_SKILL_CATALOG; regex; catalog_key=Docker/K8s
+Data Engineering & Cloud,DevOps / Infrastructure,Kubernetes,k8s,en,abbrev
+Data Engineering & Cloud,DevOps / Infrastructure,Kubernetes,kubernetes,en,exact_lower
+Data Engineering & Cloud,DevOps / Infrastructure,Microservices,microservice,en,singular
+Data Engineering & Cloud,DevOps / Infrastructure,Microservices,microservices,en,exact_lower
+Data Engineering & Cloud,DevOps / Infrastructure,Microservices,微服務,zh,中文
+Data Engineering & Cloud,Streaming / Messaging,Event Streaming,event streaming,en,exact_lower
+Data Engineering & Cloud,Streaming / Messaging,Event Streaming,事件串流,zh,中文
+Data Engineering & Cloud,Streaming / Messaging,Kafka,apache kafka,en,full name
+Data Engineering & Cloud,Streaming / Messaging,Kafka,kafka,en,exact_lower
+Data Engineering & Cloud,Streaming / Messaging,Message Queue,message queue,en,exact_lower
+Data Engineering & Cloud,Streaming / Messaging,Message Queue,mq,en,abbrev
+Data Engineering & Cloud,Streaming / Messaging,Message Queue,訊息佇列,zh,中文
+Data Engineering & Cloud,Streaming / Messaging,Pub/Sub,pub sub,en,punctuation_variant
+Data Engineering & Cloud,Streaming / Messaging,Pub/Sub,pub/sub,en,exact_lower
+Data Engineering & Cloud,Streaming / Messaging,Pub/Sub,publish subscribe,en,full name
+Data Engineering & Cloud,Streaming / Messaging,Pub/Sub,pubsub,en,no_space
+Data Engineering & Cloud,Streaming / Messaging,RabbitMQ,rabbit mq,en,spacing
+Data Engineering & Cloud,Streaming / Messaging,RabbitMQ,rabbitmq,en,exact_lower
+Data Engineering & Cloud,Version Control,Git,\bgit\b,en,from_SKILL_CATALOG; regex
+Data Engineering & Cloud,Version Control,Git,bitbucket,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Version Control,Git,git,en,exact_lower
+Data Engineering & Cloud,Version Control,Git,gitlab,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Version Control,Git,version control,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Version Control,GitHub,git hub,en,spacing
+Data Engineering & Cloud,Version Control,GitHub,github,en,exact_lower
+Data Engineering & Cloud,Workflow Orchestration,Airflow,airflow,en,exact_lower
+Data Engineering & Cloud,Workflow Orchestration,Airflow,apache airflow,en,full name
+Data Engineering & Cloud,Workflow Orchestration,Airflow,dag,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Workflow Orchestration,Airflow,luigi,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Workflow Orchestration,Airflow,workflow orchestration,en,from_SKILL_CATALOG
+Data Engineering & Cloud,Workflow Orchestration,Dagster,dagster,en,exact_lower
+Data Engineering & Cloud,Workflow Orchestration,Prefect,prefect,en,exact_lower
+Database & Query Languages,Cloud Data Warehouses,Amazon Redshift,amazon redshift,en,exact_lower
+Database & Query Languages,Cloud Data Warehouses,Amazon Redshift,aws redshift,en,variant
+Database & Query Languages,Cloud Data Warehouses,Amazon Redshift,redshift,en,short
+Database & Query Languages,Cloud Data Warehouses,BigQuery,big query,en,from_SKILL_CATALOG
+Database & Query Languages,Cloud Data Warehouses,BigQuery,bigquery,en,exact_lower
+Database & Query Languages,Cloud Data Warehouses,BigQuery,bigquery sql,en,from_SKILL_CATALOG; catalog_key=SQL
+Database & Query Languages,Cloud Data Warehouses,BigQuery,bq,en,abbrev
+Database & Query Languages,Cloud Data Warehouses,BigQuery,google bigquery,en,vendor
+Database & Query Languages,Cloud Data Warehouses,Databricks,databricks,en,exact_lower
+Database & Query Languages,Cloud Data Warehouses,Databricks,dbx,en,abbrev
+Database & Query Languages,Cloud Data Warehouses,Snowflake,snowflake,en,exact_lower
+Database & Query Languages,Cloud Data Warehouses,Snowflake,snowflake data cloud,en,product
+Database & Query Languages,Data Modeling,Data Modeling,data modeling,en,exact_lower
+Database & Query Languages,Data Modeling,Data Modeling,data modelling,en,UK spelling
+Database & Query Languages,Data Modeling,Data Modeling,資料建模,zh,中文
+Database & Query Languages,Data Modeling,Dimensional Modeling,dimensional modeling,en,exact_lower
+Database & Query Languages,Data Modeling,Dimensional Modeling,dimensional modelling,en,UK spelling
+Database & Query Languages,Data Modeling,Dimensional Modeling,維度建模,zh,中文
+Database & Query Languages,Data Modeling,Entity Relationship Diagram,entity relationship diagram,en,exact_lower
+Database & Query Languages,Data Modeling,Entity Relationship Diagram,entity-relationship diagram,en,hyphen
+Database & Query Languages,Data Modeling,Entity Relationship Diagram,erd,en,abbrev
+Database & Query Languages,Data Modeling,Entity Relationship Diagram,實體關係圖,zh,中文
+Database & Query Languages,Data Modeling,Star Schema,star schema,en,exact_lower
+Database & Query Languages,Data Modeling,Star Schema,星型模型,zh,中文
+Database & Query Languages,Data Modeling,Star Schema,星型綱要,zh,中文
+Database & Query Languages,Database Engineering,Database Design,database architecture,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Database & Query Languages,Database Engineering,Database Design,database design,en,exact_lower
+Database & Query Languages,Database Engineering,Database Design,db design,en,short
+Database & Query Languages,Database Engineering,Database Design,資料庫設計,zh,中文
+Database & Query Languages,Database Engineering,Database Schema,database schema,en,exact_lower
+Database & Query Languages,Database Engineering,Database Schema,db schema,en,short
+Database & Query Languages,Database Engineering,Database Schema,資料庫綱要,zh,中文
+Database & Query Languages,Database Engineering,Query Optimization,query optimization,en,exact_lower
+Database & Query Languages,Database Engineering,Query Optimization,sql optimization,en,related
+Database & Query Languages,Database Engineering,Query Optimization,查詢優化,zh,中文
+Database & Query Languages,Database Engineering,Stored Procedure,stored proc,en,short
+Database & Query Languages,Database Engineering,Stored Procedure,stored procedure,en,exact_lower
+Database & Query Languages,Database Engineering,Stored Procedure,預存程序,zh,中文
+Database & Query Languages,NoSQL Databases,MongoDB,document database,en,from_SKILL_CATALOG
+Database & Query Languages,NoSQL Databases,MongoDB,mongo,en,short
+Database & Query Languages,NoSQL Databases,MongoDB,mongo db,en,from_SKILL_CATALOG
+Database & Query Languages,NoSQL Databases,MongoDB,mongodb,en,exact_lower
+Database & Query Languages,NoSQL Databases,MongoDB,nosql,en,from_SKILL_CATALOG
+Database & Query Languages,Query Engines,Presto,presto,en,exact_lower
+Database & Query Languages,Query Engines,Presto,prestodb,en,variant
+Database & Query Languages,Query Engines,Trino,trino,en,exact_lower
+Database & Query Languages,Query Languages,Hive SQL,hive,en,from_SKILL_CATALOG; catalog_key=SQL
+Database & Query Languages,Query Languages,Hive SQL,hive sql,en,exact_lower
+Database & Query Languages,Query Languages,Hive SQL,hql,en,abbrev
+Database & Query Languages,Query Languages,PL/SQL,pl sql,en,punctuation_variant
+Database & Query Languages,Query Languages,PL/SQL,pl/sql,en,exact_lower
+Database & Query Languages,Query Languages,PL/SQL,plsql,en,no_space
+Database & Query Languages,Query Languages,SQL,spark sql,en,from_SKILL_CATALOG
+Database & Query Languages,Query Languages,SQL,sql,en,exact_lower
+Database & Query Languages,Query Languages,SQL,sql query,en,variant
+Database & Query Languages,Query Languages,SQL,sql scripting,en,variant
+Database & Query Languages,Query Languages,SQL,structured query language,en,full name
+Database & Query Languages,Query Languages,T-SQL,t sql,en,punctuation_variant
+Database & Query Languages,Query Languages,T-SQL,t-sql,en,exact_lower
+Database & Query Languages,Query Languages,T-SQL,transact-sql,en,full name
+Database & Query Languages,Query Languages,T-SQL,tsql,en,no_space
+Database & Query Languages,Relational Databases,MySQL,mysql,en,exact_lower
+Database & Query Languages,Relational Databases,Oracle Database,oracle,en,short
+Database & Query Languages,Relational Databases,Oracle Database,oracle database,en,exact_lower
+Database & Query Languages,Relational Databases,Oracle Database,oracle db,en,short
+Database & Query Languages,Relational Databases,Oracle Database,oracle sql,en,from_SKILL_CATALOG; catalog_key=SQL
+Database & Query Languages,Relational Databases,PostgreSQL,postgres,en,short
+Database & Query Languages,Relational Databases,PostgreSQL,postgresql,en,exact_lower
+Database & Query Languages,Relational Databases,SQL Server,microsoft sql server,en,vendor
+Database & Query Languages,Relational Databases,SQL Server,mssql,en,abbrev
+Database & Query Languages,Relational Databases,SQL Server,sql server,en,exact_lower
+Domain Knowledge,E-commerce,Customer Journey,customer journey,en,exact_lower
+Domain Knowledge,E-commerce,Customer Journey,客戶旅程,zh,中文
+Domain Knowledge,E-commerce,Customer Journey,顧客旅程,zh,中文
+Domain Knowledge,E-commerce,E-commerce,e commerce,en,punctuation_variant
+Domain Knowledge,E-commerce,E-commerce,e-commerce,en,exact_lower
+Domain Knowledge,E-commerce,E-commerce,ecommerce,en,no_space
+Domain Knowledge,E-commerce,E-commerce,電商,zh,中文
+Domain Knowledge,E-commerce,E-commerce,電子商務,zh,中文
+Domain Knowledge,E-commerce,Marketplace Operations,marketplace operations,en,exact_lower
+Domain Knowledge,E-commerce,Marketplace Operations,marketplace ops,en,short
+Domain Knowledge,E-commerce,Marketplace Operations,平台營運,zh,中文
+Domain Knowledge,Financial Services,Banking,banking,en,exact_lower
+Domain Knowledge,Financial Services,Banking,金融業,zh,中文
+Domain Knowledge,Financial Services,Banking,銀行,zh,中文
+Domain Knowledge,Financial Services,Consumer Finance,consumer finance,en,exact_lower
+Domain Knowledge,Financial Services,Consumer Finance,消費金融,zh,中文
+Domain Knowledge,Financial Services,Insurance,insurance,en,exact_lower
+Domain Knowledge,Financial Services,Insurance,保險,zh,中文
+Domain Knowledge,Financial Services,Insurance,保險業,zh,中文
+Domain Knowledge,Financial Services,Wealth Management,wealth management,en,exact_lower
+Domain Knowledge,Financial Services,Wealth Management,wm,en,abbrev
+Domain Knowledge,Financial Services,Wealth Management,財富管理,zh,中文
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,bioinformatics,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,biomarker,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,life science ai,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,literature search,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,molecular design,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,ngs,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,qpcr,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,structure simulation,en,from_SKILL_CATALOG
+Domain Knowledge,Healthcare / Pharma,Bioinformatics,生物資訊,zh,中文
+Domain Knowledge,Healthcare / Pharma,Drug Discovery,drug discovery,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Drug Discovery,新藥開發,zh,中文
+Domain Knowledge,Healthcare / Pharma,Healthcare,health care,en,spacing
+Domain Knowledge,Healthcare / Pharma,Healthcare,healthcare,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Healthcare,醫療保健,zh,中文
+Domain Knowledge,Healthcare / Pharma,Life Sciences,life science,en,singular
+Domain Knowledge,Healthcare / Pharma,Life Sciences,life sciences,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Life Sciences,生命科學,zh,中文
+Domain Knowledge,Healthcare / Pharma,Patent Analysis,patent analysis,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Patent Analysis,專利分析,zh,中文
+Domain Knowledge,Healthcare / Pharma,Pharmaceutical Industry,pharma,en,short
+Domain Knowledge,Healthcare / Pharma,Pharmaceutical Industry,pharmaceutical industry,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Pharmaceutical Industry,製藥產業,zh,中文
+Domain Knowledge,Healthcare / Pharma,Real World Evidence,real world evidence,en,exact_lower
+Domain Knowledge,Healthcare / Pharma,Real World Evidence,real-world evidence,en,hyphen
+Domain Knowledge,Healthcare / Pharma,Real World Evidence,rwe,en,abbrev
+Domain Knowledge,Healthcare / Pharma,Real World Evidence,真實世界證據,zh,中文
+Domain Knowledge,Sustainability,ESG,environmental social governance,en,full name
+Domain Knowledge,Sustainability,ESG,esg,en,exact_lower
+Domain Knowledge,Sustainability,ESG,環境社會治理,zh,中文
+Domain Knowledge,Sustainability,Sustainable Finance,sustainable finance,en,exact_lower
+Domain Knowledge,Sustainability,Sustainable Finance,永續金融,zh,中文
+Domain Knowledge,Technology,Cloud Computing,cloud computing,en,exact_lower
+Domain Knowledge,Technology,Cloud Computing,Cloud Platforms,en,from_SKILL_CATALOG; catalog_key=Cloud Platforms
+Domain Knowledge,Technology,Cloud Computing,雲端運算,zh,中文
+Domain Knowledge,Technology,Cybersecurity,cyber security,en,spacing
+Domain Knowledge,Technology,Cybersecurity,cybersecurity,en,exact_lower
+Domain Knowledge,Technology,Cybersecurity,資安,zh,中文
+Domain Knowledge,Technology,Cybersecurity,資訊安全,zh,中文
+Domain Knowledge,Technology,SaaS,saas,en,exact_lower
+Domain Knowledge,Technology,SaaS,software as a service,en,full name
+Domain Knowledge,Technology,SaaS,軟體即服務,zh,中文
+Entrepreneurship & Venture,Startup Operations,Business Operations,bizops,en,short
+Entrepreneurship & Venture,Startup Operations,Business Operations,business operations,en,exact_lower
+Entrepreneurship & Venture,Startup Operations,Business Operations,business ops,en,short
+Entrepreneurship & Venture,Startup Operations,Business Operations,商業營運,zh,中文
+Entrepreneurship & Venture,Startup Operations,Founder Mindset,founder mindset,en,exact_lower
+Entrepreneurship & Venture,Startup Operations,Founder Mindset,創業家思維,zh,中文
+Entrepreneurship & Venture,Startup Operations,Startup Operations,startup operations,en,exact_lower
+Entrepreneurship & Venture,Startup Operations,Startup Operations,startup ops,en,short
+Entrepreneurship & Venture,Startup Operations,Startup Operations,新創營運,zh,中文
+Entrepreneurship & Venture,Venture Building,Business Model Design,business model,en,short
+Entrepreneurship & Venture,Venture Building,Business Model Design,business model design,en,exact_lower
+Entrepreneurship & Venture,Venture Building,Business Model Design,商業模式設計,zh,中文
+Entrepreneurship & Venture,Venture Building,Lean Startup,lean startup,en,exact_lower
+Entrepreneurship & Venture,Venture Building,Lean Startup,精實創業,zh,中文
+Entrepreneurship & Venture,Venture Building,Venture Building,venture building,en,exact_lower
+Entrepreneurship & Venture,Venture Building,Venture Building,創業孵化,zh,中文
+Entrepreneurship & Venture,Venture Investment,Due Diligence,dd,en,abbrev
+Entrepreneurship & Venture,Venture Investment,Due Diligence,due diligence,en,exact_lower
+Entrepreneurship & Venture,Venture Investment,Due Diligence,盡職調查,zh,中文
+Entrepreneurship & Venture,Venture Investment,Startup Investment Analysis,startup investment analysis,en,exact_lower
+Entrepreneurship & Venture,Venture Investment,Startup Investment Analysis,新創投資分析,zh,中文
+Entrepreneurship & Venture,Venture Investment,Venture Capital,vc,en,abbrev
+Entrepreneurship & Venture,Venture Investment,Venture Capital,venture capital,en,exact_lower
+Entrepreneurship & Venture,Venture Investment,Venture Capital,創投,zh,中文
+Entrepreneurship & Venture,Venture Investment,Venture Capital,風險投資,zh,中文
+Finance & Accounting,Accounting,Accounting,accounting,en,exact_lower
+Finance & Accounting,Accounting,Accounting,會計,zh,中文
+Finance & Accounting,Accounting,Accounting,會計學,zh,中文
+Finance & Accounting,Accounting,Accounting Standards,accounting standard,en,singular
+Finance & Accounting,Accounting,Accounting Standards,accounting standards,en,exact_lower
+Finance & Accounting,Accounting,Accounting Standards,會計準則,zh,中文
+Finance & Accounting,Accounting,Cost Accounting,cost accounting,en,exact_lower
+Finance & Accounting,Accounting,Cost Accounting,成本會計,zh,中文
+Finance & Accounting,Accounting,Cost Accounting,成本核算,zh,中文
+Finance & Accounting,Accounting,Financial Accounting,financial accounting,en,exact_lower
+Finance & Accounting,Accounting,Financial Reporting,finance reporting,en,variant
+Finance & Accounting,Accounting,Financial Reporting,financial reporting,en,exact_lower
+Finance & Accounting,Accounting,Financial Reporting,financial statement,en,from_SKILL_CATALOG
+Finance & Accounting,Accounting,Financial Reporting,財務報告,zh,中文
+Finance & Accounting,Accounting,Financial Reporting,財務報表,zh,中文
+Finance & Accounting,Accounting,Financial Reporting,財報編製,zh,中文
+Finance & Accounting,Accounting,GAAP,gaap,en,exact_lower
+Finance & Accounting,Accounting,GAAP,generally accepted accounting principles,en,full name
+Finance & Accounting,Accounting,GAAP,us gaap,en,from_SKILL_CATALOG; catalog_key=IFRS/GAAP
+Finance & Accounting,Accounting,GAAP,一般公認會計原則,zh,中文
+Finance & Accounting,Accounting,GAAP,美國會計準則,zh,中文
+Finance & Accounting,Accounting,IFRS,cpa,en,from_SKILL_CATALOG; catalog_key=IFRS/GAAP
+Finance & Accounting,Accounting,IFRS,ias,en,from_SKILL_CATALOG; catalog_key=IFRS/GAAP
+Finance & Accounting,Accounting,IFRS,ifrs,en,exact_lower
+Finance & Accounting,Accounting,IFRS,IFRS/GAAP,en,from_SKILL_CATALOG; catalog_key=IFRS/GAAP
+Finance & Accounting,Accounting,IFRS,international financial reporting standards,en,full name
+Finance & Accounting,Accounting,IFRS,國際財務報導準則,zh,中文
+Finance & Accounting,Accounting,Management Accounting,management accounting,en,exact_lower
+Finance & Accounting,Accounting,Management Accounting,managerial accounting,en,variant
+Finance & Accounting,Accounting,Management Accounting,管理會計,zh,中文
+Finance & Accounting,Accounting,Revenue Recognition,rev rec,en,abbrev
+Finance & Accounting,Accounting,Revenue Recognition,revenue recognition,en,exact_lower
+Finance & Accounting,Accounting,Revenue Recognition,收入認列,zh,中文
+Finance & Accounting,Accounting,Revenue Recognition,營收認列,zh,中文
+Finance & Accounting,Audit / Tax,Auditing,audit,en,short
+Finance & Accounting,Audit / Tax,Auditing,auditing,en,exact_lower
+Finance & Accounting,Audit / Tax,Auditing,審計,zh,中文
+Finance & Accounting,Audit / Tax,Auditing,查核,zh,中文
+Finance & Accounting,Audit / Tax,Internal Audit,internal audit,en,exact_lower
+Finance & Accounting,Audit / Tax,Internal Audit,內稽,zh,中文
+Finance & Accounting,Audit / Tax,Internal Audit,內部稽核,zh,中文
+Finance & Accounting,Audit / Tax,Tax,tax,en,exact_lower
+Finance & Accounting,Audit / Tax,Tax,taxation,en,variant
+Finance & Accounting,Audit / Tax,Tax,稅務,zh,中文
+Finance & Accounting,Audit / Tax,Tax,稅法,zh,中文
+Finance & Accounting,Audit / Tax,Transfer Pricing,tp,en,abbrev
+Finance & Accounting,Audit / Tax,Transfer Pricing,transfer pricing,en,exact_lower
+Finance & Accounting,Audit / Tax,Transfer Pricing,移轉訂價,zh,中文
+Finance & Accounting,Audit / Tax,Transfer Pricing,轉讓定價,zh,中文
+Finance & Accounting,Corporate Finance,Capital Budgeting,capital budgeting,en,exact_lower
+Finance & Accounting,Corporate Finance,Capital Budgeting,資本預算,zh,中文
+Finance & Accounting,Corporate Finance,Corporate Finance,corporate finance,en,exact_lower
+Finance & Accounting,Corporate Finance,Corporate Finance,企業財務,zh,中文
+Finance & Accounting,Corporate Finance,Corporate Finance,公司理財,zh,中文
+Finance & Accounting,Corporate Finance,Strategic Finance,strategic finance,en,exact_lower
+Finance & Accounting,Corporate Finance,Strategic Finance,strategy finance,en,variant
+Finance & Accounting,Corporate Finance,Strategic Finance,策略財務,zh,中文
+Finance & Accounting,Corporate Finance,Treasury Management,treasury,en,short
+Finance & Accounting,Corporate Finance,Treasury Management,treasury management,en,exact_lower
+Finance & Accounting,Corporate Finance,Treasury Management,資金管理,zh,中文
+Finance & Accounting,Corporate Finance,Working Capital Management,working capital,en,short
+Finance & Accounting,Corporate Finance,Working Capital Management,working capital management,en,exact_lower
+Finance & Accounting,Corporate Finance,Working Capital Management,營運資金管理,zh,中文
+Finance & Accounting,FP&A,Budgeting,annual budget,en,from_SKILL_CATALOG
+Finance & Accounting,FP&A,Budgeting,budget,en,short
+Finance & Accounting,FP&A,Budgeting,budget management,en,from_SKILL_CATALOG
+Finance & Accounting,FP&A,Budgeting,budget planning,en,from_SKILL_CATALOG
+Finance & Accounting,FP&A,Budgeting,budgeting,en,exact_lower
+Finance & Accounting,FP&A,Budgeting,cost budget,en,from_SKILL_CATALOG
+Finance & Accounting,FP&A,Budgeting,預算,zh,中文
+Finance & Accounting,FP&A,Budgeting,預算編列,zh,中文
+Finance & Accounting,FP&A,CAPEX,capex,en,exact_lower
+Finance & Accounting,FP&A,CAPEX,capital expenditure,en,full name
+Finance & Accounting,FP&A,CAPEX,資本支出,zh,中文
+Finance & Accounting,FP&A,Financial Planning,financial planning,en,exact_lower
+Finance & Accounting,FP&A,Financial Planning,financial planning analysis,en,from_SKILL_CATALOG; catalog_key=FP&A
+Finance & Accounting,FP&A,Financial Planning,financial planning and analysis,en,from_SKILL_CATALOG; catalog_key=FP&A
+Finance & Accounting,FP&A,Financial Planning,fp&a,en,related
+Finance & Accounting,FP&A,Financial Planning,fpa,en,from_SKILL_CATALOG; catalog_key=FP&A
+Finance & Accounting,FP&A,Financial Planning,財務規劃,zh,中文
+Finance & Accounting,FP&A,Forecasting,forecast,en,short
+Finance & Accounting,FP&A,Forecasting,forecasting,en,exact_lower
+Finance & Accounting,FP&A,Forecasting,預測,zh,中文
+Finance & Accounting,FP&A,Forecasting,預測分析,zh,中文
+Finance & Accounting,FP&A,Management Reporting,management report,en,variant
+Finance & Accounting,FP&A,Management Reporting,management reporting,en,exact_lower
+Finance & Accounting,FP&A,Management Reporting,管理報表,zh,中文
+Finance & Accounting,FP&A,OPEX,operating expense,en,full name
+Finance & Accounting,FP&A,OPEX,operating expenses,en,plural
+Finance & Accounting,FP&A,OPEX,opex,en,exact_lower
+Finance & Accounting,FP&A,OPEX,營運費用,zh,中文
+Finance & Accounting,FP&A,Scenario Analysis,scenario analysis,en,exact_lower
+Finance & Accounting,FP&A,Scenario Analysis,情境分析,zh,中文
+Finance & Accounting,FP&A,Variance Analysis,actual vs plan,en,from_SKILL_CATALOG
+Finance & Accounting,FP&A,Variance Analysis,budget variance,en,related
+Finance & Accounting,FP&A,Variance Analysis,budget vs actual,en,from_SKILL_CATALOG
+Finance & Accounting,FP&A,Variance Analysis,variance analysis,en,exact_lower
+Finance & Accounting,FP&A,Variance Analysis,差異分析,zh,中文
+Finance & Accounting,Financial Analysis,Cost Analysis,cost analysis,en,exact_lower
+Finance & Accounting,Financial Analysis,Cost Analysis,cost structure,en,from_SKILL_CATALOG
+Finance & Accounting,Financial Analysis,Cost Analysis,成本分析,zh,中文
+Finance & Accounting,Financial Analysis,Cost Control,cost control,en,exact_lower
+Finance & Accounting,Financial Analysis,Cost Control,成本控管,zh,中文
+Finance & Accounting,Financial Analysis,Cost Reduction,cost reduction,en,exact_lower
+Finance & Accounting,Financial Analysis,Cost Reduction,cost saving,en,variant
+Finance & Accounting,Financial Analysis,Cost Reduction,成本降低,zh,中文
+Finance & Accounting,Financial Analysis,Cost Reduction,降本,zh,中文
+Finance & Accounting,Financial Analysis,Gross Margin Analysis,gross margin,en,short
+Finance & Accounting,Financial Analysis,Gross Margin Analysis,gross margin analysis,en,exact_lower
+Finance & Accounting,Financial Analysis,Gross Margin Analysis,毛利分析,zh,中文
+Finance & Accounting,Financial Analysis,Margin Analysis,margin analysis,en,exact_lower
+Finance & Accounting,Financial Analysis,Margin Analysis,利潤率分析,zh,中文
+Finance & Accounting,Financial Modeling,Comparable Company Analysis,cca,en,abbrev
+Finance & Accounting,Financial Modeling,Comparable Company Analysis,comparable company analysis,en,exact_lower
+Finance & Accounting,Financial Modeling,Comparable Company Analysis,comps,en,short
+Finance & Accounting,Financial Modeling,Comparable Company Analysis,可比公司分析,zh,中文
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis,cba,en,abbrev
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis,cost benefit analysis,en,punctuation_variant
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis,cost-benefit analysis,en,exact_lower
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis,costbenefitanalysis,en,no_space
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis,成本效益分析,zh,中文
+Finance & Accounting,Financial Modeling,DCF Valuation,dcf,en,abbrev
+Finance & Accounting,Financial Modeling,DCF Valuation,dcf model,en,from_SKILL_CATALOG; catalog_key=Financial Modeling
+Finance & Accounting,Financial Modeling,DCF Valuation,dcf valuation,en,exact_lower
+Finance & Accounting,Financial Modeling,DCF Valuation,discounted cash flow,en,full name
+Finance & Accounting,Financial Modeling,DCF Valuation,現金流折現,zh,中文
+Finance & Accounting,Financial Modeling,Financial Modeling,financial model,en,variant
+Finance & Accounting,Financial Modeling,Financial Modeling,financial modeling,en,exact_lower
+Finance & Accounting,Financial Modeling,Financial Modeling,financial modelling,en,UK spelling
+Finance & Accounting,Financial Modeling,Financial Modeling,財務建模,zh,中文
+Finance & Accounting,Financial Modeling,Financial Modeling,財務模型,zh,中文
+Finance & Accounting,Financial Modeling,IRR,internal rate of return,en,full name
+Finance & Accounting,Financial Modeling,IRR,irr,en,exact_lower
+Finance & Accounting,Financial Modeling,IRR,內部報酬率,zh,中文
+Finance & Accounting,Financial Modeling,LBO Modeling,lbo,en,abbrev
+Finance & Accounting,Financial Modeling,LBO Modeling,lbo model,en,from_SKILL_CATALOG; catalog_key=Financial Modeling
+Finance & Accounting,Financial Modeling,LBO Modeling,lbo modeling,en,exact_lower
+Finance & Accounting,Financial Modeling,LBO Modeling,leveraged buyout model,en,full name
+Finance & Accounting,Financial Modeling,M&A Modeling,m a modeling,en,punctuation_variant
+Finance & Accounting,Financial Modeling,M&A Modeling,m&a model,en,variant
+Finance & Accounting,Financial Modeling,M&A Modeling,m&a modeling,en,exact_lower
+Finance & Accounting,Financial Modeling,M&A Modeling,mamodeling,en,no_space
+Finance & Accounting,Financial Modeling,M&A Modeling,merger model,en,related
+Finance & Accounting,Financial Modeling,Monte Carlo Simulation,monte carlo,en,short
+Finance & Accounting,Financial Modeling,Monte Carlo Simulation,monte carlo simulation,en,exact_lower
+Finance & Accounting,Financial Modeling,Monte Carlo Simulation,蒙地卡羅模擬,zh,中文
+Finance & Accounting,Financial Modeling,NPV,net present value,en,full name
+Finance & Accounting,Financial Modeling,NPV,npv,en,exact_lower
+Finance & Accounting,Financial Modeling,NPV,淨現值,zh,中文
+Finance & Accounting,Financial Modeling,Payback Period,payback,en,short
+Finance & Accounting,Financial Modeling,Payback Period,payback period,en,exact_lower
+Finance & Accounting,Financial Modeling,Payback Period,回收期,zh,中文
+Finance & Accounting,Financial Modeling,Pricing Analysis,pricing analysis,en,exact_lower
+Finance & Accounting,Financial Modeling,Pricing Analysis,pricing strategy,en,related
+Finance & Accounting,Financial Modeling,Pricing Analysis,定價分析,zh,中文
+Finance & Accounting,Financial Modeling,ROI Analysis,return on investment,en,full name
+Finance & Accounting,Financial Modeling,ROI Analysis,roi,en,abbrev
+Finance & Accounting,Financial Modeling,ROI Analysis,roi analysis,en,exact_lower
+Finance & Accounting,Financial Modeling,ROI Analysis,投資報酬率,zh,中文
+Finance & Accounting,Financial Modeling,Sensitivity Analysis,sensitivity analysis,en,exact_lower
+Finance & Accounting,Financial Modeling,Sensitivity Analysis,敏感度分析,zh,中文
+Finance & Accounting,Financial Modeling,Unit Economics,unit economic,en,singular
+Finance & Accounting,Financial Modeling,Unit Economics,unit economics,en,exact_lower
+Finance & Accounting,Financial Modeling,Unit Economics,單位經濟,zh,中文
+Finance & Accounting,Financial Modeling,Valuation,valuation,en,exact_lower
+Finance & Accounting,Financial Modeling,Valuation,valuation model,en,from_SKILL_CATALOG; catalog_key=Financial Modeling
+Finance & Accounting,Financial Modeling,Valuation,估值,zh,中文
+Finance & Accounting,Financial Modeling,Valuation,評價,zh,中文
+Finance & Accounting,Financial Statements,Balance Sheet,balance sheet,en,exact_lower
+Finance & Accounting,Financial Statements,Balance Sheet,bs,en,abbrev
+Finance & Accounting,Financial Statements,Balance Sheet,資產負債表,zh,中文
+Finance & Accounting,Financial Statements,Cash Flow Statement,cash flow statement,en,exact_lower
+Finance & Accounting,Financial Statements,Cash Flow Statement,cfs,en,abbrev
+Finance & Accounting,Financial Statements,Cash Flow Statement,現金流量表,zh,中文
+Finance & Accounting,Financial Statements,P&L,\bpl\b,en,from_SKILL_CATALOG; regex; catalog_key=Financial Reporting
+Finance & Accounting,Financial Statements,P&L,p l,en,punctuation_variant
+Finance & Accounting,Financial Statements,P&L,p&l,en,exact_lower
+Finance & Accounting,Financial Statements,P&L,pnl,en,no symbol
+Finance & Accounting,Financial Statements,P&L,profit and loss,en,full name
+Finance & Accounting,Financial Statements,P&L,損益表,zh,中文
+Finance & Accounting,Investment / Markets,Capital Markets,capital market,en,singular
+Finance & Accounting,Investment / Markets,Capital Markets,capital markets,en,exact_lower
+Finance & Accounting,Investment / Markets,Capital Markets,資本市場,zh,中文
+Finance & Accounting,Investment / Markets,Equity Research,equity research,en,exact_lower
+Finance & Accounting,Investment / Markets,Equity Research,er,en,abbrev
+Finance & Accounting,Investment / Markets,Equity Research,股票研究,zh,中文
+Finance & Accounting,Investment / Markets,Fixed Income Analysis,fixed income,en,short
+Finance & Accounting,Investment / Markets,Fixed Income Analysis,fixed income analysis,en,exact_lower
+Finance & Accounting,Investment / Markets,Fixed Income Analysis,債券分析,zh,中文
+Finance & Accounting,Investment / Markets,Investment Analysis,investment analysis,en,exact_lower
+Finance & Accounting,Investment / Markets,Investment Analysis,投資分析,zh,中文
+Finance & Accounting,Investment / Markets,Portfolio Management,portfolio management,en,exact_lower
+Finance & Accounting,Investment / Markets,Portfolio Management,投資組合管理,zh,中文
+Finance & Accounting,Investment / Markets,Trading,trading,en,exact_lower
+Finance & Accounting,Investment / Markets,Trading,交易,zh,中文
+Human Resources & People,Compensation / Benefits,Benefits Administration,benefits administration,en,exact_lower
+Human Resources & People,Compensation / Benefits,Benefits Administration,福利管理,zh,中文
+Human Resources & People,Compensation / Benefits,Compensation Analysis,compensation analysis,en,exact_lower
+Human Resources & People,Compensation / Benefits,Compensation Analysis,薪酬分析,zh,中文
+Human Resources & People,HR Operations,HR Operations,hr operations,en,exact_lower
+Human Resources & People,HR Operations,HR Operations,hr ops,en,short
+Human Resources & People,HR Operations,HR Operations,人資營運,zh,中文
+Human Resources & People,HR Operations,HRIS,hris,en,exact_lower
+Human Resources & People,HR Operations,HRIS,human resources information system,en,full name
+Human Resources & People,HR Operations,HRIS,人資系統,zh,中文
+Human Resources & People,HR Operations,People Operations,people operations,en,exact_lower
+Human Resources & People,HR Operations,People Operations,people ops,en,short
+Human Resources & People,HR Operations,People Operations,員工體驗營運,zh,中文
+Human Resources & People,Learning & Development,Learning & Development,learning & development,en,exact_lower
+Human Resources & People,Learning & Development,Learning & Development,learning development,en,punctuation_variant
+Human Resources & People,Learning & Development,Learning & Development,learningdevelopment,en,no_space
+Human Resources & People,Learning & Development,Learning & Development,人才發展,zh,中文
+Human Resources & People,Learning & Development,Learning & Development,學習發展,zh,中文
+Human Resources & People,Learning & Development,Organizational Development,organizational development,en,exact_lower
+Human Resources & People,Learning & Development,Organizational Development,組織發展,zh,中文
+Human Resources & People,People Analytics,HR Analytics,hr ai,en,from_SKILL_CATALOG
+Human Resources & People,People Analytics,HR Analytics,hr analytics,en,exact_lower
+Human Resources & People,People Analytics,HR Analytics,hr automation,en,from_SKILL_CATALOG
+Human Resources & People,People Analytics,HR Analytics,hr data,en,from_SKILL_CATALOG
+Human Resources & People,People Analytics,HR Analytics,human resources analytics,en,full name
+Human Resources & People,People Analytics,HR Analytics,talent decision,en,from_SKILL_CATALOG
+Human Resources & People,People Analytics,HR Analytics,talent development,en,from_SKILL_CATALOG
+Human Resources & People,People Analytics,HR Analytics,人力資源分析,zh,中文
+Human Resources & People,People Analytics,People Analytics,people analytics,en,exact_lower
+Human Resources & People,People Analytics,People Analytics,talent analytics,en,related
+Human Resources & People,People Analytics,People Analytics,人資分析,zh,中文
+Human Resources & People,People Analytics,Performance Management,performance management,en,exact_lower
+Human Resources & People,People Analytics,Performance Management,績效管理,zh,中文
+Human Resources & People,People Analytics,Workforce Analytics,workforce analytics,en,exact_lower
+Human Resources & People,People Analytics,Workforce Planning,workforce planning,en,exact_lower
+Human Resources & People,People Analytics,Workforce Planning,人力規劃,zh,中文
+Human Resources & People,Talent Acquisition,Interviewing,interview,en,short
+Human Resources & People,Talent Acquisition,Interviewing,interviewing,en,exact_lower
+Human Resources & People,Talent Acquisition,Interviewing,面試,zh,中文
+Human Resources & People,Talent Acquisition,Recruiting,recruiting,en,exact_lower
+Human Resources & People,Talent Acquisition,Recruiting,recruitment,en,variant
+Human Resources & People,Talent Acquisition,Recruiting,招募,zh,中文
+Human Resources & People,Talent Acquisition,Sourcing,sourcing,en,exact_lower
+Human Resources & People,Talent Acquisition,Sourcing,供應商開發,zh,中文
+Human Resources & People,Talent Acquisition,Sourcing,尋源,zh,中文
+Human Resources & People,Talent Acquisition,Talent Acquisition,ta,en,abbrev
+Human Resources & People,Talent Acquisition,Talent Acquisition,talent acquisition,en,exact_lower
+Human Resources & People,Talent Acquisition,Talent Acquisition,人才招募,zh,中文
+Information Systems & Enterprise Tools,Business Systems,API Design,api architecture,en,variant
+Information Systems & Enterprise Tools,Business Systems,API Design,api design,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,API Design,api 設計,mixed,常見混寫
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,\bsa\b,en,from_SKILL_CATALOG; regex; catalog_key=Systems Analysis
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,bsa,en,abbrev
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,business system analysis,en,singular
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,business systems analysis,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,Systems Analysis,en,from_SKILL_CATALOG; catalog_key=Systems Analysis
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,系統分析,zh,中文
+Information Systems & Enterprise Tools,Business Systems,Functional Specification,functional spec,en,short
+Information Systems & Enterprise Tools,Business Systems,Functional Specification,functional specification,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,Functional Specification,功能規格書,zh,中文
+Information Systems & Enterprise Tools,Business Systems,Requirements Gathering,requirement gathering,en,singular
+Information Systems & Enterprise Tools,Business Systems,Requirements Gathering,requirements gathering,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,Requirements Gathering,需求蒐集,zh,中文
+Information Systems & Enterprise Tools,Business Systems,Requirements Gathering,需求訪談,zh,中文
+Information Systems & Enterprise Tools,Business Systems,Solution Design,solution architecture,en,related
+Information Systems & Enterprise Tools,Business Systems,Solution Design,solution design,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,Solution Design,解決方案設計,zh,中文
+Information Systems & Enterprise Tools,Business Systems,System Architecture,data architecture,en,from_SKILL_CATALOG; catalog_key=Data Engineering
+Information Systems & Enterprise Tools,Business Systems,System Architecture,system architecture,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,System Architecture,系統架構,zh,中文
+Information Systems & Enterprise Tools,Business Systems,System Design,system design,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,System Design,系統設計,zh,中文
+Information Systems & Enterprise Tools,Business Systems,System Integration,si,en,abbrev
+Information Systems & Enterprise Tools,Business Systems,System Integration,system integration,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,System Integration,系統整合,zh,中文
+Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing,uat,en,abbrev
+Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing,user acceptance testing,en,exact_lower
+Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing,使用者驗收測試,zh,中文
+Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing,用戶驗收測試,zh,中文
+Information Systems & Enterprise Tools,ERP / CRM,HubSpot,hubspot,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,HubSpot,hubspot crm,en,from_SKILL_CATALOG
+Information Systems & Enterprise Tools,ERP / CRM,NetSuite,netsuite,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,NetSuite,oracle netsuite,en,vendor
+Information Systems & Enterprise Tools,ERP / CRM,Oracle EBS,oracle e-business suite,en,full name
+Information Systems & Enterprise Tools,ERP / CRM,Oracle EBS,oracle ebs,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Oracle ERP,Oracle,en,from_SKILL_CATALOG; catalog_key=Oracle
+Information Systems & Enterprise Tools,ERP / CRM,Oracle ERP,oracle erp,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Oracle Financials,oracle financials,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Sales Cloud,sales cloud,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Salesforce,salesforce,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Salesforce,salesforce crm,en,from_SKILL_CATALOG
+Information Systems & Enterprise Tools,ERP / CRM,Salesforce,sfdc,en,abbrev
+Information Systems & Enterprise Tools,ERP / CRM,SAP,\bsap\b,en,from_SKILL_CATALOG; regex
+Information Systems & Enterprise Tools,ERP / CRM,SAP,sap,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP,sap erp,en,product
+Information Systems & Enterprise Tools,ERP / CRM,SAP,sap pp,en,from_SKILL_CATALOG
+Information Systems & Enterprise Tools,ERP / CRM,SAP BW,sap bw,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP CO,sap co,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP FI,sap fi,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP HANA,sap hana,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP MM,sap mm,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA,s/4hana,en,short
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA,s4hana,en,no slash
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA,sap s 4hana,en,punctuation_variant
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA,sap s/4hana,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA,sap s4hana,en,from_SKILL_CATALOG; catalog_key=SAP
+Information Systems & Enterprise Tools,ERP / CRM,SAP S/4HANA,saps4hana,en,no_space
+Information Systems & Enterprise Tools,ERP / CRM,SAP SD,sap sd,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Service Cloud,service cloud,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Workday,workday,en,exact_lower
+Information Systems & Enterprise Tools,ERP / CRM,Workday,workday,en,exact_lower
+Information Systems & Enterprise Tools,Implementation,Implementation,implementation,en,exact_lower
+Information Systems & Enterprise Tools,Implementation,Implementation,system implementation,en,variant
+Information Systems & Enterprise Tools,Implementation,Implementation,導入,zh,中文
+Information Systems & Enterprise Tools,Implementation,Implementation,導入實施,zh,中文
+Information Systems & Enterprise Tools,Implementation,Implementation,系統導入,zh,中文
+Information Systems & Enterprise Tools,Implementation,Process Mapping,process mapping,en,exact_lower
+Information Systems & Enterprise Tools,Implementation,Process Mapping,流程圖,zh,中文
+Information Systems & Enterprise Tools,Implementation,Process Mapping,流程盤點,zh,中文
+Information Systems & Enterprise Tools,Implementation,System Configuration,configuration,en,short
+Information Systems & Enterprise Tools,Implementation,System Configuration,system configuration,en,exact_lower
+Information Systems & Enterprise Tools,Implementation,System Configuration,系統設定,zh,中文
+Information Systems & Enterprise Tools,Implementation,Technical Support,tech support,en,short
+Information Systems & Enterprise Tools,Implementation,Technical Support,technical support,en,exact_lower
+Information Systems & Enterprise Tools,Implementation,Technical Support,技術支援,zh,中文
+Machine Learning & AI,Deep Learning,BERT,bert,en,exact_lower
+Machine Learning & AI,Deep Learning,BERT,bidirectional encoder representations from transformers,en,full name
+Machine Learning & AI,Deep Learning,Computer Vision,computer vision,en,exact_lower
+Machine Learning & AI,Deep Learning,Computer Vision,cv,en,abbrev
+Machine Learning & AI,Deep Learning,Computer Vision,電腦視覺,zh,中文
+Machine Learning & AI,Deep Learning,Deep Learning,deep learning,en,exact_lower
+Machine Learning & AI,Deep Learning,Deep Learning,dl,en,abbrev
+Machine Learning & AI,Deep Learning,Deep Learning,jax,en,from_SKILL_CATALOG
+Machine Learning & AI,Deep Learning,Deep Learning,深度學習,zh,中文
+Machine Learning & AI,Deep Learning,Fine-tuning,fine tuning,en,punctuation_variant
+Machine Learning & AI,Deep Learning,Fine-tuning,fine-tuning,en,exact_lower
+Machine Learning & AI,Deep Learning,Fine-tuning,finetuning,en,no_space
+Machine Learning & AI,Deep Learning,Fine-tuning,微調,zh,中文
+Machine Learning & AI,Deep Learning,Keras,keras,en,exact_lower
+Machine Learning & AI,Deep Learning,Neural Network,neural network,en,exact_lower
+Machine Learning & AI,Deep Learning,Neural Network,neural networks,en,plural
+Machine Learning & AI,Deep Learning,Neural Network,nn,en,abbrev
+Machine Learning & AI,Deep Learning,Neural Network,神經網路,zh,中文
+Machine Learning & AI,Deep Learning,Object Detection,object detection,en,exact_lower
+Machine Learning & AI,Deep Learning,Object Detection,物件偵測,zh,中文
+Machine Learning & AI,Deep Learning,Object Detection,目標檢測,zh,中文
+Machine Learning & AI,Deep Learning,PyTorch,pytorch,en,exact_lower
+Machine Learning & AI,Deep Learning,PyTorch,torch,en,package
+Machine Learning & AI,Deep Learning,TensorFlow,tensorflow,en,exact_lower
+Machine Learning & AI,Deep Learning,TensorFlow,tf,en,abbrev
+Machine Learning & AI,Deep Learning,Transformer,transformer,en,exact_lower
+Machine Learning & AI,Deep Learning,Transformer,transformer model,en,variant
+Machine Learning & AI,Deep Learning,Transformer,transformers,en,plural
+Machine Learning & AI,Forecasting,Demand Forecasting,demand forecast,en,variant
+Machine Learning & AI,Forecasting,Demand Forecasting,demand forecasting,en,exact_lower
+Machine Learning & AI,Forecasting,Demand Forecasting,需求預測,zh,中文
+Machine Learning & AI,Forecasting,Forecasting,forecast,en,short
+Machine Learning & AI,Forecasting,Forecasting,forecasting,en,exact_lower
+Machine Learning & AI,Forecasting,Forecasting,revenue forecast,en,from_SKILL_CATALOG
+Machine Learning & AI,Forecasting,Forecasting,revenue projection,en,from_SKILL_CATALOG
+Machine Learning & AI,Forecasting,Forecasting,rolling forecast,en,from_SKILL_CATALOG
+Machine Learning & AI,Forecasting,Forecasting,預測,zh,中文
+Machine Learning & AI,Forecasting,Forecasting,預測分析,zh,中文
+Machine Learning & AI,Forecasting,Predictive Modeling,predictive modeling,en,exact_lower
+Machine Learning & AI,Forecasting,Predictive Modeling,predictive modelling,en,UK spelling
+Machine Learning & AI,Forecasting,Predictive Modeling,預測模型,zh,中文
+Machine Learning & AI,Forecasting,Time Series Forecasting,time series forecast,en,variant
+Machine Learning & AI,Forecasting,Time Series Forecasting,time series forecasting,en,exact_lower
+Machine Learning & AI,Forecasting,Time Series Forecasting,時間序列預測,zh,中文
+Machine Learning & AI,GenAI / LLM,AI Workflow,ai automation,en,related
+Machine Learning & AI,GenAI / LLM,AI Workflow,ai workflow,en,exact_lower
+Machine Learning & AI,GenAI / LLM,AI Workflow,ai 工作流,mixed,常見混寫
+Machine Learning & AI,GenAI / LLM,ComfyUI,comfy ui,en,spacing
+Machine Learning & AI,GenAI / LLM,ComfyUI,comfyui,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Generative AI,3d asset generation,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,ai engineering,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,copilot,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Generative AI,fish audio,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,gen ai,en,short
+Machine Learning & AI,GenAI / LLM,Generative AI,genai,en,no space
+Machine Learning & AI,GenAI / LLM,Generative AI,generative ai,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Generative AI,Generative AI Engineering,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,speech synthesis,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,tts model,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,video generation model,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,wan model,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Generative AI,生成式ai,mixed,常見混寫
+Machine Learning & AI,GenAI / LLM,Generative AI,生成式人工智慧,zh,中文
+Machine Learning & AI,GenAI / LLM,LangChain,langchain,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Large Language Models,AI/LLM,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Large Language Models,chatgpt,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Large Language Models,claude,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Large Language Models,gemini,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Large Language Models,gpt,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Large Language Models,gpt-4,en,from_SKILL_CATALOG; catalog_key=AI/LLM
+Machine Learning & AI,GenAI / LLM,Large Language Models,large language model,en,singular
+Machine Learning & AI,GenAI / LLM,Large Language Models,large language models,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Large Language Models,llm,en,abbrev
+Machine Learning & AI,GenAI / LLM,Large Language Models,llms,en,plural abbrev
+Machine Learning & AI,GenAI / LLM,Large Language Models,qwen,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Large Language Models,大型語言模型,zh,中文
+Machine Learning & AI,GenAI / LLM,LLM Fine-tuning,llm fine tuning,en,punctuation_variant
+Machine Learning & AI,GenAI / LLM,LLM Fine-tuning,llm fine-tuning,en,exact_lower
+Machine Learning & AI,GenAI / LLM,LLM Fine-tuning,llm finetuning,en,no hyphen
+Machine Learning & AI,GenAI / LLM,LLM Fine-tuning,llmfinetuning,en,no_space
+Machine Learning & AI,GenAI / LLM,LLM Fine-tuning,模型微調,zh,中文
+Machine Learning & AI,GenAI / LLM,Multimodal AI,multi-modal ai,en,hyphen
+Machine Learning & AI,GenAI / LLM,Multimodal AI,multimodal,en,from_SKILL_CATALOG; catalog_key=Deep Learning
+Machine Learning & AI,GenAI / LLM,Multimodal AI,multimodal ai,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Multimodal AI,多模態ai,mixed,常見混寫
+Machine Learning & AI,GenAI / LLM,NLP,natural language processing,en,full name
+Machine Learning & AI,GenAI / LLM,NLP,nlp,en,exact_lower
+Machine Learning & AI,GenAI / LLM,NLP,自然語言處理,zh,中文
+Machine Learning & AI,GenAI / LLM,OpenAI API,gpt api,en,related
+Machine Learning & AI,GenAI / LLM,OpenAI API,openai,en,vendor
+Machine Learning & AI,GenAI / LLM,OpenAI API,openai api,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Prompt Engineering,prompt engineering,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Prompt Engineering,prompting,en,short
+Machine Learning & AI,GenAI / LLM,Prompt Engineering,提示工程,zh,中文
+Machine Learning & AI,GenAI / LLM,RAG,rag,en,exact_lower
+Machine Learning & AI,GenAI / LLM,RAG,retrieval augmented generation,en,full name
+Machine Learning & AI,GenAI / LLM,RAG,retrieval-augmented generation,en,hyphen
+Machine Learning & AI,GenAI / LLM,RAG,檢索增強生成,zh,中文
+Machine Learning & AI,GenAI / LLM,Stable Diffusion,image generation model,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Stable Diffusion,sd,en,abbrev
+Machine Learning & AI,GenAI / LLM,Stable Diffusion,sdxl,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
+Machine Learning & AI,GenAI / LLM,Stable Diffusion,stable diffusion,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Text Analytics,text analysis,en,variant
+Machine Learning & AI,GenAI / LLM,Text Analytics,text analytics,en,exact_lower
+Machine Learning & AI,GenAI / LLM,Text Analytics,文本分析,zh,中文
+Machine Learning & AI,Machine Learning,Anomaly Detection,anomaly detection,en,exact_lower
+Machine Learning & AI,Machine Learning,Anomaly Detection,outlier detection,en,variant
+Machine Learning & AI,Machine Learning,Anomaly Detection,異常偵測,zh,中文
+Machine Learning & AI,Machine Learning,Churn Prediction,churn prediction,en,exact_lower
+Machine Learning & AI,Machine Learning,Churn Prediction,流失預測,zh,中文
+Machine Learning & AI,Machine Learning,Classification,classification,en,exact_lower
+Machine Learning & AI,Machine Learning,Classification,分類模型,zh,中文
+Machine Learning & AI,Machine Learning,Clustering,cluster analysis,en,variant
+Machine Learning & AI,Machine Learning,Clustering,clustering,en,exact_lower
+Machine Learning & AI,Machine Learning,Clustering,分群,zh,中文
+Machine Learning & AI,Machine Learning,Clustering,聚類,zh,中文
+Machine Learning & AI,Machine Learning,LightGBM,lgbm,en,abbrev
+Machine Learning & AI,Machine Learning,LightGBM,lightgbm,en,exact_lower
+Machine Learning & AI,Machine Learning,Machine Learning,\bml\b,en,from_SKILL_CATALOG; regex
+Machine Learning & AI,Machine Learning,Machine Learning,gradient boosting,en,from_SKILL_CATALOG
+Machine Learning & AI,Machine Learning,Machine Learning,machine learning,en,exact_lower
+Machine Learning & AI,Machine Learning,Machine Learning,ml,en,abbrev
+Machine Learning & AI,Machine Learning,Machine Learning,model training,en,from_SKILL_CATALOG
+Machine Learning & AI,Machine Learning,Machine Learning,regression model,en,from_SKILL_CATALOG
+Machine Learning & AI,Machine Learning,Machine Learning,機器學習,zh,中文
+Machine Learning & AI,Machine Learning,Random Forest,random forest,en,exact_lower
+Machine Learning & AI,Machine Learning,Random Forest,rf,en,abbrev
+Machine Learning & AI,Machine Learning,Random Forest,隨機森林,zh,中文
+Machine Learning & AI,Machine Learning,Recommendation System,recommendation system,en,exact_lower
+Machine Learning & AI,Machine Learning,Recommendation System,recommender system,en,variant
+Machine Learning & AI,Machine Learning,Recommendation System,推薦系統,zh,中文
+Machine Learning & AI,Machine Learning,Supervised Learning,supervised learning,en,exact_lower
+Machine Learning & AI,Machine Learning,Supervised Learning,監督式學習,zh,中文
+Machine Learning & AI,Machine Learning,Unsupervised Learning,unsupervised learning,en,exact_lower
+Machine Learning & AI,Machine Learning,Unsupervised Learning,非監督式學習,zh,中文
+Machine Learning & AI,Machine Learning,XGBoost,xgb,en,abbrev
+Machine Learning & AI,Machine Learning,XGBoost,xgboost,en,exact_lower
+Machine Learning & AI,Model Operations,Feature Engineering,feature engineering,en,exact_lower
+Machine Learning & AI,Model Operations,Feature Engineering,feature selection,en,from_SKILL_CATALOG; catalog_key=Machine Learning
+Machine Learning & AI,Model Operations,Feature Engineering,特徵工程,zh,中文
+Machine Learning & AI,Model Operations,Model Deployment,model deployment,en,exact_lower
+Machine Learning & AI,Model Operations,Model Deployment,模型部署,zh,中文
+Machine Learning & AI,Model Operations,Model Evaluation,cross validation,en,from_SKILL_CATALOG; catalog_key=Machine Learning
+Machine Learning & AI,Model Operations,Model Evaluation,model evaluation,en,exact_lower
+Machine Learning & AI,Model Operations,Model Evaluation,模型評估,zh,中文
+Marketing & Growth,Brand / Campaign,Brand Management,brand management,en,exact_lower
+Marketing & Growth,Brand / Campaign,Brand Management,brand marketing,en,variant
+Marketing & Growth,Brand / Campaign,Brand Management,品牌管理,zh,中文
+Marketing & Growth,Brand / Campaign,Brand Management,品牌行銷,zh,中文
+Marketing & Growth,Brand / Campaign,Campaign Management,campaign management,en,exact_lower
+Marketing & Growth,Brand / Campaign,Campaign Management,campaign planning,en,variant
+Marketing & Growth,Brand / Campaign,Campaign Management,活動企劃,zh,中文
+Marketing & Growth,Brand / Campaign,Campaign Management,行銷活動管理,zh,中文
+Marketing & Growth,Brand / Campaign,Integrated Marketing,imc,en,abbrev
+Marketing & Growth,Brand / Campaign,Integrated Marketing,integrated marketing,en,exact_lower
+Marketing & Growth,Brand / Campaign,Integrated Marketing,整合行銷,zh,中文
+Marketing & Growth,Brand / Campaign,Integrated Marketing,整合行銷傳播,zh,中文
+Marketing & Growth,Brand / Campaign,Marketing Communications,marcom,en,abbrev
+Marketing & Growth,Brand / Campaign,Marketing Communications,marketing communications,en,exact_lower
+Marketing & Growth,Brand / Campaign,Marketing Communications,行銷溝通,zh,中文
+Marketing & Growth,CRM / Lifecycle,CRM,crm,en,exact_lower
+Marketing & Growth,CRM / Lifecycle,CRM,customer relationship management,en,full name
+Marketing & Growth,CRM / Lifecycle,CRM,客戶關係管理,zh,中文
+Marketing & Growth,CRM / Lifecycle,Customer Segmentation,customer segmentation,en,exact_lower
+Marketing & Growth,CRM / Lifecycle,Customer Segmentation,客戶分群,zh,中文
+Marketing & Growth,CRM / Lifecycle,Customer Segmentation,客群分眾,zh,中文
+Marketing & Growth,CRM / Lifecycle,Email Marketing,edm,en,common in TW
+Marketing & Growth,CRM / Lifecycle,Email Marketing,email marketing,en,exact_lower
+Marketing & Growth,CRM / Lifecycle,Email Marketing,電子報行銷,zh,中文
+Marketing & Growth,CRM / Lifecycle,Lifecycle Marketing,lifecycle marketing,en,exact_lower
+Marketing & Growth,CRM / Lifecycle,Lifecycle Marketing,生命週期行銷,zh,中文
+Marketing & Growth,CRM / Lifecycle,Retention Marketing,retention marketing,en,exact_lower
+Marketing & Growth,CRM / Lifecycle,Retention Marketing,留存行銷,zh,中文
+Marketing & Growth,Digital Marketing,Content Marketing,content marketing,en,exact_lower
+Marketing & Growth,Digital Marketing,Content Marketing,內容行銷,zh,中文
+Marketing & Growth,Digital Marketing,Digital Marketing,digital marketing,en,exact_lower
+Marketing & Growth,Digital Marketing,Digital Marketing,數位行銷,zh,中文
+Marketing & Growth,Digital Marketing,Google Ads,google ads,en,exact_lower
+Marketing & Growth,Digital Marketing,Google Ads,google adwords,en,old name
+Marketing & Growth,Digital Marketing,Meta Ads,facebook ads,en,old name
+Marketing & Growth,Digital Marketing,Meta Ads,fb ads,en,short
+Marketing & Growth,Digital Marketing,Meta Ads,meta ads,en,exact_lower
+Marketing & Growth,Digital Marketing,Paid Media,paid ads,en,variant
+Marketing & Growth,Digital Marketing,Paid Media,paid media,en,exact_lower
+Marketing & Growth,Digital Marketing,Paid Media,付費媒體,zh,中文
+Marketing & Growth,Digital Marketing,Paid Media,廣告投放,zh,中文
+Marketing & Growth,Digital Marketing,SEM,search engine marketing,en,full name
+Marketing & Growth,Digital Marketing,SEM,sem,en,exact_lower
+Marketing & Growth,Digital Marketing,SEM,搜尋引擎行銷,zh,中文
+Marketing & Growth,Digital Marketing,SEO,search engine optimization,en,full name
+Marketing & Growth,Digital Marketing,SEO,seo,en,exact_lower
+Marketing & Growth,Digital Marketing,SEO,搜尋引擎優化,zh,中文
+Marketing & Growth,Growth,Conversion Optimization,conversion optimization,en,exact_lower
+Marketing & Growth,Growth,Conversion Optimization,cro,en,abbrev
+Marketing & Growth,Growth,Conversion Optimization,轉換率優化,zh,中文
+Marketing & Growth,Growth,Growth Marketing,growth hacking,en,related
+Marketing & Growth,Growth,Growth Marketing,growth marketing,en,exact_lower
+Marketing & Growth,Growth,Growth Marketing,成長行銷,zh,中文
+Marketing & Growth,Growth,Marketing Analytics,marketing analytics,en,exact_lower
+Marketing & Growth,Growth,Marketing Analytics,Marketing Analytics Tools,en,from_SKILL_CATALOG; catalog_key=Marketing Analytics Tools
+Marketing & Growth,Growth,User Acquisition,ua,en,abbrev
+Marketing & Growth,Growth,User Acquisition,user acquisition,en,exact_lower
+Marketing & Growth,Growth,User Acquisition,user growth,en,from_SKILL_CATALOG; catalog_key=Customer Analytics
+Marketing & Growth,Growth,User Acquisition,用戶獲取,zh,中文
+Marketing & Growth,Market Research,Competitive Intelligence,ci,en,abbrev
+Marketing & Growth,Market Research,Competitive Intelligence,competitive intelligence,en,exact_lower
+Marketing & Growth,Market Research,Competitive Intelligence,競品情報,zh,中文
+Marketing & Growth,Market Research,Competitive Intelligence,競爭情報,zh,中文
+Marketing & Growth,Market Research,Consumer Insights,consumer insight,en,singular
+Marketing & Growth,Market Research,Consumer Insights,consumer insights,en,exact_lower
+Marketing & Growth,Market Research,Consumer Insights,消費者洞察,zh,中文
+Marketing & Growth,Market Research,Customer Insights,customer insight,en,singular
+Marketing & Growth,Market Research,Customer Insights,customer insights,en,exact_lower
+Marketing & Growth,Market Research,Customer Insights,顧客洞察,zh,中文
+Marketing & Growth,Market Research,Market Research,Market Analysis,en,from_SKILL_CATALOG; catalog_key=Market Analysis
+Marketing & Growth,Market Research,Market Research,market landscape,en,from_SKILL_CATALOG; catalog_key=Market Analysis
+Marketing & Growth,Market Research,Market Research,market research,en,exact_lower
+Marketing & Growth,Market Research,Market Research,trend analysis,en,from_SKILL_CATALOG; catalog_key=Market Analysis
+Marketing & Growth,Market Research,Market Research,市場研究,zh,中文
+Marketing & Growth,Market Research,Market Research,市場調查,zh,中文
+Marketing & Growth,Market Research,Survey Design,survey design,en,exact_lower
+Marketing & Growth,Market Research,Survey Design,問卷設計,zh,中文
+Marketing & Growth,Market Research,TAM SAM SOM,sam,en,component
+Marketing & Growth,Market Research,TAM SAM SOM,som,en,component
+Marketing & Growth,Market Research,TAM SAM SOM,tam,en,component
+Marketing & Growth,Market Research,TAM SAM SOM,tam sam som,en,exact_lower
+Marketing & Growth,Market Research,TAM SAM SOM,市場規模,zh,中文
+Marketing & Growth,Marketing Analytics,CPC,\bcpc\b,en,from_SKILL_CATALOG; regex; catalog_key=Marketing Analytics Tools
+Marketing & Growth,Marketing Analytics,CPC,cost per click,en,full name
+Marketing & Growth,Marketing Analytics,CPC,cpc,en,exact_lower
+Marketing & Growth,Marketing Analytics,CPC,單次點擊成本,zh,中文
+Marketing & Growth,Marketing Analytics,CPL,cost per lead,en,full name
+Marketing & Growth,Marketing Analytics,CPL,cpl,en,exact_lower
+Marketing & Growth,Marketing Analytics,CPL,名單成本,zh,中文
+Marketing & Growth,Marketing Analytics,CPM,\bcpm\b,en,from_SKILL_CATALOG; regex; catalog_key=Marketing Analytics Tools
+Marketing & Growth,Marketing Analytics,CPM,cost per mille,en,full name
+Marketing & Growth,Marketing Analytics,CPM,cpm,en,exact_lower
+Marketing & Growth,Marketing Analytics,CPM,千次曝光成本,zh,中文
+Marketing & Growth,Marketing Analytics,CTR,\bctr\b,en,from_SKILL_CATALOG; regex; catalog_key=Marketing Analytics Tools
+Marketing & Growth,Marketing Analytics,CTR,click through rate,en,full name
+Marketing & Growth,Marketing Analytics,CTR,click-through rate,en,hyphen
+Marketing & Growth,Marketing Analytics,CTR,ctr,en,exact_lower
+Marketing & Growth,Marketing Analytics,CTR,點擊率,zh,中文
+Marketing & Growth,Marketing Analytics,Marketing Analytics,marketing analytics,en,exact_lower
+Marketing & Growth,Marketing Analytics,ROAS,return on ad spend,en,full name
+Marketing & Growth,Marketing Analytics,ROAS,roas,en,exact_lower
+Marketing & Growth,Marketing Analytics,ROAS,廣告投資報酬率,zh,中文
+Marketing & Growth,Marketing Technology,Decision Engine,decision engine,en,exact_lower
+Marketing & Growth,Marketing Technology,Decision Engine,決策引擎,zh,中文
+Marketing & Growth,Marketing Technology,Google Marketing Platform,gmp,en,abbrev
+Marketing & Growth,Marketing Technology,Google Marketing Platform,google gmp,en,from_SKILL_CATALOG; catalog_key=Marketing Analytics Tools
+Marketing & Growth,Marketing Technology,Google Marketing Platform,google marketing platform,en,exact_lower
+Marketing & Growth,Marketing Technology,Marketing Automation,marketing automation,en,exact_lower
+Marketing & Growth,Marketing Technology,Marketing Automation,model n,en,from_SKILL_CATALOG
+Marketing & Growth,Marketing Technology,Marketing Automation,行銷自動化,zh,中文
+Marketing & Growth,Marketing Technology,Meta Pixel,facebook pixel,en,old name
+Marketing & Growth,Marketing Technology,Meta Pixel,fb pixel,en,short
+Marketing & Growth,Marketing Technology,Meta Pixel,meta pixel,en,exact_lower
+Operations & Supply Chain,Operations,Capacity Planning,capacity planning,en,exact_lower
+Operations & Supply Chain,Operations,Capacity Planning,產能規劃,zh,中文
+Operations & Supply Chain,Operations,Operations Analysis,operations analysis,en,exact_lower
+Operations & Supply Chain,Operations,Operations Analysis,ops analysis,en,short
+Operations & Supply Chain,Operations,Operations Analysis,營運分析,zh,中文
+Operations & Supply Chain,Operations,Operations Management,operations management,en,exact_lower
+Operations & Supply Chain,Operations,Operations Management,ops management,en,short
+Operations & Supply Chain,Operations,Operations Management,營運管理,zh,中文
+Operations & Supply Chain,Operations,Process Improvement,process improvement,en,exact_lower
+Operations & Supply Chain,Operations,Process Improvement,流程改善,zh,中文
+Operations & Supply Chain,Operations,SOP Development,sop,en,short
+Operations & Supply Chain,Operations,SOP Development,sop development,en,exact_lower
+Operations & Supply Chain,Operations,SOP Development,標準作業程序,zh,中文
+Operations & Supply Chain,Operations,Workforce Planning,workforce planning,en,exact_lower
+Operations & Supply Chain,Operations,Workforce Planning,人力規劃,zh,中文
+Operations & Supply Chain,Process Excellence,Business Process Reengineering,bpr,en,abbrev
+Operations & Supply Chain,Process Excellence,Business Process Reengineering,business process reengineering,en,exact_lower
+Operations & Supply Chain,Process Excellence,Business Process Reengineering,流程再造,zh,中文
+Operations & Supply Chain,Process Excellence,Continuous Improvement,ci,en,abbrev
+Operations & Supply Chain,Process Excellence,Continuous Improvement,continuous improvement,en,exact_lower
+Operations & Supply Chain,Process Excellence,Continuous Improvement,持續改善,zh,中文
+Operations & Supply Chain,Process Excellence,Lean,lean,en,exact_lower
+Operations & Supply Chain,Process Excellence,Lean,lean management,en,variant
+Operations & Supply Chain,Process Excellence,Lean,精實,zh,中文
+Operations & Supply Chain,Process Excellence,Lean,精實管理,zh,中文
+Operations & Supply Chain,Process Excellence,Operational Excellence,operational excellence,en,exact_lower
+Operations & Supply Chain,Process Excellence,Operational Excellence,opex,en,abbrev ambiguous
+Operations & Supply Chain,Process Excellence,Operational Excellence,營運卓越,zh,中文
+Operations & Supply Chain,Process Excellence,Requirement Analysis,requirement analysis,en,exact_lower
+Operations & Supply Chain,Process Excellence,Requirement Analysis,requirements analysis,en,plural
+Operations & Supply Chain,Process Excellence,Requirement Analysis,需求分析,zh,中文
+Operations & Supply Chain,Process Excellence,Six Sigma,6 sigma,en,variant
+Operations & Supply Chain,Process Excellence,Six Sigma,six sigma,en,exact_lower
+Operations & Supply Chain,Process Excellence,Six Sigma,六標準差,zh,中文
+Operations & Supply Chain,Process Excellence,Standardization,standardisation,en,UK spelling
+Operations & Supply Chain,Process Excellence,Standardization,standardization,en,exact_lower
+Operations & Supply Chain,Process Excellence,Standardization,標準化,zh,中文
+Operations & Supply Chain,Process Excellence,User Acceptance Testing,uat,en,abbrev
+Operations & Supply Chain,Process Excellence,User Acceptance Testing,user acceptance testing,en,exact_lower
+Operations & Supply Chain,Process Excellence,User Acceptance Testing,使用者驗收測試,zh,中文
+Operations & Supply Chain,Process Excellence,User Acceptance Testing,用戶驗收測試,zh,中文
+Operations & Supply Chain,Process Excellence,Workflow Mapping,workflow mapping,en,exact_lower
+Operations & Supply Chain,Process Excellence,Workflow Mapping,工作流程盤點,zh,中文
+Operations & Supply Chain,Supply Chain,Demand Planning,demand planning,en,exact_lower
+Operations & Supply Chain,Supply Chain,Demand Planning,需求計畫,zh,中文
+Operations & Supply Chain,Supply Chain,Distribution Management,distribution management,en,exact_lower
+Operations & Supply Chain,Supply Chain,Distribution Management,配送管理,zh,中文
+Operations & Supply Chain,Supply Chain,Inventory Management,inventory management,en,exact_lower
+Operations & Supply Chain,Supply Chain,Inventory Management,庫存管理,zh,中文
+Operations & Supply Chain,Supply Chain,Logistics,logistics,en,exact_lower
+Operations & Supply Chain,Supply Chain,Logistics,物流,zh,中文
+Operations & Supply Chain,Supply Chain,Procurement,procurement,en,exact_lower
+Operations & Supply Chain,Supply Chain,Procurement,採購,zh,中文
+Operations & Supply Chain,Supply Chain,S&OP,s op,en,punctuation_variant
+Operations & Supply Chain,Supply Chain,S&OP,s&op,en,exact_lower
+Operations & Supply Chain,Supply Chain,S&OP,sales and operations planning,en,full name
+Operations & Supply Chain,Supply Chain,S&OP,sop,en,no_space
+Operations & Supply Chain,Supply Chain,S&OP,產銷協調,zh,中文
+Operations & Supply Chain,Supply Chain,Sourcing,sourcing,en,exact_lower
+Operations & Supply Chain,Supply Chain,Sourcing,供應商開發,zh,中文
+Operations & Supply Chain,Supply Chain,Sourcing,尋源,zh,中文
+Operations & Supply Chain,Supply Chain,Supply Chain Management,scm,en,abbrev
+Operations & Supply Chain,Supply Chain,Supply Chain Management,supply chain management,en,exact_lower
+Operations & Supply Chain,Supply Chain,Supply Chain Management,供應鏈管理,zh,中文
+Operations & Supply Chain,Supply Chain,Vendor Management,supplier management,en,variant
+Operations & Supply Chain,Supply Chain,Vendor Management,vendor management,en,exact_lower
+Operations & Supply Chain,Supply Chain,Vendor Management,供應商管理,zh,中文
+Product & User Analytics,Product Analytics,CLV,clv,en,exact_lower
+Product & User Analytics,Product Analytics,CLV,customer lifetime value,en,full name
+Product & User Analytics,Product Analytics,CLV,客戶終身價值,zh,中文
+Product & User Analytics,Product Analytics,Cohort Analysis,cohort,en,short
+Product & User Analytics,Product Analytics,Cohort Analysis,cohort analysis,en,exact_lower
+Product & User Analytics,Product Analytics,Cohort Analysis,cohort analytics,en,variant
+Product & User Analytics,Product Analytics,Cohort Analysis,同期群分析,zh,中文
+Product & User Analytics,Product Analytics,Cohort Analysis,群組分析,zh,中文
+Product & User Analytics,Product Analytics,Content Analytics,content analytics,en,exact_lower
+Product & User Analytics,Product Analytics,Content Analytics,內容分析,zh,中文
+Product & User Analytics,Product Analytics,Customer Analytics,customer analysis,en,variant
+Product & User Analytics,Product Analytics,Customer Analytics,customer analytics,en,exact_lower
+Product & User Analytics,Product Analytics,Customer Analytics,customer engagement,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Customer Analytics,omnichannel analytics,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Customer Analytics,targeted marketing,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Customer Analytics,user profile,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Customer Analytics,顧客分析,zh,中文
+Product & User Analytics,Product Analytics,Customer Journey Analysis,customer journey analysis,en,exact_lower
+Product & User Analytics,Product Analytics,Customer Journey Analysis,客戶旅程分析,zh,中文
+Product & User Analytics,Product Analytics,Event Tracking,event tracking,en,exact_lower
+Product & User Analytics,Product Analytics,Event Tracking,tracking plan,en,related
+Product & User Analytics,Product Analytics,Event Tracking,事件追蹤,zh,中文
+Product & User Analytics,Product Analytics,Funnel Analysis,conversion funnel,en,variant
+Product & User Analytics,Product Analytics,Funnel Analysis,funnel,en,short
+Product & User Analytics,Product Analytics,Funnel Analysis,funnel analysis,en,exact_lower
+Product & User Analytics,Product Analytics,Funnel Analysis,漏斗分析,zh,中文
+Product & User Analytics,Product Analytics,Funnel Analysis,轉換漏斗,zh,中文
+Product & User Analytics,Product Analytics,Game Analytics,game analytics,en,exact_lower
+Product & User Analytics,Product Analytics,Game Analytics,遊戲分析,zh,中文
+Product & User Analytics,Product Analytics,LTV,lifetime value,en,full name
+Product & User Analytics,Product Analytics,LTV,ltv,en,exact_lower
+Product & User Analytics,Product Analytics,LTV,用戶終身價值,zh,中文
+Product & User Analytics,Product Analytics,Product Analytics,ott analytics,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Product Analytics,product analysis,en,variant
+Product & User Analytics,Product Analytics,Product Analytics,product analytics,en,exact_lower
+Product & User Analytics,Product Analytics,Product Analytics,product optimization,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Product Analytics,streaming analytics,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Product Analytics,user behavior tracking,en,from_SKILL_CATALOG
+Product & User Analytics,Product Analytics,Product Analytics,產品分析,zh,中文
+Product & User Analytics,Product Analytics,Retention Analysis,retention,en,from_SKILL_CATALOG; catalog_key=KPI/OKR
+Product & User Analytics,Product Analytics,Retention Analysis,retention analysis,en,exact_lower
+Product & User Analytics,Product Analytics,Retention Analysis,user retention,en,from_SKILL_CATALOG; catalog_key=Customer Analytics
+Product & User Analytics,Product Analytics,Retention Analysis,留存分析,zh,中文
+Product & User Analytics,Product Analytics,Subscription Analytics,subscription analytics,en,exact_lower
+Product & User Analytics,Product Analytics,Subscription Analytics,訂閱分析,zh,中文
+Product & User Analytics,Product Analytics,User Behavior Analysis,user behavior analysis,en,exact_lower
+Product & User Analytics,Product Analytics,User Behavior Analysis,user behaviour analysis,en,UK spelling
+Product & User Analytics,Product Analytics,User Behavior Analysis,使用者行為分析,zh,中文
+Product & User Analytics,Product Analytics,User Journey Analysis,user journey,en,from_SKILL_CATALOG; catalog_key=Customer Analytics
+Product & User Analytics,Product Analytics,User Journey Analysis,user journey analysis,en,exact_lower
+Product & User Analytics,Product Analytics,User Journey Analysis,使用者旅程分析,zh,中文
+Product & User Analytics,Product Management,Feature Prioritization,feature prioritisation,en,UK spelling
+Product & User Analytics,Product Management,Feature Prioritization,feature prioritization,en,exact_lower
+Product & User Analytics,Product Management,Feature Prioritization,功能優先級,zh,中文
+Product & User Analytics,Product Management,Feature Prioritization,功能排序,zh,中文
+Product & User Analytics,Product Management,Go-to-Market Strategy,go to market,en,no hyphen
+Product & User Analytics,Product Management,Go-to-Market Strategy,go to market strategy,en,punctuation_variant
+Product & User Analytics,Product Management,Go-to-Market Strategy,go-to-market,en,from_SKILL_CATALOG; catalog_key=Business Strategy
+Product & User Analytics,Product Management,Go-to-Market Strategy,go-to-market strategy,en,exact_lower
+Product & User Analytics,Product Management,Go-to-Market Strategy,gotomarketstrategy,en,no_space
+Product & User Analytics,Product Management,Go-to-Market Strategy,gtm strategy,en,short
+Product & User Analytics,Product Management,Go-to-Market Strategy,上市策略,zh,中文
+Product & User Analytics,Product Management,PRD,prd,en,exact_lower
+Product & User Analytics,Product Management,PRD,product requirements document,en,full name
+Product & User Analytics,Product Management,PRD,產品需求文件,zh,中文
+Product & User Analytics,Product Management,Product Management,pm,en,abbrev
+Product & User Analytics,Product Management,Product Management,product management,en,exact_lower
+Product & User Analytics,Product Management,Product Management,產品管理,zh,中文
+Product & User Analytics,Product Management,Product Management,產品經理,zh,common role
+Product & User Analytics,Product Management,Product Roadmap,product roadmap,en,exact_lower
+Product & User Analytics,Product Management,Product Roadmap,roadmap,en,short
+Product & User Analytics,Product Management,Product Roadmap,產品路線圖,zh,中文
+Product & User Analytics,Product Management,Product Strategy,product strategy,en,exact_lower
+Product & User Analytics,Product Management,Product Strategy,產品策略,zh,中文
+Product & User Analytics,Product Management,User Stories,user stories,en,exact_lower
+Product & User Analytics,Product Management,User Stories,user story,en,singular
+Product & User Analytics,Product Management,User Stories,使用者故事,zh,中文
+Product & User Analytics,Product Metrics,Conversion Rate,conversion rate,en,exact_lower
+Product & User Analytics,Product Metrics,Conversion Rate,cvr,en,abbrev
+Product & User Analytics,Product Metrics,Conversion Rate,轉換率,zh,中文
+Product & User Analytics,Product Metrics,DAU,daily active users,en,full name
+Product & User Analytics,Product Metrics,DAU,dau,en,exact_lower
+Product & User Analytics,Product Metrics,DAU,日活躍用戶,zh,中文
+Product & User Analytics,Product Metrics,GMV,gmv,en,exact_lower
+Product & User Analytics,Product Metrics,GMV,gross merchandise value,en,full name
+Product & User Analytics,Product Metrics,GMV,商品交易總額,zh,中文
+Product & User Analytics,Product Metrics,KPI,goal setting,en,from_SKILL_CATALOG; catalog_key=KPI/OKR
+Product & User Analytics,Product Metrics,KPI,key performance indicator,en,full name
+Product & User Analytics,Product Metrics,KPI,kpi,en,exact_lower
+Product & User Analytics,Product Metrics,KPI,KPI/OKR,en,from_SKILL_CATALOG; catalog_key=KPI/OKR
+Product & User Analytics,Product Metrics,KPI,metric definition,en,from_SKILL_CATALOG; catalog_key=KPI/OKR
+Product & User Analytics,Product Metrics,KPI,關鍵績效指標,zh,中文
+Product & User Analytics,Product Metrics,MAU,mau,en,exact_lower
+Product & User Analytics,Product Metrics,MAU,monthly active users,en,full name
+Product & User Analytics,Product Metrics,MAU,月活躍用戶,zh,中文
+Product & User Analytics,Product Metrics,North Star Metric,north star metric,en,exact_lower
+Product & User Analytics,Product Metrics,North Star Metric,nsm,en,abbrev
+Product & User Analytics,Product Metrics,North Star Metric,北極星指標,zh,中文
+Product & User Analytics,Product Metrics,OKR,objectives and key results,en,full name
+Product & User Analytics,Product Metrics,OKR,okr,en,exact_lower
+Product & User Analytics,Product Metrics,OKR,目標與關鍵成果,zh,中文
+Product & User Analytics,Product Operations,Product Launch,product launch,en,exact_lower
+Product & User Analytics,Product Operations,Product Launch,產品上線,zh,中文
+Product & User Analytics,Product Operations,Product Launch,產品發布,zh,中文
+Product & User Analytics,Product Operations,Product Metrics,product metric,en,singular
+Product & User Analytics,Product Operations,Product Metrics,product metrics,en,exact_lower
+Product & User Analytics,Product Operations,Product Metrics,產品指標,zh,中文
+Product & User Analytics,Product Operations,Product Operations,product operations,en,exact_lower
+Product & User Analytics,Product Operations,Product Operations,product ops,en,short
+Product & User Analytics,Product Operations,Product Operations,產品營運,zh,中文
+Product & User Analytics,User Research,Usability Testing,usability testing,en,exact_lower
+Product & User Analytics,User Research,Usability Testing,使用性測試,zh,中文
+Product & User Analytics,User Research,Usability Testing,易用性測試,zh,中文
+Product & User Analytics,User Research,User Research,user interview,en,from_SKILL_CATALOG; catalog_key=Process Improvement
+Product & User Analytics,User Research,User Research,user research,en,exact_lower
+Product & User Analytics,User Research,User Research,ux research,en,related
+Product & User Analytics,User Research,User Research,使用者研究,zh,中文
+Product & User Analytics,User Research,Voice of Customer,voc,en,abbrev
+Product & User Analytics,User Research,Voice of Customer,voice of customer,en,exact_lower
+Product & User Analytics,User Research,Voice of Customer,客戶之聲,zh,中文
+Programming & Scripting,Business Automation,Google Apps Script,apps script,en,short
+Programming & Scripting,Business Automation,Google Apps Script,gas,en,abbrev
+Programming & Scripting,Business Automation,Google Apps Script,google apps script,en,exact_lower
+Programming & Scripting,Business Automation,VBA,excel vba,en,common
+Programming & Scripting,Business Automation,VBA,vba,en,exact_lower
+Programming & Scripting,Business Automation,VBA,visual basic for applications,en,full name
+Programming & Scripting,Programming Languages,C++,c,en,punctuation_variant
+Programming & Scripting,Programming Languages,C++,c++,en,exact_lower
+Programming & Scripting,Programming Languages,C++,cpp,en,abbrev
+Programming & Scripting,Programming Languages,CSS,cascading style sheets,en,full name
+Programming & Scripting,Programming Languages,CSS,css,en,exact_lower
+Programming & Scripting,Programming Languages,HTML,html,en,exact_lower
+Programming & Scripting,Programming Languages,HTML,hypertext markup language,en,full name
+Programming & Scripting,Programming Languages,Java,\bjava\b,en,from_SKILL_CATALOG; regex
+Programming & Scripting,Programming Languages,Java,java,en,exact_lower
+Programming & Scripting,Programming Languages,JavaScript,javascript,en,exact_lower
+Programming & Scripting,Programming Languages,JavaScript,js,en,abbrev
+Programming & Scripting,Programming Languages,Python,py,en,abbrev
+Programming & Scripting,Programming Languages,Python,python,en,exact_lower
+Programming & Scripting,Programming Languages,Python,python 3,en,from_SKILL_CATALOG
+Programming & Scripting,Programming Languages,Python,python3,en,from_SKILL_CATALOG
+Programming & Scripting,Programming Languages,R,\br\b,en,from_SKILL_CATALOG; regex
+Programming & Scripting,Programming Languages,R,r,en,exact_lower
+Programming & Scripting,Programming Languages,R,r language,en,from_SKILL_CATALOG
+Programming & Scripting,Programming Languages,R,r programming,en,variant
+Programming & Scripting,Programming Languages,R,r studio,en,from_SKILL_CATALOG
+Programming & Scripting,Programming Languages,R,rlang,en,from_SKILL_CATALOG
+Programming & Scripting,Programming Languages,R,rstudio,en,from_SKILL_CATALOG
+Programming & Scripting,Programming Languages,Scala,scala,en,exact_lower
+Programming & Scripting,Programming Languages,TypeScript,ts,en,abbrev
+Programming & Scripting,Programming Languages,TypeScript,typescript,en,exact_lower
+Programming & Scripting,Python Libraries,matplotlib,matplotlib,en,exact_lower
+Programming & Scripting,Python Libraries,matplotlib,plt,en,package alias
+Programming & Scripting,Python Libraries,NumPy,np,en,package alias
+Programming & Scripting,Python Libraries,NumPy,numpy,en,exact_lower
+Programming & Scripting,Python Libraries,pandas,pandas,en,exact_lower
+Programming & Scripting,Python Libraries,pandas,pd,en,package alias
+Programming & Scripting,Python Libraries,pandas,python pandas,en,variant
+Programming & Scripting,Python Libraries,Plotly,plotly,en,exact_lower
+Programming & Scripting,Python Libraries,Plotly,plotly dash,en,related
+Programming & Scripting,Python Libraries,scikit-learn,scikit learn,en,punctuation_variant
+Programming & Scripting,Python Libraries,scikit-learn,scikit-learn,en,exact_lower
+Programming & Scripting,Python Libraries,scikit-learn,scikitlearn,en,no_space
+Programming & Scripting,Python Libraries,scikit-learn,sklearn,en,package alias
+Programming & Scripting,Python Libraries,SciPy,scipy,en,exact_lower
+Programming & Scripting,Python Libraries,Seaborn,seaborn,en,exact_lower
+Programming & Scripting,Python Libraries,Seaborn,sns,en,package alias
+Programming & Scripting,R Libraries,ggplot2,ggplot,en,short
+Programming & Scripting,R Libraries,ggplot2,ggplot2,en,exact_lower
+Programming & Scripting,R Libraries,tidyverse,tidyverse,en,exact_lower
+Programming & Scripting,Scripting / Command Line,Bash/Shell,\bshell\b,en,from_SKILL_CATALOG; regex
+Programming & Scripting,Scripting / Command Line,Bash/Shell,bash,en,short
+Programming & Scripting,Scripting / Command Line,Bash/Shell,bash shell,en,punctuation_variant
+Programming & Scripting,Scripting / Command Line,Bash/Shell,bash/shell,en,exact_lower
+Programming & Scripting,Scripting / Command Line,Bash/Shell,bashshell,en,no_space
+Programming & Scripting,Scripting / Command Line,Bash/Shell,cli,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Bash/Shell,crontab,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Bash/Shell,linux script,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Bash/Shell,shell,en,short
+Programming & Scripting,Scripting / Command Line,Bash/Shell,shell script,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Bash/Shell,shell scripting,en,variant
+Programming & Scripting,Scripting / Command Line,Bash/Shell,ssh,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Bash/Shell,terminal,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Bash/Shell,vim,en,from_SKILL_CATALOG
+Programming & Scripting,Scripting / Command Line,Command Line,cli,en,abbrev
+Programming & Scripting,Scripting / Command Line,Command Line,command line,en,exact_lower
+Programming & Scripting,Scripting / Command Line,Command Line,terminal,en,related
+Programming & Scripting,Scripting / Command Line,Command Line,命令列,zh,中文
+Programming & Scripting,Scripting / Command Line,Linux,bash,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,cli,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,crontab,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,linux,en,exact_lower
+Programming & Scripting,Scripting / Command Line,Linux,linux script,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,Linux/Shell,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,shell,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,shell script,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,ssh,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,terminal,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,unix,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Programming & Scripting,Scripting / Command Line,Linux,vim,en,from_SKILL_CATALOG; catalog_key=Linux/Shell
+Project / Program Management,Agile / Scrum,Agile,agile,en,exact_lower
+Project / Program Management,Agile / Scrum,Agile,agile methodology,en,variant
+Project / Program Management,Agile / Scrum,Agile,敏捷,zh,中文
+Project / Program Management,Agile / Scrum,Agile,敏捷開發,zh,中文
+Project / Program Management,Agile / Scrum,Confluence,atlassian confluence,en,vendor
+Project / Program Management,Agile / Scrum,Confluence,confluence,en,exact_lower
+Project / Program Management,Agile / Scrum,Jira,atlassian jira,en,vendor
+Project / Program Management,Agile / Scrum,Jira,jira,en,exact_lower
+Project / Program Management,Agile / Scrum,Scrum,scrum,en,exact_lower
+Project / Program Management,Agile / Scrum,Scrum,scrum master,en,related role
+Project / Program Management,Agile / Scrum,Scrum,敏捷 scrum,mixed,常見混寫
+Project / Program Management,Project Management,Asana,asana,en,exact_lower
+Project / Program Management,Project Management,Kanban,kanban,en,exact_lower
+Project / Program Management,Project Management,Kanban,看板,zh,中文
+Project / Program Management,Project Management,Monday.com,monday,en,short
+Project / Program Management,Project Management,Monday.com,monday com,en,punctuation_variant
+Project / Program Management,Project Management,Monday.com,monday.com,en,exact_lower
+Project / Program Management,Project Management,Monday.com,mondaycom,en,no_space
+Project / Program Management,Project Management,PMO,pmo,en,exact_lower
+Project / Program Management,Project Management,PMO,project management office,en,full name
+Project / Program Management,Project Management,Program Management,program management,en,exact_lower
+Project / Program Management,Project Management,Program Management,program manager,en,related role
+Project / Program Management,Project Management,Program Management,計畫管理,zh,中文
+Project / Program Management,Project Management,Project Management,milestone,en,from_SKILL_CATALOG
+Project / Program Management,Project Management,Project Management,pm,en,abbrev ambiguous
+Project / Program Management,Project Management,Project Management,pmp,en,from_SKILL_CATALOG
+Project / Program Management,Project Management,Project Management,project management,en,exact_lower
+Project / Program Management,Project Management,Project Management,roadmap,en,from_SKILL_CATALOG
+Project / Program Management,Project Management,Project Management,sprint,en,from_SKILL_CATALOG
+Project / Program Management,Project Management,Project Management,專案管理,zh,中文
+Project / Program Management,Project Management,Project Planning,project planning,en,exact_lower
+Project / Program Management,Project Management,Project Planning,專案規劃,zh,中文
+Project / Program Management,Project Management,Risk Management,risk management,en,exact_lower
+Project / Program Management,Project Management,Risk Management,風險管理,zh,中文
+Project / Program Management,Project Management,Roadmap Planning,roadmap planning,en,exact_lower
+Project / Program Management,Project Management,Roadmap Planning,路線圖規劃,zh,中文
+Project / Program Management,Project Management,Scope Management,scope management,en,exact_lower
+Project / Program Management,Project Management,Scope Management,範疇管理,zh,中文
+Project / Program Management,Project Management,Trello,trello,en,exact_lower
+Project / Program Management,Stakeholder Management,Change Management,change management,en,exact_lower
+Project / Program Management,Stakeholder Management,Change Management,變革管理,zh,中文
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration,cross functional collaboration,en,punctuation_variant
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration,cross-functional,en,from_SKILL_CATALOG; catalog_key=Project Management
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration,cross-functional collaboration,en,exact_lower
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration,crossfunctionalcollaboration,en,no_space
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration,跨職能合作,zh,中文
+Project / Program Management,Stakeholder Management,Cross-functional Collaboration,跨部門合作,zh,中文
+Project / Program Management,Stakeholder Management,Meeting Facilitation,meeting facilitation,en,exact_lower
+Project / Program Management,Stakeholder Management,Meeting Facilitation,會議引導,zh,中文
+Project / Program Management,Stakeholder Management,Stakeholder Management,c-level,en,from_SKILL_CATALOG; catalog_key=Stakeholder Mgmt
+Project / Program Management,Stakeholder Management,Stakeholder Management,partner management,en,from_SKILL_CATALOG; catalog_key=Stakeholder Mgmt
+Project / Program Management,Stakeholder Management,Stakeholder Management,stakeholder,en,from_SKILL_CATALOG; catalog_key=Stakeholder Mgmt
+Project / Program Management,Stakeholder Management,Stakeholder Management,stakeholder management,en,exact_lower
+Project / Program Management,Stakeholder Management,Stakeholder Management,Stakeholder Mgmt,en,from_SKILL_CATALOG; catalog_key=Stakeholder Mgmt
+Project / Program Management,Stakeholder Management,Stakeholder Management,利害關係人管理,zh,中文
+Risk / Compliance / Actuarial,Compliance,AML,aml,en,exact_lower
+Risk / Compliance / Actuarial,Compliance,AML,anti money laundering,en,full name
+Risk / Compliance / Actuarial,Compliance,AML,anti-money laundering,en,hyphen
+Risk / Compliance / Actuarial,Compliance,AML,洗錢防制,zh,中文
+Risk / Compliance / Actuarial,Compliance,Compliance,compliance,en,exact_lower
+Risk / Compliance / Actuarial,Compliance,Compliance,合規,zh,中文
+Risk / Compliance / Actuarial,Compliance,Compliance,法遵,zh,中文
+Risk / Compliance / Actuarial,Compliance,Internal Control,internal control,en,exact_lower
+Risk / Compliance / Actuarial,Compliance,Internal Control,內控,zh,中文
+Risk / Compliance / Actuarial,Compliance,Internal Control,內部控制,zh,中文
+Risk / Compliance / Actuarial,Compliance,KYC,know your customer,en,full name
+Risk / Compliance / Actuarial,Compliance,KYC,kyc,en,exact_lower
+Risk / Compliance / Actuarial,Compliance,KYC,客戶身分審查,zh,中文
+Risk / Compliance / Actuarial,Compliance,Regulatory Reporting,regulatory reporting,en,exact_lower
+Risk / Compliance / Actuarial,Compliance,Regulatory Reporting,法規報表,zh,中文
+Risk / Compliance / Actuarial,Compliance,Regulatory Reporting,監理申報,zh,中文
+Risk / Compliance / Actuarial,Insurance / Actuarial,Actuarial Modeling,actuarial model,en,variant
+Risk / Compliance / Actuarial,Insurance / Actuarial,Actuarial Modeling,actuarial modeling,en,exact_lower
+Risk / Compliance / Actuarial,Insurance / Actuarial,Actuarial Modeling,精算模型,zh,中文
+Risk / Compliance / Actuarial,Insurance / Actuarial,Claims Analysis,claims analysis,en,exact_lower
+Risk / Compliance / Actuarial,Insurance / Actuarial,Claims Analysis,理賠分析,zh,中文
+Risk / Compliance / Actuarial,Insurance / Actuarial,Insurance Pricing,insurance pricing,en,exact_lower
+Risk / Compliance / Actuarial,Insurance / Actuarial,Insurance Pricing,保險定價,zh,中文
+Risk / Compliance / Actuarial,Insurance / Actuarial,Reserving,loss reserving,en,variant
+Risk / Compliance / Actuarial,Insurance / Actuarial,Reserving,reserving,en,exact_lower
+Risk / Compliance / Actuarial,Insurance / Actuarial,Reserving,準備金,zh,中文
+Risk / Compliance / Actuarial,Insurance / Actuarial,Underwriting,underwriting,en,exact_lower
+Risk / Compliance / Actuarial,Insurance / Actuarial,Underwriting,核保,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,credit rating,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,credit risk,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,credit strategy,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,npf,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,npl,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,risk parameters,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Credit Risk,信用風險,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,cybersecurity analytics,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,ids,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,ips,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,network security,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,security analytics,en,variant
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,security automation,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,security incident analysis,en,from_SKILL_CATALOG
+Risk / Compliance / Actuarial,Risk Management,Cybersecurity Analytics,資安分析,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Enterprise Risk Management,enterprise risk management,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Enterprise Risk Management,erm,en,abbrev
+Risk / Compliance / Actuarial,Risk Management,Enterprise Risk Management,企業風險管理,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Financial Risk,financial risk,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Financial Risk,財務風險,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Market Risk,market risk,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Market Risk,市場風險,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Operational Risk,operational risk,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Operational Risk,作業風險,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Risk Management,risk management,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Risk Management,風險管理,zh,中文
+Risk / Compliance / Actuarial,Risk Management,Security Monitoring,security monitoring,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Security Monitoring,資安監控,zh,中文
+Risk / Compliance / Actuarial,Risk Management,SIEM,security information and event management,en,full name
+Risk / Compliance / Actuarial,Risk Management,SIEM,siem,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Threat Intelligence,threat intel,en,short
+Risk / Compliance / Actuarial,Risk Management,Threat Intelligence,threat intelligence,en,exact_lower
+Risk / Compliance / Actuarial,Risk Management,Threat Intelligence,威脅情資,zh,中文
+Risk / Compliance / Actuarial,Risk Modeling,Credit Scoring,credit scoring,en,exact_lower
+Risk / Compliance / Actuarial,Risk Modeling,Credit Scoring,信用評分,zh,中文
+Risk / Compliance / Actuarial,Risk Modeling,Risk Modeling,risk model,en,variant
+Risk / Compliance / Actuarial,Risk Modeling,Risk Modeling,risk modeling,en,exact_lower
+Risk / Compliance / Actuarial,Risk Modeling,Risk Modeling,risk modelling,en,UK spelling
+Risk / Compliance / Actuarial,Risk Modeling,Risk Modeling,風險模型,zh,中文
+Risk / Compliance / Actuarial,Risk Modeling,Scorecard,scorecard,en,exact_lower
+Risk / Compliance / Actuarial,Risk Modeling,Scorecard,評分卡,zh,中文
+Risk / Compliance / Actuarial,Risk Modeling,Stress Testing,stress testing,en,exact_lower
+Risk / Compliance / Actuarial,Risk Modeling,Stress Testing,壓力測試,zh,中文
+Sales / BD / Customer Success,Business Development,Business Development,bd,en,abbrev
+Sales / BD / Customer Success,Business Development,Business Development,biz dev,en,informal
+Sales / BD / Customer Success,Business Development,Business Development,business development,en,exact_lower
+Sales / BD / Customer Success,Business Development,Business Development,商務開發,zh,中文
+Sales / BD / Customer Success,Business Development,Business Development,業務開發,zh,中文
+Sales / BD / Customer Success,Business Development,Channel Sales,channel sales,en,exact_lower
+Sales / BD / Customer Success,Business Development,Channel Sales,渠道銷售,zh,中文
+Sales / BD / Customer Success,Business Development,Channel Sales,通路業務,zh,中文
+Sales / BD / Customer Success,Business Development,Lead Generation,lead gen,en,abbrev
+Sales / BD / Customer Success,Business Development,Lead Generation,lead generation,en,exact_lower
+Sales / BD / Customer Success,Business Development,Lead Generation,名單開發,zh,中文
+Sales / BD / Customer Success,Business Development,Lead Generation,潛在客戶開發,zh,中文
+Sales / BD / Customer Success,Business Development,Partnership Management,partner management,en,variant
+Sales / BD / Customer Success,Business Development,Partnership Management,partnership,en,short
+Sales / BD / Customer Success,Business Development,Partnership Management,partnership management,en,exact_lower
+Sales / BD / Customer Success,Business Development,Partnership Management,合作夥伴管理,zh,中文
+Sales / BD / Customer Success,Customer Success,Customer Onboarding,customer onboarding,en,exact_lower
+Sales / BD / Customer Success,Customer Success,Customer Onboarding,客戶導入,zh,中文
+Sales / BD / Customer Success,Customer Success,Customer Retention,customer retention,en,exact_lower
+Sales / BD / Customer Success,Customer Success,Customer Retention,客戶留存,zh,中文
+Sales / BD / Customer Success,Customer Success,Customer Success,cs,en,abbrev
+Sales / BD / Customer Success,Customer Success,Customer Success,customer success,en,exact_lower
+Sales / BD / Customer Success,Customer Success,Customer Success,客戶成功,zh,中文
+Sales / BD / Customer Success,Revenue Operations,CRM Tools,crm system,en,variant
+Sales / BD / Customer Success,Revenue Operations,CRM Tools,crm tools,en,exact_lower
+Sales / BD / Customer Success,Revenue Operations,CRM Tools,crm 系統,mixed,常見混寫
+Sales / BD / Customer Success,Revenue Operations,Revenue Operations,revenue operations,en,exact_lower
+Sales / BD / Customer Success,Revenue Operations,Revenue Operations,revops,en,short
+Sales / BD / Customer Success,Revenue Operations,Revenue Operations,營收營運,zh,中文
+Sales / BD / Customer Success,Revenue Operations,Sales Operations,sales operations,en,exact_lower
+Sales / BD / Customer Success,Revenue Operations,Sales Operations,sales ops,en,short
+Sales / BD / Customer Success,Revenue Operations,Sales Operations,業務營運,zh,中文
+Sales / BD / Customer Success,Sales,Account Management,account management,en,exact_lower
+Sales / BD / Customer Success,Sales,Account Management,am,en,abbrev
+Sales / BD / Customer Success,Sales,Account Management,客戶管理,zh,中文
+Sales / BD / Customer Success,Sales,Key Account Management,kam,en,abbrev
+Sales / BD / Customer Success,Sales,Key Account Management,key account management,en,exact_lower
+Sales / BD / Customer Success,Sales,Key Account Management,大客戶管理,zh,中文
+Sales / BD / Customer Success,Sales,Sales,sales,en,exact_lower
+Sales / BD / Customer Success,Sales,Sales,業務,zh,中文
+Sales / BD / Customer Success,Sales,Sales,銷售,zh,中文
+Sales / BD / Customer Success,Sales,Sales Forecasting,sales forecast,en,variant
+Sales / BD / Customer Success,Sales,Sales Forecasting,sales forecasting,en,exact_lower
+Sales / BD / Customer Success,Sales,Sales Forecasting,銷售預測,zh,中文
+Sales / BD / Customer Success,Sales,Sales Pipeline,sales pipeline,en,exact_lower
+Sales / BD / Customer Success,Sales,Sales Pipeline,銷售管道,zh,中文
+Software & Technical Delivery,Automation / RPA,Automation,automated workflow,en,variant
+Software & Technical Delivery,Automation / RPA,Automation,automation,en,exact_lower
+Software & Technical Delivery,Automation / RPA,Automation,Automation/RPA,en,from_SKILL_CATALOG; catalog_key=Automation/RPA
+Software & Technical Delivery,Automation / RPA,Automation,microsoft power automate,en,from_SKILL_CATALOG; catalog_key=Automation/RPA
+Software & Technical Delivery,Automation / RPA,Automation,process automation,en,variant
+Software & Technical Delivery,Automation / RPA,Automation,robotic process automation,en,from_SKILL_CATALOG; catalog_key=Automation/RPA
+Software & Technical Delivery,Automation / RPA,Automation,workflow automation,en,from_SKILL_CATALOG; catalog_key=Automation/RPA
+Software & Technical Delivery,Automation / RPA,Automation,流程自動化,zh,中文
+Software & Technical Delivery,Automation / RPA,Automation,自動化,zh,中文
+Software & Technical Delivery,Automation / RPA,Automation Anywhere,automation anywhere,en,exact_lower
+Software & Technical Delivery,Automation / RPA,Blue Prism,blue prism,en,exact_lower
+Software & Technical Delivery,Automation / RPA,Power Automate,microsoft power automate,en,vendor
+Software & Technical Delivery,Automation / RPA,Power Automate,ms power automate,en,variant
+Software & Technical Delivery,Automation / RPA,Power Automate,power automate,en,exact_lower
+Software & Technical Delivery,Automation / RPA,RPA,robotic process automation,en,full name
+Software & Technical Delivery,Automation / RPA,RPA,rpa,en,exact_lower
+Software & Technical Delivery,Automation / RPA,RPA,機器人流程自動化,zh,中文
+Software & Technical Delivery,Automation / RPA,UiPath,ui path,en,spacing
+Software & Technical Delivery,Automation / RPA,UiPath,uipath,en,exact_lower
+Software & Technical Delivery,Quality Assurance,Bug Tracking,bug tracking,en,exact_lower
+Software & Technical Delivery,Quality Assurance,Bug Tracking,bug tracking,en,exact_lower
+Software & Technical Delivery,Quality Assurance,Bug Tracking,issue tracking,en,related
+Software & Technical Delivery,Quality Assurance,Bug Tracking,issue tracking,en,related
+Software & Technical Delivery,Quality Assurance,Bug Tracking,缺陷追蹤,zh,中文
+Software & Technical Delivery,Quality Assurance,Bug Tracking,缺陷追蹤,zh,中文
+Software & Technical Delivery,Quality Assurance,QA Testing,qa,en,short
+Software & Technical Delivery,Quality Assurance,QA Testing,qa testing,en,exact_lower
+Software & Technical Delivery,Quality Assurance,QA Testing,quality assurance testing,en,full name
+Software & Technical Delivery,Quality Assurance,QA Testing,測試,zh,中文
+Software & Technical Delivery,Quality Assurance,Test Automation,automated testing,en,variant
+Software & Technical Delivery,Quality Assurance,Test Automation,test automation,en,exact_lower
+Software & Technical Delivery,Quality Assurance,Test Automation,自動化測試,zh,中文
+Software & Technical Delivery,Quality Assurance,UAT,uat,en,exact_lower
+Software & Technical Delivery,Quality Assurance,UAT,user acceptance test,en,full name
+Software & Technical Delivery,Software Development,API,api,en,exact_lower
+Software & Technical Delivery,Software Development,API,application programming interface,en,full name
+Software & Technical Delivery,Software Development,API Design,api architecture,en,variant
+Software & Technical Delivery,Software Development,API Design,api design,en,exact_lower
+Software & Technical Delivery,Software Development,API Design,api 設計,mixed,常見混寫
+Software & Technical Delivery,Software Development,Backend Development,back-end,en,hyphen
+Software & Technical Delivery,Software Development,Backend Development,backend,en,short
+Software & Technical Delivery,Software Development,Backend Development,backend development,en,exact_lower
+Software & Technical Delivery,Software Development,Backend Development,後端工程,zh,中文
+Software & Technical Delivery,Software Development,Backend Development,後端開發,zh,中文
+Software & Technical Delivery,Software Development,Code Review,code review,en,exact_lower
+Software & Technical Delivery,Software Development,Code Review,code reviewing,en,variant
+Software & Technical Delivery,Software Development,Code Review,程式碼審查,zh,中文
+Software & Technical Delivery,Software Development,Frontend Development,front-end,en,hyphen
+Software & Technical Delivery,Software Development,Frontend Development,frontend,en,short
+Software & Technical Delivery,Software Development,Frontend Development,frontend development,en,exact_lower
+Software & Technical Delivery,Software Development,Frontend Development,前端工程,zh,中文
+Software & Technical Delivery,Software Development,Frontend Development,前端開發,zh,中文
+Software & Technical Delivery,Software Development,Full Stack Development,full stack,en,short
+Software & Technical Delivery,Software Development,Full Stack Development,full stack development,en,exact_lower
+Software & Technical Delivery,Software Development,Full Stack Development,full-stack,en,hyphen
+Software & Technical Delivery,Software Development,Full Stack Development,全端工程,zh,中文
+Software & Technical Delivery,Software Development,Full Stack Development,全端開發,zh,中文
+Software & Technical Delivery,Software Development,Node.js,node,en,short
+Software & Technical Delivery,Software Development,Node.js,node js,en,punctuation_variant
+Software & Technical Delivery,Software Development,Node.js,node.js,en,exact_lower
+Software & Technical Delivery,Software Development,Node.js,nodejs,en,no_space
+Software & Technical Delivery,Software Development,REST API,rest api,en,exact_lower
+Software & Technical Delivery,Software Development,REST API,rest api integration,en,variant
+Software & Technical Delivery,Software Development,REST API,restful,en,short
+Software & Technical Delivery,Software Development,REST API,restful api,en,variant
+Software & Technical Delivery,Software Development,Software Design,software design,en,exact_lower
+Software & Technical Delivery,Software Development,Software Design,軟體設計,zh,中文
+Software & Technical Delivery,Software Development,Software Engineering,software engineering,en,exact_lower
+Software & Technical Delivery,Software Development,Software Engineering,swe,en,abbrev
+Software & Technical Delivery,Software Development,Software Engineering,軟體工程,zh,中文
+Software & Technical Delivery,Technical Program,Developer Relations,developer relations,en,exact_lower
+Software & Technical Delivery,Technical Program,Developer Relations,devrel,en,short
+Software & Technical Delivery,Technical Program,Developer Relations,開發者關係,zh,中文
+Software & Technical Delivery,Technical Program,Solutions Engineering,solution engineering,en,singular
+Software & Technical Delivery,Technical Program,Solutions Engineering,solutions engineering,en,exact_lower
+Software & Technical Delivery,Technical Program,Solutions Engineering,解決方案工程,zh,中文
+Software & Technical Delivery,Technical Program,Technical Program Management,technical program management,en,exact_lower
+Software & Technical Delivery,Technical Program,Technical Program Management,tpm,en,abbrev
+Software & Technical Delivery,Technical Program,Technical Program Management,技術專案管理,zh,中文
+Spreadsheet & Office Productivity,Presentation & Documentation,Confluence,atlassian confluence,en,vendor
+Spreadsheet & Office Productivity,Presentation & Documentation,Confluence,confluence,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Docs,gdoc,en,short
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Docs,google docs,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Docs,google document,en,variant
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Slides,google slides,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,Google Slides,slides,en,short
+Spreadsheet & Office Productivity,Presentation & Documentation,Keynote,apple keynote,en,vendor
+Spreadsheet & Office Productivity,Presentation & Documentation,Keynote,keynote,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,Notion,notion,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,deck,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,microsoft powerpoint,en,vendor
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,ms powerpoint,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,powerpoint,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,ppt,en,abbrev
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,pptx,en,file extension
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,slide,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Presentation & Documentation,PowerPoint,slide deck,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Presentation & Documentation,Word,microsoft word,en,vendor
+Spreadsheet & Office Productivity,Presentation & Documentation,Word,ms word,en,variant
+Spreadsheet & Office Productivity,Presentation & Documentation,Word,word,en,exact_lower
+Spreadsheet & Office Productivity,Presentation & Documentation,Word,Word/Docs,en,from_SKILL_CATALOG; catalog_key=Word/Docs
+Spreadsheet & Office Productivity,Productivity Tools,Airtable,airtable,en,exact_lower
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Pivot,excel power pivot,en,variant
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Pivot,power pivot,en,exact_lower
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Query,excel power query,en,variant
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Query,m query,en,related
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Query,power query,en,exact_lower
+Spreadsheet & Office Productivity,Spreadsheet Functions,Power Query,power query excel,en,from_SKILL_CATALOG; catalog_key=Excel
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,advanced excel,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,conditional formatting,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,excel,en,exact_lower
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,excel macro,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,index match,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,macro,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,microsoft excel,en,vendor
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,ms excel,en,variant
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,pivot table,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,vlookup,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,xlookup,en,from_SKILL_CATALOG
+Spreadsheet & Office Productivity,Spreadsheet Tools,Excel,試算表,zh,中文
+Spreadsheet & Office Productivity,Spreadsheet Tools,Google Sheets,google sheet,en,singular
+Spreadsheet & Office Productivity,Spreadsheet Tools,Google Sheets,google sheets,en,exact_lower
+Spreadsheet & Office Productivity,Spreadsheet Tools,Google Sheets,google spreadsheet,en,variant
+Spreadsheet & Office Productivity,Spreadsheet Tools,Google Sheets,google 試算表,mixed,常見混寫
+Spreadsheet & Office Productivity,Spreadsheet Tools,Google Sheets,gsheet,en,short
+Statistics & Experimentation,Analytics Methods,Churn Analysis,attrition analysis,en,variant
+Statistics & Experimentation,Analytics Methods,Churn Analysis,churn,en,short
+Statistics & Experimentation,Analytics Methods,Churn Analysis,churn analysis,en,exact_lower
+Statistics & Experimentation,Analytics Methods,Churn Analysis,客戶流失分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Churn Analysis,流失分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Cohort Analysis,cohort,en,short
+Statistics & Experimentation,Analytics Methods,Cohort Analysis,cohort analysis,en,exact_lower
+Statistics & Experimentation,Analytics Methods,Cohort Analysis,cohort analytics,en,variant
+Statistics & Experimentation,Analytics Methods,Cohort Analysis,同期群分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Cohort Analysis,群組分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Funnel Analysis,conversion funnel,en,variant
+Statistics & Experimentation,Analytics Methods,Funnel Analysis,funnel,en,short
+Statistics & Experimentation,Analytics Methods,Funnel Analysis,funnel analysis,en,exact_lower
+Statistics & Experimentation,Analytics Methods,Funnel Analysis,漏斗分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Funnel Analysis,轉換漏斗,zh,中文
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis,rca,en,abbrev
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis,root cause analysis,en,exact_lower
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis,root-cause analysis,en,hyphen
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis,原因分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis,根因分析,zh,中文
+Statistics & Experimentation,Analytics Methods,Segmentation,customer segmentation,en,common
+Statistics & Experimentation,Analytics Methods,Segmentation,segmentation,en,exact_lower
+Statistics & Experimentation,Analytics Methods,Segmentation,user segmentation,en,common
+Statistics & Experimentation,Analytics Methods,Segmentation,分眾,zh,中文
+Statistics & Experimentation,Analytics Methods,Segmentation,客群分群,zh,中文
+Statistics & Experimentation,Experimentation,A/B Testing,a b testing,en,punctuation_variant
+Statistics & Experimentation,Experimentation,A/B Testing,a/b test,en,short
+Statistics & Experimentation,Experimentation,A/B Testing,a/b testing,en,exact_lower
+Statistics & Experimentation,Experimentation,A/B Testing,ab tasty,en,from_SKILL_CATALOG; catalog_key=Marketing Analytics Tools
+Statistics & Experimentation,Experimentation,A/B Testing,ab test,en,short
+Statistics & Experimentation,Experimentation,A/B Testing,ab testing,en,no slash
+Statistics & Experimentation,Experimentation,A/B Testing,abtesting,en,no_space
+Statistics & Experimentation,Experimentation,A/B Testing,ab測試,mixed,常見混寫
+Statistics & Experimentation,Experimentation,A/B Testing,split test,en,from_SKILL_CATALOG
+Statistics & Experimentation,Experimentation,A/B Testing,split testing,en,variant
+Statistics & Experimentation,Experimentation,Causal Inference,causal analysis,en,variant
+Statistics & Experimentation,Experimentation,Causal Inference,causal inference,en,exact_lower
+Statistics & Experimentation,Experimentation,Causal Inference,因果推論,zh,中文
+Statistics & Experimentation,Experimentation,Experimental Design,experiment design,en,variant
+Statistics & Experimentation,Experimentation,Experimental Design,experimental design,en,exact_lower
+Statistics & Experimentation,Experimentation,Experimental Design,randomized controlled trial,en,from_SKILL_CATALOG; catalog_key=A/B Testing
+Statistics & Experimentation,Experimentation,Experimental Design,rct,en,from_SKILL_CATALOG; catalog_key=A/B Testing
+Statistics & Experimentation,Experimentation,Experimental Design,實驗設計,zh,中文
+Statistics & Experimentation,Experimentation,Hypothesis Testing,hypothesis testing,en,exact_lower
+Statistics & Experimentation,Experimentation,Hypothesis Testing,p-value,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Experimentation,Hypothesis Testing,假設檢定,zh,中文
+Statistics & Experimentation,Experimentation,Hypothesis Testing,假設檢驗,zh,中文
+Statistics & Experimentation,Experimentation,Multivariate Testing,multivariate test,en,from_SKILL_CATALOG; catalog_key=A/B Testing
+Statistics & Experimentation,Experimentation,Multivariate Testing,multivariate testing,en,exact_lower
+Statistics & Experimentation,Experimentation,Multivariate Testing,mvt,en,abbrev
+Statistics & Experimentation,Experimentation,Multivariate Testing,多變量測試,zh,中文
+Statistics & Experimentation,Statistics,Correlation Analysis,correlation,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Correlation Analysis,correlation analysis,en,exact_lower
+Statistics & Experimentation,Statistics,Correlation Analysis,相關分析,zh,中文
+Statistics & Experimentation,Statistics,Descriptive Statistics,descriptive statistics,en,exact_lower
+Statistics & Experimentation,Statistics,Descriptive Statistics,distribution,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Descriptive Statistics,Statistics,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Descriptive Statistics,敘述統計,zh,中文
+Statistics & Experimentation,Statistics,Inferential Statistics,anova,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Inferential Statistics,confidence interval,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Inferential Statistics,inferential statistics,en,exact_lower
+Statistics & Experimentation,Statistics,Inferential Statistics,sampling,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Inferential Statistics,推論統計,zh,中文
+Statistics & Experimentation,Statistics,Logistic Regression,logistic regression,en,exact_lower
+Statistics & Experimentation,Statistics,Logistic Regression,羅吉斯迴歸,zh,中文
+Statistics & Experimentation,Statistics,Logistic Regression,邏輯斯迴歸,zh,中文
+Statistics & Experimentation,Statistics,Regression Analysis,regression,en,short
+Statistics & Experimentation,Statistics,Regression Analysis,regression analysis,en,exact_lower
+Statistics & Experimentation,Statistics,Regression Analysis,迴歸分析,zh,中文
+Statistics & Experimentation,Statistics,Statistical Modeling,statistical analysis,en,from_SKILL_CATALOG; catalog_key=Statistics
+Statistics & Experimentation,Statistics,Statistical Modeling,statistical model,en,variant
+Statistics & Experimentation,Statistics,Statistical Modeling,statistical modeling,en,exact_lower
+Statistics & Experimentation,Statistics,Statistical Modeling,統計建模,zh,中文
+Statistics & Experimentation,Statistics,Time Series Analysis,time series,en,short
+Statistics & Experimentation,Statistics,Time Series Analysis,time series analysis,en,exact_lower
+Statistics & Experimentation,Statistics,Time Series Analysis,時間序列分析,zh,中文
