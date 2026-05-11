@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Page 2 — CV Fit 分析
-上傳履歷文字 → 抽取技能 → 計算各 role 的 fit score
+Page 3 — CV Fitting Tool
+上傳履歷 → 抽取技能 → 計算 Fit Score → 找缺口
 """
 
 import sys
@@ -18,7 +18,7 @@ from utils.cv_parser import (
     build_role_skill_demand_from_db,
 )
 
-st.set_page_config(page_title="CV Fit 分析 | Career Overfitter", layout="wide")
+st.set_page_config(page_title="CV Fitting Tool | Career Overfitter", layout="wide")
 
 st.markdown("""
 <style>
@@ -27,8 +27,6 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 h1,h2,h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
 .fit-card { border:1px solid #e0ddd7; border-radius:10px; padding:1.2rem 1.4rem; margin-bottom:0.8rem; background:#fff; }
 .fit-role { font-family:'Syne',sans-serif; font-weight:700; font-size:1.05rem; }
-.score-bg { background:#f0f0f0; border-radius:6px; height:10px; margin:6px 0; }
-.score-fill { height:10px; border-radius:6px; background: linear-gradient(90deg, #0f0f0f, #b45309); }
 .tag { display:inline-block; border-radius:20px; padding:2px 10px; font-size:0.75rem; margin:2px; }
 .tag-match { background:#e8f0fe; border:1px solid #c5d8fd; color:#1a56db; }
 .tag-gap   { background:#fef2f2; border:1px solid #fecaca; color:#dc2626; }
@@ -36,20 +34,15 @@ h1,h2,h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h1 style='margin-bottom:0'>📄 CV Fit 分析</h1>", unsafe_allow_html=True)
-st.markdown("<p style='color:#888;margin-top:4px;'>貼上或上傳你的履歷，系統自動比對市場需求技能</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='margin-bottom:0'>📄 CV Fitting Tool</h1>", unsafe_allow_html=True)
+st.markdown("<p style='color:#888;margin-top:4px;'>貼上履歷 → 自動抽取技能 → 比對市場需求 → 找出技能缺口</p>", unsafe_allow_html=True)
 st.markdown("---")
 
-# ── 輸入區 ────────────────────────────────────────────────
 input_mode = st.radio("輸入方式", ["貼上文字", "上傳 .txt / .md 檔案"], horizontal=True)
 
 cv_text = ""
 if input_mode == "貼上文字":
-    cv_text = st.text_area(
-        "履歷內容（中英文皆可）",
-        height=250,
-        placeholder="貼上你的技能、工作經歷、專案描述...",
-    )
+    cv_text = st.text_area("履歷內容（中英文皆可）", height=250, placeholder="貼上你的技能、工作經歷、專案描述...")
 else:
     uploaded = st.file_uploader("上傳純文字檔", type=["txt", "md"])
     if uploaded:
@@ -62,23 +55,19 @@ if not cv_text.strip():
     st.info("請輸入履歷內容後點擊「開始分析」")
     st.stop()
 
-# ── 分析按鈕 ──────────────────────────────────────────────
 if st.button("🚀 開始分析", type="primary"):
-
     with st.spinner("抽取技能中..."):
         cv_skills = extract_skills_from_text(cv_text)
 
     if not cv_skills:
-        st.warning("⚠️ 未能從履歷中辨識出已知技能，請確認 skill_alias.csv 已存在於專案根目錄。")
+        st.warning("⚠️ 未能辨識出已知技能，請確認 skill_alias.csv 存在於專案根目錄。")
         st.stop()
 
-    # 顯示抽到的技能
     st.markdown("### 🛠️ 從履歷辨識到的技能")
     skill_html = " ".join(f'<span class="tag tag-skill">{s}</span>' for s in cv_skills)
     st.markdown(skill_html, unsafe_allow_html=True)
     st.markdown(f"<p style='color:#888;font-size:0.82rem;'>共 {len(cv_skills)} 個 canonical skill</p>", unsafe_allow_html=True)
 
-    # 從 DB 撈 role_skill 資料（最多 5000 筆）
     with st.spinner("載入市場需求資料..."):
         rows = get_job_postings(limit=5000)
         role_skill_demand = build_role_skill_demand_from_db(rows)
@@ -87,13 +76,12 @@ if st.button("🚀 開始分析", type="primary"):
         st.error("資料庫尚無已清洗職缺，請先執行 cleaner.py")
         st.stop()
 
-    # 計算 fit scores
     with st.spinner("計算 Fit Score..."):
         results = compute_fit_scores(cv_skills, role_skill_demand, top_n=15)
 
     st.markdown("---")
     st.markdown("### 🎯 Fit Score 排名")
-    st.markdown("<p style='color:#888;font-size:0.82rem;'>依加權技能覆蓋率排序，分數越高代表你的技能與市場需求越吻合</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#888;font-size:0.82rem;'>依加權技能覆蓋率排序，★ 代表你的獨有優勢技能</p>", unsafe_allow_html=True)
 
     for i, r in enumerate(results, 1):
         score_pct = int(r["fit_score"] * 100)
@@ -107,22 +95,21 @@ if st.button("🚀 開始分析", type="primary"):
             <div class="fit-role">#{i} {r['role']}</div>
             <div style="font-size:1.4rem;font-family:'Syne',sans-serif;font-weight:800;color:{bar_color};">{score_pct}%</div>
           </div>
-          <div class="score-bg">
-            <div class="score-fill" style="width:{score_pct}%;background:{bar_color};"></div>
+          <div style="background:#f0f0f0;border-radius:6px;height:8px;margin:6px 0;">
+            <div style="width:{score_pct}%;height:8px;border-radius:6px;background:{bar_color};"></div>
           </div>
           <div style="margin-top:8px;">
             <span style="font-size:0.8rem;color:#555;font-weight:500;">✅ 匹配技能：</span><br>
             {matched_html if matched_html else '<span style="color:#aaa;font-size:0.8rem;">無</span>'}
           </div>
           <div style="margin-top:6px;">
-            <span style="font-size:0.8rem;color:#555;font-weight:500;">❌ 缺口技能（高需求）：</span><br>
+            <span style="font-size:0.8rem;color:#555;font-weight:500;">❌ 缺口技能（高需求優先）：</span><br>
             {gap_html if gap_html else '<span style="color:#aaa;font-size:0.8rem;">無缺口</span>'}
           </div>
-          <div style="margin-top:6px;font-size:0.75rem;color:#aaa;">樣本職缺數：{r['sample_size']}</div>
+          <div style="margin-top:6px;font-size:0.75rem;color:#aaa;">樣本職缺：{r['sample_size']} 筆</div>
         </div>
         """, unsafe_allow_html=True)
 
-    # 匯出
     st.markdown("---")
     df_export = pd.DataFrame([{
         "role": r["role"],
