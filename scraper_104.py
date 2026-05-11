@@ -23,12 +23,13 @@ SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "")
 if not SUPABASE_URL or not SUPABASE_KEY:
     raise RuntimeError("請在 .env 中設定 SUPABASE_URL 與 SUPABASE_KEY")
 
-SUPA_HEADERS = {
-    "apikey": SUPABASE_KEY,
-    "Authorization": f"Bearer {SUPABASE_KEY}",
-    "Content-Type": "application/json; charset=utf-8",
-    "Accept": "application/json",
-    "Prefer": "resolution=merge-duplicates",
+# 用瀏覽器開 104，F12 → Network → 複製真實 request headers
+headers = {
+    "User-Agent": "Mozilla/5.0 ...",  # 瀏覽器真實 UA
+    "Referer": "https://www.104.com.tw/jobs/search/",
+    "Cookie": "...",  # 從瀏覽器複製，包含 session
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "zh-TW,zh;q=0.9",
 }
 
 ROOT = Path(__file__).resolve().parent.parent if Path(__file__).resolve().parent.name == 'output' else Path(__file__).resolve().parent

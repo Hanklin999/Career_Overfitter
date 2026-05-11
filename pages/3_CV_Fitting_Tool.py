@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Page 3 — CV Fitting Tool
-上傳履歷 → 抽取技能 → 計算 Fit Score → 找缺口
-"""
+"""Page 3 — CV Fitting Tool"""
 
 import sys
 from pathlib import Path
@@ -11,7 +8,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 import streamlit as st
 import pandas as pd
-from utils.supabase_client import get_job_postings
+from utils.supabase_client import _get
 from utils.cv_parser import (
     extract_skills_from_text,
     compute_fit_scores,
@@ -42,7 +39,8 @@ input_mode = st.radio("輸入方式", ["貼上文字", "上傳 .txt / .md 檔案
 
 cv_text = ""
 if input_mode == "貼上文字":
-    cv_text = st.text_area("履歷內容（中英文皆可）", height=250, placeholder="貼上你的技能、工作經歷、專案描述...")
+    cv_text = st.text_area("履歷內容（中英文皆可）", height=250,
+                           placeholder="貼上你的技能、工作經歷、專案描述...")
 else:
     uploaded = st.file_uploader("上傳純文字檔", type=["txt", "md"])
     if uploaded:
@@ -56,6 +54,7 @@ if not cv_text.strip():
     st.stop()
 
 if st.button("🚀 開始分析", type="primary"):
+
     with st.spinner("抽取技能中..."):
         cv_skills = extract_skills_from_text(cv_text)
 
@@ -66,10 +65,14 @@ if st.button("🚀 開始分析", type="primary"):
     st.markdown("### 🛠️ 從履歷辨識到的技能")
     skill_html = " ".join(f'<span class="tag tag-skill">{s}</span>' for s in cv_skills)
     st.markdown(skill_html, unsafe_allow_html=True)
-    st.markdown(f"<p style='color:#888;font-size:0.82rem;'>共 {len(cv_skills)} 個 canonical skill</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:#888;font-size:0.82rem;'>共 {len(cv_skills)} 個 canonical skill</p>",
+                unsafe_allow_html=True)
 
     with st.spinner("載入市場需求資料..."):
-        rows = get_job_postings(limit=5000)
+        rows = _get("job_posting", {
+            "select": "role_normalized,skill_canonical",
+            "limit": 5000,
+        })
         role_skill_demand = build_role_skill_demand_from_db(rows)
 
     if not role_skill_demand:
@@ -81,13 +84,16 @@ if st.button("🚀 開始分析", type="primary"):
 
     st.markdown("---")
     st.markdown("### 🎯 Fit Score 排名")
-    st.markdown("<p style='color:#888;font-size:0.82rem;'>依加權技能覆蓋率排序，★ 代表你的獨有優勢技能</p>", unsafe_allow_html=True)
+    st.markdown(
+        "<p style='color:#888;font-size:0.82rem;'>依加權技能覆蓋率排序，分數越高代表技能越吻合市場需求</p>",
+        unsafe_allow_html=True,
+    )
 
     for i, r in enumerate(results, 1):
         score_pct = int(r["fit_score"] * 100)
         bar_color = "#0f0f0f" if score_pct >= 60 else "#b45309" if score_pct >= 30 else "#aaa"
         matched_html = " ".join(f'<span class="tag tag-match">{s}</span>' for s in r["matched_skills"])
-        gap_html = " ".join(f'<span class="tag tag-gap">{s}</span>' for s in r["gap_skills"][:6])
+        gap_html     = " ".join(f'<span class="tag tag-gap">{s}</span>'   for s in r["gap_skills"][:6])
 
         st.markdown(f"""
         <div class="fit-card">
