@@ -1,262 +1,85 @@
-﻿keyword,mapped_roles_count,sample_roles,notes
-BI分析師,2,"BI Analyst, Business Intelligence Analyst",104 search keyword pool; deduped from role-level primary keywords
-BI工程師,1,BI Engineer,104 search keyword pool; deduped from role-level primary keywords
-BI開發工程師,1,BI Developer,104 search keyword pool; deduped from role-level primary keywords
-BizOps分析師,1,Business Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-BizOps專員,1,Business Operations Associate,104 search keyword pool; deduped from role-level primary keywords
-CRM分析師,1,CRM Analyst,104 search keyword pool; deduped from role-level primary keywords
-DX顧問,1,Digital Transformation Consultant,104 search keyword pool; deduped from role-level primary keywords
-Dashboard開發分析師,1,Dashboard Analyst,104 search keyword pool; deduped from role-level primary keywords
-DevRel專員,1,Developer Relations Associate,104 search keyword pool; deduped from role-level primary keywords
-ERM分析師,1,Enterprise Risk Analyst,104 search keyword pool; deduped from role-level primary keywords
-ERP顧問,1,ERP Analyst,104 search keyword pool; deduped from role-level primary keywords
-ESG顧問,1,ESG Consultant,104 search keyword pool; deduped from role-level primary keywords
-ETL工程師,1,ETL Developer,104 search keyword pool; deduped from role-level primary keywords
-GTM專員,1,Go-to-Market Specialist,104 search keyword pool; deduped from role-level primary keywords
-GTM策略分析師,1,GTM Strategy Analyst,104 search keyword pool; deduped from role-level primary keywords
-GTM經理,1,GTM Manager,104 search keyword pool; deduped from role-level primary keywords
-HR分析師,1,HR Analyst,104 search keyword pool; deduped from role-level primary keywords
-HR專員,1,HR Specialist,104 search keyword pool; deduped from role-level primary keywords
-HR顧問,1,Human Capital Consultant,104 search keyword pool; deduped from role-level primary keywords
-IT商業分析師,1,IT Business Analyst,104 search keyword pool; deduped from role-level primary keywords
-IT稽核,1,IT Auditor,104 search keyword pool; deduped from role-level primary keywords
-ML分析師,1,Machine Learning Analyst,104 search keyword pool; deduped from role-level primary keywords
-OD分析師,1,Organizational Development Analyst,104 search keyword pool; deduped from role-level primary keywords
-PMM專員,1,Product Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-RevOps分析師,1,Revenue Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-S&O分析師,1,Strategy & Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-SEO專員,1,SEO Specialist,104 search keyword pool; deduped from role-level primary keywords
-VC分析師,1,Venture Capital Analyst,104 search keyword pool; deduped from role-level primary keywords
-上市分析師,1,Go-to-Market Analyst,104 search keyword pool; deduped from role-level primary keywords
-交易分析師,1,Sales & Trading Analyst,104 search keyword pool; deduped from role-level primary keywords
-人員分析師,1,People Analyst,104 search keyword pool; deduped from role-level primary keywords
-人員營運分析師,1,People Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-人才招募專員,1,Talent Acquisition Specialist,104 search keyword pool; deduped from role-level primary keywords
-人資夥伴,1,HR Business Partner,104 search keyword pool; deduped from role-level primary keywords
-企業發展分析師,1,Corporate Development Analyst,104 search keyword pool; deduped from role-level primary keywords
-企業策略分析師,1,Corporate Strategy Analyst,104 search keyword pool; deduped from role-level primary keywords
-企業財務分析師,1,Corporate Finance Analyst,104 search keyword pool; deduped from role-level primary keywords
-企業轉型分析師,1,Business Transformation Analyst,104 search keyword pool; deduped from role-level primary keywords
-企業轉型顧問,1,Business Transformation Consultant,104 search keyword pool; deduped from role-level primary keywords
-企業顧問,1,Business Consultant,104 search keyword pool; deduped from role-level primary keywords
-企金分析師,1,Commercial Banking Analyst,104 search keyword pool; deduped from role-level primary keywords
-作業風險分析師,1,Operational Risk Analyst,104 search keyword pool; deduped from role-level primary keywords
-使用者研究分析師,1,User Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-使用者研究員,1,User Researcher,104 search keyword pool; deduped from role-level primary keywords
-供應鏈分析師,1,Supply Chain Analyst,104 search keyword pool; deduped from role-level primary keywords
-保險分析師,1,Insurance Analyst,104 search keyword pool; deduped from role-level primary keywords
-信用分析師,1,Credit Analyst,104 search keyword pool; deduped from role-level primary keywords
-信用風險分析師,1,Credit Risk Analyst,104 search keyword pool; deduped from role-level primary keywords
-債信分析師,1,Credit Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-債券分析師,1,Fixed Income Analyst,104 search keyword pool; deduped from role-level primary keywords
-價格分析師,1,Pricing Analyst,104 search keyword pool; deduped from role-level primary keywords
-儲備主管計畫,1,Leadership Development Program Analyst,104 search keyword pool; deduped from role-level primary keywords
-儲備人才,1,Graduate Trainee,104 search keyword pool; deduped from role-level primary keywords
-儲備幹部,1,Management Trainee,104 search keyword pool; deduped from role-level primary keywords
-儲備輪調專員,1,Rotational Program Associate,104 search keyword pool; deduped from role-level primary keywords
-內容企劃,1,Content Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-內稽專員,1,Internal Auditor,104 search keyword pool; deduped from role-level primary keywords
-全端工程師,1,Full Stack Engineer,104 search keyword pool; deduped from role-level primary keywords
-共同創辦人,1,Founder,104 search keyword pool; deduped from role-level primary keywords
-再保險專員,1,Reinsurance Analyst,104 search keyword pool; deduped from role-level primary keywords
-分析工程師,1,Analytics Engineer,104 search keyword pool; deduped from role-level primary keywords
-分析顧問,1,Analytics Consultant,104 search keyword pool; deduped from role-level primary keywords
-初階產品經理,1,Associate Product Manager,104 search keyword pool; deduped from role-level primary keywords
-初階行銷專員,1,Marketing Associate,104 search keyword pool; deduped from role-level primary keywords
-初階顧問,2,"Associate Consultant, Junior Consultant",104 search keyword pool; deduped from role-level primary keywords
-前端工程師,1,Frontend Engineer,104 search keyword pool; deduped from role-level primary keywords
-副理,1,Assistant Manager,104 search keyword pool; deduped from role-level primary keywords
-創投投資分析師,1,Startup Investment Analyst,104 search keyword pool; deduped from role-level primary keywords
-創業建構者,1,Venture Builder,104 search keyword pool; deduped from role-level primary keywords
-助理顧問,1,Associate Consultant,104 search keyword pool; deduped from role-level primary keywords
-合作夥伴經理,1,Partnership Manager,104 search keyword pool; deduped from role-level primary keywords
-合規分析師,1,Compliance Analyst,104 search keyword pool; deduped from role-level primary keywords
-合規顧問,1,Compliance Consultant,104 search keyword pool; deduped from role-level primary keywords
-品保分析師,1,QA Analyst,104 search keyword pool; deduped from role-level primary keywords
-品保工程師,1,QA Engineer,104 search keyword pool; deduped from role-level primary keywords
-品牌專員,1,Brand Specialist,104 search keyword pool; deduped from role-level primary keywords
-品牌經理,1,Brand Manager,104 search keyword pool; deduped from role-level primary keywords
-售前工程師,2,"Sales Engineer, Solutions Engineer",104 search keyword pool; deduped from role-level primary keywords
-售前顧問,1,Solutions Consultant,104 search keyword pool; deduped from role-level primary keywords
-商務合作分析師,1,Strategic Partnerships Analyst,104 search keyword pool; deduped from role-level primary keywords
-商務開發代表,1,Business Development Representative,104 search keyword pool; deduped from role-level primary keywords
-商務開發專員,1,Business Development Associate,104 search keyword pool; deduped from role-level primary keywords
-商務開發經理,1,Business Development Manager,104 search keyword pool; deduped from role-level primary keywords
-商業分析師,1,Business Analyst,104 search keyword pool; deduped from role-level primary keywords
-商業專案經理,1,Business Program Manager,104 search keyword pool; deduped from role-level primary keywords
-商業策略專員,1,Business Strategy Associate,104 search keyword pool; deduped from role-level primary keywords
-商業管理專員,1,Business Management Associate,104 search keyword pool; deduped from role-level primary keywords
-商業系統分析師,1,Business Systems Analyst,104 search keyword pool; deduped from role-level primary keywords
-商業財務分析師,1,Commercial Finance Analyst,104 search keyword pool; deduped from role-level primary keywords
-問卷分析師,1,Survey Analyst,104 search keyword pool; deduped from role-level primary keywords
-報表分析師,1,Reporting Analyst,104 search keyword pool; deduped from role-level primary keywords
-增長專員,1,Growth Associate,104 search keyword pool; deduped from role-level primary keywords
-增長行銷分析師,1,Growth Marketing Analyst,104 search keyword pool; deduped from role-level primary keywords
-外部審計員,1,External Auditor,104 search keyword pool; deduped from role-level primary keywords
-大客戶經理,1,Key Account Manager,104 search keyword pool; deduped from role-level primary keywords
-媒體投放專員,1,Paid Media Specialist,104 search keyword pool; deduped from role-level primary keywords
-存貨分析師,1,Inventory Analyst,104 search keyword pool; deduped from role-level primary keywords
-學習發展專員,1,Learning & Development Specialist,104 search keyword pool; deduped from role-level primary keywords
-客戶成功經理,1,Customer Success Manager,104 search keyword pool; deduped from role-level primary keywords
-客戶業務,1,Account Executive,104 search keyword pool; deduped from role-level primary keywords
-客戶洞察分析師,1,Customer Insights Analyst,104 search keyword pool; deduped from role-level primary keywords
-客戶經理,1,Account Manager,104 search keyword pool; deduped from role-level primary keywords
-客戶關係經理,1,Relationship Manager,104 search keyword pool; deduped from role-level primary keywords
-客服工程師,1,Technical Support Engineer,104 search keyword pool; deduped from role-level primary keywords
-審計助理,1,Audit Associate,104 search keyword pool; deduped from role-level primary keywords
-審計專員,2,"Assurance Associate, Audit Associate",104 search keyword pool; deduped from role-level primary keywords
-專案管理分析師,1,PMO Analyst,104 search keyword pool; deduped from role-level primary keywords
-專案經理,1,Project Manager,104 search keyword pool; deduped from role-level primary keywords
-專案行銷專員,1,Campaign Specialist,104 search keyword pool; deduped from role-level primary keywords
-尋源專員,1,Sourcing Specialist,104 search keyword pool; deduped from role-level primary keywords
-導入顧問,1,Implementation Consultant,104 search keyword pool; deduped from role-level primary keywords
-市場情報分析師,1,Market Intelligence Analyst,104 search keyword pool; deduped from role-level primary keywords
-市場風險分析師,1,Market Risk Analyst,104 search keyword pool; deduped from role-level primary keywords
-市調分析師,1,Market Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-幕僚專員,1,Chief of Staff Associate,104 search keyword pool; deduped from role-level primary keywords
-平台PM,1,Platform Product Manager,104 search keyword pool; deduped from role-level primary keywords
-廠商管理經理,1,Vendor Manager,104 search keyword pool; deduped from role-level primary keywords
-後端工程師,1,Backend Engineer,104 search keyword pool; deduped from role-level primary keywords
-應用科學家,1,Applied Scientist,104 search keyword pool; deduped from role-level primary keywords
-成效行銷分析師,1,Performance Marketing Analyst,104 search keyword pool; deduped from role-level primary keywords
-成本分析師,1,Cost Accounting Analyst,104 search keyword pool; deduped from role-level primary keywords
-成本會計,1,Cost Accountant,104 search keyword pool; deduped from role-level primary keywords
-成長產品分析師,1,Growth Product Analyst,104 search keyword pool; deduped from role-level primary keywords
-戰略規劃分析師,1,Strategic Planning Analyst,104 search keyword pool; deduped from role-level primary keywords
-承銷分析師,1,Underwriting Analyst,104 search keyword pool; deduped from role-level primary keywords
-技術PM,1,Technical Product Manager,104 search keyword pool; deduped from role-level primary keywords
-技術專案經理,1,Technical Program Manager,104 search keyword pool; deduped from role-level primary keywords
-技術支援分析師,1,Product Support Analyst,104 search keyword pool; deduped from role-level primary keywords
-技術顧問,1,Technology Consultant,104 search keyword pool; deduped from role-level primary keywords
-投行分析師,1,Investment Banking Analyst,104 search keyword pool; deduped from role-level primary keywords
-投資分析師,2,"Investment Analyst, Investment Research Analyst",104 search keyword pool; deduped from role-level primary keywords
-投資專員,1,Investment Associate,104 search keyword pool; deduped from role-level primary keywords
-投資研究分析師,1,Investment Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-投資組合分析師,1,Portfolio Analyst,104 search keyword pool; deduped from role-level primary keywords
-投資顧問,1,Investment Consultant,104 search keyword pool; deduped from role-level primary keywords
-招募專員,2,"Recruiter, Talent Acquisition Specialist",104 search keyword pool; deduped from role-level primary keywords
-招募顧問,2,"Recruiter, Recruitment Consultant",104 search keyword pool; deduped from role-level primary keywords
-授信專員,1,Loan Officer,104 search keyword pool; deduped from role-level primary keywords
-採購分析師,1,Procurement Analyst,104 search keyword pool; deduped from role-level primary keywords
-採購專員,2,"Procurement Specialist, Purchasing Specialist",104 search keyword pool; deduped from role-level primary keywords
-搜尋引擎行銷專員,2,"SEM Specialist, SEO/SEM Specialist",104 search keyword pool; deduped from role-level primary keywords
-搜尋行銷專員,1,SEO/SEM Specialist,104 search keyword pool; deduped from role-level primary keywords
-收入分析師,1,Revenue Analyst,104 search keyword pool; deduped from role-level primary keywords
-收入會計,1,Revenue Accountant,104 search keyword pool; deduped from role-level primary keywords
-整合行銷企劃,1,Integrated Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-數位行銷專員,1,Digital Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-數據倉儲分析師,1,Data Warehouse Analyst,104 search keyword pool; deduped from role-level primary keywords
-數據分析師,1,Data Analyst,104 search keyword pool; deduped from role-level primary keywords
-數據工程師,1,Data Engineer,104 search keyword pool; deduped from role-level primary keywords
-數據平台分析師,1,Data Platform Analyst,104 search keyword pool; deduped from role-level primary keywords
-數據營運分析師,1,Data Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-數據產品經理,1,Data Product Manager,104 search keyword pool; deduped from role-level primary keywords
-數據科學家,1,Data Scientist,104 search keyword pool; deduped from role-level primary keywords
-數據管線工程師,1,Data Pipeline Engineer,104 search keyword pool; deduped from role-level primary keywords
-數據視覺化分析師,1,Data Visualization Analyst,104 search keyword pool; deduped from role-level primary keywords
-新創營運專員,1,Startup Operations Associate,104 search keyword pool; deduped from role-level primary keywords
-方案分析師,1,Solutions Analyst,104 search keyword pool; deduped from role-level primary keywords
-方案行銷經理,1,Solutions Marketing Manager,104 search keyword pool; deduped from role-level primary keywords
-會員經營專員,1,CRM Specialist,104 search keyword pool; deduped from role-level primary keywords
-會員行銷專員,1,CRM Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-會計人員,1,Accountant,104 search keyword pool; deduped from role-level primary keywords
-會計分析師,1,Accounting Analyst,104 search keyword pool; deduped from role-level primary keywords
-業務分析師,1,Sales Analyst,104 search keyword pool; deduped from role-level primary keywords
-業務專員,2,"Account Executive, Sales Executive",104 search keyword pool; deduped from role-level primary keywords
-業務工程師,1,Sales Engineer,104 search keyword pool; deduped from role-level primary keywords
-永續發展顧問,1,Sustainability Consultant,104 search keyword pool; deduped from role-level primary keywords
-永續顧問,2,"ESG Consultant, Sustainability Consultant",104 search keyword pool; deduped from role-level primary keywords
-決策分析師,1,Decision Scientist,104 search keyword pool; deduped from role-level primary keywords
-法金分析師,1,Corporate Banking Analyst,104 search keyword pool; deduped from role-level primary keywords
-流程優化顧問,1,Process Improvement Consultant,104 search keyword pool; deduped from role-level primary keywords
-消費者洞察分析師,2,"Consumer Insights Analyst, Consumer Research Analyst",104 search keyword pool; deduped from role-level primary keywords
-渠道銷售經理,1,Channel Sales Manager,104 search keyword pool; deduped from role-level primary keywords
-準備金分析師,1,Reserving Analyst,104 search keyword pool; deduped from role-level primary keywords
-營運優化分析師,1,Operations Excellence Analyst,104 search keyword pool; deduped from role-level primary keywords
-營運分析師,1,Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-營運專員,1,Operations Associate,104 search keyword pool; deduped from role-level primary keywords
-營運經理,1,Operations Manager,104 search keyword pool; deduped from role-level primary keywords
-營運顧問,1,Operations Consultant,104 search keyword pool; deduped from role-level primary keywords
-物流分析師,1,Logistics Analyst,104 search keyword pool; deduped from role-level primary keywords
-獵才專員,1,Executive Search Associate,104 search keyword pool; deduped from role-level primary keywords
-獵才顧問,2,"Headhunter, Recruitment Consultant",104 search keyword pool; deduped from role-level primary keywords
-獵頭,1,Headhunter,104 search keyword pool; deduped from role-level primary keywords
-理財專員,1,Wealth Management Associate,104 search keyword pool; deduped from role-level primary keywords
-理財顧問,1,Financial Advisor,104 search keyword pool; deduped from role-level primary keywords
-理賠專員,1,Claims Analyst,104 search keyword pool; deduped from role-level primary keywords
-生命週期行銷專員,1,Lifecycle Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-產品企劃分析師,1,Product Strategy Analyst,104 search keyword pool; deduped from role-level primary keywords
-產品分析師,1,Product Analyst,104 search keyword pool; deduped from role-level primary keywords
-產品營運分析師,1,Product Operations Analyst,104 search keyword pool; deduped from role-level primary keywords
-產品營運經理,1,Product Operations Manager,104 search keyword pool; deduped from role-level primary keywords
-產品經理,1,Product Manager,104 search keyword pool; deduped from role-level primary keywords
-產品行銷經理,1,Product Marketing Manager,104 search keyword pool; deduped from role-level primary keywords
-產品負責人,1,Product Owner,104 search keyword pool; deduped from role-level primary keywords
-用戶留存行銷,1,Retention Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-用戶研究員,2,"User Research Analyst, User Researcher",104 search keyword pool; deduped from role-level primary keywords
-研究專員,1,Research Associate,104 search keyword pool; deduped from role-level primary keywords
-確信服務專員,1,Assurance Associate,104 search keyword pool; deduped from role-level primary keywords
-私募股權分析師,1,Private Equity Analyst,104 search keyword pool; deduped from role-level primary keywords
-私銀專員,1,Private Banking Associate,104 search keyword pool; deduped from role-level primary keywords
-科技分析師,1,Business Technology Analyst,104 search keyword pool; deduped from role-level primary keywords
-移轉定價分析師,1,Transfer Pricing Analyst,104 search keyword pool; deduped from role-level primary keywords
-稅務分析師,1,Tax Analyst,104 search keyword pool; deduped from role-level primary keywords
-稅務助理,1,Tax Associate,104 search keyword pool; deduped from role-level primary keywords
-稅務顧問,1,Tax Consultant,104 search keyword pool; deduped from role-level primary keywords
-競品分析師,1,Competitive Intelligence Analyst,104 search keyword pool; deduped from role-level primary keywords
-策略分析師,1,Strategy Analyst,104 search keyword pool; deduped from role-level primary keywords
-策略專員,2,"Business Strategy Associate, Strategy Associate",104 search keyword pool; deduped from role-level primary keywords
-策略專案分析師,1,Strategic Initiatives Analyst,104 search keyword pool; deduped from role-level primary keywords
-策略財務分析師,1,Strategic Finance Analyst,104 search keyword pool; deduped from role-level primary keywords
-策略顧問,1,Strategy Consultant,104 search keyword pool; deduped from role-level primary keywords
-管理會計,1,Management Accountant,104 search keyword pool; deduped from role-level primary keywords
-管理顧問,1,Management Consultant,104 search keyword pool; deduped from role-level primary keywords
-精算人員,1,Actuarial Analyst,104 search keyword pool; deduped from role-level primary keywords
-精算師,1,Actuary,104 search keyword pool; deduped from role-level primary keywords
-系統分析師,1,System Analyst,104 search keyword pool; deduped from role-level primary keywords
-系統顧問,2,"IT Consultant, Systems Consultant",104 search keyword pool; deduped from role-level primary keywords
-統計分析師,1,Statistical Analyst,104 search keyword pool; deduped from role-level primary keywords
-統計師,1,Statistician,104 search keyword pool; deduped from role-level primary keywords
-經營企劃分析師,1,CEO Office Analyst,104 search keyword pool; deduped from role-level primary keywords
-經營管理專員,1,General Management Associate,104 search keyword pool; deduped from role-level primary keywords
-股票研究分析師,1,Equity Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-薪資福利分析師,1,Compensation & Benefits Analyst,104 search keyword pool; deduped from role-level primary keywords
-行業研究員,1,Industry Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-行銷主管,1,Marketing Manager,104 search keyword pool; deduped from role-level primary keywords
-行銷企劃,1,Marketing Specialist,104 search keyword pool; deduped from role-level primary keywords
-行銷分析師,1,Marketing Analyst,104 search keyword pool; deduped from role-level primary keywords
-行銷專員,2,"Marketing Associate, Marketing Specialist",104 search keyword pool; deduped from role-level primary keywords
-行銷顧問,1,Marketing Consultant,104 search keyword pool; deduped from role-level primary keywords
-解決方案工程師,1,Solutions Engineer,104 search keyword pool; deduped from role-level primary keywords
-計畫經理,1,Program Manager,104 search keyword pool; deduped from role-level primary keywords
-財務企劃分析師,1,Financial Analyst,104 search keyword pool; deduped from role-level primary keywords
-財務分析師,2,"Finance Analyst, Financial Analyst",104 search keyword pool; deduped from role-level primary keywords
-財務專員,1,Finance Analyst,104 search keyword pool; deduped from role-level primary keywords
-財務數據分析師,1,Financial Data Analyst,104 search keyword pool; deduped from role-level primary keywords
-財務規劃分析師,2,"FP&A Analyst, Financial Planning Analyst",104 search keyword pool; deduped from role-level primary keywords
-財務風險分析師,1,Financial Risk Analyst,104 search keyword pool; deduped from role-level primary keywords
-財資分析師,1,Treasury Analyst,104 search keyword pool; deduped from role-level primary keywords
-資料庫分析師,1,Database Analyst,104 search keyword pool; deduped from role-level primary keywords
-資本市場分析師,1,Capital Markets Analyst,104 search keyword pool; deduped from role-level primary keywords
-資產管理分析師,1,Asset Management Analyst,104 search keyword pool; deduped from role-level primary keywords
-資訊系統顧問,1,Systems Consultant,104 search keyword pool; deduped from role-level primary keywords
-資訊顧問,1,IT Consultant,104 search keyword pool; deduped from role-level primary keywords
-軟體PM,1,Software Product Manager,104 search keyword pool; deduped from role-level primary keywords
-軟體工程師,1,Software Engineer,104 search keyword pool; deduped from role-level primary keywords
-配送分析師,1,Distribution Analyst,104 search keyword pool; deduped from role-level primary keywords
-量化分析師,1,Quantitative Analyst,104 search keyword pool; deduped from role-level primary keywords
-量化研究分析師,1,Quantitative Research Analyst,104 search keyword pool; deduped from role-level primary keywords
-金融交易員,1,Trader,104 search keyword pool; deduped from role-level primary keywords
-金融風險分析師,2,"Banking Risk Analyst, Financial Risk Analyst",104 search keyword pool; deduped from role-level primary keywords
-銀行風險分析師,1,Banking Risk Analyst,104 search keyword pool; deduped from role-level primary keywords
-銷售專員,1,Sales Executive,104 search keyword pool; deduped from role-level primary keywords
-關鍵字廣告專員,1,SEM Specialist,104 search keyword pool; deduped from role-level primary keywords
-需求規劃師,1,Demand Planner,104 search keyword pool; deduped from role-level primary keywords
-預測分析分析師,1,Predictive Analytics Analyst,104 search keyword pool; deduped from role-level primary keywords
-預測分析師,1,Forecasting Analyst,104 search keyword pool; deduped from role-level primary keywords
-預算分析師,1,Budget Analyst,104 search keyword pool; deduped from role-level primary keywords
-顧問助理,1,Junior Consultant,104 search keyword pool; deduped from role-level primary keywords
-風控分析師,1,Risk Management Analyst,104 search keyword pool; deduped from role-level primary keywords
-風險模型分析師,1,Risk Modeling Analyst,104 search keyword pool; deduped from role-level primary keywords
-風險顧問,1,Risk Consultant,104 search keyword pool; deduped from role-level primary keywords
-駐站創業家,1,Entrepreneur in Residence,104 search keyword pool; deduped from role-level primary keywords
+﻿keyword,cluster,priority_rank,mapped_roles_count,sample_roles,notes
+數據分析師,Data / Analytics,1,5,"Data Analyst, Financial Data Analyst, Marketing Analyst, People Analyst, Product Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+資料分析師,Data / Analytics,2,1,Data Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+商業分析師,Data / Analytics,3,2,"Business Analyst, IT Business Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+BI分析師,Data / Analytics,4,2,"BI Analyst, Business Intelligence Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+產品分析師,Data / Analytics,5,2,"Growth Product Analyst, Product Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+行銷分析師,Data / Analytics,6,3,"Growth Marketing Analyst, Marketing Analyst, Performance Marketing Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+營運分析師,Data / Analytics,7,7,"Business Operations Analyst, Data Operations Analyst, Operations Analyst, People Operations Analyst, Product Operations Analyst, Revenue Operations Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+財務分析師,Data / Analytics,8,5,"Commercial Finance Analyst, Corporate Finance Analyst, Finance Analyst, Financial Analyst, Strategic Finance Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+統計分析師,Data / Analytics,9,1,Statistical Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+數據科學家,Data / Analytics,10,1,Data Scientist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+數據工程師,Data / Analytics,11,1,Data Engineer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+分析工程師,Data / Analytics,12,1,Analytics Engineer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+資料庫分析師,Data / Analytics,13,1,Database Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+報表分析師,Data / Analytics,14,1,Reporting Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+產品經理,Product / PM,15,6,"Associate Product Manager, Data Product Manager, Platform Product Manager, Product Manager, Software Product Manager, Technical Product Manager","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+產品企劃分析師,Product / PM,16,1,Product Strategy Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+產品營運經理,Product / PM,17,1,Product Operations Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+數據產品經理,Product / PM,18,1,Data Product Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+軟體PM,Product / PM,19,1,Software Product Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+技術PM,Product / PM,20,1,Technical Product Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+專案經理,Product / PM,21,3,"Business Program Manager, Project Manager, Technical Program Manager","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+策略分析師,Strategy / Consulting,22,5,"Corporate Strategy Analyst, GTM Strategy Analyst, Product Strategy Analyst, Strategic Finance Analyst, Strategy Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+企業策略分析師,Strategy / Consulting,23,1,Corporate Strategy Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+經營企劃分析師,Strategy / Consulting,24,1,CEO Office Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+管理顧問,Strategy / Consulting,25,1,Management Consultant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+策略顧問,Strategy / Consulting,26,1,Strategy Consultant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+科技顧問,Strategy / Consulting,27,1,Technology Consultant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+ERP顧問,Strategy / Consulting,28,1,ERP Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+資訊顧問,Strategy / Consulting,29,1,IT Consultant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+企業轉型顧問,Strategy / Consulting,30,1,Business Transformation Consultant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+財務企劃分析師,Finance / Accounting,31,1,Financial Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+企業財務分析師,Finance / Accounting,32,1,Corporate Finance Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+會計分析師,Finance / Accounting,33,2,"Accounting Analyst, Cost Accounting Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+會計人員,Finance / Accounting,34,1,Accountant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+成本會計,Finance / Accounting,35,2,"Cost Accountant, Cost Accounting Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+稅務分析師,Finance / Accounting,36,1,Tax Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+審計專員,Finance / Accounting,37,2,"Assurance Associate, Audit Associate","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+投資分析師,Finance / Accounting,38,3,"Investment Analyst, Investment Research Analyst, Startup Investment Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+投資研究分析師,Finance / Accounting,39,1,Investment Research Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+信用分析師,Finance / Accounting,40,1,Credit Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+風險分析師,Finance / Accounting,41,6,"Banking Risk Analyst, Credit Risk Analyst, Enterprise Risk Analyst, Financial Risk Analyst, Market Risk Analyst, Operational Risk Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+精算師,Finance / Accounting,42,1,Actuary,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+行銷企劃,Marketing / Growth,43,2,"Integrated Marketing Specialist, Marketing Specialist","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+行銷專員,Marketing / Growth,44,13,"Brand Specialist, CRM Marketing Specialist, Campaign Specialist, Content Marketing Specialist, Digital Marketing Specialist, Integrated Marketing Specialist","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+數位行銷專員,Marketing / Growth,45,1,Digital Marketing Specialist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+成效行銷分析師,Marketing / Growth,46,1,Performance Marketing Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+SEO專員,Marketing / Growth,47,1,SEO Specialist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+PMM專員,Marketing / Growth,48,1,Product Marketing Specialist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+品牌專員,Marketing / Growth,49,1,Brand Specialist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+市調分析師,Marketing / Growth,50,1,Market Research Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+客戶洞察分析師,Marketing / Growth,51,1,Customer Insights Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+會員經營專員,Marketing / Growth,52,1,CRM Specialist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+商務開發專員,BD / Sales,53,1,Business Development Associate,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+商務開發經理,BD / Sales,54,1,Business Development Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+業務分析師,BD / Sales,55,1,Sales Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+業務專員,BD / Sales,56,2,"Account Executive, Sales Executive","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+大客戶經理,BD / Sales,57,1,Key Account Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+客戶成功經理,BD / Sales,58,1,Customer Success Manager,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+銷售專員,BD / Sales,59,1,Sales Executive,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+營運專員,Ops / Supply Chain,60,3,"Business Operations Associate, Operations Associate, Startup Operations Associate","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+營運經理,Ops / Supply Chain,61,2,"Operations Manager, Product Operations Manager","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+BizOps分析師,Ops / Supply Chain,62,1,Business Operations Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+供應鏈分析師,Ops / Supply Chain,63,1,Supply Chain Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+物流分析師,Ops / Supply Chain,64,1,Logistics Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+採購專員,Ops / Supply Chain,65,2,"Procurement Specialist, Purchasing Specialist","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+採購分析師,Ops / Supply Chain,66,1,Procurement Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+需求規劃師,Ops / Supply Chain,67,1,Demand Planner,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+專案管理分析師,Ops / Supply Chain,68,1,PMO Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+軟體工程師,Tech / Systems,69,1,Software Engineer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+後端工程師,Tech / Systems,70,1,Backend Engineer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+前端工程師,Tech / Systems,71,1,Frontend Engineer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+全端工程師,Tech / Systems,72,1,Full Stack Engineer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+系統分析師,Tech / Systems,73,3,"Business Systems Analyst, CRM Analyst, System Analyst","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+商業系統分析師,Tech / Systems,74,1,Business Systems Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+ETL工程師,Tech / Systems,75,1,ETL Developer,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+人資專員,HR / Risk / ESG,76,1,HR Specialist,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+招募專員,HR / Risk / ESG,77,2,"Recruiter, Talent Acquisition Specialist","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+獵才顧問,HR / Risk / ESG,78,3,"Executive Search Associate, Headhunter, Recruitment Consultant","compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+HR分析師,HR / Risk / ESG,79,1,HR Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+ESG顧問,HR / Risk / ESG,80,1,ESG Consultant,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+合規分析師,HR / Risk / ESG,81,1,Compliance Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+內稽專員,HR / Risk / ESG,82,1,Internal Auditor,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+風控分析師,HR / Risk / ESG,83,1,Risk Management Analyst,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
+儲備幹部,HR / Risk / ESG,84,1,Management Trainee,"compressed v2: representative 104 search keyword; designed for high-value market radar, not exhaustive role-title coverage"
