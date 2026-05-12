@@ -369,25 +369,153 @@ for canonical, aliases in SKILL_CATALOG.items():
 
 def try_rule_role(job):
     title = norm_for_match(job.get("title"))
-    text = " ".join(filter(None, [norm_for_match(job.get("title")), norm_for_match(job.get("keyword")), norm_for_match(job.get("category")), norm_for_match(job.get("description_snippet"))]))
-    if not text:
+    keyword = norm_for_match(job.get("keyword"))
+    category = norm_for_match(job.get("category"))
+    desc = norm_for_match(job.get("description_snippet"))
+
+    if not any([title, keyword, category, desc]):
         return None, None, None, 0.0, "no text"
-    for alias_norm, role in ROLE_ALIAS_INDEX:
-        if alias_norm and alias_norm in text:
-            meta = ROLE_MAP[role]
-            return meta["job_parent_category"], meta["job_sub_category"], role, 0.93, f"alias match: {alias_norm}"
+
+    # Dangerous short aliases should not be matched in weak fields.
+    # Example: PO can appear inside support/reporting; PM can mean many things.
+    DANGEROUS_SHORT_ALIASES = {
+        "po", "pm", "ba", "sa", "qa", "hr", "it", "ae", "rm", "bd", "bi",
+        "da", "ds", "de", "ml", "ai", "fe", "be"
+    }
+
+    def is_safe_alias(alias_norm):
+        if not alias_norm:
+            return False
+        if alias_norm in DANGEROUS_SHORT_ALIASES:
+            return False
+        # Very short English aliases are risky unless matched in title exact logic.
+        if re.fullmatch(r"[a-z]{1,3}", alias_norm):
+            return False
+        return True
+
+    def contains_match(alias_norm, field_text):
+        if not alias_norm or not field_text:
+            return False
+
+        # For Chinese keywords, simple substring is fine.
+        if re.search(r"[\u4e00-\u9fff]", alias_norm):
+            return alias_norm in field_text
+
+        # For English keywords, use word-boundary-like matching.
+        pattern = rf"(?<![a-z0-9]){re.escape(alias_norm)}(?![a-z0-9])"
+        return re.search(pattern, field_text, flags=re.IGNORECASE) is not None
+
+    # 1) Title exact match for canonical role names.
     for role_norm, role in ROLE_TITLE_INDEX:
         if role_norm and role_norm == title:
             meta = ROLE_MAP[role]
-            return meta["job_parent_category"], meta["job_sub_category"], role, 0.98, f"title exact: {role_norm}"
+            return (
+                meta["job_parent_category"],
+                meta["job_sub_category"],
+                role,
+                0.99,
+                f"title exact: {role_norm}"
+            )
+
+    candidates = {}
+
+    def add_score(role, score, reason):
+        if not role:
+            return
+        if role not in candidates:
+            candidates[role] = {"score": 0.0, "reasons": []}
+        candidates[role]["score"] += score
+        candidates[role]["reasons"].append(reason)
+
+    # 2) Weighted alias matching.
+    # Strongest: title
+    for alias_norm, role in ROLE_ALIAS_INDEX:
+        if not alias_norm:
+            continue
+
+        # Title can use short aliases, but only with safer boundary matching.
+        if contains_match(alias_norm, title):
+            # Short aliases get lower title score because they are ambiguous.
+            if alias_norm in DANGEROUS_SHORT_ALIASES or re.fullmatch(r"[a-z]{1,3}", alias_norm):
+                add_score(role, 45, f"title short alias: {alias_norm}")
+            else:
+                add_score(role, 100, f"title alias: {alias_norm}")
+
+        # Non-title fields: only safe aliases.
+        if not is_safe_alias(alias_norm):
+            continue
+
+        if contains_match(alias_norm, keyword):
+            add_score(role, 45, f"keyword alias: {alias_norm}")
+
+        if contains_match(alias_norm, category):
+            add_score(role, 30, f"category alias: {alias_norm}")
+
+        # Description is weakest. Require longer aliases to avoid noise.
+        if len(alias_norm) >= 5 and contains_match(alias_norm, desc):
+            add_score(role, 8, f"desc alias: {alias_norm}")
+
+    # 3) Canonical role name matching, also weighted.
+    for role_norm, role in ROLE_TITLE_INDEX:
+        if not role_norm:
+            continue
+
+        if contains_match(role_norm, title):
+            add_score(role, 90, f"title canonical: {role_norm}")
+
+        if contains_match(role_norm, keyword):
+            add_score(role, 40, f"keyword canonical: {role_norm}")
+
+        if contains_match(role_norm, category):
+            add_score(role, 25, f"category canonical: {role_norm}")
+
+        if len(role_norm) >= 5 and contains_match(role_norm, desc):
+            add_score(role, 6, f"desc canonical: {role_norm}")
+
+    # 4) Pick top scored role.
+    if candidates:
+        best_role, payload = max(candidates.items(), key=lambda x: x[1]["score"])
+        best_score = payload["score"]
+
+        # Confidence scaling.
+        # >=100 usually means title hit.
+        # 45~99 means weaker but usable.
+        if best_score >= 100:
+            conf = 0.95
+        elif best_score >= 70:
+            conf = 0.88
+        elif best_score >= 45:
+            conf = 0.78
+        else:
+            conf = 0.0
+
+        if conf > 0:
+            meta = ROLE_MAP[best_role]
+            return (
+                meta["job_parent_category"],
+                meta["job_sub_category"],
+                best_role,
+                round(conf, 3),
+                f"weighted match score={best_score:.1f}; " + "; ".join(payload["reasons"][:5])
+            )
+
+    # 5) Fuzzy title fallback against canonical role names only.
     best_role, best_score = None, 0.0
     for role_norm, role in ROLE_TITLE_INDEX:
         score = SequenceMatcher(None, title, role_norm).ratio() if title and role_norm else 0.0
         if score > best_score:
             best_role, best_score = role, score
+
     if best_role and best_score >= 0.86:
         meta = ROLE_MAP[best_role]
-        return meta["job_parent_category"], meta["job_sub_category"], best_role, round(best_score, 3), f"fuzzy title: {best_score:.3f}"
+        return (
+            meta["job_parent_category"],
+            meta["job_sub_category"],
+            best_role,
+            round(best_score, 3),
+            f"fuzzy title: {best_score:.3f}"
+        )
+
     return None, None, None, 0.0, "rule no confident match"
 
 
