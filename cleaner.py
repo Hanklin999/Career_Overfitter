@@ -96,7 +96,7 @@ def fetch_jd_raw(limit=1000, only_new=False):
     params = {
         "select": ",".join([
             "job_no", "source", "category", "keyword", "title", "company", "location",
-            "industry", "is_foreign", "is_listed", "job_url", "period", "appear_date",
+            "industry", "is_foreign", "is_listed", "period", "appear_date",
             "salary_low", "salary_high", "remote_work", "welfare_tags",
             "description_snippet", "skill", "specialty", "work_exp", "edu",
             "job_description", "job_category", "manage_resp"
@@ -149,9 +149,12 @@ def upsert_job_posting(records):
 def normalize_salary(low, high):
     if low is None:
         return None, None, None
+    # 0 視為無薪資資訊
+    if low == 0:
+        return None, None, None
     if low > 100_000:
-        return int(low // 12), (int(high // 12) if high else None), "年薪"
-    return int(low), (int(high) if high else None), "月薪"
+        return int(low // 12), (int(high // 12) if high and high > 0 else None), "年薪"
+    return int(low), (int(high) if high and high > 0 else None), "月薪"
 
 
 def normalize_location(loc):
@@ -476,7 +479,7 @@ def transform_row(job, enable_llm=False, llm_sleep_sec=0.8):
     rule_parent, rule_sub, rule_role, rule_conf, rule_reason = try_rule_role(job)
     rule_skills, skill_count = try_rule_skills(job)
 
-    final_parent, final_sub, final_role, final_conf = rule_parent, rule_sub, rule_role, rule_conf
+    final_parent, final_sub, final_role, final_conf = rule_parent, rule_sub, rule_role or "Unclassified", rule_conf
     final_skill_raw, final_skills = list(rule_skills), list(rule_skills)
     llm_reason, llm_model, llm_processed_at = f"rule: {rule_reason}", None, None
 
@@ -567,15 +570,22 @@ def main():
     rows = fetch_jd_raw(limit=args.limit, only_new=args.only_new)
     print(f"讀到 jd_raw {len(rows)} 筆")
     outputs = []
+    skipped = 0
     llm_used = 0
+    QUALITY_THRESHOLD = 0.3  # quality_score 低於此值不寫入
     for idx, row in enumerate(rows, start=1):
         rec = transform_row(row, enable_llm=args.enable_llm, llm_sleep_sec=args.llm_sleep)
         if rec.get("llm_processed_at"):
             llm_used += 1
+        q = rec.get("quality_score") or 0
+        if q < QUALITY_THRESHOLD:
+            skipped += 1
+            print(f"[{idx}/{len(rows)}] SKIP (quality={q:.2f}) - {row.get('job_no')} - {clean_text(row.get('title'))}")
+            continue
         outputs.append(rec)
-        print(f"[{idx}/{len(rows)}] ok - {row.get('job_no')} - {clean_text(row.get('title'))} | role={rec.get('role_normalized')} | skills={len(rec.get('skill_canonical') or [])} | llm={'Y' if rec.get('llm_processed_at') else 'N'}")
+        print(f"[{idx}/{len(rows)}] ok - {row.get('job_no')} - {clean_text(row.get('title'))} | role={rec.get('role_normalized')} | skills={len(rec.get('skill_canonical') or [])} | q={q:.2f} | llm={'Y' if rec.get('llm_processed_at') else 'N'}")
     upsert_job_posting(outputs)
-    print(f"完成：寫入 job_posting {len(outputs)} 筆；LLM 使用 {llm_used} 筆")
+    print(f"完成：寫入 job_posting {len(outputs)} 筆；跳過低品質 {skipped} 筆；LLM 使用 {llm_used} 筆")
 
 
 if __name__ == "__main__":

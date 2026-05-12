@@ -59,18 +59,18 @@ PERIOD_MAP = {
 }
 
 # ── 速度設定：forsearch 全量版（安全不被封）──────────────
-DEFAULT_LIST_SLEEP_MIN = 1.0
-DEFAULT_LIST_SLEEP_MAX = 2.0
+DEFAULT_LIST_SLEEP_MIN = 0.6
+DEFAULT_LIST_SLEEP_MAX = 1.0
 
-DEFAULT_DETAIL_SLEEP_MIN = 1.2
-DEFAULT_DETAIL_SLEEP_MAX = 2.5
+DEFAULT_DETAIL_SLEEP_MIN = 0.5
+DEFAULT_DETAIL_SLEEP_MAX = 1.0
 
-DEFAULT_KEYWORD_SLEEP_MIN = 2.5
-DEFAULT_KEYWORD_SLEEP_MAX = 5.0
+DEFAULT_KEYWORD_SLEEP_MIN = 1.2
+DEFAULT_KEYWORD_SLEEP_MAX = 2.0
 
-BATCH_SIZE = 50
-BATCH_SLEEP_MIN = 30.0
-BATCH_SLEEP_MAX = 60.0
+BATCH_SIZE = 100
+BATCH_SLEEP_MIN = 10.0
+BATCH_SLEEP_MAX = 20.0
 
 DEFAULT_BACKOFF_BASE = 10.0
 DEFAULT_MAX_PAGES = 5
@@ -83,41 +83,8 @@ DEFAULT_KEYWORD_CAP = 0
 FAKE_404_THRESHOLD = 3
 FAKE_404_PAUSE = 1800  # 30 分鐘
 
-# 104 list tags 之外，補一些你真的會想看的公司白名單。
-HIGH_VALUE_COMPANY_KEYWORDS = [
-    # Global tech / platform
-    "Google", "Meta", "Facebook", "Amazon", "AWS", "Microsoft", "Apple", "Netflix",
-    "Uber", "Airbnb", "TikTok", "ByteDance", "LINE", "LinkedIn", "Salesforce", "Oracle",
-    "SAP", "Adobe", "IBM", "NVIDIA", "AMD", "Intel", "Qualcomm", "ASML",
-    # Taiwan / APAC tech
-    "台積電", "TSMC", "聯發科", "MediaTek", "鴻海", "Foxconn", "華碩", "ASUS", "宏碁", "Acer",
-    "廣達", "Quanta", "緯創", "Wistron", "仁寶", "Compal", "Trend Micro", "趨勢科技",
-    "Appier", "Gogoro", "91APP", "KKBOX", "Klook", "foodpanda", "富邦媒", "momo",
-    "蝦皮", "Shopee", "Sea", "酷澎", "Coupang", "PChome", "Yahoo",
-    # Finance / consulting / professional service
-    "McKinsey", "BCG", "Bain", "Deloitte", "PwC", "KPMG", "EY", "Accenture",
-    "JPMorgan", "Goldman", "Morgan Stanley", "Citi", "Citibank", "HSBC", "Standard Chartered",
-    "花旗", "滙豐", "渣打", "國泰", "富邦", "玉山", "中信", "台新", "星展", "DBS",
-    # FMCG / pharma / industrial
-    "P&G", "Unilever", "Nestle", "L'Oréal", "Loreal", "Coca-Cola", "Pepsi",
-    "Merck", "MSD", "Pfizer", "Novartis", "Roche", "AstraZeneca", "AZ", "GSK", "Johnson",
-    "Siemens", "GE", "Schneider", "Bosch", "3M", "Dell", "HP", "HPE",
-]
 
-# 用來排序 keyword。不是硬性過濾，而是讓前 80 個比較像商學院 / 分析 / tech-business 出路。
-KEYWORD_PRIORITY_TERMS = [
-    "資料", "數據", "分析", "商業分析", "商務分析", "BI", "Business Intelligence",
-    "產品", "Product", "PM", "專案", "Project", "策略", "Strategy", "經營", "營運",
-    "財務", "FP&A", "金融", "投資", "研究", "顧問", "Consultant", "Consulting",
-    "市場", "行銷", "Growth", "成長", "Business Development", "商務開發",
-    "供應鏈", "採購", "Sourcing", "Purchasing", "Supply Chain",
-    "資料工程", "Data Engineer", "系統分析", "Software", "軟體",
-]
 
-# 明顯太泛或 104 搜尋效益較差的詞，可以降權。
-LOW_VALUE_KEYWORD_TERMS = [
-    "專員", "助理", "儲備幹部", "行政", "客服", "門市", "業務助理",
-]
 
 
 def resolve_existing_file(candidates: Sequence[str]) -> Path:
@@ -239,7 +206,8 @@ def parse_job_list_item(item: Dict, keyword: str) -> Optional[Dict]:
         return None
     job_url = f"https:{link}" if str(link).startswith("//") else str(link)
     job_url = job_url.split("?")[0].rstrip("/")
-    job_no = item.get("jobNo") or job_url.split("/")[-1]
+    # job_no 要從 URL 取英數 ID（e.g. 8955a），不用 jobNo 數字欄位
+    job_no = job_url.split("/")[-1]
     if not job_no:
         return None
 
@@ -296,24 +264,8 @@ def normalize_keyword(keyword: str) -> str:
     return str(keyword or "").strip().replace("，", ",")
 
 
-def keyword_score(keyword: str, mapped_roles_count: int = 0) -> int:
-    text = keyword.lower()
-    score = int(mapped_roles_count or 0)
-    for term in KEYWORD_PRIORITY_TERMS:
-        if term.lower() in text:
-            score += 10
-    for term in LOW_VALUE_KEYWORD_TERMS:
-        if term.lower() in text:
-            score -= 3
-    # 太長的 keyword 通常比較窄，適度降權；短中文主詞通常比較適合當搜尋入口。
-    if len(keyword) <= 6:
-        score += 2
-    elif len(keyword) >= 12:
-        score -= 2
-    return score
 
-
-def load_crawler_keywords(keyword_cap: int = DEFAULT_KEYWORD_CAP, use_all_keywords: bool = False) -> List[str]:
+def load_crawler_keywords() -> List[str]:
     path = resolve_existing_file(KEYWORDS_CSV_CANDIDATES)
     df = pd.read_csv(path, encoding="utf-8-sig").fillna("")
 
@@ -345,24 +297,8 @@ def load_crawler_keywords(keyword_cap: int = DEFAULT_KEYWORD_CAP, use_all_keywor
         keyword_map[kw] = max(keyword_map.get(kw, 0), cnt)
 
     keywords = list(keyword_map.keys())
-    if use_all_keywords or keyword_cap <= 0:
-        return sorted(keywords)
+    return sorted(keywords)
 
-    ranked = sorted(
-        keywords,
-        key=lambda kw: (keyword_score(kw, keyword_map.get(kw, 0)), keyword_map.get(kw, 0), -len(kw), kw),
-        reverse=True,
-    )
-    return ranked[:keyword_cap]
-
-
-def is_high_value_company(job: Dict) -> bool:
-    if bool(job.get("is_foreign")) or bool(job.get("is_listed")):
-        return True
-
-    company = str(job.get("company") or "")
-    company_lower = company.lower()
-    return any(k.lower() in company_lower for k in HIGH_VALUE_COMPANY_KEYWORDS)
 
 
 def fetch_list(keyword: str, max_pages: int, past_days: int) -> List[Dict]:
@@ -487,8 +423,8 @@ def get_existing_detail_job_nos() -> Set[str]:
             params={
                 "select": "job_no",
                 "job_description": "not.is.null",
-                "limit": 1000,
-                "offset": offset,
+                "limit": "1000",
+                "offset": str(offset),
             },
             timeout=30,
         )
@@ -517,7 +453,6 @@ def build_supabase_record(job: Dict) -> Dict:
         "industry": job.get("industry"),
         "is_foreign": job.get("is_foreign"),
         "is_listed": job.get("is_listed"),
-        "job_url": job.get("job_url"),
         "period": job.get("period"),
         "appear_date": job.get("appear_date"),
         "salary_low": job.get("salary_low"),
@@ -528,11 +463,10 @@ def build_supabase_record(job: Dict) -> Dict:
         "scraped_at": now_iso,
     }
 
-    detail_fields = ["skill", "specialty", "work_exp", "edu", "job_description", "job_category", "manage_resp"]
-    for field in detail_fields:
+    # 所有欄位固定輸出，沒值補 None，確保同 batch key 一致
+    for field in ["skill", "specialty", "work_exp", "edu", "job_description", "job_category", "manage_resp"]:
         value = job.get(field)
-        if value not in (None, "", []):
-            record[field] = value
+        record[field] = value if value not in ("", []) else None
 
     return record
 
@@ -583,18 +517,14 @@ def parse_args():
     p.add_argument("--max-pages", type=int, default=DEFAULT_MAX_PAGES, help="每個 keyword 最多抓幾頁；預設 3")
     p.add_argument("--past-days", type=int, default=DEFAULT_PAST_DAYS, help="抓近 N 天職缺；預設 30")
     p.add_argument("--keyword-limit", type=int, default=0, help="測試用，只取前 N 個 keyword；0=依 keyword-cap")
-    p.add_argument("--keyword-cap", type=int, default=DEFAULT_KEYWORD_CAP, help="預設最多使用前 N 個高優先 keyword；0=全部")
-    p.add_argument("--all-keywords", action="store_true", help="使用 CSV 全部 keywords，不做 cap")
     p.add_argument("--skip-detail", action="store_true", help="只抓列表，不補 detail")
-    p.add_argument("--include-all-companies", action="store_true", help="（已棄用，現在預設全部抓取）")
-    p.add_argument("--detail-all", action="store_true", help="對保留下來的所有職缺補 detail；預設已經因高價值公司過濾")
     return p.parse_args()
 
 
 def main() -> None:
     args = parse_args()
 
-    keywords = load_crawler_keywords(keyword_cap=args.keyword_cap, use_all_keywords=args.all_keywords)
+    keywords = load_crawler_keywords()
     if args.keyword_limit and args.keyword_limit > 0:
         keywords = keywords[:args.keyword_limit]
 
