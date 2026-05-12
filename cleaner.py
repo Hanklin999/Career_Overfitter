@@ -285,24 +285,39 @@ def load_role_alias():
 
 
 def load_role_taxonomy():
-    df = pd.read_csv(ROLE_TAXONOMY_PATH, encoding="utf-8-sig")
-    df = df.iloc[:, :3].copy()
-    df.columns = ["job_parent_category", "job_sub_category", "job_skill_name"]
-    df = df.fillna("").drop_duplicates()
+    df = pd.read_csv(ROLE_TAXONOMY_PATH, encoding="utf-8-sig").fillna("")
 
-    role_records = df.to_dict("records")
+    # 支援 3 欄或 4 欄 taxonomy
+    base_cols = ["job_parent_category", "job_sub_category", "job_skill_name"]
+    df = df.copy()
+
+    role_records = df[base_cols].drop_duplicates().to_dict("records")
     role_map, title_index, alias_index = {}, [], []
     role_alias_map = load_role_alias()
 
-    for r in role_records:
-        role = clean_text(r["job_skill_name"])
+    for _, row in df.iterrows():
+        role = clean_text(row.get("job_skill_name"))
+        if not role:
+            continue
+
         role_map[role] = {
-            "job_parent_category": clean_text(r["job_parent_category"]),
-            "job_sub_category": clean_text(r["job_sub_category"]),
+            "job_parent_category": clean_text(row.get("job_parent_category")),
+            "job_sub_category": clean_text(row.get("job_sub_category")),
         }
+
         title_index.append((norm_for_match(role), role))
+
+        # 1) 讀 role_alias.csv
         for alias in role_alias_map.get(role, []):
             alias_index.append((alias, role))
+
+        # 2) 讀 Job_taxonomy_byRole.csv 第四欄：中文職位名稱關鍵字
+        kw_text = row.get("中文職位名稱關鍵字", "")
+        for kw in str(kw_text).split(","):
+            kw_norm = norm_for_match(kw)
+            if kw_norm:
+                alias_index.append((kw_norm, role))
+
     return role_records, role_map, title_index, alias_index
 
 
