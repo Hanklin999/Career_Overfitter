@@ -2,15 +2,13 @@
 # -*- coding: utf-8 -*-
 
 """
-104 高價值職缺市場雷達版
+104 職缺爬蟲（forsearch 版）
 
 設計目標：
-1. 預設只看高價值公司：外商 / 上市上櫃 / 指定公司白名單。
-2. 預設每個 keyword 只抓前 3 頁，避免 261 keywords 全量掃描過慢。
-3. 支援 keyword cap，預設最多取 80 個 keyword。
-4. 支援兩階段爬取：
-   - 先 --skip-detail 快速建立 list market map
-   - 再正常跑，只補尚未有 detail 的 job_no
+1. 使用 Job_taxonomy_forsearch.csv 的 keyword 欄位搜尋。
+2. 每個 keyword 抓 5 頁，全量掃描。
+3. 不限制外商 / 上市上櫃，抓全部職缺。
+4. 先抓所有 keyword 的列表 job_no，全部完成後再去重，再補 detail。
 5. 避免 list-only upsert 把既有 detail 欄位覆蓋成 NULL。
 """
 
@@ -44,8 +42,8 @@ SUPA_HEADERS = {
 
 ROOT = Path(__file__).resolve().parent.parent if Path(__file__).resolve().parent.name == "output" else Path(__file__).resolve().parent
 KEYWORDS_CSV_CANDIDATES = [
-    "crawler_keywords_compressed.csv",
     "Job_taxonomy_forsearch.csv",
+    "crawler_keywords_compressed.csv",
 ]
 
 LIST_API = "https://www.104.com.tw/jobs/search/api/jobs"
@@ -60,26 +58,26 @@ PERIOD_MAP = {
     5: "10+",
 }
 
-# ── 速度設定：高價值市場雷達版 ─────────────────────────────
-DEFAULT_LIST_SLEEP_MIN = 1.5
-DEFAULT_LIST_SLEEP_MAX = 3.5
+# ── 速度設定：forsearch 全量版（安全不被封）──────────────
+DEFAULT_LIST_SLEEP_MIN = 1.0
+DEFAULT_LIST_SLEEP_MAX = 2.0
 
-DEFAULT_DETAIL_SLEEP_MIN = 2.5
-DEFAULT_DETAIL_SLEEP_MAX = 5.5
+DEFAULT_DETAIL_SLEEP_MIN = 1.2
+DEFAULT_DETAIL_SLEEP_MAX = 2.5
 
-DEFAULT_KEYWORD_SLEEP_MIN = 4.0
-DEFAULT_KEYWORD_SLEEP_MAX = 9.0
+DEFAULT_KEYWORD_SLEEP_MIN = 2.5
+DEFAULT_KEYWORD_SLEEP_MAX = 5.0
 
 BATCH_SIZE = 50
-BATCH_SLEEP_MIN = 60.0
-BATCH_SLEEP_MAX = 120.0
+BATCH_SLEEP_MIN = 30.0
+BATCH_SLEEP_MAX = 60.0
 
 DEFAULT_BACKOFF_BASE = 10.0
-DEFAULT_MAX_PAGES = 3
+DEFAULT_MAX_PAGES = 5
 DEFAULT_MAX_RETRIES = 4
 DEFAULT_TIMEOUT = 25
 DEFAULT_PAST_DAYS = 30
-DEFAULT_KEYWORD_CAP = 80
+DEFAULT_KEYWORD_CAP = 0
 
 # 連續假 404 幾次就判定 IP 被封，暫停
 FAKE_404_THRESHOLD = 3
@@ -160,8 +158,7 @@ def is_fake_404(resp: requests.Response) -> bool:
     if resp.status_code != 404:
         return False
     body = resp.text or ""
-    if len(body) < 200:
-        return True
+    # 只有明確含封鎖關鍵字才算假 404，單純短 body 可能只是職缺下架
     if any(kw in body for kw in ["403", "使用者權限", "Forbidden", "Access Denied", "blocked"]):
         return True
     return False
@@ -326,7 +323,8 @@ def load_crawler_keywords(keyword_cap: int = DEFAULT_KEYWORD_CAP, use_all_keywor
             kw = normalize_keyword(row.get("keyword", ""))
             if not kw:
                 continue
-            mapped_roles_count = int(row.get("mapped_roles_count") or 0) if str(row.get("mapped_roles_count") or "").isdigit() else 0
+            raw_cnt = str(row.get("mapped_roles_count") or "")
+            mapped_roles_count = int(raw_cnt) if raw_cnt.isdigit() else 0
             keyword_rows.append((kw, mapped_roles_count))
     elif len(df.columns) >= 4:
         keyword_col = df.columns[3]
@@ -355,8 +353,7 @@ def load_crawler_keywords(keyword_cap: int = DEFAULT_KEYWORD_CAP, use_all_keywor
         key=lambda kw: (keyword_score(kw, keyword_map.get(kw, 0)), keyword_map.get(kw, 0), -len(kw), kw),
         reverse=True,
     )
-    selected = ranked[:keyword_cap]
-    return selected
+    return ranked[:keyword_cap]
 
 
 def is_high_value_company(job: Dict) -> bool:
@@ -589,7 +586,7 @@ def parse_args():
     p.add_argument("--keyword-cap", type=int, default=DEFAULT_KEYWORD_CAP, help="預設最多使用前 N 個高優先 keyword；0=全部")
     p.add_argument("--all-keywords", action="store_true", help="使用 CSV 全部 keywords，不做 cap")
     p.add_argument("--skip-detail", action="store_true", help="只抓列表，不補 detail")
-    p.add_argument("--include-all-companies", action="store_true", help="不要過濾公司；預設只保留外商/上市上櫃/白名單公司")
+    p.add_argument("--include-all-companies", action="store_true", help="（已棄用，現在預設全部抓取）")
     p.add_argument("--detail-all", action="store_true", help="對保留下來的所有職缺補 detail；預設已經因高價值公司過濾")
     return p.parse_args()
 
@@ -605,7 +602,7 @@ def main() -> None:
     print(
         "Scraper start | "
         f"keywords={len(keywords)} | max_pages={args.max_pages} | past_days={args.past_days} | "
-        f"high_value_only={not args.include_all_companies} | skip_detail={args.skip_detail}"
+        f"include_all=True | skip_detail={args.skip_detail}"
     )
     print("=" * 72)
 
@@ -623,10 +620,8 @@ def main() -> None:
     unique_jobs = deduplicate_jobs(all_jobs)
     print(f"list jobs={len(all_jobs)} | unique job_no={len(unique_jobs)}")
 
-    if not args.include_all_companies:
-        before = len(unique_jobs)
-        unique_jobs = [j for j in unique_jobs if is_high_value_company(j)]
-        print(f"high-value company filter: {before} -> {len(unique_jobs)}")
+    # 不做公司過濾，全部職缺都保留
+    print(f"全部職缺（不限公司類型）: {len(unique_jobs)} 筆")
 
     if not args.skip_detail:
         existing_detail_nos = get_existing_detail_job_nos()

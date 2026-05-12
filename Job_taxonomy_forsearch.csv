@@ -1,268 +1,148 @@
-﻿job_parent_category,job_sub_category,job_skill_name,中文職位名稱關鍵字
-Marketing / Brand / Growth,Brand / Campaign Marketing,Marketing Specialist,"行銷專員, 行銷企劃, 行銷管理師, 行銷執行, Marketing專員"
-Marketing / Brand / Growth,Brand / Campaign Marketing,Marketing Associate,"行銷助理, 行銷專員, 初階行銷專員, 行銷企劃助理"
-Marketing / Brand / Growth,Brand / Campaign Marketing,Brand Specialist,"品牌專員, 品牌行銷專員, 品牌企劃, 品牌管理師"
-Marketing / Brand / Growth,Brand / Campaign Marketing,Brand Manager,"品牌經理, 品牌行銷經理, 品牌主管, 品牌管理"
-Marketing / Brand / Growth,Brand / Campaign Marketing,Campaign Specialist,"活動行銷專員, Campaign專員, 行銷活動企劃, 專案行銷專員"
-Marketing / Brand / Growth,Brand / Campaign Marketing,Integrated Marketing Specialist,"整合行銷專員, 整合行銷企劃, IMC專員, 整合行銷管理師"
-Marketing / Brand / Growth,Digital / Performance / Growth,Digital Marketing Specialist,"數位行銷專員, 數位行銷企劃, 線上行銷專員, Digital Marketing專員"
-Marketing / Brand / Growth,Digital / Performance / Growth,Growth Marketing Analyst,"成長行銷分析師, 增長行銷分析師, Growth Marketing分析師, 用戶成長分析師"
-Marketing / Brand / Growth,Digital / Performance / Growth,Performance Marketing Analyst,"成效行銷分析師, 績效行銷分析師, 廣告投放分析師, Performance Marketing分析師"
-Marketing / Brand / Growth,Digital / Performance / Growth,Paid Media Specialist,"媒體投放專員, 付費媒體專員, 廣告投放專員, Paid Media專員"
-Marketing / Brand / Growth,Digital / Performance / Growth,SEO Specialist,"SEO專員, 搜尋引擎優化專員, SEO優化師, SEO行銷專員"
-Marketing / Brand / Growth,Digital / Performance / Growth,SEM Specialist,"SEM專員, 搜尋引擎行銷專員, 關鍵字廣告專員, 搜尋廣告投放專員"
-Marketing / Brand / Growth,Digital / Performance / Growth,SEO/SEM Specialist,"SEO/SEM專員, 搜尋行銷專員, 搜尋引擎行銷專員"
-Marketing / Brand / Growth,CRM / Content / Lifecycle,CRM Specialist,"CRM專員, 顧客關係管理專員, 會員經營專員, CRM管理師"
-Marketing / Brand / Growth,CRM / Content / Lifecycle,CRM Marketing Specialist,"CRM行銷專員, 會員行銷專員, 顧客經營行銷專員"
-Marketing / Brand / Growth,CRM / Content / Lifecycle,Content Marketing Specialist,"內容行銷專員, 內容企劃, 內容行銷企劃, Content Marketing專員"
-Marketing / Brand / Growth,CRM / Content / Lifecycle,Lifecycle Marketing Specialist,"生命週期行銷專員, 用戶生命週期行銷, 會員生命週期行銷"
-Marketing / Brand / Growth,CRM / Content / Lifecycle,Retention Marketing Specialist,"留存行銷專員, 用戶留存行銷, 會員留存行銷, Retention專員"
-Market Research / Consumer Insight,Market Research,Market Research Analyst,"市場研究分析師, 市調分析師, 市場調查分析師, 市場分析師"
-Market Research / Consumer Insight,Market Research,Research Associate,"研究助理, 研究專員, 產業研究員, Research Associate"
-Market Research / Consumer Insight,Market Research,Survey Analyst,"問卷分析師, 調查分析師, 問卷研究員, 市調分析師"
-Market Research / Consumer Insight,Market Research,Consumer Research Analyst,"消費者研究分析師, 消費者洞察分析師, 消費者行為分析師"
-Market Research / Consumer Insight,Consumer / Customer Insight,Consumer Insights Analyst,"消費者洞察分析師, 消費者分析師, 消費者研究分析師"
-Market Research / Consumer Insight,Consumer / Customer Insight,Customer Insights Analyst,"顧客洞察分析師, 客戶洞察分析師, 顧客分析師"
-Market Research / Consumer Insight,Consumer / Customer Insight,User Research Analyst,"使用者研究分析師, 用戶研究員, UX研究員, 使用者洞察分析師"
-Market Research / Consumer Insight,Competitive / Market Intelligence,Competitive Intelligence Analyst,"競品分析師, 競爭情報分析師, 競爭分析師"
-Market Research / Consumer Insight,Competitive / Market Intelligence,Market Intelligence Analyst,"市場情報分析師, 市場洞察分析師, 產業情報分析師"
-Market Research / Consumer Insight,Competitive / Market Intelligence,Industry Research Analyst,"產業研究分析師, 產業分析師, 行業研究員"
-Sales / Business Development / Partnership,Business Development,Business Development Associate,"商務開發專員, 業務開發專員, BD專員, 商業開發專員"
-Sales / Business Development / Partnership,Business Development,Business Development Representative,"業務開發代表, 商務開發代表, BDR, 開發業務"
-Sales / Business Development / Partnership,Business Development,Business Development Manager,"商務開發經理, 業務開發經理, BD經理, 商業開發經理"
-Sales / Business Development / Partnership,Sales / Account Management,Sales Executive,"業務專員, 業務代表, 銷售專員, Sales Executive"
-Sales / Business Development / Partnership,Sales / Account Management,Sales Analyst,"銷售分析師, 業務分析師, Sales分析師"
-Sales / Business Development / Partnership,Sales / Account Management,Account Executive,"客戶業務, 客戶經理, AE, Account Executive, 業務專員"
-Sales / Business Development / Partnership,Sales / Account Management,Account Manager,"客戶經理, 帳戶經理, Account Manager, 業務經理"
-Sales / Business Development / Partnership,Sales / Account Management,Key Account Manager,"大客戶經理, 關鍵客戶經理, KAM, Key Account Manager"
-Sales / Business Development / Partnership,Partnership / Channel / Customer Success,Partnership Manager,"合作夥伴經理, 異業合作經理, 策略合作經理, Partnership Manager"
-Sales / Business Development / Partnership,Partnership / Channel / Customer Success,Strategic Partnerships Analyst,"策略合作分析師, 商務合作分析師, Partnership分析師"
-Sales / Business Development / Partnership,Partnership / Channel / Customer Success,Channel Sales Manager,"通路業務經理, 渠道銷售經理, 通路開發經理"
-Sales / Business Development / Partnership,Partnership / Channel / Customer Success,Customer Success Manager,"客戶成功經理, CSM, Customer Success Manager, 客戶經營經理"
-Product Management,Product Management,Associate Product Manager,"助理產品經理, 初階產品經理, APM, Associate PM"
-Product Management,Product Management,Product Manager,"產品經理, PM, Product Manager"
-Product Management,Product Management,Product Owner,"產品負責人, PO, Product Owner"
-Product Management,Product Management,Software Product Manager,"軟體產品經理, Software PM, 軟體PM"
-Product Management,Product Management,Technical Product Manager,"技術產品經理, Technical PM, 技術PM"
-Product Management,Product Management,Platform Product Manager,"平台產品經理, 平台PM, Platform PM"
-Product Management,Product Operations / Product Strategy,Product Operations Analyst,"產品營運分析師, Product Ops分析師, 產品運營分析師"
-Product Management,Product Operations / Product Strategy,Product Operations Manager,"產品營運經理, Product Ops經理, 產品運營經理"
-Product Management,Product Operations / Product Strategy,Product Strategy Analyst,"產品策略分析師, Product Strategy分析師, 產品企劃分析師"
-Product Management,Product Operations / Product Strategy,Product Analyst,"產品分析師, Product Analyst, 產品數據分析師"
-Product Management,Product Operations / Product Strategy,Growth Product Analyst,"成長產品分析師, Growth Product分析師, 用戶成長產品分析師"
-Product Marketing,Product Marketing,Product Marketing Specialist,"產品行銷專員, Product Marketing專員, PMM專員"
-Product Marketing,Product Marketing,Product Marketing Manager,"產品行銷經理, Product Marketing Manager, PMM"
-Product Marketing,Product Marketing,Solutions Marketing Manager,"解決方案行銷經理, Solution Marketing經理, 方案行銷經理"
-Product Marketing,Go-to-Market,GTM Strategy Analyst,"GTM策略分析師, 上市策略分析師, Go-to-Market分析師"
-Product Marketing,Go-to-Market,Go-to-Market Analyst,"GTM分析師, 上市分析師, 市場進入分析師"
-Product Marketing,Go-to-Market,Go-to-Market Specialist,"GTM專員, 上市策略專員, Go-to-Market專員"
-Product Marketing,Go-to-Market,GTM Manager,"GTM經理, 上市策略經理, Go-to-Market經理"
-Strategy / Corporate Development,Corporate Strategy,Strategy Analyst,"策略分析師, Strategy Analyst, 商業策略分析師"
-Strategy / Corporate Development,Corporate Strategy,Corporate Strategy Analyst,"企業策略分析師, 公司策略分析師, Corporate Strategy分析師"
-Strategy / Corporate Development,Corporate Strategy,Business Strategy Associate,"商業策略專員, Business Strategy Associate, 策略專員"
-Strategy / Corporate Development,Corporate Strategy,Strategic Planning Analyst,"策略規劃分析師, 戰略規劃分析師, Strategic Planning分析師"
-Strategy / Corporate Development,Corporate Development / CEO Office,Corporate Development Analyst,"企業發展分析師, 公司發展分析師, Corp Dev分析師"
-Strategy / Corporate Development,Corporate Development / CEO Office,Chief of Staff Associate,"幕僚專員, 總經理室專員, CEO Office專員, Chief of Staff Associate"
-Strategy / Corporate Development,Corporate Development / CEO Office,CEO Office Analyst,"CEO Office分析師, 總經理室分析師, 經營企劃分析師"
-Strategy / Corporate Development,Business Transformation,Business Transformation Analyst,"企業轉型分析師, 商業轉型分析師, Business Transformation分析師"
-Strategy / Corporate Development,Business Transformation,Strategic Initiatives Analyst,"策略專案分析師, 策略推進分析師, Strategic Initiatives分析師"
-Strategy / Corporate Development,Business Transformation,Business Operations Analyst,"商業營運分析師, Business Operations分析師, BizOps分析師"
-Consulting,Management / Strategy Consulting,Business Analyst,"商業分析師, Business Analyst, BA"
-Consulting,Management / Strategy Consulting,Associate Consultant,"顧問, 助理顧問, 初階顧問, Associate Consultant"
-Consulting,Management / Strategy Consulting,Junior Consultant,"初階顧問, Junior Consultant, 顧問助理"
-Consulting,Management / Strategy Consulting,Management Consultant,"管理顧問, Management Consultant"
-Consulting,Management / Strategy Consulting,Strategy Consultant,"策略顧問, Strategy Consultant"
-Consulting,Management / Strategy Consulting,Business Consultant,"商業顧問, Business Consultant, 企業顧問"
-Consulting,Operations / Process Consulting,Operations Consultant,"營運顧問, Operations Consultant, 運營顧問"
-Consulting,Operations / Process Consulting,Process Improvement Consultant,"流程改善顧問, 流程優化顧問, Process Improvement顧問"
-Consulting,Operations / Process Consulting,Business Transformation Consultant,"企業轉型顧問, Business Transformation顧問, 商業轉型顧問"
-Consulting,Technology / Digital Consulting,Technology Consultant,"科技顧問, 技術顧問, Technology Consultant"
-Consulting,Technology / Digital Consulting,Digital Transformation Consultant,"數位轉型顧問, Digital Transformation顧問, DX顧問"
-Consulting,Technology / Digital Consulting,IT Consultant,"IT顧問, 資訊顧問, 系統顧問"
-Consulting,Technology / Digital Consulting,Business Technology Analyst,"商業科技分析師, Business Technology Analyst, 科技分析師"
-Consulting,Technology / Digital Consulting,Systems Consultant,"系統顧問, Systems Consultant, 資訊系統顧問"
-Consulting,Functional Consulting,Marketing Consultant,"行銷顧問, Marketing Consultant"
-Consulting,Functional Consulting,Human Capital Consultant,"人力資本顧問, HR顧問, Human Capital Consultant"
-Consulting,Functional Consulting,Risk Consultant,"風險顧問, Risk Consultant"
-Consulting,Functional Consulting,Compliance Consultant,"法遵顧問, 合規顧問, Compliance Consultant"
-Consulting,Functional Consulting,ESG Consultant,"ESG顧問, 永續顧問, ESG Consultant"
-Consulting,Functional Consulting,Sustainability Consultant,"永續顧問, Sustainability Consultant, 永續發展顧問"
-Finance / Corporate Finance / FP&A,FP&A / Planning,Financial Analyst,"財務分析師, Financial Analyst, 財務企劃分析師"
-Finance / Corporate Finance / FP&A,FP&A / Planning,Finance Analyst,"財務分析師, Finance Analyst, 財務專員"
-Finance / Corporate Finance / FP&A,FP&A / Planning,FP&A Analyst,"FP&A分析師, 財務規劃分析師, 財務計畫分析師"
-Finance / Corporate Finance / FP&A,FP&A / Planning,Financial Planning Analyst,"財務規劃分析師, Financial Planning分析師, 財務計畫分析師"
-Finance / Corporate Finance / FP&A,FP&A / Planning,Budget Analyst,"預算分析師, Budget Analyst, 預算管理師"
-Finance / Corporate Finance / FP&A,Corporate Finance / Strategic Finance,Corporate Finance Analyst,"企業財務分析師, Corporate Finance分析師, 公司財務分析師"
-Finance / Corporate Finance / FP&A,Corporate Finance / Strategic Finance,Strategic Finance Analyst,"策略財務分析師, Strategic Finance分析師, 財務策略分析師"
-Finance / Corporate Finance / FP&A,Corporate Finance / Strategic Finance,Commercial Finance Analyst,"商業財務分析師, Commercial Finance分析師, 業務財務分析師"
-Finance / Corporate Finance / FP&A,Corporate Finance / Strategic Finance,Treasury Analyst,"資金管理分析師, Treasury分析師, 財資分析師"
-Finance / Corporate Finance / FP&A,Revenue / Pricing / Unit Economics,Revenue Analyst,"營收分析師, Revenue Analyst, 收入分析師"
-Finance / Corporate Finance / FP&A,Revenue / Pricing / Unit Economics,Pricing Analyst,"定價分析師, Pricing Analyst, 價格分析師"
-Finance / Corporate Finance / FP&A,Revenue / Pricing / Unit Economics,Revenue Operations Analyst,"營收營運分析師, RevOps分析師, Revenue Operations分析師"
-Investment / Capital Markets,Investment Banking / Capital Markets,Investment Banking Analyst,"投資銀行分析師, IB Analyst, 投行分析師"
-Investment / Capital Markets,Investment Banking / Capital Markets,Capital Markets Analyst,"資本市場分析師, Capital Markets Analyst"
-Investment / Capital Markets,Investment Banking / Capital Markets,Sales & Trading Analyst,"銷售交易分析師, Sales & Trading分析師, 交易分析師"
-Investment / Capital Markets,Investment Banking / Capital Markets,Trader,"交易員, Trader, 金融交易員"
-Investment / Capital Markets,Investment Research,Equity Research Analyst,"股票研究分析師, Equity Research Analyst, 研究員"
-Investment / Capital Markets,Investment Research,Fixed Income Analyst,"固定收益分析師, 債券分析師, Fixed Income Analyst"
-Investment / Capital Markets,Investment Research,Investment Research Analyst,"投資研究分析師, Investment Research Analyst, 投資分析師"
-Investment / Capital Markets,Investment Research,Credit Research Analyst,"信用研究分析師, Credit Research Analyst, 債信分析師"
-Investment / Capital Markets,Asset Management / Buy-side,Investment Analyst,"投資分析師, Investment Analyst"
-Investment / Capital Markets,Asset Management / Buy-side,Portfolio Analyst,"投資組合分析師, Portfolio Analyst, 資產配置分析師"
-Investment / Capital Markets,Asset Management / Buy-side,Asset Management Analyst,"資產管理分析師, Asset Management Analyst"
-Investment / Capital Markets,Asset Management / Buy-side,Private Equity Analyst,"私募股權分析師, PE Analyst, Private Equity Analyst"
-Investment / Capital Markets,Asset Management / Buy-side,Venture Capital Analyst,"創投分析師, VC Analyst, Venture Capital Analyst"
-Banking / Credit / Wealth,Banking / Credit,Corporate Banking Analyst,"企業金融分析師, Corporate Banking Analyst, 法金分析師"
-Banking / Credit / Wealth,Banking / Credit,Commercial Banking Analyst,"商業銀行分析師, Commercial Banking Analyst, 企金分析師"
-Banking / Credit / Wealth,Banking / Credit,Credit Analyst,"信用分析師, 授信分析師, Credit Analyst"
-Banking / Credit / Wealth,Banking / Credit,Loan Officer,"貸款專員, 授信專員, Loan Officer"
-Banking / Credit / Wealth,Banking / Credit,Underwriting Analyst,"核保分析師, 承銷分析師, Underwriting Analyst"
-Banking / Credit / Wealth,Relationship / Wealth Management,Relationship Manager,"客戶關係經理, RM, Relationship Manager"
-Banking / Credit / Wealth,Relationship / Wealth Management,Wealth Management Associate,"財富管理專員, Wealth Management Associate, 理財專員"
-Banking / Credit / Wealth,Relationship / Wealth Management,Private Banking Associate,"私人銀行專員, Private Banking Associate, 私銀專員"
-Banking / Credit / Wealth,Relationship / Wealth Management,Financial Advisor,"理財顧問, 財務顧問, Financial Advisor"
-Banking / Credit / Wealth,Relationship / Wealth Management,Investment Consultant,"投資顧問, Investment Consultant"
-Banking / Credit / Wealth,Banking Risk,Banking Risk Analyst,"銀行風險分析師, Banking Risk Analyst, 金融風險分析師"
-Banking / Credit / Wealth,Banking Risk,Credit Risk Analyst,"信用風險分析師, Credit Risk Analyst"
-Banking / Credit / Wealth,Banking Risk,Market Risk Analyst,"市場風險分析師, Market Risk Analyst"
-Accounting / Audit / Tax,Accounting,Accountant,"會計, 會計專員, 會計人員, Accountant"
-Accounting / Audit / Tax,Accounting,Accounting Analyst,"會計分析師, 會計管理師, Accounting Analyst, 財會分析師"
-Accounting / Audit / Tax,Accounting,Cost Accountant,"成本會計, 成本會計專員, Cost Accountant"
-Accounting / Audit / Tax,Accounting,Cost Accounting Analyst,"成本會計分析師, 成本分析師, Cost Accounting Analyst"
-Accounting / Audit / Tax,Accounting,Management Accountant,"管理會計, 管理會計專員, Management Accountant"
-Accounting / Audit / Tax,Accounting,Revenue Accountant,"收入會計, 營收會計, Revenue Accountant"
-Accounting / Audit / Tax,Audit / Assurance,Audit Associate,"審計員, 審計助理, 審計專員, Audit Associate"
-Accounting / Audit / Tax,Audit / Assurance,Auditor,"稽核員, 審計員, Auditor"
-Accounting / Audit / Tax,Audit / Assurance,External Auditor,"外部審計員, 外部稽核員, External Auditor"
-Accounting / Audit / Tax,Audit / Assurance,Internal Auditor,"內部稽核, 內稽專員, Internal Auditor"
-Accounting / Audit / Tax,Audit / Assurance,Assurance Associate,"審計專員, 確信服務專員, Assurance Associate"
-Accounting / Audit / Tax,Audit / Assurance,IT Auditor,"IT稽核, 資訊稽核, IT Auditor"
-Accounting / Audit / Tax,Tax / Compliance,Tax Associate,"稅務專員, 稅務助理, Tax Associate"
-Accounting / Audit / Tax,Tax / Compliance,Tax Analyst,"稅務分析師, 稅務管理師, Tax Analyst"
-Accounting / Audit / Tax,Tax / Compliance,Tax Consultant,"稅務顧問, Tax Consultant"
-Accounting / Audit / Tax,Tax / Compliance,Transfer Pricing Analyst,"移轉訂價分析師, 移轉定價分析師, Transfer Pricing Analyst"
-Accounting / Audit / Tax,Tax / Compliance,Compliance Analyst,"法遵分析師, 合規分析師, Compliance Analyst"
-Risk / Insurance / Actuarial,Risk Management,Risk Management Analyst,"風險管理分析師, Risk Management Analyst, 風控分析師"
-Risk / Insurance / Actuarial,Risk Management,Enterprise Risk Analyst,"企業風險分析師, ERM分析師, Enterprise Risk Analyst"
-Risk / Insurance / Actuarial,Risk Management,Operational Risk Analyst,"作業風險分析師, 營運風險分析師, Operational Risk Analyst"
-Risk / Insurance / Actuarial,Risk Management,Financial Risk Analyst,"金融風險分析師, 財務風險分析師, Financial Risk Analyst"
-Risk / Insurance / Actuarial,Risk Management,Market Risk Analyst,"市場風險分析師, Market Risk Analyst"
-Risk / Insurance / Actuarial,Risk Management,Credit Risk Analyst,"信用風險分析師, Credit Risk Analyst"
-Risk / Insurance / Actuarial,Insurance,Insurance Analyst,"保險分析師, 保險商品分析師, Insurance Analyst"
-Risk / Insurance / Actuarial,Insurance,Underwriting Analyst,"核保分析師, 核保人員, Underwriting Analyst"
-Risk / Insurance / Actuarial,Insurance,Claims Analyst,"理賠分析師, 理賠專員, Claims Analyst"
-Risk / Insurance / Actuarial,Insurance,Reinsurance Analyst,"再保險分析師, 再保險專員, Reinsurance Analyst"
-Risk / Insurance / Actuarial,Actuarial,Actuarial Analyst,"精算分析師, 精算人員, Actuarial Analyst"
-Risk / Insurance / Actuarial,Actuarial,Actuary,"精算師, Actuary"
-Risk / Insurance / Actuarial,Actuarial,Pricing Analyst,"定價分析師, 保險定價分析師, Pricing Analyst"
-Risk / Insurance / Actuarial,Actuarial,Reserving Analyst,"準備金分析師, 精算準備金分析師, Reserving Analyst"
-Operations / Supply Chain / Procurement,Business / Strategy Operations,Operations Analyst,"營運分析師, 運營分析師, Operations Analyst, Ops分析師"
-Operations / Supply Chain / Procurement,Business / Strategy Operations,Operations Associate,"營運專員, 運營專員, Operations Associate"
-Operations / Supply Chain / Procurement,Business / Strategy Operations,Operations Manager,"營運經理, 運營經理, Operations Manager"
-Operations / Supply Chain / Procurement,Business / Strategy Operations,Business Operations Analyst,"商業營運分析師, Business Operations Analyst, BizOps分析師"
-Operations / Supply Chain / Procurement,Business / Strategy Operations,Strategy & Operations Analyst,"策略營運分析師, Strategy & Operations Analyst, S&O分析師"
-Operations / Supply Chain / Procurement,Supply Chain / Logistics,Supply Chain Analyst,"供應鏈分析師, Supply Chain Analyst"
-Operations / Supply Chain / Procurement,Supply Chain / Logistics,Logistics Analyst,"物流分析師, Logistics Analyst"
-Operations / Supply Chain / Procurement,Supply Chain / Logistics,Distribution Analyst,"配送分析師, 通路配送分析師, Distribution Analyst"
-Operations / Supply Chain / Procurement,Supply Chain / Logistics,Demand Planner,"需求規劃師, 需求計畫專員, Demand Planner"
-Operations / Supply Chain / Procurement,Supply Chain / Logistics,Inventory Analyst,"庫存分析師, 存貨分析師, Inventory Analyst"
-Operations / Supply Chain / Procurement,Procurement / Sourcing / Vendor,Procurement Analyst,"採購分析師, Procurement Analyst"
-Operations / Supply Chain / Procurement,Procurement / Sourcing / Vendor,Procurement Specialist,"採購專員, Procurement Specialist"
-Operations / Supply Chain / Procurement,Procurement / Sourcing / Vendor,Sourcing Specialist,"尋源專員, 採購開發專員, Sourcing Specialist"
-Operations / Supply Chain / Procurement,Procurement / Sourcing / Vendor,Purchasing Specialist,"採購專員, Purchasing Specialist"
-Operations / Supply Chain / Procurement,Procurement / Sourcing / Vendor,Vendor Manager,"供應商管理經理, 廠商管理經理, Vendor Manager"
-Operations / Supply Chain / Procurement,Program / Project / PMO,Project Manager,"專案經理, Project Manager, PM"
-Operations / Supply Chain / Procurement,Program / Project / PMO,Program Manager,"計畫經理, Program Manager, 專案群經理"
-Operations / Supply Chain / Procurement,Program / Project / PMO,Business Program Manager,"商業專案經理, Business Program Manager"
-Operations / Supply Chain / Procurement,Program / Project / PMO,PMO Analyst,"PMO分析師, 專案管理分析師, 專案管理辦公室分析師"
-Operations / Supply Chain / Procurement,Program / Project / PMO,Operations Excellence Analyst,"營運卓越分析師, 營運優化分析師, Operations Excellence Analyst"
-Analytics / Data / BI,Business Analytics,Business Analyst,"商業分析師, Business Analyst, BA"
-Analytics / Data / BI,Business Analytics,Business Intelligence Analyst,"商業智慧分析師, BI分析師, Business Intelligence Analyst"
-Analytics / Data / BI,Business Analytics,BI Analyst,"BI分析師, 商業智慧分析師"
-Analytics / Data / BI,Business Analytics,Analytics Consultant,"數據分析顧問, 分析顧問, Analytics Consultant"
-Analytics / Data / BI,Business Analytics,Strategy Analyst,"策略分析師, Strategy Analyst"
-Analytics / Data / BI,BI / Reporting,BI Developer,"BI開發工程師, BI Developer, 商業智慧開發工程師"
-Analytics / Data / BI,BI / Reporting,Reporting Analyst,"報表分析師, Reporting Analyst, 數據報表分析師"
-Analytics / Data / BI,BI / Reporting,Dashboard Analyst,"儀表板分析師, Dashboard Analyst, Dashboard開發分析師"
-Analytics / Data / BI,BI / Reporting,Data Visualization Analyst,"資料視覺化分析師, 數據視覺化分析師, Data Visualization Analyst"
-Analytics / Data / BI,Functional Analytics,Product Analyst,"產品分析師, Product Analyst, 產品數據分析師"
-Analytics / Data / BI,Functional Analytics,Marketing Analyst,"行銷分析師, Marketing Analyst, 行銷數據分析師"
-Analytics / Data / BI,Functional Analytics,Operations Analyst,"營運分析師, Operations Analyst, 運營分析師"
-Analytics / Data / BI,Functional Analytics,Financial Data Analyst,"財務數據分析師, Financial Data Analyst"
-Analytics / Data / BI,Functional Analytics,Customer Insights Analyst,"顧客洞察分析師, 客戶洞察分析師, Customer Insights Analyst"
-Data Science / ML,Data Science,Data Scientist,"資料科學家, 數據科學家, Data Scientist"
-Data Science / ML,Data Science,Decision Scientist,"決策科學家, Decision Scientist, 決策分析師"
-Data Science / ML,Data Science,Applied Scientist,"應用科學家, Applied Scientist"
-Data Science / ML,Data Science,Statistical Analyst,"統計分析師, Statistical Analyst"
-Data Science / ML,Data Science,Statistician,"統計師, Statistician"
-Data Science / ML,ML / Forecasting,Machine Learning Analyst,"機器學習分析師, ML分析師, Machine Learning Analyst"
-Data Science / ML,ML / Forecasting,Forecasting Analyst,"預測分析師, Forecasting Analyst, 需求預測分析師"
-Data Science / ML,ML / Forecasting,Predictive Analytics Analyst,"預測分析分析師, Predictive Analytics Analyst, 預測模型分析師"
-Data Science / ML,Quantitative Analytics,Quantitative Analyst,"量化分析師, Quantitative Analyst, Quant Analyst"
-Data Science / ML,Quantitative Analytics,Quantitative Research Analyst,"量化研究分析師, Quantitative Research Analyst"
-Data Science / ML,Quantitative Analytics,Risk Modeling Analyst,"風險模型分析師, Risk Modeling Analyst"
-Data Engineering / Analytics Engineering,Data Engineering,Data Engineer,"資料工程師, 數據工程師, Data Engineer"
-Data Engineering / Analytics Engineering,Data Engineering,Data Pipeline Engineer,"資料管線工程師, 數據管線工程師, Data Pipeline Engineer"
-Data Engineering / Analytics Engineering,Data Engineering,ETL Developer,"ETL開發工程師, ETL工程師, ETL Developer"
-Data Engineering / Analytics Engineering,Analytics Engineering,Analytics Engineer,"分析工程師, Analytics Engineer"
-Data Engineering / Analytics Engineering,Analytics Engineering,BI Engineer,"BI工程師, 商業智慧工程師, BI Engineer"
-Data Engineering / Analytics Engineering,Analytics Engineering,Data Warehouse Analyst,"資料倉儲分析師, 數據倉儲分析師, Data Warehouse Analyst"
-Data Engineering / Analytics Engineering,Database / Data Platform,Database Analyst,"資料庫分析師, Database Analyst"
-Data Engineering / Analytics Engineering,Database / Data Platform,Data Platform Analyst,"資料平台分析師, 數據平台分析師, Data Platform Analyst"
-Data Engineering / Analytics Engineering,Database / Data Platform,Data Operations Analyst,"資料營運分析師, 數據營運分析師, Data Operations Analyst"
-Information Systems / Tech-Business Hybrid,Systems / IT Analysis,System Analyst,"系統分析師, SA, System Analyst"
-Information Systems / Tech-Business Hybrid,Systems / IT Analysis,Business Systems Analyst,"商業系統分析師, Business Systems Analyst, BSA"
-Information Systems / Tech-Business Hybrid,Systems / IT Analysis,IT Business Analyst,"IT商業分析師, IT Business Analyst"
-Information Systems / Tech-Business Hybrid,Systems / IT Analysis,Product Support Analyst,"產品支援分析師, Product Support Analyst, 技術支援分析師"
-Information Systems / Tech-Business Hybrid,ERP / CRM / Implementation,ERP Analyst,"ERP分析師, ERP顧問, ERP系統分析師"
-Information Systems / Tech-Business Hybrid,ERP / CRM / Implementation,CRM Analyst,"CRM分析師, CRM系統分析師"
-Information Systems / Tech-Business Hybrid,ERP / CRM / Implementation,Implementation Consultant,"導入顧問, 系統導入顧問, Implementation Consultant"
-Information Systems / Tech-Business Hybrid,ERP / CRM / Implementation,Solutions Analyst,"解決方案分析師, Solutions Analyst, 方案分析師"
-Information Systems / Tech-Business Hybrid,Solutions / Pre-sales,Solutions Engineer,"解決方案工程師, Solutions Engineer, 售前工程師"
-Information Systems / Tech-Business Hybrid,Solutions / Pre-sales,Solutions Consultant,"解決方案顧問, Solutions Consultant, 售前顧問"
-Information Systems / Tech-Business Hybrid,Solutions / Pre-sales,Sales Engineer,"業務工程師, Sales Engineer, 售前工程師"
-Software / Engineering-adjacent,Software Engineering,Software Engineer,"軟體工程師, Software Engineer, SWE"
-Software / Engineering-adjacent,Software Engineering,Backend Engineer,"後端工程師, Backend Engineer"
-Software / Engineering-adjacent,Software Engineering,Frontend Engineer,"前端工程師, Frontend Engineer"
-Software / Engineering-adjacent,Software Engineering,Full Stack Engineer,"全端工程師, Full Stack Engineer"
-Software / Engineering-adjacent,Quality / Technical Program,QA Analyst,"QA分析師, 品保分析師, 測試分析師"
-Software / Engineering-adjacent,Quality / Technical Program,QA Engineer,"QA工程師, 測試工程師, 品保工程師"
-Software / Engineering-adjacent,Quality / Technical Program,Technical Program Manager,"技術專案經理, TPM, Technical Program Manager"
-Software / Engineering-adjacent,Product / Platform Engineering Adjacent,Product Operations Analyst,"產品營運分析師, Product Ops分析師"
-Software / Engineering-adjacent,Product / Platform Engineering Adjacent,Developer Relations Associate,"開發者關係專員, Developer Relations, DevRel專員"
-Software / Engineering-adjacent,Product / Platform Engineering Adjacent,Technical Support Engineer,"技術支援工程師, Technical Support Engineer, 客服工程師"
-Human Resources / Talent,HR / People Operations,HR Specialist,"人資專員, HR專員, Human Resources Specialist"
-Human Resources / Talent,HR / People Operations,HR Analyst,"人資分析師, HR分析師, Human Resources Analyst"
-Human Resources / Talent,HR / People Operations,HR Business Partner,"HRBP, 人資夥伴, HR Business Partner"
-Human Resources / Talent,HR / People Operations,People Operations Analyst,"People Ops分析師, 人員營運分析師, 人資營運分析師"
-Human Resources / Talent,HR / People Operations,People Analyst,"人員分析師, People Analyst, 人資數據分析師"
-Human Resources / Talent,Talent Acquisition / Recruiting,Talent Acquisition Specialist,"招募專員, 人才招募專員, Talent Acquisition Specialist"
-Human Resources / Talent,Talent Acquisition / Recruiting,Recruiter,"招募顧問, 招募專員, Recruiter"
-Human Resources / Talent,Talent Acquisition / Recruiting,Headhunter,"獵頭, 獵才顧問, Headhunter"
-Human Resources / Talent,Talent Acquisition / Recruiting,Executive Search Associate,"高階獵才顧問, Executive Search Associate, 獵才專員"
-Human Resources / Talent,Talent Acquisition / Recruiting,Recruitment Consultant,"招募顧問, Recruitment Consultant, 獵才顧問"
-Human Resources / Talent,Compensation / Learning,Compensation & Benefits Analyst,"薪酬福利分析師, C&B分析師, 薪資福利分析師"
-Human Resources / Talent,Compensation / Learning,Learning & Development Specialist,"學習發展專員, 訓練發展專員, L&D專員"
-Human Resources / Talent,Compensation / Learning,Organizational Development Analyst,"組織發展分析師, OD分析師, Organizational Development Analyst"
-General Management / Leadership Programs,Management Trainee / Graduate Program,Management Trainee,"儲備幹部, 管理培訓生, MT, Management Trainee"
-General Management / Leadership Programs,Management Trainee / Graduate Program,Graduate Trainee,"畢業生培訓計畫, Graduate Trainee, 儲備人才"
-General Management / Leadership Programs,Management Trainee / Graduate Program,Leadership Development Program Analyst,"領導力發展計畫分析師, LDP Analyst, 儲備主管計畫"
-General Management / Leadership Programs,Management Trainee / Graduate Program,Rotational Program Associate,"輪調計畫專員, Rotational Program Associate, 儲備輪調專員"
-General Management / Leadership Programs,General Management / Business Leadership,General Management Associate,"綜合管理專員, General Management Associate, 經營管理專員"
-General Management / Leadership Programs,General Management / Business Leadership,Business Management Associate,"商業管理專員, Business Management Associate"
-General Management / Leadership Programs,General Management / Business Leadership,Assistant Manager,"副理, 助理經理, Assistant Manager"
-General Management / Leadership Programs,Project / Program Management,Project Manager,"專案經理, PM, Project Manager"
-General Management / Leadership Programs,Project / Program Management,Program Manager,"計畫經理, Program Manager, 專案群經理"
-General Management / Leadership Programs,Project / Program Management,Business Program Manager,"商業專案經理, Business Program Manager"
-Entrepreneurship / Venture,Startup / Venture Building,Founder,"創辦人, 共同創辦人, Founder, Co-founder"
-Entrepreneurship / Venture,Startup / Venture Building,Entrepreneur in Residence,"駐站創業家, EIR, Entrepreneur in Residence"
-Entrepreneurship / Venture,Startup / Venture Building,Venture Builder,"創業建構者, Venture Builder, 新創孵化專員"
-Entrepreneurship / Venture,Startup / Venture Building,Startup Operations Associate,"新創營運專員, Startup Operations Associate, 新創運營專員"
-Entrepreneurship / Venture,Growth / Early-stage Ops,Growth Associate,"成長專員, Growth Associate, 增長專員"
-Entrepreneurship / Venture,Growth / Early-stage Ops,Business Operations Associate,"商業營運專員, BizOps專員, Business Operations Associate"
-Entrepreneurship / Venture,Growth / Early-stage Ops,Strategy Associate,"策略專員, Strategy Associate"
-Entrepreneurship / Venture,Venture / Startup Investment,Investment Associate,"投資專員, Investment Associate, 投資經理"
-Entrepreneurship / Venture,Venture / Startup Investment,Venture Capital Analyst,"創投分析師, VC分析師, Venture Capital Analyst"
-Entrepreneurship / Venture,Venture / Startup Investment,Startup Investment Analyst,"新創投資分析師, Startup Investment Analyst, 創投投資分析師"
-Testing,TestingEng,Backend Engineer,"Backend Engineer, 後端工程師"
-Testing,TestingBI,Business Analyst,"商業分析師, Business Analyst, BA"
+﻿job_category,keyword
+Marketing / Brand / Growth,行銷
+Marketing / Brand / Growth,品牌
+Marketing / Brand / Growth,廣告
+Marketing / Brand / Growth,數位
+Marketing / Brand / Growth,整合
+Marketing / Brand / Growth,Marketing
+Marketing / Brand / Growth,Brand
+Marketing / Brand / Growth,Digital
+Market Research / Consumer Insight,市場
+Market Research / Consumer Insight,市調
+Market Research / Consumer Insight,消費者
+Market Research / Consumer Insight,顧客
+Market Research / Consumer Insight,Consumer
+Market Research / Consumer Insight,Market Research
+Market Research / Consumer Insight,Market Analyst
+Sales / Business Development,業務
+Sales / Business Development,商務開發
+Sales / Business Development,通路開發
+Sales / Business Development,Sales
+Sales / Business Development,Business Development
+Product Management,產品經理
+Product Management,PM
+Product Management,Product Manager
+Product Management,Product Analyst
+Product Management,Product Operations
+Strategy & Consulting,管理顧問
+Strategy & Consulting,策略顧問
+Strategy & Consulting,商業顧問
+Strategy & Consulting,數位轉型
+Strategy & Consulting,Consulting
+Strategy & Consulting,策略
+Strategy & Consulting,策略分析
+Strategy & Consulting,Strategy
+Finance / Corporate Finance / FP&A,財務分析
+Finance / Corporate Finance / FP&A,財務規劃
+Finance / Corporate Finance / FP&A,預算
+Finance / Corporate Finance / FP&A,成本分析
+Finance / Corporate Finance / FP&A,FP&A
+Finance / Corporate Finance / FP&A,策略財務
+Finance / Corporate Finance / FP&A,Corporate Finance
+Finance / Corporate Finance / FP&A,Strategic Finance
+Investment / Capital Markets,投資研究
+Investment / Capital Markets,投資分析
+Investment / Capital Markets,資本市場
+Investment / Capital Markets,資產管理
+Investment / Capital Markets,IBD
+Investment / Capital Markets,M&A
+Investment / Capital Markets,投資研究員
+Investment / Capital Markets,Investment
+Investment / Capital Markets,Financial Analyst
+Investment / Capital Markets,Equity Research
+Banking / Credit / Wealth,理財
+Banking / Credit / Wealth,財富管理
+Banking / Credit / Wealth,授信
+Banking / Credit / Wealth,信用分析
+Banking / Credit / Wealth,客戶關係
+Banking / Credit / Wealth,金融
+Banking / Credit / Wealth,Banking
+Banking / Credit / Wealth,Credit Analyst
+Banking / Credit / Wealth,RM
+Accounting / Audit / Tax,會計
+Accounting / Audit / Tax,審計
+Accounting / Audit / Tax,稽核
+Accounting / Audit / Tax,稅務
+Accounting / Audit / Tax,財務會計
+Accounting / Audit / Tax,Accounting
+Accounting / Audit / Tax,Audit
+Accounting / Audit / Tax,Tax
+Accounting / Audit / Tax,Auditor
+Accounting / Audit / Tax,Accountant
+Risk / Insurance / Actuarial,風險管理
+Risk / Insurance / Actuarial,風控
+Risk / Insurance / Actuarial,核保
+Risk / Insurance / Actuarial,理賠
+Risk / Insurance / Actuarial,保險
+Risk / Insurance / Actuarial,精算
+Risk / Insurance / Actuarial,Risk
+Risk / Insurance / Actuarial,Actuarial
+Operations / Supply Chain / Procurement,營運
+Operations / Supply Chain / Procurement,供應鏈
+Operations / Supply Chain / Procurement,物流
+Operations / Supply Chain / Procurement,採購
+Operations / Supply Chain / Procurement,Operations
+Operations / Supply Chain / Procurement,Supply Chain
+Operations / Supply Chain / Procurement,Procurement
+Operations / Supply Chain / Procurement,Logistics
+Operations / Supply Chain / Procurement,Inventory
+Analytics / Data / BI,資料分析
+Analytics / Data / BI,商業分析
+Analytics / Data / BI,BI
+Analytics / Data / BI,數據分析
+Analytics / Data / BI,營運分析
+Analytics / Data / BI,產品分析
+Analytics / Data / BI,商業智慧
+Analytics / Data / BI,Data Analyst
+Analytics / Data / BI,Business Intelligence
+Analytics / Data / BI,Business Analyst
+Data Science / ML,資料科學
+Data Science / ML,機器學習
+Data Science / ML,深度學習
+Data Science / ML,統計分析
+Data Science / ML,量化分析
+Data Science / ML,Data Scientist
+Data Science / ML,Machine Learning
+Data Science / ML,Predictive Analytics
+Data Engineering / Analytics Engineering,資料工程
+Data Engineering / Analytics Engineering,ETL
+Data Engineering / Analytics Engineering,資料倉儲
+Data Engineering / Analytics Engineering,BI工程
+Data Engineering / Analytics Engineering,大數據工程
+Data Engineering / Analytics Engineering,Algorithm
+Data Engineering / Analytics Engineering,Data Engineer
+Data Engineering / Analytics Engineering,Data Warehouse
+Data Engineering / Analytics Engineering,BI Engineer
+Information Systems / Tech-Business Hybrid,系統分析
+Information Systems / Tech-Business Hybrid,資訊系統
+Information Systems / Tech-Business Hybrid,資訊管理
+Information Systems / Tech-Business Hybrid,商業系統
+Information Systems / Tech-Business Hybrid,ERP
+Information Systems / Tech-Business Hybrid,CRM
+Information Systems / Tech-Business Hybrid,MIS
+Information Systems / Tech-Business Hybrid,Systems Analyst
+Human Resources / Talent,人資
+Human Resources / Talent,人力資源
+Human Resources / Talent,招募
+Human Resources / Talent,HRBP
+Human Resources / Talent,人事
+Human Resources / Talent,獵頭顧問
+Human Resources / Talent,HR
+Human Resources / Talent,Talent Acquisition
+Human Resources / Talent,Recruiter
+Human Resources / Talent,Headhunter
+General Management / Leadership Programs,儲備幹部
+General Management / Leadership Programs,輪調計畫
+General Management / Leadership Programs,經營管理
+General Management / Leadership Programs,管理人才
+General Management / Leadership Programs,策略規劃
+General Management / Leadership Programs,Graduate Trainee
+General Management / Leadership Programs,Management Trainee
+General Management / Leadership Programs,Leadership
+General Management / Leadership Programs,Management Program
+Entrepreneurship / Venture,新創
+Entrepreneurship / Venture,創投
+Entrepreneurship / Venture,VC
+Entrepreneurship / Venture,孵化
+Entrepreneurship / Venture,Venture
+Entrepreneurship / Venture,Startup
