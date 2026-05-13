@@ -94,11 +94,11 @@ industry_parent_all = sorted({
     if r.get("industry_bucket")
 })
 
-def get_role_subcategories(parent):
+def get_industry_subcategories(parent):
     return sorted({
-        r.get("job_sub_category")
+        r.get("industry_raw")
         for r in rows
-        if r.get("job_parent_category") == parent and r.get("job_sub_category")
+        if r.get("industry_bucket") == parent and r.get("industry_raw")
     })
 
 def get_industry_subcategories(parent):
@@ -281,90 +281,225 @@ with tab2:
 with tab3:
     st.markdown('<div class="sec-title">跨產業技能比較</div>', unsafe_allow_html=True)
 
+    # 第一行：職能篩選
     r1, r2 = st.columns(2)
     with r1:
-        role_parent_3 = st.selectbox("職能大類", ["全部"] + role_parent_all, key="t3_role_parent")
+        role_parent_3 = st.selectbox(
+            "職能大類",
+            ["全部"] + role_parent_all,
+            key="t3_role_parent"
+        )
     with r2:
-        role_sub_options_3 = ["全部"] if role_parent_3 == "全部" else ["全部"] + get_role_subcategories(role_parent_3)
-        role_sub_3 = st.selectbox("職能中類", role_sub_options_3, key="t3_role_sub", disabled=(role_parent_3 == "全部"))
+        role_sub_options_3 = (
+            ["全部"]
+            if role_parent_3 == "全部"
+            else ["全部"] + get_role_subcategories(role_parent_3)
+        )
+        role_sub_3 = st.selectbox(
+            "職能中類",
+            role_sub_options_3,
+            key="t3_role_sub",
+            disabled=(role_parent_3 == "全部")
+        )
 
+    # 第二行：產業 A / B 篩選
     d1, d2, d3, d4 = st.columns(4)
+
     with d1:
-        ind_parent_a = st.selectbox("產業 A（大類）", ["全部"] + industry_parent_all, key="t3_ind_parent_a")
+        ind_parent_a = st.selectbox(
+            "產業 A（大類）",
+            ["全部"] + industry_parent_all,
+            key="t3_ind_parent_a"
+        )
+
     with d2:
-        ind_sub_options_a = ["全部"]
-        ia = st.selectbox("產業 A（子類）", ind_sub_options_a, key="t3_a")
+        ind_sub_options_a = (
+            ["全部"]
+            if ind_parent_a == "全部"
+            else ["全部"] + get_industry_subcategories(ind_parent_a)
+        )
+        ind_sub_a = st.selectbox(
+            "產業 A（子類）",
+            ind_sub_options_a,
+            key="t3_ind_sub_a",
+            disabled=(ind_parent_a == "全部")
+        )
+
     with d3:
-        ind_parent_b = st.selectbox("產業 B（大類）", ["全部"] + industry_parent_all, key="t3_ind_parent_b")
+        ind_parent_b = st.selectbox(
+            "產業 B（大類）",
+            ["全部"] + industry_parent_all,
+            key="t3_ind_parent_b"
+        )
+
     with d4:
-        ind_sub_options_b = ["全部"]
-        ib = st.selectbox("產業 B（子類）", ind_sub_options_b, key="t3_b")
+        ind_sub_options_b = (
+            ["全部"]
+            if ind_parent_b == "全部"
+            else ["全部"] + get_industry_subcategories(ind_parent_b)
+        )
+        ind_sub_b = st.selectbox(
+            "產業 B（子類）",
+            ind_sub_options_b,
+            key="t3_ind_sub_b",
+            disabled=(ind_parent_b == "全部")
+        )
+
     tn3 = st.slider("Top N 共同技能", 10, 40, 20, 5, key="t3_topn")
 
-    def filter_rows(ind, role_parent, role_sub):
-        return [r for r in rows
-                if (ind == "全部" or r.get("industry_bucket") == ind)
-                and (role_parent == "全部" or r.get("job_parent_category") == role_parent)
-                and (role_sub == "全部" or r.get("job_sub_category") == role_sub)]
+    def filter_rows(ind_parent, ind_sub, role_parent, role_sub):
+        return [
+            r for r in rows
+            if (ind_parent == "全部" or r.get("industry_bucket") == ind_parent)
+            and (ind_sub == "全部" or r.get("industry_raw") == ind_sub)
+            and (role_parent == "全部" or r.get("job_parent_category") == role_parent)
+            and (role_sub == "全部" or r.get("job_sub_category") == role_sub)
+        ]
 
-    ra3 = filter_rows(ia, role_parent_3, role_sub_3); rb3 = filter_rows(ib, role_parent_3, role_sub_3)
-    fa3 = skill_freq(ra3);      fb3 = skill_freq(rb3)
-    st.caption(f"{ia}：{len(ra3)} 筆 ｜ {ib}：{len(rb3)} 筆")
+    ra3 = filter_rows(ind_parent_a, ind_sub_a, role_parent_3, role_sub_3)
+    rb3 = filter_rows(ind_parent_b, ind_sub_b, role_parent_3, role_sub_3)
 
-    # Dumbbell
+    fa3 = skill_freq(ra3)
+    fb3 = skill_freq(rb3)
+
+    label_a = f"{ind_parent_a} / {ind_sub_a}" if ind_sub_a != "全部" else ind_parent_a
+    label_b = f"{ind_parent_b} / {ind_sub_b}" if ind_sub_b != "全部" else ind_parent_b
+
+    st.caption(f"{label_a}：{len(ra3)} 筆 ｜ {label_b}：{len(rb3)} 筆")
+
     common = set(fa3) & set(fb3)
-    c_data = sorted([(s, fa3[s], fb3[s]) for s in common], key=lambda x: x[1]+x[2], reverse=True)[:tn3]
+    c_data = sorted(
+        [(s, fa3[s], fb3[s]) for s in common],
+        key=lambda x: x[1] + x[2],
+        reverse=True
+    )[:tn3]
 
     if c_data:
-        sn = [x[0] for x in c_data]; fx = [x[1] for x in c_data]; fy = [x[2] for x in c_data]
+        sn = [x[0] for x in c_data]
+        fx = [x[1] for x in c_data]
+        fy = [x[2] for x in c_data]
+
         fig3 = go.Figure()
+
         for i in range(len(sn)):
             fig3.add_trace(go.Scatter(
-                x=[fx[i], fy[i]], y=[sn[i], sn[i]], mode="lines",
-                line=dict(color="#d1d5db", width=2), showlegend=False, hoverinfo="skip",
+                x=[fx[i], fy[i]],
+                y=[sn[i], sn[i]],
+                mode="lines",
+                line=dict(color="#d1d5db", width=2),
+                showlegend=False,
+                hoverinfo="skip",
             ))
-        fig3.add_trace(go.Scatter(x=fx, y=sn, mode="markers",
-            marker=dict(color="#1e3a5f", size=11), name=ia))
-        fig3.add_trace(go.Scatter(x=fy, y=sn, mode="markers",
-            marker=dict(color="#6b5b4e", size=11), name=ib))
+
+        fig3.add_trace(go.Scatter(
+            x=fx,
+            y=sn,
+            mode="markers",
+            marker=dict(color="#1e3a5f", size=11),
+            name=label_a
+        ))
+
+        fig3.add_trace(go.Scatter(
+            x=fy,
+            y=sn,
+            mode="markers",
+            marker=dict(color="#6b5b4e", size=11),
+            name=label_b
+        ))
+
         fig3.update_layout(
             **LAYOUT_BASE,
-            height=max(400, len(sn)*22),
-            xaxis=dict(title="Frequency", tickformat=".0%", color="#555",
-                       showgrid=True, gridcolor="#f0ede8"),
-            yaxis=dict(autorange="reversed", tickfont=dict(size=11, color="#111"), showgrid=False),
-            legend=dict(orientation="h", y=1.06, font=dict(size=12)),
+            height=max(400, len(sn) * 22),
+            xaxis=dict(
+                title="Frequency",
+                tickformat=".0%",
+                color="#555",
+                showgrid=True,
+                gridcolor="#f0ede8"
+            ),
+            yaxis=dict(
+                autorange="reversed",
+                tickfont=dict(size=11, color="#111"),
+                showgrid=False
+            ),
+            legend=dict(
+                orientation="h",
+                y=1.06,
+                font=dict(size=12)
+            ),
         )
+
         st.plotly_chart(fig3, use_container_width=True)
     else:
         st.info("兩個產業無共同技能")
 
-    # Unique skills
     st.markdown("---")
-    oa = sorted(set(fa3)-set(fb3), key=lambda s: fa3[s], reverse=True)
-    ob = sorted(set(fb3)-set(fa3), key=lambda s: fb3[s], reverse=True)
+
+    oa = sorted(set(fa3) - set(fb3), key=lambda s: fa3[s], reverse=True)
+    ob = sorted(set(fb3) - set(fa3), key=lambda s: fb3[s], reverse=True)
+
     u1, u2 = st.columns(2)
+
     with u1:
-        st.markdown(f"**{ia} only**")
+        st.markdown(f"**{label_a} only**")
         if oa:
-            st.dataframe(pd.DataFrame([{"Skill":s,"Freq":f"{fa3[s]:.1%}","Category":skill_to_parent.get(s,"")} for s in oa[:20]]),
-                use_container_width=True, hide_index=True, height=350)
-        else: st.info("無獨有技能")
+            st.dataframe(
+                pd.DataFrame([
+                    {
+                        "Skill": s,
+                        "Freq": f"{fa3[s]:.1%}",
+                        "Category": skill_to_parent.get(s, "")
+                    }
+                    for s in oa[:20]
+                ]),
+                use_container_width=True,
+                hide_index=True,
+                height=350
+            )
+        else:
+            st.info("無獨有技能")
+
     with u2:
-        st.markdown(f"**{ib} only**")
+        st.markdown(f"**{label_b} only**")
         if ob:
-            st.dataframe(pd.DataFrame([{"Skill":s,"Freq":f"{fb3[s]:.1%}","Category":skill_to_parent.get(s,"")} for s in ob[:20]]),
-                use_container_width=True, hide_index=True, height=350)
-        else: st.info("無獨有技能")
+            st.dataframe(
+                pd.DataFrame([
+                    {
+                        "Skill": s,
+                        "Freq": f"{fb3[s]:.1%}",
+                        "Category": skill_to_parent.get(s, "")
+                    }
+                    for s in ob[:20]
+                ]),
+                use_container_width=True,
+                hide_index=True,
+                height=350
+            )
+        else:
+            st.info("無獨有技能")
 
     if c_data:
         st.markdown("---")
         st.markdown("**共同技能完整表**")
-        st.dataframe(pd.DataFrame([{
-            "Skill":s, f"{ia} freq":f"{fa:.1%}", f"{ib} freq":f"{fb:.1%}",
-            "Δ":f"{abs(fa-fb):.1%}", "Category":skill_to_parent.get(s,""),
-        } for s, fa, fb in sorted([(s,fa3[s],fb3[s]) for s in common], key=lambda x: x[1]+x[2], reverse=True)]),
-        use_container_width=True, hide_index=True, height=350)
+        st.dataframe(
+            pd.DataFrame([
+                {
+                    "Skill": s,
+                    f"{label_a} freq": f"{fa:.1%}",
+                    f"{label_b} freq": f"{fb:.1%}",
+                    "Δ": f"{abs(fa - fb):.1%}",
+                    "Category": skill_to_parent.get(s, ""),
+                }
+                for s, fa, fb in sorted(
+                    [(s, fa3[s], fb3[s]) for s in common],
+                    key=lambda x: x[1] + x[2],
+                    reverse=True
+                )
+            ]),
+            use_container_width=True,
+            hide_index=True,
+            height=350
+        )
 
 # ── Tab 4 ─────────────────────────────────────────────────
 with tab4:
