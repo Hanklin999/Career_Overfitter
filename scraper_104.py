@@ -44,6 +44,43 @@ SUPA_HEADERS = {
 ROOT = Path(__file__).resolve().parent
 KEYWORDS_CSV = "Job_taxonomy_forsearch.csv"
 
+
+def resolve_keywords_csv() -> Path:
+    """
+    嚴格只找 Job_taxonomy_forsearch.csv。
+    不 fallback 到任何其他 keyword 檔。
+    會依序搜尋：
+    1. 執行當下工作目錄
+    2. scraper_104.py 所在目錄
+    3. scraper_104.py 的父層
+    4. GitHub Actions repository root
+    """
+    candidates = [
+        Path.cwd() / KEYWORDS_CSV,
+        ROOT / KEYWORDS_CSV,
+        ROOT.parent / KEYWORDS_CSV,
+    ]
+
+    github_workspace = os.environ.get("GITHUB_WORKSPACE")
+    if github_workspace:
+        candidates.append(Path(github_workspace) / KEYWORDS_CSV)
+
+    seen = set()
+    for p in candidates:
+        p = p.resolve()
+        if p in seen:
+            continue
+        seen.add(p)
+
+        if p.exists():
+            print(f"📌 keyword file resolved = {p}")
+            return p
+
+    checked = "\n".join(str(p.resolve()) for p in candidates)
+    raise FileNotFoundError(
+        f"找不到 {KEYWORDS_CSV}。本爬蟲只允許使用這個 keyword 檔，不會 fallback。\nChecked paths:\n{checked}"
+    )
+
 LIST_API = "https://www.104.com.tw/jobs/search/api/jobs"
 DETAIL_API_TPL = "https://www.104.com.tw/job/ajax/content/%s"
 
@@ -261,18 +298,17 @@ def normalize_keyword(value: object) -> str:
 
 
 def load_crawler_keywords() -> List[str]:
-    path = ROOT / KEYWORDS_CSV
-    if not path.exists():
-        raise FileNotFoundError(f"找不到 keyword 檔案：{path}")
-
+    path = resolve_keywords_csv()
     df = pd.read_csv(path, encoding="utf-8-sig").fillna("")
 
+    # 嚴格優先使用檔案內的 keyword 欄位；若沒有，才使用第 4 欄。
+    # 注意：仍然只讀 Job_taxonomy_forsearch.csv，不讀任何其他檔。
     if "keyword" in df.columns:
         keyword_col = "keyword"
     elif len(df.columns) >= 4:
         keyword_col = df.columns[3]
     else:
-        raise ValueError(f"{KEYWORDS_CSV} 欄位不足，無法辨識 keyword 欄位")
+        raise ValueError(f"{path.name} 欄位不足，無法辨識 keyword 欄位")
 
     keywords = set()
     for _, row in df.iterrows():
@@ -286,7 +322,10 @@ def load_crawler_keywords() -> List[str]:
                 keywords.add(kw)
 
     result = sorted(keywords)
-    print(f"📌 keyword source = {KEYWORDS_CSV} | unique keywords = {len(result)}")
+    print(f"📌 keyword source = {path.name}")
+    print(f"📌 keyword column = {keyword_col}")
+    print(f"📌 unique keywords = {len(result)}")
+    print(f"📌 first 10 keywords = {result[:10]}")
     return result
 
 
