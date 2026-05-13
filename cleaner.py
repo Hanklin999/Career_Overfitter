@@ -516,7 +516,7 @@ def try_rule_role(job):
             f"fuzzy title: {best_score:.3f}"
         )
 
-    return None, None, None, 0.0, "rule no confident match"
+    return None, None, None, 0.0, "rule no confident match" 
 
 
 def try_rule_skills(job):
