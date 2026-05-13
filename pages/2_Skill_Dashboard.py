@@ -82,6 +82,46 @@ rows = load_postings()
 roles_all      = sorted({r.get("role_normalized") for r in rows if r.get("role_normalized") and r.get("role_normalized") != "Unclassified"})
 industries_all = sorted({r.get("industry_bucket") for r in rows if r.get("industry_bucket")})
 
+role_parent_all = sorted({
+    r.get("job_parent_category")
+    for r in rows
+    if r.get("job_parent_category")
+})
+
+industry_parent_all = sorted({
+    r.get("industry_bucket")
+    for r in rows
+    if r.get("industry_bucket")
+})
+
+def get_role_subcategories(parent):
+    return sorted({
+        r.get("job_sub_category")
+        for r in rows
+        if r.get("job_parent_category") == parent and r.get("job_sub_category")
+    })
+
+def get_industry_subcategories(parent):
+    return sorted({
+        r.get("industry_raw")
+        for r in rows
+        if r.get("industry_bucket") == parent and r.get("industry_raw")
+    })
+
+def filter_by_role_parent_sub(data_rows, parent, sub):
+    return [
+        r for r in data_rows
+        if (parent == "全部" or r.get("job_parent_category") == parent)
+        and (sub == "全部" or r.get("job_sub_category") == sub)
+    ]
+
+def filter_by_industry_parent_sub(data_rows, parent, sub):
+    return [
+        r for r in data_rows
+        if (parent == "全部" or r.get("industry_bucket") == parent)
+        and (sub == "全部" or r.get("industry_raw") == sub)
+    ]
+
 def count_skills(job_rows):
     counter = defaultdict(int)
     for r in job_rows:
@@ -171,38 +211,69 @@ with tab1:
 
 # ── Tab 2 ─────────────────────────────────────────────────
 with tab2:
-    st.markdown('<div class="sec-title">選定產業 / 職能，查看技能需求分布</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="sec-title">選定產業 / 職能，查看技能需求分布</div>',
+        unsafe_allow_html=True
+    )
 
     f1, f2, f3, f4 = st.columns(4)
+
     with f1:
         si2 = st.selectbox("產業", ["全部"] + industries_all, key="t2_ind")
+
     with f2:
-        role_parent_2 = st.selectbox("職能大類", ["全部"] + role_parent_all, key="t2_role_parent")
+        role_parent_2 = st.selectbox(
+            "職能大類",
+            ["全部"] + role_parent_all,
+            key="t2_role_parent"
+        )
+
     with f3:
-        role_sub_options_2 = ["全部"] if role_parent_2 == "全部" else ["全部"] + get_role_subcategories(role_parent_2)
-        role_sub_2 = st.selectbox("職能中類", role_sub_options_2, key="t2_role_sub", disabled=(role_parent_2 == "全部"))
+        role_sub_options_2 = (
+            ["全部"]
+            if role_parent_2 == "全部"
+            else ["全部"] + get_role_subcategories(role_parent_2)
+        )
+        role_sub_2 = st.selectbox(
+            "職能中類",
+            role_sub_options_2,
+            key="t2_role_sub",
+            disabled=(role_parent_2 == "全部")
+        )
+
     with f4:
         thr = st.slider("Frequency threshold", 0.0, 0.5, 0.05, 0.01, key="t2_thr")
+
     tn2 = st.slider("Top N 技能", 10, 50, 20, 5, key="t2_topn")
 
-    f2r = [r for r in rows if (si2 == "全部" or r.get("industry_bucket") == si2)
-                            and (role_parent_2 == "全部" or r.get("job_parent_category") == role_parent_2)
-                            and (role_sub_2 == "全部" or r.get("job_sub_category") == role_sub_2)]
+    f2r = [
+        r for r in rows
+        if (si2 == "全部" or r.get("industry_bucket") == si2)
+        and (role_parent_2 == "全部" or r.get("job_parent_category") == role_parent_2)
+        and (role_sub_2 == "全部" or r.get("job_sub_category") == role_sub_2)
+    ]
+
     st.caption(f"符合職缺：{len(f2r)} 筆")
 
     freq2 = {s: f for s, f in skill_freq(f2r).items() if f >= thr}
-    top2  = sorted(freq2.items(), key=lambda x: x[1], reverse=True)[:tn2]
+    top2 = sorted(freq2.items(), key=lambda x: x[1], reverse=True)[:tn2]
 
     if top2:
-        sk2 = [x[0] for x in top2]; vl2 = [round(x[1],3) for x in top2]
-        cl2 = [cat_color.get(skill_to_parent.get(s,""),"#888") for s in sk2]
+        sk2 = [x[0] for x in top2]
+        vl2 = [round(x[1], 3) for x in top2]
+        cl2 = [cat_color.get(skill_to_parent.get(s, ""), "#888") for s in sk2]
+
         st.markdown(legend_html(sk2), unsafe_allow_html=True)
         st.plotly_chart(
-            bar_chart(sk2, vl2, cl2, x_title="Frequency（出現率）",
-                      text_vals=[f"{v:.0%}" for v in vl2]),
+            bar_chart(
+                sk2,
+                vl2,
+                cl2,
+                x_title="Frequency（出現率）",
+                text_vals=[f"{v:.0%}" for v in vl2]
+            ),
             use_container_width=True,
         )
-        # x axis format
     else:
         st.info("無符合 threshold 的技能，請降低 Frequency threshold")
 
