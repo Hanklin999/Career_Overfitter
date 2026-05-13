@@ -15,7 +15,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── 全域 CSS ──────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
@@ -125,7 +124,6 @@ h1, h2, h3 {
 </style>
 """, unsafe_allow_html=True)
 
-# ── 首頁內容 ──────────────────────────────────────────────
 st.markdown(
     """
     <div class="hero-wrap">
@@ -159,7 +157,7 @@ with col1:
         unsafe_allow_html=True,
     )
     if st.button("進入職缺瀏覽", key="go_job", use_container_width=True):
-        st.switch_page("pages/1_job_search.py")
+        st.switch_page("pages/1_Job_Search.py")
 
 with col2:
     st.markdown(
@@ -177,7 +175,7 @@ with col2:
         unsafe_allow_html=True,
     )
     if st.button("進入技能 Dashboard", key="go_skill", use_container_width=True):
-        st.switch_page("pages/2_skill_dashboard.py")
+        st.switch_page("pages/2_Skill_Dashboard.py")
 
 with col3:
     st.markdown(
@@ -195,7 +193,7 @@ with col3:
         unsafe_allow_html=True,
     )
     if st.button("進入 CV Fit 分析", key="go_cv", use_container_width=True):
-        st.switch_page("pages/3_cv_fitting_tool.py")
+        st.switch_page("pages/3_CV_Fitting_Tool.py")
 
 st.markdown(
     """
