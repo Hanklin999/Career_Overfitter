@@ -138,13 +138,19 @@ def load_skill_aliases(alias_path_str: str) -> pd.DataFrame:
         "negative_context": "",
         "ambiguity_score": 1,
         "match_mode": "phrase_boundary",
+        "enabled": "TRUE",
     }
     for col, default in defaults.items():
         if col not in df.columns:
             df[col] = default
 
-    for col in ["canonical_skill_name", "alias", "alias_type", "is_regex", "requires_context", "positive_context", "negative_context", "match_mode"]:
+    for col in ["canonical_skill_name", "alias", "alias_type", "is_regex", "requires_context", "positive_context", "negative_context", "match_mode", "enabled"]:
         df[col] = df[col].astype(str).str.strip()
+
+    # Respect optional enabled flag in upgraded skill_alias.csv.
+    # Disabled aliases are removed at load time so old extraction logic cannot accidentally use them.
+    if "enabled" in df.columns:
+        df = df[df["enabled"].astype(str).str.strip().str.upper().isin({"TRUE", "1", "YES", "Y"})].copy()
 
     df["priority"] = pd.to_numeric(df["priority"], errors="coerce").fillna(50)
     df["alias_len"] = df["alias"].astype(str).str.len()
