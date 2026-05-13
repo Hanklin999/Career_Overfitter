@@ -173,14 +173,21 @@ with tab1:
 with tab2:
     st.markdown('<div class="sec-title">選定產業 / 職能，查看技能需求分布</div>', unsafe_allow_html=True)
 
-    f1, f2, f3 = st.columns(3)
-    with f1: si2 = st.selectbox("產業", ["全部"] + industries_all, key="t2_ind")
-    with f2: sr2 = st.selectbox("職能", ["全部"] + roles_all, key="t2_role")
-    with f3: thr = st.slider("Frequency threshold", 0.0, 0.5, 0.05, 0.01, key="t2_thr")
+    f1, f2, f3, f4 = st.columns(4)
+    with f1:
+        si2 = st.selectbox("產業", ["全部"] + industries_all, key="t2_ind")
+    with f2:
+        role_parent_2 = st.selectbox("職能大類", ["全部"] + role_parent_all, key="t2_role_parent")
+    with f3:
+        role_sub_options_2 = ["全部"] if role_parent_2 == "全部" else ["全部"] + get_role_subcategories(role_parent_2)
+        role_sub_2 = st.selectbox("職能中類", role_sub_options_2, key="t2_role_sub", disabled=(role_parent_2 == "全部"))
+    with f4:
+        thr = st.slider("Frequency threshold", 0.0, 0.5, 0.05, 0.01, key="t2_thr")
     tn2 = st.slider("Top N 技能", 10, 50, 20, 5, key="t2_topn")
 
     f2r = [r for r in rows if (si2 == "全部" or r.get("industry_bucket") == si2)
-                            and (sr2 == "全部" or r.get("role_normalized") == sr2)]
+                            and (role_parent_2 == "全部" or r.get("job_parent_category") == role_parent_2)
+                            and (role_sub_2 == "全部" or r.get("job_sub_category") == role_sub_2)]
     st.caption(f"符合職缺：{len(f2r)} 筆")
 
     freq2 = {s: f for s, f in skill_freq(f2r).items() if f >= thr}
@@ -203,18 +210,33 @@ with tab2:
 with tab3:
     st.markdown('<div class="sec-title">跨產業技能比較</div>', unsafe_allow_html=True)
 
-    d1, d2, d3 = st.columns(3)
-    with d1: ia = st.selectbox("產業 A", industries_all, key="t3_a")
-    with d2: ib = st.selectbox("產業 B", [i for i in industries_all if i != ia], key="t3_b")
-    with d3: rf3 = st.selectbox("職能（可選）", ["全部"] + roles_all, key="t3_role")
+    r1, r2 = st.columns(2)
+    with r1:
+        role_parent_3 = st.selectbox("職能大類", ["全部"] + role_parent_all, key="t3_role_parent")
+    with r2:
+        role_sub_options_3 = ["全部"] if role_parent_3 == "全部" else ["全部"] + get_role_subcategories(role_parent_3)
+        role_sub_3 = st.selectbox("職能中類", role_sub_options_3, key="t3_role_sub", disabled=(role_parent_3 == "全部"))
+
+    d1, d2, d3, d4 = st.columns(4)
+    with d1:
+        ind_parent_a = st.selectbox("產業 A（大類）", ["全部"] + industry_parent_all, key="t3_ind_parent_a")
+    with d2:
+        ind_sub_options_a = ["全部"]
+        ia = st.selectbox("產業 A（子類）", ind_sub_options_a, key="t3_a")
+    with d3:
+        ind_parent_b = st.selectbox("產業 B（大類）", ["全部"] + industry_parent_all, key="t3_ind_parent_b")
+    with d4:
+        ind_sub_options_b = ["全部"]
+        ib = st.selectbox("產業 B（子類）", ind_sub_options_b, key="t3_b")
     tn3 = st.slider("Top N 共同技能", 10, 40, 20, 5, key="t3_topn")
 
-    def filter_rows(ind, role):
+    def filter_rows(ind, role_parent, role_sub):
         return [r for r in rows
-                if r.get("industry_bucket") == ind
-                and (role == "全部" or r.get("role_normalized") == role)]
+                if (ind == "全部" or r.get("industry_bucket") == ind)
+                and (role_parent == "全部" or r.get("job_parent_category") == role_parent)
+                and (role_sub == "全部" or r.get("job_sub_category") == role_sub)]
 
-    ra3 = filter_rows(ia, rf3); rb3 = filter_rows(ib, rf3)
+    ra3 = filter_rows(ia, role_parent_3, role_sub_3); rb3 = filter_rows(ib, role_parent_3, role_sub_3)
     fa3 = skill_freq(ra3);      fb3 = skill_freq(rb3)
     st.caption(f"{ia}：{len(ra3)} 筆 ｜ {ib}：{len(rb3)} 筆")
 
@@ -277,14 +299,24 @@ with tab3:
 with tab4:
     st.markdown('<div class="sec-title">雙職能技能比較</div>', unsafe_allow_html=True)
 
-    rc1, rc2 = st.columns(2)
-    with rc1: rx = st.selectbox("職能 A", roles_all, key="t4_a")
-    with rc2: ry = st.selectbox("職能 B", [r for r in roles_all if r != rx], key="t4_b")
+    r1, r2, r3, r4 = st.columns(4)
+    with r1:
+        role_parent_a = st.selectbox("職能 A 大類", ["全部"] + role_parent_all, key="t4_role_parent_a")
+    with r2:
+        role_sub_options_a = ["全部"] if role_parent_a == "全部" else ["全部"] + get_role_subcategories(role_parent_a)
+        role_sub_a = st.selectbox("職能 A 中類", role_sub_options_a, key="t4_role_sub_a", disabled=(role_parent_a == "全部"))
+    with r3:
+        role_parent_b = st.selectbox("職能 B 大類", ["全部"] + role_parent_all, key="t4_role_parent_b")
+    with r4:
+        role_sub_options_b = ["全部"] if role_parent_b == "全部" else ["全部"] + get_role_subcategories(role_parent_b)
+        role_sub_b = st.selectbox("職能 B 中類", role_sub_options_b, key="t4_role_sub_b", disabled=(role_parent_b == "全部"))
     tn4 = st.slider("每側 Top N", 10, 30, 15, 5, key="t4_topn")
 
-    rrx = [r for r in rows if r.get("role_normalized") == rx]
-    rry = [r for r in rows if r.get("role_normalized") == ry]
+    rrx = filter_by_role_parent_sub(rows, role_parent_a, role_sub_a)
+    rry = filter_by_role_parent_sub(rows, role_parent_b, role_sub_b)
     frx = skill_freq(rrx); fry = skill_freq(rry)
+    rx = f"{role_parent_a} / {role_sub_a}"
+    ry = f"{role_parent_b} / {role_sub_b}"
     st.caption(f"{rx}：{len(rrx)} 筆 ｜ {ry}：{len(rry)} 筆")
 
     m1, m2, m3 = st.columns(3)
