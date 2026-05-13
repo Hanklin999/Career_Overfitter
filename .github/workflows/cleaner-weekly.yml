@@ -33,158 +33,97 @@ jobs:
       matrix:
         include:
           - offset: 0
-            limit: 5
-            end: 5
-
-          - offset: 5
-            limit: 5
-            end: 10
-
-          - offset: 10
-            limit: 5
-            end: 15
-
-          - offset: 15
-            limit: 5
+            limit: 20
             end: 20
 
           - offset: 20
-            limit: 5
-            end: 25
-
-          - offset: 25
-            limit: 5
-            end: 30
-
-          - offset: 30
-            limit: 5
-            end: 35
-
-          - offset: 35
-            limit: 5
+            limit: 20
             end: 40
 
           - offset: 40
-            limit: 5
-            end: 45
-
-          - offset: 45
-            limit: 5
-            end: 50
-
-          - offset: 50
-            limit: 5
-            end: 55
-
-          - offset: 55
-            limit: 5
+            limit: 20
             end: 60
 
           - offset: 60
-            limit: 5
-            end: 65
-
-          - offset: 65
-            limit: 5
-            end: 70
-
-          - offset: 70
-            limit: 5
-            end: 75
-
-          - offset: 75
-            limit: 5
+            limit: 20
             end: 80
 
           - offset: 80
-            limit: 5
-            end: 85
-
-          - offset: 85
-            limit: 5
-            end: 90
-
-          - offset: 90
-            limit: 5
-            end: 95
-
-          - offset: 95
-            limit: 5
+            limit: 20
             end: 100
 
           - offset: 100
-            limit: 5
-            end: 105
-
-          - offset: 105
-            limit: 5
-            end: 110
-
-          - offset: 110
-            limit: 5
-            end: 115
-
-          - offset: 115
-            limit: 5
+            limit: 20
             end: 120
 
           - offset: 120
-            limit: 5
-            end: 125
-
-          - offset: 125
-            limit: 5
-            end: 130
-
-          - offset: 130
-            limit: 5
-            end: 135
-
-          - offset: 135
-            limit: 5
+            limit: 20
             end: 140
 
           - offset: 140
-            limit: 5
-            end: 145
-
-          - offset: 145
-            limit: 5
-            end: 150
+            limit: 20
+            end: 160
 
     name: Scrape 104 keywords ${{ matrix.offset }}-${{ matrix.end }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
-      - run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Run scraper
         env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           MAX_PAGES: ${{ github.event.inputs.max_pages || '5' }}
           PAST_DAYS: ${{ github.event.inputs.past_days || '30' }}
           RUN_DETAIL: ${{ github.event.inputs.run_detail || 'true' }}
           DETAIL_LIMIT: ${{ github.event.inputs.detail_limit || '0' }}
-
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-
         run: |
           CMD="python scraper_104.py \
             --keyword-offset ${{ matrix.offset }} \
             --keyword-limit ${{ matrix.limit }} \
-            --max-pages ${MAX_PAGES} \
-            --past-days ${PAST_DAYS} \
+            --max-pages ${{ env.MAX_PAGES }} \
+            --past-days ${{ env.PAST_DAYS }} \
             --include-all-companies \
-            --detail-limit ${DETAIL_LIMIT}"
+            --detail-limit ${{ env.DETAIL_LIMIT }}"
 
-          if [ "${RUN_DETAIL}" != "true" ]; then
+          if [ "${{ env.RUN_DETAIL }}" != "true" ]; then
             CMD="$CMD --skip-detail"
           fi
 
           echo "$CMD"
           eval "$CMD"
+
+  cleaner:
+    runs-on: ubuntu-latest
+    needs: scrape-104
+    if: always() && needs.scrape-104.result == 'success'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run cleaner
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python cleaner.py
