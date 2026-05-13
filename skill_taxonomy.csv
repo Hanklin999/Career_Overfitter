@@ -526,3 +526,108 @@ Data Engineering & Cloud,Version Control,GitHub
 Data Engineering & Cloud,Workflow Orchestration,Airflow
 Data Engineering & Cloud,Workflow Orchestration,Dagster
 Data Engineering & Cloud,Workflow Orchestration,Prefect
+BI & Data Visualization,Dashboarding,Ad Hoc Analysis
+BI & Data Visualization,Dashboarding,Business Reporting
+BI & Data Visualization,Data Visualization,Data Analysis
+Communication & Languages,Communication,Client Communication
+Consulting & Strategy,Research,Market Mapping
+Consulting & Strategy,Strategy,Operating Model Design
+Data Engineering & Cloud,Data Governance,Data Validation
+Data Engineering & Cloud,Data Pipeline,Data Collection
+Data Engineering & Cloud,DevOps / Infrastructure,CI/CD
+Finance & Accounting,Accounting,A/P
+Finance & Accounting,Accounting,A/R
+Finance & Accounting,Accounting,Account Reconciliation
+Finance & Accounting,Accounting,Accounting Software
+Finance & Accounting,Accounting,Accounts Payable
+Finance & Accounting,Accounting,Accounts Receivable
+Finance & Accounting,Accounting,Audit Preparation
+Finance & Accounting,Accounting,Bookkeeping
+Finance & Accounting,Accounting,Caseware
+Finance & Accounting,Accounting,Financial Consolidation
+Finance & Accounting,Accounting,Financial Statement Preparation
+Finance & Accounting,Accounting,General Ledger
+Finance & Accounting,Accounting,Invoicing
+Finance & Accounting,Accounting,Journal Entries
+Finance & Accounting,Accounting,Month-end Close
+Finance & Accounting,Accounting,Payroll
+Finance & Accounting,Accounting,QuickBooks
+Finance & Accounting,Accounting,Tax Preparation
+Finance & Accounting,Accounting,Taxprep
+Finance & Accounting,FP&A,Cash Flow Forecasting
+Finance & Accounting,FP&A,Headcount Planning
+Finance & Accounting,Financial Analysis,Financial Statement Analysis
+Finance & Accounting,Financial Modeling,Three Statement Modeling
+Human Resources & People,Compensation / Benefits,Compensation Benchmarking
+Human Resources & People,Compensation / Benefits,Payroll Administration
+Human Resources & People,HR Operations,Employee Onboarding
+Human Resources & People,HR Operations,Employee Relations
+Human Resources & People,People Analytics,HR Reporting
+Information Systems & Enterprise Tools,ERP / CRM,Anaplan
+Information Systems & Enterprise Tools,ERP / CRM,Coupa
+Information Systems & Enterprise Tools,ERP / CRM,Oracle Hyperion
+Information Systems & Enterprise Tools,ERP / CRM,SAP BPC
+Information Systems & Enterprise Tools,ERP / CRM,Workday Adaptive Planning
+Marketing & Growth,CRM / Lifecycle,CRM Campaigns
+Marketing & Growth,CRM / Lifecycle,Email Campaigns
+Marketing & Growth,Digital Marketing,Affiliate Marketing
+Marketing & Growth,Digital Marketing,App Store Optimization
+Marketing & Growth,Digital Marketing,Paid Search
+Marketing & Growth,Digital Marketing,Paid Social
+Marketing & Growth,Digital Marketing,Programmatic Advertising
+Marketing & Growth,Digital Marketing,SEO Keyword Research
+Marketing & Growth,Marketing Analytics,Campaign Analysis
+Marketing & Growth,Marketing Analytics,Marketing Attribution
+Operations & Supply Chain,Operations,Administrative Support
+Operations & Supply Chain,Operations,SLA Management
+Operations & Supply Chain,Operations,Scheduling
+Operations & Supply Chain,Process Excellence,Process Design
+Operations & Supply Chain,Supply Chain,Fleet Management
+Operations & Supply Chain,Supply Chain,Fulfillment Operations
+Operations & Supply Chain,Supply Chain,Inventory Forecasting
+Operations & Supply Chain,Supply Chain,Last Mile Delivery
+Operations & Supply Chain,Supply Chain,Logistics Planning
+Operations & Supply Chain,Supply Chain,Materials Planning
+Operations & Supply Chain,Supply Chain,Route Optimization
+Operations & Supply Chain,Supply Chain,Supply Chain Analytics
+Operations & Supply Chain,Supply Chain,Vendor Negotiation
+Operations & Supply Chain,Supply Chain,Warehouse Operations
+Product & User Analytics,Product Analytics,Feature Analysis
+Product & User Analytics,Product Analytics,Product Experimentation
+Product & User Analytics,Product Management,Product Discovery
+Product & User Analytics,Product Management,Product Requirements
+Product & User Analytics,Product Metrics,Metric Design
+Product & User Analytics,User Research,Figma
+Product & User Analytics,User Research,Prototyping
+Product & User Analytics,User Research,User Interview
+Product & User Analytics,User Research,Wireframing
+Project / Program Management,Stakeholder Management,Change Impact Assessment
+Risk / Compliance / Actuarial,Compliance,Policy Compliance
+Risk / Compliance / Actuarial,Compliance,Transaction Monitoring
+Risk / Compliance / Actuarial,Risk Management,Risk Assessment
+Risk / Compliance / Actuarial,Risk Management,Vulnerability Assessment
+Risk / Compliance / Actuarial,Risk Modeling,Fraud Detection
+Sales / BD / Customer Success,Business Development,Lead Qualification
+Sales / BD / Customer Success,Business Development,Prospecting
+Sales / BD / Customer Success,Customer Success,Customer Service
+Sales / BD / Customer Success,Customer Success,Renewal Management
+Sales / BD / Customer Success,Revenue Operations,CRM Data Management
+Sales / BD / Customer Success,Sales,Pipeline Management
+Sales / BD / Customer Success,Sales,Sales Enablement
+Software & Technical Delivery,Quality Assurance,Integration Testing
+Software & Technical Delivery,Quality Assurance,Unit Testing
+Software & Technical Delivery,Software Development,Algorithms
+Software & Technical Delivery,Software Development,Angular
+Software & Technical Delivery,Software Development,Data Structures
+Software & Technical Delivery,Software Development,Debugging
+Software & Technical Delivery,Software Development,Django
+Software & Technical Delivery,Software Development,FastAPI
+Software & Technical Delivery,Software Development,Flask
+Software & Technical Delivery,Software Development,GraphQL
+Software & Technical Delivery,Software Development,Object-Oriented Programming
+Software & Technical Delivery,Software Development,React
+Software & Technical Delivery,Software Development,Spring Boot
+Software & Technical Delivery,Software Development,Vue.js
+Spreadsheet & Office Productivity,Spreadsheet Tools,Data Entry
+Spreadsheet & Office Productivity,Spreadsheet Tools,Microsoft Access
+Statistics & Experimentation,Analytics Methods,Exploratory Data Analysis
