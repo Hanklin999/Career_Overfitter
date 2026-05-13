@@ -72,6 +72,7 @@ h1, h2, h3 {
     min-height: 220px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
     transition: all 0.18s ease;
+    margin-bottom: 0.75rem;
 }
 
 .card-shell:hover {
@@ -157,7 +158,8 @@ with col1:
         """,
         unsafe_allow_html=True,
     )
-    st.page_link("pages/1_job_search.py", label="進入職缺瀏覽", icon="🔍")
+    if st.button("進入職缺瀏覽", key="go_job", use_container_width=True):
+        st.switch_page("pages/1_job_search.py")
 
 with col2:
     st.markdown(
@@ -174,7 +176,8 @@ with col2:
         """,
         unsafe_allow_html=True,
     )
-    st.page_link("pages/2_skill_dashboard.py", label="進入技能 Dashboard", icon="📊")
+    if st.button("進入技能 Dashboard", key="go_skill", use_container_width=True):
+        st.switch_page("pages/2_skill_dashboard.py")
 
 with col3:
     st.markdown(
@@ -191,7 +194,8 @@ with col3:
         """,
         unsafe_allow_html=True,
     )
-    st.page_link("pages/3_cv_fitting_tool.py", label="進入 CV Fit 分析", icon="📄")
+    if st.button("進入 CV Fit 分析", key="go_cv", use_container_width=True):
+        st.switch_page("pages/3_cv_fitting_tool.py")
 
 st.markdown(
     """
