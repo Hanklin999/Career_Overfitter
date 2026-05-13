@@ -6,27 +6,17 @@ import json
 import math
 import os
 import re
-import time
 from datetime import date, datetime, timezone
-from difflib import SequenceMatcher
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 import requests
 from dotenv import load_dotenv
 
-try:
-    from google import genai
-except Exception:
-    genai = None
-
 load_dotenv()
 
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
 SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 
 if not SUPABASE_URL or not SUPABASE_KEY:
     raise RuntimeError("缺少 SUPABASE_URL / SUPABASE_KEY")
@@ -39,7 +29,7 @@ SUPA_HEADERS = {
     "Prefer": "resolution=merge-duplicates",
 }
 
-ROOT = Path(__file__).resolve().parent.parent if Path(__file__).resolve().parent.name == 'output' else Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent
 
 
 def resolve_existing_file(candidates):
@@ -51,8 +41,6 @@ def resolve_existing_file(candidates):
 
 
 ROLE_TAXONOMY_PATH = resolve_existing_file(["Job_taxonomy_byRole.csv"])
-SKILL_TAXONOMY_PATH = resolve_existing_file(["skill_taxonomy-2.csv", "skill_taxonomy.csv"])
-ROLE_ALIAS_PATH = resolve_existing_file(["role_alias.csv"])
 SKILL_ALIAS_PATH = resolve_existing_file(["skill_alias-2.csv", "skill_alias.csv"])
 
 
@@ -68,12 +56,12 @@ def clean_text(x):
 def norm_for_match(s):
     s = clean_text(s) or ""
     s = s.lower().replace("/", " ")
-    s = re.sub(r"[^\w\u4e00-\u9fff\+\.# ]+", " ", s)
+    s = re.sub(r"[^\w一-鿿\+\.# ]+", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
     return s
 
 
-def safe_list(val) -> list:
+def safe_list(val):
     if val is None:
         return []
     if isinstance(val, list):
@@ -85,41 +73,82 @@ def safe_list(val) -> list:
         if val.startswith("{") and val.endswith("}"):
             return [i.strip().strip('"') for i in val[1:-1].split(",") if i.strip().strip('"')]
         try:
-            r = json.loads(val)
-            return r if isinstance(r, list) else []
+            parsed = json.loads(val)
+            return parsed if isinstance(parsed, list) else []
         except Exception:
             return []
     return []
 
 
-def fetch_jd_raw(limit=1000, only_new=False):
-    params = {
-        "select": ",".join([
-            "job_no", "source", "category", "keyword", "title", "company", "location",
-            "industry", "is_foreign", "is_listed", "period", "appear_date",
-            "salary_low", "salary_high", "remote_work", "welfare_tags",
-            "description_snippet", "skill", "specialty", "work_exp", "edu",
-            "job_description", "job_category", "manage_resp"
-        ]),
-        "limit": str(limit),
-        "order": "scraped_at.desc",
-    }
-    r = requests.get(f"{SUPABASE_URL}/jd_raw", headers=SUPA_HEADERS, params=params, timeout=60)
-    r.raise_for_status()
-    rows = r.json()
+def fetch_jd_raw(limit=1000, only_new=False, batch_size=1000):
+    select_cols = ",".join([
+        "job_no", "source", "category", "keyword", "title", "company", "location",
+        "industry", "is_foreign", "is_listed", "period", "appear_date",
+        "salary_low", "salary_high", "remote_work", "welfare_tags",
+        "description_snippet", "skill", "specialty", "work_exp", "edu",
+        "job_description", "job_category", "manage_resp"
+    ])
+
+    all_rows = []
+    offset = 0
+
+    while len(all_rows) < limit:
+        end = min(offset + batch_size - 1, limit - 1)
+        headers = {
+            **SUPA_HEADERS,
+            "Range-Unit": "items",
+            "Range": f"{offset}-{end}",
+        }
+        params = {
+            "select": select_cols,
+            "order": "scraped_at.desc",
+        }
+
+        r = requests.get(f"{SUPABASE_URL}/jd_raw", headers=headers, params=params, timeout=60)
+        r.raise_for_status()
+        batch = r.json()
+
+        if not batch:
+            break
+
+        all_rows.extend(batch)
+        print(f"已抓取 {len(all_rows)} 筆 jd_raw（本批 {len(batch)} 筆，range={offset}-{end}）")
+
+        if len(batch) < batch_size:
+            break
+        offset += len(batch)
+
+    rows = all_rows[:limit]
 
     if not only_new:
         return rows
 
-    r2 = requests.get(
-        f"{SUPABASE_URL}/job_posting",
-        headers=SUPA_HEADERS,
-        params={"select": "job_no", "limit": str(limit * 3)},
-        timeout=60,
-    )
     existing = set()
-    if r2.status_code in (200, 206):
-        existing = {x.get("job_no") for x in r2.json() if x.get("job_no")}
+    offset = 0
+    existing_batch_size = 1000
+    while True:
+        end = offset + existing_batch_size - 1
+        headers = {
+            **SUPA_HEADERS,
+            "Range-Unit": "items",
+            "Range": f"{offset}-{end}",
+        }
+        r2 = requests.get(
+            f"{SUPABASE_URL}/job_posting",
+            headers=headers,
+            params={"select": "job_no", "order": "processed_at.desc"},
+            timeout=60,
+        )
+        if r2.status_code not in (200, 206):
+            break
+        batch2 = r2.json()
+        if not batch2:
+            break
+        existing.update(x.get("job_no") for x in batch2 if x.get("job_no"))
+        if len(batch2) < existing_batch_size:
+            break
+        offset += len(batch2)
+
     return [row for row in rows if row.get("job_no") not in existing]
 
 
@@ -147,10 +176,7 @@ def upsert_job_posting(records):
 
 
 def normalize_salary(low, high):
-    if low is None:
-        return None, None, None
-    # 0 視為無薪資資訊
-    if low == 0:
+    if low is None or low == 0:
         return None, None, None
     if low > 100_000:
         return int(low // 12), (int(high // 12) if high and high > 0 else None), "年薪"
@@ -204,7 +230,7 @@ def parse_work_exp(period_raw, work_exp_raw):
     txt = clean_text(work_exp_raw) or clean_text(period_raw) or ""
     low = txt.lower()
     if not txt:
-        return txt or None, None, None
+        return None, None, None
     if re.search(r"不拘|不限|none", low):
         return txt, 0, None
     for pat in [r"(\d+)\s*~\s*(\d+)", r"(\d+)\s*-\s*(\d+)"]:
@@ -273,52 +299,20 @@ def compute_freshness_score(appear_date_str):
         return 0.0
 
 
-def load_role_alias():
-    df = pd.read_csv(ROLE_ALIAS_PATH, encoding="utf-8-sig").fillna("")
-    alias_map = {}
-    for _, row in df.iterrows():
-        role = clean_text(row.get("role_normalized"))
-        alias = norm_for_match(row.get("alias"))
-        if role and alias:
-            alias_map.setdefault(role, []).append(alias)
-    return alias_map
-
-
 def load_role_taxonomy():
     df = pd.read_csv(ROLE_TAXONOMY_PATH, encoding="utf-8-sig").fillna("")
-
-    # 支援 3 欄或 4 欄 taxonomy
-    base_cols = ["job_parent_category", "job_sub_category", "job_skill_name"]
-    df = df.copy()
-
-    role_records = df[base_cols].drop_duplicates().to_dict("records")
-    role_map, title_index, alias_index = {}, [], []
-    role_alias_map = load_role_alias()
-
+    role_map = {}
+    title_index = []
     for _, row in df.iterrows():
         role = clean_text(row.get("job_skill_name"))
         if not role:
             continue
-
         role_map[role] = {
             "job_parent_category": clean_text(row.get("job_parent_category")),
             "job_sub_category": clean_text(row.get("job_sub_category")),
         }
-
         title_index.append((norm_for_match(role), role))
-
-        # 1) 讀 role_alias.csv
-        for alias in role_alias_map.get(role, []):
-            alias_index.append((alias, role))
-
-        # 2) 讀 Job_taxonomy_byRole.csv 第四欄：中文職位名稱關鍵字
-        kw_text = row.get("中文職位名稱關鍵字", "")
-        for kw in str(kw_text).split(","):
-            kw_norm = norm_for_match(kw)
-            if kw_norm:
-                alias_index.append((kw_norm, role))
-
-    return role_records, role_map, title_index, alias_index
+    return role_map, title_index
 
 
 def load_skill_alias_catalog():
@@ -332,27 +326,8 @@ def load_skill_alias_catalog():
     return catalog
 
 
-def load_skill_taxonomy():
-    df = pd.read_csv(SKILL_TAXONOMY_PATH, encoding="utf-8-sig")
-    df = df.iloc[:, :3].copy()
-    df.columns = ["skill_parent_category", "skill_sub_category", "canonical_skill_name"]
-    df = df.fillna("").drop_duplicates()
-    records = df.to_dict("records")
-    skill_set = set()
-    skill_meta = {}
-    for r in records:
-        canonical = clean_text(r["canonical_skill_name"])
-        skill_set.add(canonical)
-        skill_meta[canonical] = {
-            "skill_parent_category": clean_text(r["skill_parent_category"]),
-            "skill_sub_category": clean_text(r["skill_sub_category"]),
-        }
-    return records, skill_set, skill_meta
-
-
-ROLE_RECORDS, ROLE_MAP, ROLE_TITLE_INDEX, ROLE_ALIAS_INDEX = load_role_taxonomy()
+ROLE_MAP, ROLE_TITLE_INDEX = load_role_taxonomy()
 SKILL_CATALOG = load_skill_alias_catalog()
-SKILL_RECORDS, SKILL_SET, SKILL_META = load_skill_taxonomy()
 
 SKILL_PATTERNS = []
 for canonical, aliases in SKILL_CATALOG.items():
@@ -369,154 +344,11 @@ for canonical, aliases in SKILL_CATALOG.items():
 
 def try_rule_role(job):
     title = norm_for_match(job.get("title"))
-    keyword = norm_for_match(job.get("keyword"))
-    category = norm_for_match(job.get("category"))
-    desc = norm_for_match(job.get("description_snippet"))
-
-    if not any([title, keyword, category, desc]):
-        return None, None, None, 0.0, "no text"
-
-    # Dangerous short aliases should not be matched in weak fields.
-    # Example: PO can appear inside support/reporting; PM can mean many things.
-    DANGEROUS_SHORT_ALIASES = {
-        "po", "pm", "ba", "sa", "qa", "hr", "it", "ae", "rm", "bd", "bi",
-        "da", "ds", "de", "ml", "ai", "fe", "be"
-    }
-
-    def is_safe_alias(alias_norm):
-        if not alias_norm:
-            return False
-        if alias_norm in DANGEROUS_SHORT_ALIASES:
-            return False
-        # Very short English aliases are risky unless matched in title exact logic.
-        if re.fullmatch(r"[a-z]{1,3}", alias_norm):
-            return False
-        return True
-
-    def contains_match(alias_norm, field_text):
-        if not alias_norm or not field_text:
-            return False
-
-        # For Chinese keywords, simple substring is fine.
-        if re.search(r"[\u4e00-\u9fff]", alias_norm):
-            return alias_norm in field_text
-
-        # For English keywords, use word-boundary-like matching.
-        pattern = rf"(?<![a-z0-9]){re.escape(alias_norm)}(?![a-z0-9])"
-        return re.search(pattern, field_text, flags=re.IGNORECASE) is not None
-
-    # 1) Title exact match for canonical role names.
     for role_norm, role in ROLE_TITLE_INDEX:
         if role_norm and role_norm == title:
             meta = ROLE_MAP[role]
-            return (
-                meta["job_parent_category"],
-                meta["job_sub_category"],
-                role,
-                0.99,
-                f"title exact: {role_norm}"
-            )
-
-    candidates = {}
-
-    def add_score(role, score, reason):
-        if not role:
-            return
-        if role not in candidates:
-            candidates[role] = {"score": 0.0, "reasons": []}
-        candidates[role]["score"] += score
-        candidates[role]["reasons"].append(reason)
-
-    # 2) Weighted alias matching.
-    # Strongest: title
-    for alias_norm, role in ROLE_ALIAS_INDEX:
-        if not alias_norm:
-            continue
-
-        # Title can use short aliases, but only with safer boundary matching.
-        if contains_match(alias_norm, title):
-            # Short aliases get lower title score because they are ambiguous.
-            if alias_norm in DANGEROUS_SHORT_ALIASES or re.fullmatch(r"[a-z]{1,3}", alias_norm):
-                add_score(role, 45, f"title short alias: {alias_norm}")
-            else:
-                add_score(role, 100, f"title alias: {alias_norm}")
-
-        # Non-title fields: only safe aliases.
-        if not is_safe_alias(alias_norm):
-            continue
-
-        if contains_match(alias_norm, keyword):
-            add_score(role, 45, f"keyword alias: {alias_norm}")
-
-        if contains_match(alias_norm, category):
-            add_score(role, 30, f"category alias: {alias_norm}")
-
-        # Description is weakest. Require longer aliases to avoid noise.
-        if len(alias_norm) >= 5 and contains_match(alias_norm, desc):
-            add_score(role, 8, f"desc alias: {alias_norm}")
-
-    # 3) Canonical role name matching, also weighted.
-    for role_norm, role in ROLE_TITLE_INDEX:
-        if not role_norm:
-            continue
-
-        if contains_match(role_norm, title):
-            add_score(role, 90, f"title canonical: {role_norm}")
-
-        if contains_match(role_norm, keyword):
-            add_score(role, 40, f"keyword canonical: {role_norm}")
-
-        if contains_match(role_norm, category):
-            add_score(role, 25, f"category canonical: {role_norm}")
-
-        if len(role_norm) >= 5 and contains_match(role_norm, desc):
-            add_score(role, 6, f"desc canonical: {role_norm}")
-
-    # 4) Pick top scored role.
-    if candidates:
-        best_role, payload = max(candidates.items(), key=lambda x: x[1]["score"])
-        best_score = payload["score"]
-
-        # Confidence scaling.
-        # >=100 usually means title hit.
-        # 45~99 means weaker but usable.
-        if best_score >= 100:
-            conf = 0.95
-        elif best_score >= 70:
-            conf = 0.88
-        elif best_score >= 45:
-            conf = 0.78
-        else:
-            conf = 0.0
-
-        if conf > 0:
-            meta = ROLE_MAP[best_role]
-            return (
-                meta["job_parent_category"],
-                meta["job_sub_category"],
-                best_role,
-                round(conf, 3),
-                f"weighted match score={best_score:.1f}; " + "; ".join(payload["reasons"][:5])
-            )
-
-    # 5) Fuzzy title fallback against canonical role names only.
-    best_role, best_score = None, 0.0
-    for role_norm, role in ROLE_TITLE_INDEX:
-        score = SequenceMatcher(None, title, role_norm).ratio() if title and role_norm else 0.0
-        if score > best_score:
-            best_role, best_score = role, score
-
-    if best_role and best_score >= 0.86:
-        meta = ROLE_MAP[best_role]
-        return (
-            meta["job_parent_category"],
-            meta["job_sub_category"],
-            best_role,
-            round(best_score, 3),
-            f"fuzzy title: {best_score:.3f}"
-        )
-
-    return None, None, None, 0.0, "rule no confident match" 
+            return meta["job_parent_category"], meta["job_sub_category"], role, 0.99, f"title exact: {role_norm}"
+    return None, None, "Unclassified", 0.0, "rule no confident match"
 
 
 def try_rule_skills(job):
@@ -526,12 +358,12 @@ def try_rule_skills(job):
         if v:
             pools.append(v)
     for field in ["skill", "specialty", "job_category"]:
-        vals = safe_list(job.get(field))
-        for v in vals:
+        for v in safe_list(job.get(field)):
             if v:
                 pools.append(str(v))
     norm_text = "\n".join(pools).lower()
-    found, seen = [], set()
+    found = []
+    seen = set()
     for canonical, patterns in SKILL_PATTERNS:
         for pat in patterns:
             if pat.search(norm_text):
@@ -539,119 +371,35 @@ def try_rule_skills(job):
                     seen.add(canonical)
                     found.append(canonical)
                 break
-    return found[:20], len(found)
+    return found[:20]
 
 
-def should_use_llm(rule_role_conf, skill_count, job):
-    jd_len = len(clean_text(job.get("job_description")) or "")
-    if rule_role_conf >= 0.90 and skill_count >= 3:
-        return False
-    if jd_len < 80 and rule_role_conf >= 0.86:
-        return False
-    return True
+def has_minimum_fields(job):
+    return all([
+        clean_text(job.get("job_no")),
+        clean_text(job.get("title")),
+        clean_text(job.get("company")),
+        clean_text(job.get("industry")),
+    ])
 
 
-def build_llm_prompt(job, rule_role, rule_skills):
-    title = norm_for_match(job.get("title"))
-    role_choices = []
-    for role_norm, role in ROLE_TITLE_INDEX:
-        score = SequenceMatcher(None, title, role_norm).ratio() if title and role_norm else 0.0
-        if score >= 0.55:
-            role_choices.append(role)
-    if not role_choices:
-        role_choices = list(ROLE_MAP.keys())[:30]
-    skill_choices = list(rule_skills)
-    if len(skill_choices) < 80:
-        for canonical, _ in SKILL_PATTERNS:
-            if canonical not in skill_choices:
-                skill_choices.append(canonical)
-            if len(skill_choices) >= 80:
-                break
-    jd = clean_text(job.get("job_description")) or clean_text(job.get("description_snippet")) or ""
-    jd = jd[:3000]
-    return f'''你是一個職缺分類專家。請根據職稱與 JD，在限定清單內做分類與技能標準化。\n\n職缺資料：\n- title: {clean_text(job.get("title"))}\n- company: {clean_text(job.get("company"))}\n- industry: {clean_text(job.get("industry"))}\n- category: {clean_text(job.get("category"))}\n- keyword: {clean_text(job.get("keyword"))}\n- description_snippet: {clean_text(job.get("description_snippet"))}\n- job_description: {jd}\n\n規則引擎初判：\n- rule_role: {rule_role}\n- rule_skills: {rule_skills}\n\n可選 role_normalized（只能選一個；若無法判斷可輸出 Unclassified）：\n{json.dumps(role_choices, ensure_ascii=False)}\n\n可選 skill_canonical（只能從這個清單選，最多 15 個）：\n{json.dumps(skill_choices[:80], ensure_ascii=False)}\n\n請只輸出 JSON：\n{{\n  "job_parent_category": "string or null",\n  "job_sub_category": "string or null",\n  "role_normalized": "string",\n  "role_confidence": 0.0,\n  "skill_raw": ["string"],\n  "skill_canonical": ["string"],\n  "llm_reason": "string"\n}}'''
-
-
-def call_gemini(job, rule_role, rule_skills):
-    if not GEMINI_API_KEY or genai is None:
-        return None
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    resp = client.models.generate_content(model=MODEL_NAME, contents=build_llm_prompt(job, rule_role, rule_skills))
-    text = (getattr(resp, "text", None) or "").strip()
-    text = re.sub(r"^```json\s*", "", text)
-    text = re.sub(r"^```\s*", "", text)
-    text = re.sub(r"\s*```$", "", text)
-    data = json.loads(text)
-    role = clean_text(data.get("role_normalized")) or "Unclassified"
-    if role in ROLE_MAP:
-        data["job_parent_category"] = ROLE_MAP[role]["job_parent_category"]
-        data["job_sub_category"] = ROLE_MAP[role]["job_sub_category"]
-    else:
-        data["job_parent_category"] = None
-        data["job_sub_category"] = None
-        data["role_normalized"] = "Unclassified"
-    skills, seen = [], set()
-    for s in data.get("skill_canonical") or []:
-        s = clean_text(s)
-        if s in SKILL_SET and s not in seen:
-            seen.add(s)
-            skills.append(s)
-    data["skill_canonical"] = skills[:15]
-    return data
-
-
-def transform_row(job, enable_llm=False, llm_sleep_sec=0.8):
+def transform_row(job):
     title_raw = clean_text(job.get("title"))
     company_raw = clean_text(job.get("company"))
     location_raw = clean_text(job.get("location"))
     location_clean, is_taiwan = normalize_location(location_raw)
     location_county = clean_location_county(location_raw)
-
     industry_raw = clean_text(job.get("industry"))
     industry_bucket = map_industry_bucket(industry_raw)
-
     period_raw = clean_text(job.get("period"))
     work_exp_raw = clean_text(job.get("work_exp"))
     work_exp_raw_final, work_exp_min, work_exp_max = parse_work_exp(period_raw, work_exp_raw)
-
     edu_raw = clean_text(job.get("edu"))
     edu_level, edu_level_int = extract_min_edu(edu_raw)
-
     salary_low_norm, salary_high_norm, salary_unit = normalize_salary(job.get("salary_low"), job.get("salary_high"))
-
     rule_parent, rule_sub, rule_role, rule_conf, rule_reason = try_rule_role(job)
-    rule_skills, skill_count = try_rule_skills(job)
-
-    final_parent, final_sub, final_role, final_conf = rule_parent, rule_sub, rule_role or "Unclassified", rule_conf
-    final_skill_raw, final_skills = list(rule_skills), list(rule_skills)
-    llm_reason, llm_model, llm_processed_at = f"rule: {rule_reason}", None, None
-
-    if enable_llm and should_use_llm(rule_conf, skill_count, job):
-        try:
-            llm = call_gemini(job, rule_role, rule_skills)
-            if llm:
-                llm_role = llm.get("role_normalized")
-                llm_skills = llm.get("skill_canonical") or []
-                if llm_role and llm_role != "Unclassified":
-                    final_parent = llm.get("job_parent_category")
-                    final_sub = llm.get("job_sub_category")
-                    final_role = llm_role
-                    final_conf = llm.get("role_confidence") or max(rule_conf, 0.75)
-                merged, seen = [], set()
-                for s in list(rule_skills) + list(llm_skills):
-                    if s in SKILL_SET and s not in seen:
-                        seen.add(s)
-                        merged.append(s)
-                final_skills = merged[:15]
-                final_skill_raw = llm.get("skill_raw") or final_skills
-                llm_reason = llm.get("llm_reason") or llm_reason
-                llm_model = MODEL_NAME
-                llm_processed_at = datetime.now(timezone.utc).isoformat()
-                time.sleep(llm_sleep_sec)
-        except Exception as e:
-            llm_reason = f"llm_failed: {e}; fallback_rule: {rule_reason}"
-
-    quality_score = compute_quality_score(clean_text(job.get("job_description")), final_role, final_skills, salary_low_norm, work_exp_min, edu_level)
+    rule_skills = try_rule_skills(job)
+    quality_score = compute_quality_score(clean_text(job.get("job_description")), rule_role, rule_skills, salary_low_norm, work_exp_min, edu_level)
     freshness_score = compute_freshness_score(job.get("appear_date"))
 
     return {
@@ -683,19 +431,21 @@ def transform_row(job, enable_llm=False, llm_sleep_sec=0.8):
         "job_description": clean_text(job.get("job_description")),
         "job_category_raw": job.get("job_category"),
         "manage_resp": clean_text(job.get("manage_resp")),
-        "job_parent_category": final_parent,
-        "job_sub_category": final_sub,
-        "role_normalized": final_role,
-        "role_confidence": round(float(final_conf), 3) if final_conf is not None else None,
-        "skill_raw": final_skill_raw,
-        "skill_canonical": final_skills,
-        "llm_model": llm_model,
-        "llm_reason": llm_reason,
+        "job_parent_category": rule_parent,
+        "job_sub_category": rule_sub,
+        "role_normalized": rule_role,
+        "role_confidence": round(float(rule_conf), 3) if rule_conf is not None else None,
+        "skill_raw": safe_list(job.get("skill")) or list(rule_skills),
+        "skill_canonical": list(rule_skills),
+        "llm_model": None,
+        "llm_reason": f"rule: {rule_reason}",
         "quality_score": quality_score,
         "freshness_score": freshness_score,
         "raw_payload": job,
         "processed_at": datetime.now(timezone.utc).isoformat(),
-        "llm_processed_at": llm_processed_at,
+        "llm_processed_at": None,
+        "is_foreign": job.get("is_foreign"),
+        "is_listed": job.get("is_listed"),
     }
 
 
@@ -703,32 +453,43 @@ def parse_args():
     p = argparse.ArgumentParser(description="Clean jd_raw -> job_posting")
     p.add_argument("--limit", type=int, default=500)
     p.add_argument("--only-new", action="store_true")
-    p.add_argument("--enable-llm", action="store_true")
-    p.add_argument("--llm-sleep", type=float, default=0.8)
+    p.add_argument("--quality-threshold", type=float, default=0.10)
+    p.add_argument("--batch-size", type=int, default=1000)
     return p.parse_args()
 
 
 def main():
     args = parse_args()
-    rows = fetch_jd_raw(limit=args.limit, only_new=args.only_new)
+    rows = fetch_jd_raw(limit=args.limit, only_new=args.only_new, batch_size=args.batch_size)
     print(f"讀到 jd_raw {len(rows)} 筆")
     outputs = []
     skipped = 0
-    llm_used = 0
-    QUALITY_THRESHOLD = 0.3  # quality_score 低於此值不寫入
+    no_skill_count = 0
+    bad_base_fields = 0
+
     for idx, row in enumerate(rows, start=1):
-        rec = transform_row(row, enable_llm=args.enable_llm, llm_sleep_sec=args.llm_sleep)
-        if rec.get("llm_processed_at"):
-            llm_used += 1
+        if not has_minimum_fields(row):
+            bad_base_fields += 1
+            skipped += 1
+            print(f"[{idx}/{len(rows)}] SKIP (missing base fields) - {row.get('job_no')} - {clean_text(row.get('title'))}")
+            continue
+
+        rec = transform_row(row)
+        if not rec.get("skill_canonical"):
+            no_skill_count += 1
+
         q = rec.get("quality_score") or 0
-        if q < QUALITY_THRESHOLD:
+        if q < args.quality_threshold:
             skipped += 1
             print(f"[{idx}/{len(rows)}] SKIP (quality={q:.2f}) - {row.get('job_no')} - {clean_text(row.get('title'))}")
             continue
+
         outputs.append(rec)
-        print(f"[{idx}/{len(rows)}] ok - {row.get('job_no')} - {clean_text(row.get('title'))} | role={rec.get('role_normalized')} | skills={len(rec.get('skill_canonical') or [])} | q={q:.2f} | llm={'Y' if rec.get('llm_processed_at') else 'N'}")
+        print(f"[{idx}/{len(rows)}] ok - {row.get('job_no')} - {clean_text(row.get('title'))} | role={rec.get('role_normalized')} | skills={len(rec.get('skill_canonical') or [])} | q={q:.2f}")
+
     upsert_job_posting(outputs)
-    print(f"完成：寫入 job_posting {len(outputs)} 筆；跳過低品質 {skipped} 筆；LLM 使用 {llm_used} 筆")
+    print(f"完成：寫入 job_posting {len(outputs)} 筆；跳過 {skipped} 筆")
+    print(f"其中無技能但仍保留 {no_skill_count} 筆；缺少基本欄位跳過 {bad_base_fields} 筆")
 
 
 if __name__ == "__main__":
