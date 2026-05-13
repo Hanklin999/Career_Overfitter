@@ -34,7 +34,7 @@ concurrency:
 
 jobs:
   scrape-104:
-    name: Scrape 104 keywords ${{ matrix.offset }}-${{ matrix.end }}
+    name: Scrape 104 chunk ${{ matrix.offset }}-${{ matrix.offset + matrix.limit }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
 
