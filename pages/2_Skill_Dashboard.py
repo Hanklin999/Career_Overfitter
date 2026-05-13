@@ -79,8 +79,17 @@ LAYOUT_BASE = dict(
 )
 
 rows = load_postings()
-roles_all      = sorted({r.get("role_normalized") for r in rows if r.get("role_normalized") and r.get("role_normalized") != "Unclassified"})
-industries_all = sorted({r.get("industry_bucket") for r in rows if r.get("industry_bucket")})
+roles_all = sorted({
+    r.get("role_normalized")
+    for r in rows
+    if r.get("role_normalized") and r.get("role_normalized") != "Unclassified"
+})
+
+industries_all = sorted({
+    r.get("industry_bucket")
+    for r in rows
+    if r.get("industry_bucket")
+})
 
 role_parent_all = sorted({
     r.get("job_parent_category")
@@ -94,11 +103,11 @@ industry_parent_all = sorted({
     if r.get("industry_bucket")
 })
 
-def get_industry_subcategories(parent):
+def get_role_subcategories(parent):
     return sorted({
-        r.get("industry_raw")
+        r.get("job_sub_category")
         for r in rows
-        if r.get("industry_bucket") == parent and r.get("industry_raw")
+        if r.get("job_parent_category") == parent and r.get("job_sub_category")
     })
 
 def get_industry_subcategories(parent):
