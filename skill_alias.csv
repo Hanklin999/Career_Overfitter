@@ -5,7 +5,6 @@ BI & Data Visualization,BI Tools,Apache Superset,apache superset,en,exact_lower
 BI & Data Visualization,BI Tools,Apache Superset,Superset,en,from_SKILL_CATALOG; catalog_key=Superset
 BI & Data Visualization,BI Tools,Clarity,clarity,en,exact_lower
 BI & Data Visualization,BI Tools,Google Analytics,\bga\b,en,from_SKILL_CATALOG; regex; catalog_key=Marketing Analytics Tools
-BI & Data Visualization,BI Tools,Google Analytics,ga,en,abbrev
 BI & Data Visualization,BI Tools,Google Analytics,ga4,en,product
 BI & Data Visualization,BI Tools,Google Analytics,google analytics,en,exact_lower
 BI & Data Visualization,BI Tools,Google Analytics,google analytics 4,en,product
@@ -163,7 +162,6 @@ Consulting & Strategy,Strategy,Business Transformation,企業轉型,zh,中文
 Consulting & Strategy,Strategy,Corporate Strategy,corporate strategy,en,exact_lower
 Consulting & Strategy,Strategy,Corporate Strategy,公司策略,zh,中文
 Consulting & Strategy,Strategy,Digital Transformation,digital transformation,en,exact_lower
-Consulting & Strategy,Strategy,Digital Transformation,dx,en,abbrev
 Consulting & Strategy,Strategy,Digital Transformation,數位轉型,zh,中文
 Consulting & Strategy,Strategy,Growth Strategy,growth strategy,en,exact_lower
 Consulting & Strategy,Strategy,Growth Strategy,成長策略,zh,中文
@@ -213,7 +211,6 @@ Data Engineering & Cloud,Cloud Services,Amazon EC2,aws ec2,en,variant
 Data Engineering & Cloud,Cloud Services,Amazon EC2,ec2,en,short
 Data Engineering & Cloud,Cloud Services,Amazon S3,amazon s3,en,exact_lower
 Data Engineering & Cloud,Cloud Services,Amazon S3,aws s3,en,variant
-Data Engineering & Cloud,Cloud Services,Amazon S3,s3,en,short
 Data Engineering & Cloud,Cloud Services,AWS Lambda,aws lambda,en,exact_lower
 Data Engineering & Cloud,Cloud Services,AWS Lambda,lambda,en,short
 Data Engineering & Cloud,Cloud Services,Cloud Architecture,cloud architecture,en,exact_lower
@@ -263,7 +260,6 @@ Data Engineering & Cloud,Data Pipeline,Data Pipeline,structured data,en,from_SKI
 Data Engineering & Cloud,Data Pipeline,Data Pipeline,unstructured data,en,from_SKILL_CATALOG; catalog_key=Data Engineering
 Data Engineering & Cloud,Data Pipeline,Data Pipeline,資料管線,zh,中文
 Data Engineering & Cloud,Data Pipeline,Data Quality,data quality,en,exact_lower
-Data Engineering & Cloud,Data Pipeline,Data Quality,dq,en,abbrev
 Data Engineering & Cloud,Data Pipeline,Data Quality,資料品質,zh,中文
 Data Engineering & Cloud,Data Pipeline,Data Transformation,data transformation,en,exact_lower
 Data Engineering & Cloud,Data Pipeline,Data Transformation,資料轉換,zh,中文
@@ -299,7 +295,6 @@ Data Engineering & Cloud,Streaming / Messaging,Event Streaming,事件串流,zh,�
 Data Engineering & Cloud,Streaming / Messaging,Kafka,apache kafka,en,full name
 Data Engineering & Cloud,Streaming / Messaging,Kafka,kafka,en,exact_lower
 Data Engineering & Cloud,Streaming / Messaging,Message Queue,message queue,en,exact_lower
-Data Engineering & Cloud,Streaming / Messaging,Message Queue,mq,en,abbrev
 Data Engineering & Cloud,Streaming / Messaging,Message Queue,訊息佇列,zh,中文
 Data Engineering & Cloud,Streaming / Messaging,Pub/Sub,pub sub,en,punctuation_variant
 Data Engineering & Cloud,Streaming / Messaging,Pub/Sub,pub/sub,en,exact_lower
@@ -327,7 +322,6 @@ Database & Query Languages,Cloud Data Warehouses,Amazon Redshift,redshift,en,sho
 Database & Query Languages,Cloud Data Warehouses,BigQuery,big query,en,from_SKILL_CATALOG
 Database & Query Languages,Cloud Data Warehouses,BigQuery,bigquery,en,exact_lower
 Database & Query Languages,Cloud Data Warehouses,BigQuery,bigquery sql,en,from_SKILL_CATALOG; catalog_key=SQL
-Database & Query Languages,Cloud Data Warehouses,BigQuery,bq,en,abbrev
 Database & Query Languages,Cloud Data Warehouses,BigQuery,google bigquery,en,vendor
 Database & Query Languages,Cloud Data Warehouses,Databricks,databricks,en,exact_lower
 Database & Query Languages,Cloud Data Warehouses,Databricks,dbx,en,abbrev
@@ -412,7 +406,6 @@ Domain Knowledge,Financial Services,Insurance,insurance,en,exact_lower
 Domain Knowledge,Financial Services,Insurance,保險,zh,中文
 Domain Knowledge,Financial Services,Insurance,保險業,zh,中文
 Domain Knowledge,Financial Services,Wealth Management,wealth management,en,exact_lower
-Domain Knowledge,Financial Services,Wealth Management,wm,en,abbrev
 Domain Knowledge,Financial Services,Wealth Management,財富管理,zh,中文
 Domain Knowledge,Healthcare / Pharma,Bioinformatics,bioinformatics,en,exact_lower
 Domain Knowledge,Healthcare / Pharma,Bioinformatics,biomarker,en,from_SKILL_CATALOG
@@ -471,12 +464,10 @@ Entrepreneurship & Venture,Venture Building,Lean Startup,lean startup,en,exact_l
 Entrepreneurship & Venture,Venture Building,Lean Startup,精實創業,zh,中文
 Entrepreneurship & Venture,Venture Building,Venture Building,venture building,en,exact_lower
 Entrepreneurship & Venture,Venture Building,Venture Building,創業孵化,zh,中文
-Entrepreneurship & Venture,Venture Investment,Due Diligence,dd,en,abbrev
 Entrepreneurship & Venture,Venture Investment,Due Diligence,due diligence,en,exact_lower
 Entrepreneurship & Venture,Venture Investment,Due Diligence,盡職調查,zh,中文
 Entrepreneurship & Venture,Venture Investment,Startup Investment Analysis,startup investment analysis,en,exact_lower
 Entrepreneurship & Venture,Venture Investment,Startup Investment Analysis,新創投資分析,zh,中文
-Entrepreneurship & Venture,Venture Investment,Venture Capital,vc,en,abbrev
 Entrepreneurship & Venture,Venture Investment,Venture Capital,venture capital,en,exact_lower
 Entrepreneurship & Venture,Venture Investment,Venture Capital,創投,zh,中文
 Entrepreneurship & Venture,Venture Investment,Venture Capital,風險投資,zh,中文
@@ -525,7 +516,6 @@ Finance & Accounting,Audit / Tax,Tax,tax,en,exact_lower
 Finance & Accounting,Audit / Tax,Tax,taxation,en,variant
 Finance & Accounting,Audit / Tax,Tax,稅務,zh,中文
 Finance & Accounting,Audit / Tax,Tax,稅法,zh,中文
-Finance & Accounting,Audit / Tax,Transfer Pricing,tp,en,abbrev
 Finance & Accounting,Audit / Tax,Transfer Pricing,transfer pricing,en,exact_lower
 Finance & Accounting,Audit / Tax,Transfer Pricing,移轉訂價,zh,中文
 Finance & Accounting,Audit / Tax,Transfer Pricing,轉讓定價,zh,中文
@@ -649,7 +639,6 @@ Finance & Accounting,Financial Modeling,Valuation,valuation model,en,from_SKILL_
 Finance & Accounting,Financial Modeling,Valuation,估值,zh,中文
 Finance & Accounting,Financial Modeling,Valuation,評價,zh,中文
 Finance & Accounting,Financial Statements,Balance Sheet,balance sheet,en,exact_lower
-Finance & Accounting,Financial Statements,Balance Sheet,bs,en,abbrev
 Finance & Accounting,Financial Statements,Balance Sheet,資產負債表,zh,中文
 Finance & Accounting,Financial Statements,Cash Flow Statement,cash flow statement,en,exact_lower
 Finance & Accounting,Financial Statements,Cash Flow Statement,cfs,en,abbrev
@@ -664,7 +653,6 @@ Finance & Accounting,Investment / Markets,Capital Markets,capital market,en,sing
 Finance & Accounting,Investment / Markets,Capital Markets,capital markets,en,exact_lower
 Finance & Accounting,Investment / Markets,Capital Markets,資本市場,zh,中文
 Finance & Accounting,Investment / Markets,Equity Research,equity research,en,exact_lower
-Finance & Accounting,Investment / Markets,Equity Research,er,en,abbrev
 Finance & Accounting,Investment / Markets,Equity Research,股票研究,zh,中文
 Finance & Accounting,Investment / Markets,Fixed Income Analysis,fixed income,en,short
 Finance & Accounting,Investment / Markets,Fixed Income Analysis,fixed income analysis,en,exact_lower
@@ -720,7 +708,6 @@ Human Resources & People,Talent Acquisition,Recruiting,招募,zh,中文
 Human Resources & People,Talent Acquisition,Sourcing,sourcing,en,exact_lower
 Human Resources & People,Talent Acquisition,Sourcing,供應商開發,zh,中文
 Human Resources & People,Talent Acquisition,Sourcing,尋源,zh,中文
-Human Resources & People,Talent Acquisition,Talent Acquisition,ta,en,abbrev
 Human Resources & People,Talent Acquisition,Talent Acquisition,talent acquisition,en,exact_lower
 Human Resources & People,Talent Acquisition,Talent Acquisition,人才招募,zh,中文
 Information Systems & Enterprise Tools,Business Systems,API Design,api architecture,en,variant
@@ -747,7 +734,6 @@ Information Systems & Enterprise Tools,Business Systems,System Architecture,syst
 Information Systems & Enterprise Tools,Business Systems,System Architecture,系統架構,zh,中文
 Information Systems & Enterprise Tools,Business Systems,System Design,system design,en,exact_lower
 Information Systems & Enterprise Tools,Business Systems,System Design,系統設計,zh,中文
-Information Systems & Enterprise Tools,Business Systems,System Integration,si,en,abbrev
 Information Systems & Enterprise Tools,Business Systems,System Integration,system integration,en,exact_lower
 Information Systems & Enterprise Tools,Business Systems,System Integration,系統整合,zh,中文
 Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing,uat,en,abbrev
@@ -803,10 +789,8 @@ Information Systems & Enterprise Tools,Implementation,Technical Support,技術�
 Machine Learning & AI,Deep Learning,BERT,bert,en,exact_lower
 Machine Learning & AI,Deep Learning,BERT,bidirectional encoder representations from transformers,en,full name
 Machine Learning & AI,Deep Learning,Computer Vision,computer vision,en,exact_lower
-Machine Learning & AI,Deep Learning,Computer Vision,cv,en,abbrev
 Machine Learning & AI,Deep Learning,Computer Vision,電腦視覺,zh,中文
 Machine Learning & AI,Deep Learning,Deep Learning,deep learning,en,exact_lower
-Machine Learning & AI,Deep Learning,Deep Learning,dl,en,abbrev
 Machine Learning & AI,Deep Learning,Deep Learning,jax,en,from_SKILL_CATALOG
 Machine Learning & AI,Deep Learning,Deep Learning,深度學習,zh,中文
 Machine Learning & AI,Deep Learning,Fine-tuning,fine tuning,en,punctuation_variant
@@ -899,7 +883,6 @@ Machine Learning & AI,GenAI / LLM,RAG,retrieval augmented generation,en,full nam
 Machine Learning & AI,GenAI / LLM,RAG,retrieval-augmented generation,en,hyphen
 Machine Learning & AI,GenAI / LLM,RAG,檢索增強生成,zh,中文
 Machine Learning & AI,GenAI / LLM,Stable Diffusion,image generation model,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
-Machine Learning & AI,GenAI / LLM,Stable Diffusion,sd,en,abbrev
 Machine Learning & AI,GenAI / LLM,Stable Diffusion,sdxl,en,from_SKILL_CATALOG; catalog_key=Generative AI Engineering
 Machine Learning & AI,GenAI / LLM,Stable Diffusion,stable diffusion,en,exact_lower
 Machine Learning & AI,GenAI / LLM,Text Analytics,text analysis,en,variant
@@ -921,12 +904,10 @@ Machine Learning & AI,Machine Learning,LightGBM,lightgbm,en,exact_lower
 Machine Learning & AI,Machine Learning,Machine Learning,\bml\b,en,from_SKILL_CATALOG; regex
 Machine Learning & AI,Machine Learning,Machine Learning,gradient boosting,en,from_SKILL_CATALOG
 Machine Learning & AI,Machine Learning,Machine Learning,machine learning,en,exact_lower
-Machine Learning & AI,Machine Learning,Machine Learning,ml,en,abbrev
 Machine Learning & AI,Machine Learning,Machine Learning,model training,en,from_SKILL_CATALOG
 Machine Learning & AI,Machine Learning,Machine Learning,regression model,en,from_SKILL_CATALOG
 Machine Learning & AI,Machine Learning,Machine Learning,機器學習,zh,中文
 Machine Learning & AI,Machine Learning,Random Forest,random forest,en,exact_lower
-Machine Learning & AI,Machine Learning,Random Forest,rf,en,abbrev
 Machine Learning & AI,Machine Learning,Random Forest,隨機森林,zh,中文
 Machine Learning & AI,Machine Learning,Recommendation System,recommendation system,en,exact_lower
 Machine Learning & AI,Machine Learning,Recommendation System,recommender system,en,variant
@@ -1000,11 +981,9 @@ Marketing & Growth,Growth,Growth Marketing,growth marketing,en,exact_lower
 Marketing & Growth,Growth,Growth Marketing,成長行銷,zh,中文
 Marketing & Growth,Growth,Marketing Analytics,marketing analytics,en,exact_lower
 Marketing & Growth,Growth,Marketing Analytics,Marketing Analytics Tools,en,from_SKILL_CATALOG; catalog_key=Marketing Analytics Tools
-Marketing & Growth,Growth,User Acquisition,ua,en,abbrev
 Marketing & Growth,Growth,User Acquisition,user acquisition,en,exact_lower
 Marketing & Growth,Growth,User Acquisition,user growth,en,from_SKILL_CATALOG; catalog_key=Customer Analytics
 Marketing & Growth,Growth,User Acquisition,用戶獲取,zh,中文
-Marketing & Growth,Market Research,Competitive Intelligence,ci,en,abbrev
 Marketing & Growth,Market Research,Competitive Intelligence,competitive intelligence,en,exact_lower
 Marketing & Growth,Market Research,Competitive Intelligence,競品情報,zh,中文
 Marketing & Growth,Market Research,Competitive Intelligence,競爭情報,zh,中文
@@ -1076,7 +1055,6 @@ Operations & Supply Chain,Operations,Workforce Planning,人力規劃,zh,中文
 Operations & Supply Chain,Process Excellence,Business Process Reengineering,bpr,en,abbrev
 Operations & Supply Chain,Process Excellence,Business Process Reengineering,business process reengineering,en,exact_lower
 Operations & Supply Chain,Process Excellence,Business Process Reengineering,流程再造,zh,中文
-Operations & Supply Chain,Process Excellence,Continuous Improvement,ci,en,abbrev
 Operations & Supply Chain,Process Excellence,Continuous Improvement,continuous improvement,en,exact_lower
 Operations & Supply Chain,Process Excellence,Continuous Improvement,持續改善,zh,中文
 Operations & Supply Chain,Process Excellence,Lean,lean,en,exact_lower
@@ -1190,7 +1168,6 @@ Product & User Analytics,Product Management,Go-to-Market Strategy,上市策略,z
 Product & User Analytics,Product Management,PRD,prd,en,exact_lower
 Product & User Analytics,Product Management,PRD,product requirements document,en,full name
 Product & User Analytics,Product Management,PRD,產品需求文件,zh,中文
-Product & User Analytics,Product Management,Product Management,pm,en,abbrev
 Product & User Analytics,Product Management,Product Management,product management,en,exact_lower
 Product & User Analytics,Product Management,Product Management,產品管理,zh,中文
 Product & User Analytics,Product Management,Product Management,產品經理,zh,common role
@@ -1251,7 +1228,6 @@ Programming & Scripting,Business Automation,Google Apps Script,google apps scrip
 Programming & Scripting,Business Automation,VBA,excel vba,en,common
 Programming & Scripting,Business Automation,VBA,vba,en,exact_lower
 Programming & Scripting,Business Automation,VBA,visual basic for applications,en,full name
-Programming & Scripting,Programming Languages,C++,c,en,punctuation_variant
 Programming & Scripting,Programming Languages,C++,c++,en,exact_lower
 Programming & Scripting,Programming Languages,C++,cpp,en,abbrev
 Programming & Scripting,Programming Languages,CSS,cascading style sheets,en,full name
@@ -1261,27 +1237,21 @@ Programming & Scripting,Programming Languages,HTML,hypertext markup language,en,
 Programming & Scripting,Programming Languages,Java,\bjava\b,en,from_SKILL_CATALOG; regex
 Programming & Scripting,Programming Languages,Java,java,en,exact_lower
 Programming & Scripting,Programming Languages,JavaScript,javascript,en,exact_lower
-Programming & Scripting,Programming Languages,JavaScript,js,en,abbrev
-Programming & Scripting,Programming Languages,Python,py,en,abbrev
 Programming & Scripting,Programming Languages,Python,python,en,exact_lower
 Programming & Scripting,Programming Languages,Python,python 3,en,from_SKILL_CATALOG
 Programming & Scripting,Programming Languages,Python,python3,en,from_SKILL_CATALOG
 Programming & Scripting,Programming Languages,R,\br\b,en,from_SKILL_CATALOG; regex
-Programming & Scripting,Programming Languages,R,r,en,exact_lower
 Programming & Scripting,Programming Languages,R,r language,en,from_SKILL_CATALOG
 Programming & Scripting,Programming Languages,R,r programming,en,variant
 Programming & Scripting,Programming Languages,R,r studio,en,from_SKILL_CATALOG
 Programming & Scripting,Programming Languages,R,rlang,en,from_SKILL_CATALOG
 Programming & Scripting,Programming Languages,R,rstudio,en,from_SKILL_CATALOG
 Programming & Scripting,Programming Languages,Scala,scala,en,exact_lower
-Programming & Scripting,Programming Languages,TypeScript,ts,en,abbrev
 Programming & Scripting,Programming Languages,TypeScript,typescript,en,exact_lower
 Programming & Scripting,Python Libraries,matplotlib,matplotlib,en,exact_lower
 Programming & Scripting,Python Libraries,matplotlib,plt,en,package alias
-Programming & Scripting,Python Libraries,NumPy,np,en,package alias
 Programming & Scripting,Python Libraries,NumPy,numpy,en,exact_lower
 Programming & Scripting,Python Libraries,pandas,pandas,en,exact_lower
-Programming & Scripting,Python Libraries,pandas,pd,en,package alias
 Programming & Scripting,Python Libraries,pandas,python pandas,en,variant
 Programming & Scripting,Python Libraries,Plotly,plotly,en,exact_lower
 Programming & Scripting,Python Libraries,Plotly,plotly dash,en,related
@@ -1349,7 +1319,6 @@ Project / Program Management,Project Management,Program Management,program manag
 Project / Program Management,Project Management,Program Management,program manager,en,related role
 Project / Program Management,Project Management,Program Management,計畫管理,zh,中文
 Project / Program Management,Project Management,Project Management,milestone,en,from_SKILL_CATALOG
-Project / Program Management,Project Management,Project Management,pm,en,abbrev ambiguous
 Project / Program Management,Project Management,Project Management,pmp,en,from_SKILL_CATALOG
 Project / Program Management,Project Management,Project Management,project management,en,exact_lower
 Project / Program Management,Project Management,Project Management,roadmap,en,from_SKILL_CATALOG
@@ -1451,7 +1420,6 @@ Risk / Compliance / Actuarial,Risk Modeling,Scorecard,scorecard,en,exact_lower
 Risk / Compliance / Actuarial,Risk Modeling,Scorecard,評分卡,zh,中文
 Risk / Compliance / Actuarial,Risk Modeling,Stress Testing,stress testing,en,exact_lower
 Risk / Compliance / Actuarial,Risk Modeling,Stress Testing,壓力測試,zh,中文
-Sales / BD / Customer Success,Business Development,Business Development,bd,en,abbrev
 Sales / BD / Customer Success,Business Development,Business Development,biz dev,en,informal
 Sales / BD / Customer Success,Business Development,Business Development,business development,en,exact_lower
 Sales / BD / Customer Success,Business Development,Business Development,商務開發,zh,中文
@@ -1471,7 +1439,6 @@ Sales / BD / Customer Success,Customer Success,Customer Onboarding,customer onbo
 Sales / BD / Customer Success,Customer Success,Customer Onboarding,客戶導入,zh,中文
 Sales / BD / Customer Success,Customer Success,Customer Retention,customer retention,en,exact_lower
 Sales / BD / Customer Success,Customer Success,Customer Retention,客戶留存,zh,中文
-Sales / BD / Customer Success,Customer Success,Customer Success,cs,en,abbrev
 Sales / BD / Customer Success,Customer Success,Customer Success,customer success,en,exact_lower
 Sales / BD / Customer Success,Customer Success,Customer Success,客戶成功,zh,中文
 Sales / BD / Customer Success,Revenue Operations,CRM Tools,crm system,en,variant
@@ -1484,7 +1451,6 @@ Sales / BD / Customer Success,Revenue Operations,Sales Operations,sales operatio
 Sales / BD / Customer Success,Revenue Operations,Sales Operations,sales ops,en,short
 Sales / BD / Customer Success,Revenue Operations,Sales Operations,業務營運,zh,中文
 Sales / BD / Customer Success,Sales,Account Management,account management,en,exact_lower
-Sales / BD / Customer Success,Sales,Account Management,am,en,abbrev
 Sales / BD / Customer Success,Sales,Account Management,客戶管理,zh,中文
 Sales / BD / Customer Success,Sales,Key Account Management,kam,en,abbrev
 Sales / BD / Customer Success,Sales,Key Account Management,key account management,en,exact_lower
@@ -1522,7 +1488,6 @@ Software & Technical Delivery,Quality Assurance,Bug Tracking,issue tracking,en,r
 Software & Technical Delivery,Quality Assurance,Bug Tracking,issue tracking,en,related
 Software & Technical Delivery,Quality Assurance,Bug Tracking,缺陷追蹤,zh,中文
 Software & Technical Delivery,Quality Assurance,Bug Tracking,缺陷追蹤,zh,中文
-Software & Technical Delivery,Quality Assurance,QA Testing,qa,en,short
 Software & Technical Delivery,Quality Assurance,QA Testing,qa testing,en,exact_lower
 Software & Technical Delivery,Quality Assurance,QA Testing,quality assurance testing,en,full name
 Software & Technical Delivery,Quality Assurance,QA Testing,測試,zh,中文
