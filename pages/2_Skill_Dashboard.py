@@ -117,6 +117,81 @@ def get_industry_subcategories(parent):
         if r.get("industry_bucket") == parent and r.get("industry_raw")
     })
 
+def get_available_role_parents(data_rows, industry_parent="全部", industry_sub="全部"):
+    return sorted({
+        r.get("job_parent_category")
+        for r in data_rows
+        if r.get("job_parent_category")
+        and (industry_parent == "全部" or r.get("industry_bucket") == industry_parent)
+        and (industry_sub == "全部" or r.get("industry_raw") == industry_sub)
+    })
+
+def get_available_role_subs(data_rows, role_parent, industry_parent="全部", industry_sub="全部"):
+    return sorted({
+        r.get("job_sub_category")
+        for r in data_rows
+        if r.get("job_sub_category")
+        and r.get("job_parent_category") == role_parent
+        and (industry_parent == "全部" or r.get("industry_bucket") == industry_parent)
+        and (industry_sub == "全部" or r.get("industry_raw") == industry_sub)
+    })
+
+def get_available_industry_parents(data_rows, role_parent="全部", role_sub="全部"):
+    return sorted({
+        r.get("industry_bucket")
+        for r in data_rows
+        if r.get("industry_bucket")
+        and (role_parent == "全部" or r.get("job_parent_category") == role_parent)
+        and (role_sub == "全部" or r.get("job_sub_category") == role_sub)
+    })
+
+def get_available_industry_subs(data_rows, industry_parent, role_parent="全部", role_sub="全部"):
+    return sorted({
+        r.get("industry_raw")
+        for r in data_rows
+        if r.get("industry_raw")
+        and r.get("industry_bucket") == industry_parent
+        and (role_parent == "全部" or r.get("job_parent_category") == role_parent)
+        and (role_sub == "全部" or r.get("job_sub_category") == role_sub)
+    })
+
+def ensure_valid_state(key, valid_options, default="全部"):
+    if key not in st.session_state or st.session_state[key] not in valid_options:
+        st.session_state[key] = default
+
+    
+industries_all = sorted({
+    r.get("industry_bucket")
+    for r in rows
+    if r.get("industry_bucket")
+})
+
+role_parent_all = sorted({
+    r.get("job_parent_category")
+    for r in rows
+    if r.get("job_parent_category")
+})
+
+industry_parent_all = sorted({
+    r.get("industry_bucket")
+    for r in rows
+    if r.get("industry_bucket")
+})
+
+def get_role_subcategories(parent):
+    return sorted({
+        r.get("job_sub_category")
+        for r in rows
+        if r.get("job_parent_category") == parent and r.get("job_sub_category")
+    })
+
+def get_industry_subcategories(parent):
+    return sorted({
+        r.get("industry_raw")
+        for r in rows
+        if r.get("industry_bucket") == parent and r.get("industry_raw")
+    })
+
 def filter_by_role_parent_sub(data_rows, parent, sub):
     return [
         r for r in data_rows
@@ -225,24 +300,116 @@ with tab2:
         unsafe_allow_html=True
     )
 
+    # 先讀目前 state
+    cur_ind_parent_2 = st.session_state.get("t2_ind_parent", "全部")
+    cur_ind_sub_2 = st.session_state.get("t2_ind_sub", "全部")
+    cur_role_parent_2 = st.session_state.get("t2_role_parent", "全部")
+    cur_role_sub_2 = st.session_state.get("t2_role_sub", "全部")
+
+    # 先根據目前職能條件，限制可選產業大類
+    available_industry_parents_2 = ["全部"] + get_available_industry_parents(
+        rows,
+        role_parent=cur_role_parent_2,
+        role_sub=cur_role_sub_2
+    )
+    ensure_valid_state("t2_ind_parent", available_industry_parents_2)
+
+    cur_ind_parent_2 = st.session_state.get("t2_ind_parent", "全部")
+
+    # 根據目前職能條件 + 產業大類，限制可選產業子類
+    available_industry_subs_2 = (
+        ["全部"]
+        if cur_ind_parent_2 == "全部"
+        else ["全部"] + get_available_industry_subs(
+            rows,
+            cur_ind_parent_2,
+            role_parent=cur_role_parent_2,
+            role_sub=cur_role_sub_2
+        )
+    )
+    ensure_valid_state("t2_ind_sub", available_industry_subs_2)
+
+    cur_ind_sub_2 = st.session_state.get("t2_ind_sub", "全部")
+
+    # 再根據目前產業條件，限制可選職能大類
+    available_role_parents_2 = ["全部"] + get_available_role_parents(
+        rows,
+        industry_parent=cur_ind_parent_2,
+        industry_sub=cur_ind_sub_2
+    )
+    ensure_valid_state("t2_role_parent", available_role_parents_2)
+
+    cur_role_parent_2 = st.session_state.get("t2_role_parent", "全部")
+
+    # 根據目前產業條件 + 職能大類，限制可選職能中類
+    available_role_subs_2 = (
+        ["全部"]
+        if cur_role_parent_2 == "全部"
+        else ["全部"] + get_available_role_subs(
+            rows,
+            cur_role_parent_2,
+            industry_parent=cur_ind_parent_2,
+            industry_sub=cur_ind_sub_2
+        )
+    )
+    ensure_valid_state("t2_role_sub", available_role_subs_2)
+
     f1, f2, f3, f4 = st.columns(4)
 
     with f1:
-        si2 = st.selectbox("產業", ["全部"] + industries_all, key="t2_ind")
+        ind_parent_2 = st.selectbox(
+            "產業大類",
+            available_industry_parents_2,
+            key="t2_ind_parent"
+        )
 
     with f2:
-        role_parent_2 = st.selectbox(
-            "職能大類",
-            ["全部"] + role_parent_all,
-            key="t2_role_parent"
+        ind_sub_options_2 = (
+            ["全部"]
+            if ind_parent_2 == "全部"
+            else ["全部"] + get_available_industry_subs(
+                rows,
+                ind_parent_2,
+                role_parent=st.session_state.get("t2_role_parent", "全部"),
+                role_sub=st.session_state.get("t2_role_sub", "全部")
+            )
+        )
+        ensure_valid_state("t2_ind_sub", ind_sub_options_2)
+
+        ind_sub_2 = st.selectbox(
+            "產業子類",
+            ind_sub_options_2,
+            key="t2_ind_sub",
+            disabled=(ind_parent_2 == "全部")
         )
 
     with f3:
+        role_parent_options_2 = ["全部"] + get_available_role_parents(
+            rows,
+            industry_parent=ind_parent_2,
+            industry_sub=ind_sub_2
+        )
+        ensure_valid_state("t2_role_parent", role_parent_options_2)
+
+        role_parent_2 = st.selectbox(
+            "職能大類",
+            role_parent_options_2,
+            key="t2_role_parent"
+        )
+
+    with f4:
         role_sub_options_2 = (
             ["全部"]
             if role_parent_2 == "全部"
-            else ["全部"] + get_role_subcategories(role_parent_2)
+            else ["全部"] + get_available_role_subs(
+                rows,
+                role_parent_2,
+                industry_parent=ind_parent_2,
+                industry_sub=ind_sub_2
+            )
         )
+        ensure_valid_state("t2_role_sub", role_sub_options_2)
+
         role_sub_2 = st.selectbox(
             "職能中類",
             role_sub_options_2,
@@ -250,19 +417,27 @@ with tab2:
             disabled=(role_parent_2 == "全部")
         )
 
-    with f4:
-        thr = st.slider("Frequency threshold", 0.0, 0.5, 0.05, 0.01, key="t2_thr")
-
+    thr = st.slider("Frequency threshold", 0.0, 0.5, 0.05, 0.01, key="t2_thr")
     tn2 = st.slider("Top N 技能", 10, 50, 20, 5, key="t2_topn")
 
     f2r = [
         r for r in rows
-        if (si2 == "全部" or r.get("industry_bucket") == si2)
+        if (ind_parent_2 == "全部" or r.get("industry_bucket") == ind_parent_2)
+        and (ind_sub_2 == "全部" or r.get("industry_raw") == ind_sub_2)
         and (role_parent_2 == "全部" or r.get("job_parent_category") == role_parent_2)
         and (role_sub_2 == "全部" or r.get("job_sub_category") == role_sub_2)
     ]
 
-    st.caption(f"符合職缺：{len(f2r)} 筆")
+    label_industry_2 = (
+        f"{ind_parent_2} / {ind_sub_2}"
+        if ind_sub_2 != "全部" else ind_parent_2
+    )
+    label_role_2 = (
+        f"{role_parent_2} / {role_sub_2}"
+        if role_sub_2 != "全部" else role_parent_2
+    )
+
+    st.caption(f"產業：{label_industry_2} ｜ 職能：{label_role_2} ｜ 符合職缺：{len(f2r)} 筆")
 
     freq2 = {s: f for s, f in skill_freq(f2r).items() if f >= thr}
     top2 = sorted(freq2.items(), key=lambda x: x[1], reverse=True)[:tn2]
@@ -284,49 +459,85 @@ with tab2:
             use_container_width=True,
         )
     else:
-        st.info("無符合 threshold 的技能，請降低 Frequency threshold")
+        st.info("無符合條件的技能，請放寬產業/職能篩選或降低 Frequency threshold")
 
 # ── Tab 3 ─────────────────────────────────────────────────
 with tab3:
     st.markdown('<div class="sec-title">跨產業技能比較</div>', unsafe_allow_html=True)
 
-    # 第一行：職能篩選
+    # 先讀目前 state
+    cur_role_parent = st.session_state.get("t3_role_parent", "全部")
+    cur_role_sub = st.session_state.get("t3_role_sub", "全部")
+
+    # 先根據目前職能條件，決定職能篩選 options
+    available_role_parents_3 = ["全部"] + sorted({
+        r.get("job_parent_category")
+        for r in rows
+        if r.get("job_parent_category")
+    })
+    ensure_valid_state("t3_role_parent", available_role_parents_3)
+
+    cur_role_parent = st.session_state.get("t3_role_parent", "全部")
+
+    available_role_subs_3 = (
+        ["全部"]
+        if cur_role_parent == "全部"
+        else ["全部"] + sorted({
+            r.get("job_sub_category")
+            for r in rows
+            if r.get("job_parent_category") == cur_role_parent
+            and r.get("job_sub_category")
+        })
+    )
+    ensure_valid_state("t3_role_sub", available_role_subs_3)
+
+    # 職能篩選列
     r1, r2 = st.columns(2)
     with r1:
         role_parent_3 = st.selectbox(
             "職能大類",
-            ["全部"] + role_parent_all,
+            available_role_parents_3,
             key="t3_role_parent"
         )
     with r2:
-        role_sub_options_3 = (
-            ["全部"]
-            if role_parent_3 == "全部"
-            else ["全部"] + get_role_subcategories(role_parent_3)
-        )
         role_sub_3 = st.selectbox(
             "職能中類",
-            role_sub_options_3,
+            available_role_subs_3,
             key="t3_role_sub",
             disabled=(role_parent_3 == "全部")
         )
 
-    # 第二行：產業 A / B 篩選
+    # 根據職能條件，反推可選產業大類
+    available_industry_parents_3 = ["全部"] + get_available_industry_parents(
+        rows,
+        role_parent=role_parent_3,
+        role_sub=role_sub_3
+    )
+    ensure_valid_state("t3_ind_parent_a", available_industry_parents_3)
+    ensure_valid_state("t3_ind_parent_b", available_industry_parents_3)
+
     d1, d2, d3, d4 = st.columns(4)
 
     with d1:
         ind_parent_a = st.selectbox(
             "產業 A（大類）",
-            ["全部"] + industry_parent_all,
+            available_industry_parents_3,
             key="t3_ind_parent_a"
         )
 
-    with d2:
-        ind_sub_options_a = (
-            ["全部"]
-            if ind_parent_a == "全部"
-            else ["全部"] + get_industry_subcategories(ind_parent_a)
+    ind_sub_options_a = (
+        ["全部"]
+        if ind_parent_a == "全部"
+        else ["全部"] + get_available_industry_subs(
+            rows,
+            ind_parent_a,
+            role_parent=role_parent_3,
+            role_sub=role_sub_3
         )
+    )
+    ensure_valid_state("t3_ind_sub_a", ind_sub_options_a)
+
+    with d2:
         ind_sub_a = st.selectbox(
             "產業 A（子類）",
             ind_sub_options_a,
@@ -337,16 +548,23 @@ with tab3:
     with d3:
         ind_parent_b = st.selectbox(
             "產業 B（大類）",
-            ["全部"] + industry_parent_all,
+            available_industry_parents_3,
             key="t3_ind_parent_b"
         )
 
-    with d4:
-        ind_sub_options_b = (
-            ["全部"]
-            if ind_parent_b == "全部"
-            else ["全部"] + get_industry_subcategories(ind_parent_b)
+    ind_sub_options_b = (
+        ["全部"]
+        if ind_parent_b == "全部"
+        else ["全部"] + get_available_industry_subs(
+            rows,
+            ind_parent_b,
+            role_parent=role_parent_3,
+            role_sub=role_sub_3
         )
+    )
+    ensure_valid_state("t3_ind_sub_b", ind_sub_options_b)
+
+    with d4:
         ind_sub_b = st.selectbox(
             "產業 B（子類）",
             ind_sub_options_b,
@@ -510,6 +728,7 @@ with tab3:
             height=350
         )
 
+        
 # ── Tab 4 ─────────────────────────────────────────────────
 with tab4:
     st.markdown('<div class="sec-title">雙職能技能比較</div>', unsafe_allow_html=True)
