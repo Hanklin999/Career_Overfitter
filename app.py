@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 Career_Overfitter — Streamlit 主入口
-執行方式: streamlit run app.py
+執行方式:
+    streamlit run app.py
 """
 
 import streamlit as st
@@ -17,142 +18,186 @@ st.set_page_config(
 # ── 全域 CSS ──────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
 html, body, [class*="css"] {
     font-family: 'DM Sans', sans-serif;
+    background: #f9f8f6;
 }
+
 h1, h2, h3 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
+    color: #111;
 }
 
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    background: #0f0f0f;
-    border-right: 1px solid #2a2a2a;
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
-section[data-testid="stSidebar"] * {
-    color: #e8e8e8 !important;
+
+.hero-wrap {
+    padding: 0.5rem 0 1.25rem 0;
 }
-section[data-testid="stSidebar"] .stRadio label {
-    font-family: 'Syne', sans-serif;
+
+.hero-title {
+    font-size: 2.5rem;
+    line-height: 1.08;
+    margin-bottom: 0.45rem;
+    color: #111;
+}
+
+.hero-sub {
+    font-size: 1rem;
+    color: #5f5a54;
+    margin-bottom: 0.35rem;
+    line-height: 1.7;
+}
+
+.hero-note {
     font-size: 0.9rem;
-    letter-spacing: 0.04em;
+    color: #8a847b;
 }
 
-/* Metric cards */
-div[data-testid="metric-container"] {
-    background: #f7f5f0;
+.section-divider {
+    margin: 1rem 0 1.5rem 0;
+    border-top: 1px solid #e5e2db;
+}
+
+.card-shell {
     border: 1px solid #e0ddd7;
-    border-radius: 8px;
-    padding: 1rem;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 1.2rem 1.15rem;
+    min-height: 220px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: all 0.18s ease;
 }
 
-/* Buttons */
-.stButton > button {
-    font-family: 'Syne', sans-serif;
+.card-shell:hover {
+    border-color: #cfc8be;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    background: #fcfbf9;
+}
+
+.card-kicker {
+    font-size: 0.74rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
-    border-radius: 4px;
-    border: 2px solid #0f0f0f;
-    background: #0f0f0f;
-    color: #f7f5f0;
-    transition: all 0.15s;
-}
-.stButton > button:hover {
-    background: #f7f5f0;
-    color: #0f0f0f;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8b8175;
+    margin-bottom: 0.7rem;
 }
 
-/* Tag pills */
-.tag-pill {
+.card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 0.6rem;
+}
+
+.card-desc {
+    font-size: 0.92rem;
+    color: #5f5a54;
+    line-height: 1.75;
+    min-height: 90px;
+}
+
+.card-tag {
     display: inline-block;
-    background: #f0ede8;
-    border: 1px solid #d4cfc8;
-    border-radius: 20px;
-    padding: 2px 10px;
-    font-size: 0.78rem;
-    margin: 2px;
-    font-family: 'DM Sans', sans-serif;
-    color: #3a3a3a;
-}
-.tag-pill.skill {
-    background: #e8f0fe;
-    border-color: #c5d8fd;
-    color: #1a56db;
-}
-.tag-pill.role {
-    background: #fef3e8;
-    border-color: #fdd5a0;
-    color: #b45309;
+    margin-top: 0.95rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    background: #e8edf5;
+    color: #1e3a5f;
 }
 
-/* Score bar */
-.score-bar-wrap { background: #e8e8e8; border-radius: 4px; height: 8px; margin: 4px 0; }
-.score-bar-fill { height: 8px; border-radius: 4px; background: #0f0f0f; }
-
-/* Job card */
-.job-card {
-    border: 1px solid #e0ddd7;
-    border-radius: 10px;
-    padding: 1.2rem 1.4rem;
-    margin-bottom: 0.8rem;
-    background: #fff;
-    transition: box-shadow 0.15s;
+.footer-note {
+    margin-top: 1.2rem;
+    font-size: 0.82rem;
+    color: #8a847b;
 }
-.job-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-.job-card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: #0f0f0f; }
-.job-card-meta { font-size: 0.82rem; color: #666; margin: 4px 0 8px 0; }
 </style>
 """, unsafe_allow_html=True)
 
 # ── 首頁內容 ──────────────────────────────────────────────
-st.markdown("""
-<div style="padding: 3rem 0 2rem 0;">
-  <div style="font-family:'Syne',sans-serif; font-size:3rem; font-weight:800; line-height:1.1; color:#0f0f0f;">
-    Career<br><span style="color:#b45309;">Overfitter</span>
-  </div>
-  <p style="font-size:1.1rem; color:#555; margin-top:1rem; max-width:520px;">
-    從 104 人力銀行職缺資料，幫你找到最 fit 的職涯方向。
-  </p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown(
+    """
+    <div class="hero-wrap">
+        <div class="hero-title">🎯 Career Overfitter</div>
+        <div class="hero-sub">
+            從 104 人力銀行職缺資料，幫你找到最 fit 的職涯方向。<br>
+            你可以先瀏覽市場職缺，再看技能結構，最後用履歷做 CV Fit 分析。
+        </div>
+        <div class="hero-note">請從下方功能入口開始，或使用左側選單切換頁面。</div>
+    </div>
+    <div class="section-divider"></div>
+    """,
+    unsafe_allow_html=True,
+)
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("""
-    <div class="job-card" style="border-left: 4px solid #0f0f0f;">
-      <div class="job-card-title">🔍 職缺瀏覽</div>
-      <div class="job-card-meta" style="margin-top:8px;">
-        搜尋、篩選、瀏覽已爬取的職缺，查看 role / skill 分布。
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="card-shell">
+            <div class="card-kicker">Explore</div>
+            <div class="card-title">職缺瀏覽</div>
+            <div class="card-desc">
+                依產業大類、產業別、職能大類、職能中類與職能別快速篩選，
+                查看真實職缺內容、職類標籤、技能需求與 104 原始連結。
+            </div>
+            <div class="card-tag">第一步：先看市場</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.page_link("pages/1_job_search.py", label="進入職缺瀏覽", icon="🔍")
 
 with col2:
-    st.markdown("""
-    <div class="job-card" style="border-left: 4px solid #b45309;">
-      <div class="job-card-title">📄 CV Fit 分析</div>
-      <div class="job-card-meta" style="margin-top:8px;">
-        上傳履歷，自動抽取技能，計算與各 role 的 fit score。
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="card-shell">
+            <div class="card-kicker">Analyze</div>
+            <div class="card-title">技能 Dashboard</div>
+            <div class="card-desc">
+                查看全市場技能熱度、產業與職能的技能分布，
+                比較跨產業與跨職能之間的共同技能與差異。
+            </div>
+            <div class="card-tag">第二步：理解技能結構</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.page_link("pages/2_skill_dashboard.py", label="進入技能 Dashboard", icon="📊")
 
 with col3:
-    st.markdown("""
-    <div class="job-card" style="border-left: 4px solid #1a56db;">
-      <div class="job-card-title">📊 技能 Dashboard</div>
-      <div class="job-card-meta" style="margin-top:8px;">
-        市場技能需求熱度、薪資分布、產業趨勢一覽。
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="card-shell">
+            <div class="card-kicker">Match</div>
+            <div class="card-title">CV Fit 分析</div>
+            <div class="card-desc">
+                貼上履歷，自動抽取技能，對照市場需求，
+                看你的技能最適合哪些職能，以及還缺哪些關鍵能力。
+            </div>
+            <div class="card-tag">第三步：做履歷適配分析</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.page_link("pages/3_cv_fitting_tool.py", label="進入 CV Fit 分析", icon="📄")
 
-st.markdown("---")
 st.markdown(
-    "<p style='font-size:0.8rem; color:#aaa;'>← 從左側選單選擇功能</p>",
+    """
+    <div class="footer-note">
+        建議使用流程：職缺瀏覽 → 技能 Dashboard → CV Fit 分析
+    </div>
+    """,
     unsafe_allow_html=True,
 )
