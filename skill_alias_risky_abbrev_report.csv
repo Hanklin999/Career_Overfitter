@@ -1,0 +1,64 @@
+﻿skill_parent_category,skill_sub_category,canonical_skill_name,alias,alias_type,requires_context,priority,ambiguity_score,match_mode,positive_context,negative_context,enabled,notes
+Statistics & Experimentation,Analytics Methods,Root Cause Analysis,rca,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Finance & Accounting,Audit / Tax,Tax,tax,risky_abbrev,TRUE,20,8,token,,,TRUE,exact_lower; context_guard
+Finance & Accounting,Audit / Tax,Transfer Pricing,tp,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+BI & Data Visualization,BI Tools,Google Analytics,ga,risky_abbrev,TRUE,15,9,token,google analytics|ga4|web analytics|tag manager|tracking|marketing analytics,general availability|georgia,TRUE,abbrev; context_guard
+BI & Data Visualization,BI Tools,Google Analytics,ga4,risky_abbrev,TRUE,20,8,token,,,TRUE,product; context_guard
+Programming & Scripting,Business Automation,Google Apps Script,gas,risky_abbrev,TRUE,20,8,token,google apps script|apps script|google sheets|spreadsheet automation,natural gas|oil and gas|gas station,TRUE,abbrev; context_guard
+Sales / BD / Customer Success,Business Development,Business Development,bd,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Information Systems & Enterprise Tools,Business Systems,Business Systems Analysis,bsa,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Information Systems & Enterprise Tools,Business Systems,User Acceptance Testing,uat,abbrev_context,TRUE,45,5,token,user acceptance testing|acceptance testing|test case|qa|system testing|implementation|go-live,,TRUE,abbrev; context_guard
+Information Systems & Enterprise Tools,Business Systems,System Integration,si,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Database & Query Languages,Cloud Data Warehouses,BigQuery,bq,abbrev_context,TRUE,45,4,token,bigquery|google cloud|gcp|sql|data warehouse,,TRUE,abbrev; context_guard
+Data Engineering & Cloud,Cloud Services,Amazon S3,s3,risky_abbrev,TRUE,20,8,token,,,TRUE,short; context_guard
+Sales / BD / Customer Success,Customer Success,Customer Success,cs,risky_abbrev,TRUE,10,10,token,customer success|customer service|client success|customer onboarding|customer retention|support,computer science,TRUE,abbrev; context_guard
+Data Engineering & Cloud,Data Pipeline,Data Quality,dq,abbrev_context,TRUE,35,6,token,data quality|data governance|data cleaning|validation|data integrity,,TRUE,abbrev; context_guard
+Machine Learning & AI,Deep Learning,Deep Learning,dl,risky_abbrev,TRUE,20,8,token,deep learning|neural network|tensorflow|pytorch|keras|cnn|transformer,,TRUE,abbrev; context_guard
+Machine Learning & AI,Deep Learning,Neural Network,nn,risky_abbrev,TRUE,15,9,token,neural network|deep learning|tensorflow|pytorch|keras,,TRUE,abbrev; context_guard
+Machine Learning & AI,Deep Learning,TensorFlow,tf,risky_abbrev,TRUE,20,8,token,tensorflow|deep learning|neural network|keras|pytorch|model training,,TRUE,abbrev; context_guard
+Machine Learning & AI,Deep Learning,Computer Vision,cv,risky_abbrev,TRUE,15,10,token,computer vision|opencv|image recognition|object detection|image segmentation|yolo|cnn|video analytics|vision model,resume|résumé|curriculum vitae|upload cv|submit cv|attach cv|send cv|cv review|cv screening,TRUE,abbrev; context_guard
+Data Engineering & Cloud,DevOps / Infrastructure,Kubernetes,k8s,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Statistics & Experimentation,Experimentation,A/B Testing,ab測試,risky_abbrev,TRUE,20,8,token,,,TRUE,常見混寫; context_guard
+Finance & Accounting,Financial Modeling,Comparable Company Analysis,cca,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Finance & Accounting,Financial Modeling,ROI Analysis,roi,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Finance & Accounting,Financial Modeling,Cost-Benefit Analysis,cba,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Domain Knowledge,Financial Services,Wealth Management,wm,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Finance & Accounting,Financial Statements,Balance Sheet,bs,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Finance & Accounting,Financial Statements,P&L,p l,risky_abbrev,TRUE,20,8,token,,,TRUE,punctuation_variant; context_guard
+Machine Learning & AI,GenAI / LLM,RAG,rag,risky_abbrev,TRUE,35,6,token,retrieval augmented generation|retrieval-augmented generation|llm|large language model|vector database|embedding|langchain|openai,rags|brag|ragged,TRUE,exact_lower; context_guard
+Machine Learning & AI,GenAI / LLM,Generative AI,生成式ai,risky_abbrev,TRUE,20,8,token,,,TRUE,常見混寫; context_guard
+Machine Learning & AI,GenAI / LLM,AI Workflow,ai 工作流,risky_abbrev,TRUE,20,8,token,,,TRUE,常見混寫; context_guard
+Machine Learning & AI,GenAI / LLM,Multimodal AI,多模態ai,risky_abbrev,TRUE,20,8,token,,,TRUE,常見混寫; context_guard
+Machine Learning & AI,GenAI / LLM,Stable Diffusion,sd,risky_abbrev,TRUE,10,9,token,stable diffusion|image generation|sdxl|generative ai,standard deviation,TRUE,abbrev; context_guard
+Marketing & Growth,Growth,User Acquisition,ua,risky_abbrev,TRUE,10,9,token,user acquisition|growth marketing|paid media|marketing analytics,,TRUE,abbrev; context_guard
+Finance & Accounting,Investment / Markets,Equity Research,er,risky_abbrev,TRUE,10,10,token,equity research|emergency room|investment research,,TRUE,abbrev; context_guard
+Machine Learning & AI,Machine Learning,Machine Learning,ml,risky_abbrev,TRUE,35,7,token,machine learning|model|classification|prediction|training|sklearn|xgboost|feature engineering|data science|python,html|xml,TRUE,abbrev; context_guard
+Machine Learning & AI,Machine Learning,Random Forest,rf,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Marketing & Growth,Market Research,Competitive Intelligence,ci,risky_abbrev,TRUE,10,9,token,competitive intelligence|continuous improvement|market research|process improvement,,TRUE,abbrev; context_guard
+Marketing & Growth,Market Research,TAM SAM SOM,tam,risky_abbrev,TRUE,15,8,token,tam sam som|total addressable market|market sizing|market size,,TRUE,component; context_guard
+Marketing & Growth,Market Research,TAM SAM SOM,sam,risky_abbrev,TRUE,10,10,token,tam sam som|serviceable available market|market sizing|market size,,TRUE,component; context_guard
+Marketing & Growth,Market Research,TAM SAM SOM,som,risky_abbrev,TRUE,10,10,token,tam sam som|serviceable obtainable market|market sizing|market size,,TRUE,component; context_guard
+Marketing & Growth,Marketing Technology,Google Marketing Platform,gmp,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Operations & Supply Chain,Operations,SOP Development,sop,risky_abbrev,TRUE,15,8,token,standard operating procedure|sop development|process documentation|operations|sales and operations planning|s&op,,TRUE,short; context_guard
+Operations & Supply Chain,Process Excellence,Continuous Improvement,ci,risky_abbrev,TRUE,10,9,token,competitive intelligence|continuous improvement|market research|process improvement,,TRUE,abbrev; context_guard
+Operations & Supply Chain,Process Excellence,User Acceptance Testing,uat,abbrev_context,TRUE,45,5,token,user acceptance testing|acceptance testing|test case|qa|system testing|implementation|go-live,,TRUE,abbrev; context_guard
+Product & User Analytics,Product Management,Product Management,pm,risky_abbrev,TRUE,10,10,token,product management|product manager|project management|program management|roadmap|prd|feature|milestone|stakeholder|pmp,1pm|2pm|3pm|4pm|5pm|6pm|7pm|8pm|9pm|10pm|11pm|12pm|pm shift,TRUE,abbrev; context_guard
+Programming & Scripting,Programming Languages,Python,py,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Programming & Scripting,Programming Languages,R,r,risky_abbrev,TRUE,15,10,token,r studio|rstudio|r programming|r language|tidyverse|ggplot|shiny|statistical programming,are|or|for|your|our|mr|mrs|dr,TRUE,exact_lower; context_guard
+Programming & Scripting,Programming Languages,JavaScript,js,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Programming & Scripting,Programming Languages,C++,c,disabled_too_broad,TRUE,0,10,token,,too broad; disabled,FALSE,punctuation_variant; context_guard
+Programming & Scripting,Programming Languages,TypeScript,ts,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Project / Program Management,Project Management,Project Management,pm,risky_abbrev,TRUE,10,10,token,product management|product manager|project management|program management|roadmap|prd|feature|milestone|stakeholder|pmp,1pm|2pm|3pm|4pm|5pm|6pm|7pm|8pm|9pm|10pm|11pm|12pm|pm shift,TRUE,abbrev ambiguous; context_guard
+Programming & Scripting,Python Libraries,pandas,pd,risky_abbrev,TRUE,20,8,token,,,TRUE,package alias; context_guard
+Programming & Scripting,Python Libraries,NumPy,np,risky_abbrev,TRUE,20,8,token,,,TRUE,package alias; context_guard
+Software & Technical Delivery,Quality Assurance,QA Testing,qa,risky_abbrev,TRUE,30,7,token,quality assurance|testing|test case|bug|defect|uat|automation testing|software testing,,TRUE,short; context_guard
+Software & Technical Delivery,Quality Assurance,UAT,uat,abbrev_context,TRUE,45,5,token,user acceptance testing|acceptance testing|test case|qa|system testing|implementation|go-live,,TRUE,exact_lower; context_guard
+Sales / BD / Customer Success,Sales,Account Management,am,risky_abbrev,TRUE,10,10,token,account management|account manager|portfolio management|asset management,1am|2am|3am|4am|5am|6am|7am|8am|9am|10am|11am|12am,TRUE,abbrev; context_guard
+Consulting & Strategy,Strategy,Digital Transformation,dx,risky_abbrev,TRUE,20,8,token,,,TRUE,abbrev; context_guard
+Data Engineering & Cloud,Streaming / Messaging,Message Queue,mq,abbrev_context,TRUE,35,6,token,message queue|rabbitmq|kafka|pubsub|event streaming,,TRUE,abbrev; context_guard
+Operations & Supply Chain,Supply Chain,S&OP,s op,risky_abbrev,TRUE,20,8,token,,,TRUE,punctuation_variant; context_guard
+Operations & Supply Chain,Supply Chain,S&OP,sop,disabled_too_broad,TRUE,0,10,token,standard operating procedure|sop development|process documentation|operations|sales and operations planning|s&op,too broad; disabled,FALSE,no_space; context_guard
+Human Resources & People,Talent Acquisition,Talent Acquisition,ta,abbrev_context,TRUE,25,7,token,talent acquisition|recruiting|sourcing|hr|human resources,,TRUE,abbrev; context_guard
+Entrepreneurship & Venture,Venture Investment,Venture Capital,vc,abbrev_context,TRUE,35,6,token,venture capital|startup investment|funding|investment|due diligence,version control,TRUE,abbrev; context_guard
+Entrepreneurship & Venture,Venture Investment,Due Diligence,dd,abbrev_context,TRUE,25,7,token,due diligence|investment|m&a|venture capital|private equity,,TRUE,abbrev; context_guard
+Data Engineering & Cloud,Version Control,Git,git,risky_abbrev,TRUE,20,8,token,,,TRUE,exact_lower; context_guard

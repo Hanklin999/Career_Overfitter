@@ -1,0 +1,6 @@
+﻿skill_parent_category,skill_sub_category,canonical_skill_name,alias,alias_type,requires_context,priority,ambiguity_score,match_mode,positive_context,negative_context,enabled,notes
+Finance & Accounting,Financial Statements,P&L,p l,short_abbrev_review,FALSE,45,5,token,,,TRUE,punctuation_variant; review_short_alias
+Marketing & Growth,Marketing Technology,Google Marketing Platform,gmp,short_abbrev_review,FALSE,45,5,token,,,TRUE,abbrev; review_short_alias
+Consulting & Strategy,Strategy,Digital Transformation,dx,short_abbrev_review,FALSE,45,5,token,,,TRUE,abbrev; review_short_alias
+Operations & Supply Chain,Supply Chain,S&OP,s op,short_abbrev_review,FALSE,45,5,token,,,TRUE,punctuation_variant; review_short_alias
+Data Engineering & Cloud,Version Control,Git,git,short_abbrev_review,FALSE,45,5,token,,,TRUE,exact_lower; review_short_alias
