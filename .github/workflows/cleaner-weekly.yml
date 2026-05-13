@@ -1,14 +1,101 @@
-name: Weekly Cleaner
+name: Weekly 104 Market Pipeline
 
 on:
+  # GitHub Actions cron uses UTC.
+  # This runs every Monday 23:00 Asia/Taipei = Monday 15:00 UTC.
   schedule:
-    - cron: '0 23 * * 1'
-      timezone: 'Asia/Taipei'
+    - cron: '0 15 * * 1'
   workflow_dispatch:
+    inputs:
+      max_pages:
+        description: 'Pages per keyword'
+        required: false
+        default: '3'
+      past_days:
+        description: 'Only crawl jobs posted within N days'
+        required: false
+        default: '30'
+      include_all_companies:
+        description: 'Set true to disable high-value company filtering'
+        required: false
+        default: 'false'
+      run_detail:
+        description: 'Set true to crawl detail API. Not recommended for scheduled runs.'
+        required: false
+        default: 'false'
+      detail_limit:
+        description: 'Max detail rows per chunk when run_detail=true. 0 means unlimited.'
+        required: false
+        default: '0'
+
+concurrency:
+  group: weekly-104-market-pipeline
+  cancel-in-progress: false
 
 jobs:
-  run-cleaner:
+  scrape-104:
+    name: Scrape 104 chunk ${{ matrix.offset }}-${{ matrix.offset + matrix.limit }}
     runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - offset: 0
+            limit: 20
+          - offset: 20
+            limit: 20
+          - offset: 40
+            limit: 20
+          - offset: 60
+            limit: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run 104 scraper chunk
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          MAX_PAGES: ${{ github.event.inputs.max_pages || '3' }}
+          PAST_DAYS: ${{ github.event.inputs.past_days || '30' }}
+          INCLUDE_ALL_COMPANIES: ${{ github.event.inputs.include_all_companies || 'false' }}
+          RUN_DETAIL: ${{ github.event.inputs.run_detail || 'false' }}
+          DETAIL_LIMIT: ${{ github.event.inputs.detail_limit || '0' }}
+        shell: bash
+        run: |
+          CMD="python scraper_104.py --keyword-offset ${{ matrix.offset }} --keyword-limit ${{ matrix.limit }} --max-pages ${MAX_PAGES} --past-days ${PAST_DAYS}"
+
+          if [ "${INCLUDE_ALL_COMPANIES}" = "true" ]; then
+            CMD="$CMD --include-all-companies"
+          fi
+
+          if [ "${RUN_DETAIL}" != "true" ]; then
+            CMD="$CMD --skip-detail"
+          else
+            CMD="$CMD --detail-limit ${DETAIL_LIMIT}"
+          fi
+
+          echo "$CMD"
+          eval "$CMD"
+
+  run-cleaner:
+    name: Run cleaner
+    runs-on: ubuntu-latest
+    needs: scrape-104
+    timeout-minutes: 120
 
     steps:
       - name: Checkout repository
