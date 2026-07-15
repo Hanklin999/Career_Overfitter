@@ -4,6 +4,7 @@
 
 import sys
 import json
+import hashlib
 from pathlib import Path
 from collections import defaultdict
 
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 from utils.supabase_client import _get
 from utils.cv_parser import extract_skills_from_text, compute_fit_scores, build_role_skill_demand_from_db
+from utils import llm_advisor
 from utils.ui_taxonomy import (
     build_skill_parent_colors,
     get_industry_parents, get_industry_subs,
@@ -800,7 +802,56 @@ with st.expander("查看 LLM-ready diagnosis payload"):
     st.code(json.dumps(llm_payload, ensure_ascii=False, indent=2), language="json")
 
 st.markdown("---")
-st.markdown("### ✍️ 履歷改寫建議")
+st.markdown("### 🤖 AI 智能建議（Gemini）")
+
+if not llm_advisor.is_configured():
+    st.info("尚未設定 GEMINI_API_KEY，暫時只會顯示下方規則式建議。在 .env 加上 GEMINI_API_KEY 後即可啟用個人化 AI 建議。")
+else:
+    _payload_hash = hashlib.sha256(
+        json.dumps(llm_payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    ).hexdigest()
+    _ai_cache_key = f"ai_advice_{_payload_hash}"
+
+    if st.button("✨ 產生 AI 智能建議", type="secondary"):
+        with st.spinner("Gemini 分析中..."):
+            _ai_advice = llm_advisor.generate_ai_advice(llm_payload)
+        if _ai_advice:
+            st.session_state[_ai_cache_key] = _ai_advice
+        else:
+            st.warning("AI 建議暫時產生失敗，請稍後再試，或參考下方規則式建議。")
+
+    _ai_advice = st.session_state.get(_ai_cache_key)
+    if _ai_advice:
+        st.markdown(f"**最適職能（AI 判斷）：{_ai_advice.get('best_fit_role', '—')}**")
+
+        ai_c1, ai_c2 = st.columns(2)
+        with ai_c1:
+            st.markdown("**為什麼適合**")
+            for item in _ai_advice.get("why_fit", []) or []:
+                st.markdown(f"- {item}")
+            st.markdown("**關鍵技能證據**")
+            for item in _ai_advice.get("key_skill_evidence", []) or []:
+                st.markdown(f"- {item}")
+        with ai_c2:
+            st.markdown("**最大缺口**")
+            for item in _ai_advice.get("biggest_gap", []) or []:
+                st.markdown(f"- {item}")
+            st.markdown("**下一步學習建議**")
+            for item in _ai_advice.get("next_learning_actions", []) or []:
+                st.markdown(f"- {item}")
+
+        _ai_rewrites = _ai_advice.get("rewrite_suggestions", []) or []
+        if _ai_rewrites:
+            st.markdown("**AI 履歷改寫建議**")
+            for i, item in enumerate(_ai_rewrites, 1):
+                st.markdown(f"**{i}. 原始 bullet**")
+                st.markdown(f"<div class='codebox'>{item.get('original', '')}</div>", unsafe_allow_html=True)
+                st.markdown("**改寫建議**")
+                st.markdown(f"<div class='codebox'>{item.get('rewritten', '')}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='muted'>原因：{item.get('reason', '')}</div>", unsafe_allow_html=True)
+
+st.markdown("---")
+st.markdown("### ✍️ 規則式改寫建議（Rule-based，離線可用）")
 for i, item in enumerate(structured["rewrite_suggestions"], 1):
     st.markdown(f"**{i}. 原始 bullet**")
     st.markdown(f"<div class='codebox'>{item['original']}</div>", unsafe_allow_html=True)

@@ -84,19 +84,25 @@ streamlit run app.py
 搭配 GitHub Actions 8 個平行 shard 執行，總請求量太大，容易被 104 判定為異常流量而擋下
 （見 `scraper_104.py` 裡的 `FAKE_404_THRESHOLD` / `FAKE_404_PAUSE` 處理）。
 
-目前先縮小到 2 個職能大類、共 18 個關鍵字：
+範圍縮小過兩次：
 
-- `Marketing / Brand / Growth`
-- `Analytics / Data / BI`
+1. 第一次縮到 `Marketing / Brand / Growth` + `Analytics / Data / BI`（18 個關鍵字）。
+   這份設定備份在 `Job_taxonomy_forsearch_marketing_analytics_backup.csv`。
+2. 目前改成以 **Product Data Analyst** 為中心，共 12 個關鍵字，分屬：
+   - `Product Management`：Product Analyst、產品分析、產品數據分析、產品資料分析、
+     Product Data Analyst、Growth Product Analyst、成長產品分析、Product Operations Analyst、
+     產品營運分析
+   - `Analytics / Data / BI`：Data Analyst、數據分析師、用戶行為分析
 
 完整的 147 個關鍵字保留在 `Job_taxonomy_forsearch_full.csv`，作為未來擴大範圍的備份。
-`.github/workflows/cleaner-weekly.yml` 目前也只留 1 個 shard（原本 8 個），對應縮小後的關鍵字量。
+`.github/workflows/cleaner-weekly.yml` 目前也只留 1 個 shard，對應縮小後的關鍵字量。
 
-### 之後要擴大範圍時
-1. 確認目前 2 個大類的爬蟲穩定（沒有頻繁觸發 fake 404 / block）。
-2. 從 `Job_taxonomy_forsearch_full.csv` 把想加入的職能大類複製回 `Job_taxonomy_forsearch.csv`。
-3. 視新的關鍵字總數，在 `cleaner-weekly.yml` 的 `matrix.include` 加回對應的 shard
-   （每個 shard 抓 15-20 個關鍵字比較安全）。
+### 之後要擴大或改變範圍時
+1. 確認目前範圍的爬蟲穩定（沒有頻繁觸發 fake 404 / block）。
+2. 從 `Job_taxonomy_forsearch_full.csv`（完整 147 個）或某個 `*_backup.csv`
+   快照，把想要的職能大類 / 關鍵字複製回 `Job_taxonomy_forsearch.csv`。
+3. 視新的關鍵字總數，調整 `cleaner-weekly.yml` 的 `matrix.include`
+   （每個 shard 抓 15-20 個關鍵字比較安全，超過就多加一個 shard）。
 
 ## LLM 輔助功能（Gemini）
 
