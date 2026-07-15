@@ -128,3 +128,39 @@ streamlit run app.py
   biggest_gap / rewrite_suggestions / next_learning_actions`
 - 沒有設定 `GEMINI_API_KEY`，或呼叫失敗時，頁面會自動 fallback 回原本的規則式建議，
   不會噴錯或空白
+
+## RAG 檢索（用真實職缺內容輔助 AI 建議）
+
+「AI 智能建議」原本只根據**統計後的技能權重**（某個 role 底下哪些技能出現頻率高）
+生成建議，沒看過任何一篇真實 JD 的實際文字。加了 RAG 之後，產生建議前會先用向量
+相似度，從 `job_posting` 裡撈出幾篇跟使用者履歷最相關的真實職缺內容，一起送給
+Gemini 當作 grounding context，讓「改寫建議」「缺口技能」能引用「這個角色最近的
+真實職缺都在找 XXX」，而不是只根據頻率統計腦補。
+
+### 架構
+
+- **Embedding model**：沿用同一組 `GEMINI_API_KEY`，呼叫 Gemini 的
+  `gemini-embedding-001`（`utils/embeddings.py`），輸出維度用 768（透過
+  `outputDimensionality` 截斷），不用額外申請新服務帳號
+- **向量儲存 / 檢索**：Supabase 原生的 **pgvector** extension，免費方案就有
+- **檢索邏輯**：`utils/rag_retrieval.py`，把查詢文字轉 embedding 後呼叫
+  Supabase 的 `match_job_postings` RPC（cosine 相似度排序）
+- **AI 建議整合**：`pages/3_CV_Fitting_Tool.py` 按下「✨ 產生 AI 智能建議」時，
+  先做 RAG 檢索、把結果格式化後傳進 `llm_advisor.generate_ai_advice(..., retrieved_context=...)`；
+  沒有檢索結果（例如還沒設定 pgvector）時，會自動退回原本純統計推論的行為，
+  不影響既有功能
+
+### 設定步驟
+
+1. **啟用 pgvector + 建立 embedding 欄位 / RPC**：把 `sql/001_enable_pgvector_rag.sql`
+   整份貼到 Supabase Dashboard → SQL Editor 執行一次（可重複執行，不會報錯）
+2. **幫既有職缺資料算 embedding**：本機執行
+   ```bash
+   python backfill_embeddings.py --limit 200
+   ```
+   資料量大的話要跑好幾次（`--limit` 控制每次處理筆數）；`.github/workflows/cleaner-weekly.yml`
+   的 `cleaner` job 後面也接了一步 `Backfill embeddings for RAG retrieval`，
+   之後每次排程跑完 cleaner，新職缺會自動補算 embedding
+3. 確認 `GEMINI_API_KEY` 已設定（跟「AI 智能建議」共用同一組），就完成了——
+   CV Fitting Tool 頁面上「AI 智能建議」區塊會自動偵測 RAG 是否可用，並在
+   建議下方顯示「這份建議參考了 N 篇真實職缺內容」或提示尚未設定

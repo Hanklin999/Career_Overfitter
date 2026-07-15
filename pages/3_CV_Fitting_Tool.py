@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 from utils.supabase_client import _get
 from utils.cv_parser import extract_skills_from_text, compute_fit_scores, build_role_skill_demand_from_db
 from utils import llm_advisor
+from utils import rag_retrieval
 from utils.ui_taxonomy import (
     build_skill_parent_colors,
     get_industry_parents, get_industry_subs,
@@ -821,17 +822,61 @@ else:
         json.dumps(llm_payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
     ).hexdigest()
     _ai_cache_key = f"ai_advice_{_payload_hash}"
+    _rag_cache_key = f"ai_rag_jobs_{_payload_hash}"
+
+    if not rag_retrieval.is_available():
+        st.caption(
+            "💡 尚未設定 RAG 檢索（需要先跑過 sql/001_enable_pgvector_rag.sql，"
+            "並執行過 backfill_embeddings.py 算好既有職缺的 embedding）。"
+            "AI 建議目前只會根據統計權重推論，不會參考真實職缺原文。"
+        )
 
     if st.button("✨ 產生 AI 智能建議", type="secondary"):
+        # RAG 第一步：用最適職能 + 命中技能 + 履歷片段組成查詢文字，
+        # 去 job_posting 裡找出向量相似度最高的幾篇真實職缺，當作 grounding context。
+        # 檢索失敗或還沒設定好 pgvector 時，retrieved_context 會是空字串，
+        # generate_ai_advice 會自動退回原本純統計推論的行為，不會整段掛掉。
+        _rag_query_text = " ".join(
+            t for t in [
+                results[0]["role"] if results else "",
+                ", ".join(matched_target_skills[:15]),
+                cv_text[:800],
+            ] if t
+        )
+
+        with st.spinner("檢索真實職缺中..."):
+            _retrieved_jobs = rag_retrieval.retrieve_similar_jobs(_rag_query_text, match_count=5)
+        _retrieved_context = rag_retrieval.format_retrieved_context(_retrieved_jobs)
+        st.session_state[_rag_cache_key] = _retrieved_jobs
+
         with st.spinner("Gemini 分析中..."):
-            _ai_advice, _ai_error = llm_advisor.generate_ai_advice(llm_payload)
+            _ai_advice, _ai_error = llm_advisor.generate_ai_advice(
+                llm_payload, retrieved_context=_retrieved_context
+            )
         if _ai_advice:
             st.session_state[_ai_cache_key] = _ai_advice
         else:
             st.warning(f"AI 建議產生失敗：{_ai_error}\n\n可先參考下方規則式建議。")
 
     _ai_advice = st.session_state.get(_ai_cache_key)
+    _retrieved_jobs = st.session_state.get(_rag_cache_key, [])
     if _ai_advice:
+        if _retrieved_jobs:
+            st.caption(f"✅ 這份建議參考了 {len(_retrieved_jobs)} 篇真實職缺內容（RAG 檢索）")
+            with st.expander("查看檢索到的真實職缺"):
+                for _job in _retrieved_jobs:
+                    _sim = _job.get("similarity")
+                    _sim_txt = f"{_sim:.2f}" if isinstance(_sim, (int, float)) else "—"
+                    st.markdown(
+                        f"**{_job.get('title_clean', '未知職稱')}**"
+                        f"（{_job.get('role_normalized') or '未分類'}，相似度 {_sim_txt}）"
+                    )
+                    st.markdown(
+                        f"<div class='codebox'>{(_job.get('job_description') or '')[:500]}</div>",
+                        unsafe_allow_html=True,
+                    )
+        else:
+            st.caption("這份建議未參考真實職缺原文，純粹根據統計權重推論。")
         st.markdown(f"**最適職能（AI 判斷）：{_ai_advice.get('best_fit_role', '—')}**")
 
         ai_c1, ai_c2 = st.columns(2)

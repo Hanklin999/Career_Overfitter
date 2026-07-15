@@ -146,3 +146,15 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python cleaner.py
+
+      # RAG 用：幫這次清洗出來的新職缺（embedding 欄位還是 NULL 的）算 embedding。
+      # 前提是已經在 Supabase 手動跑過 sql/001_enable_pgvector_rag.sql，
+      # job_posting 才會有 embedding 這個欄位；沒跑過的話這步會直接失敗，
+      # 但用 continue-on-error 讓它不影響前面爬蟲 + 清洗的結果算成功。
+      - name: Backfill embeddings for RAG retrieval
+        continue-on-error: true
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python backfill_embeddings.py --limit 200

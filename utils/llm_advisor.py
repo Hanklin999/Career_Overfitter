@@ -57,10 +57,21 @@ def is_configured() -> bool:
     return bool(GEMINI_API_KEY)
 
 
-def _build_prompt(payload: Dict[str, Any]) -> str:
+def _build_prompt(payload: Dict[str, Any], retrieved_context: str = "") -> str:
     instruction = payload.get("llm_instruction", {}) or {}
     output_language = instruction.get("output_language", "zh-TW")
     style = instruction.get("style", "concise, practical, non-exaggerated")
+
+    context_block = ""
+    if retrieved_context.strip():
+        context_block = (
+            "\n以下是從真實市場職缺資料庫中，用向量相似度檢索出來、跟這位使用者最相關的"
+            "幾篇「真實職缺內容」（RAG 檢索結果，不是憑統計數字腦補的）。"
+            "回答 why_fit / biggest_gap / rewrite_suggestions / next_learning_actions 時，"
+            "優先參考這些真實職缺實際要求的技能與用詞，讓建議更貼近目前市場上真的在找什麼人，"
+            "而不是只根據下面 JSON 裡的統計權重推論：\n\n"
+            f"{retrieved_context}\n"
+        )
 
     return (
         "你是一位資深職涯顧問，根據以下 JSON 診斷資料，為使用者產生履歷與職涯建議。\n"
@@ -77,7 +88,8 @@ def _build_prompt(payload: Dict[str, Any]) -> str:
         "- biggest_gap: string list（2-5 條），使用者最需要補強的技能缺口\n"
         "- rewrite_suggestions: list of object，每個物件包含 original / rewritten / reason 三個 "
         "string 欄位，最多 3 條；如果 payload 沒有提供可改寫的原文，回傳空 list\n"
-        "- next_learning_actions: string list（3-5 條），具體、可在 1-3 個月內執行的下一步學習建議\n\n"
+        "- next_learning_actions: string list（3-5 條），具體、可在 1-3 個月內執行的下一步學習建議\n"
+        f"{context_block}\n"
         "診斷資料 JSON：\n"
         f"{json.dumps(payload, ensure_ascii=False)}"
     )
@@ -106,9 +118,14 @@ def _extract_json(text: str) -> Optional[Dict[str, Any]]:
     return None
 
 
-def generate_ai_advice(payload: Dict[str, Any], timeout: int = DEFAULT_TIMEOUT):
+def generate_ai_advice(payload: Dict[str, Any], retrieved_context: str = "", timeout: int = DEFAULT_TIMEOUT):
     """
     呼叫 Gemini，回傳 (advice_dict, error_message) 這個 tuple。
+
+    retrieved_context：選填，通常是 utils.rag_retrieval.format_retrieved_context()
+    的輸出——用向量檢索從真實 job_posting 找出的相關職缺文字。有給的話，
+    prompt 會要求 Gemini 優先參考這些真實資料，而不是只根據 payload 裡的統計
+    權重腦補；沒給（預設空字串）就跟原本行為一樣，純粹根據 payload 推論。
 
     - 成功：(dict，見 REQUIRED_KEYS, None)
     - 失敗：(None, "人類看得懂的錯誤原因字串")
@@ -121,7 +138,7 @@ def generate_ai_advice(payload: Dict[str, Any], timeout: int = DEFAULT_TIMEOUT):
     if not is_configured():
         return None, "GEMINI_API_KEY 未設定"
 
-    prompt = _build_prompt(payload)
+    prompt = _build_prompt(payload, retrieved_context=retrieved_context)
     body = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
