@@ -27,42 +27,26 @@ jobs:
   scrape-104:
     runs-on: ubuntu-latest
 
+    # Phase 1 scope (2026-07): Job_taxonomy_forsearch.csv only has 18 keywords
+    # (Marketing / Brand / Growth + Analytics / Data / BI), so a single shard
+    # is enough to cover all of them. This was cut down from 147 keywords /
+    # 8 shards because the full-scope crawl was getting blocked by 104 too
+    # often (see FAKE_404_THRESHOLD handling in scraper_104.py).
+    #
+    # To re-expand scope later:
+    #   1. Copy more categories from Job_taxonomy_forsearch_full.csv back
+    #      into Job_taxonomy_forsearch.csv (validate the crawler stays
+    #      healthy on the current scope first).
+    #   2. Add matrix entries below in the same offset/limit/end shape,
+    #      keeping each shard at roughly 15-20 keywords.
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 1
       matrix:
         include:
           - offset: 0
             limit: 20
-            end: 20
-
-          - offset: 20
-            limit: 20
-            end: 40
-
-          - offset: 40
-            limit: 20
-            end: 60
-
-          - offset: 60
-            limit: 20
-            end: 80
-
-          - offset: 80
-            limit: 20
-            end: 100
-
-          - offset: 100
-            limit: 20
-            end: 120
-
-          - offset: 120
-            limit: 20
-            end: 140
-
-          - offset: 140
-            limit: 20
-            end: 160
+            end: 18
 
     name: Scrape 104 keywords ${{ matrix.offset }}-${{ matrix.end }}
 
