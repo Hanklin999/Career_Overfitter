@@ -41,8 +41,10 @@ HEADERS = {
     "Content-Type": "application/json",
 }
 
-# 一次送給 Gemini batchEmbedContents 的筆數，留點安全邊界，不要單批太大。
-EMBED_BATCH_SIZE = 20
+# 一次送給 Gemini batchEmbedContents 的筆數。免費額度的 rate limit 很容易被
+# 大批次 + 長文字撞到（embed_texts_batch 內建 429 重試，但批次越小、間隔越
+# 長，一開始就撞到限制的機率越低），這裡刻意調小、跑久一點換穩定。
+EMBED_BATCH_SIZE = 10
 
 
 def fetch_rows_missing_embedding(limit: int) -> List[Dict]:
@@ -118,7 +120,7 @@ def main() -> None:
                 print(f"❌ {job_no} embedding 失敗")
 
         # 對 Gemini embedding API 客氣一點，避免瞬間把免費額度的 rate limit 打爆
-        time.sleep(1)
+        time.sleep(4)
 
     print(f"✅ 完成：成功 {ok}，失敗 {fail}")
 
