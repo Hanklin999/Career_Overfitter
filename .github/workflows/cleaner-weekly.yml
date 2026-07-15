@@ -23,8 +23,39 @@ on:
         required: true
         default: "0"
 
+      truncate_before_run:
+        description: "\u26a0\ufe0f 勾選後，爬蟲開始前會先清空 jd_raw + job_posting 全部資料（不可復原）"
+        required: true
+        default: false
+        type: boolean
+
 jobs:
+  clear-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Clear existing Supabase data (only if requested)
+        if: ${{ github.event.inputs.truncate_before_run == 'true' }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python clear_supabase_data.py
+
   scrape-104:
+    needs: clear-data
+    if: always() && needs.clear-data.result == 'success'
     runs-on: ubuntu-latest
 
     # Phase 1 scope (2026-07, updated same month): Job_taxonomy_forsearch.csv
