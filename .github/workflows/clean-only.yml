@@ -1,0 +1,65 @@
+name: Clean Only (jd_raw -> job_posting)
+
+# 只跑 cleaner.py，不重新爬 104，用在：
+# - 手動追上 jd_raw 裡還沒被清洗過的舊資料（backlog）
+# - 想重跑清洗邏輯，但不想再打一次 104 浪費請求
+#
+# 跟主要的 Weekly 104 Full Detail Pipeline（cleaner-weekly.yml）是分開、
+# 獨立的 workflow，互不影響。
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "這次最多從 jd_raw 抓幾筆來處理（建議設到大於 jd_raw 總筆數，才能涵蓋全部舊資料）"
+        required: true
+        default: "20000"
+      only_new:
+        description: "勾選後只處理還沒進 job_posting 的資料（建議保持勾選，速度快很多）"
+        required: true
+        default: true
+        type: boolean
+      quality_threshold:
+        description: "quality_score 門檻，低於這個值的資料會被跳過"
+        required: true
+        default: "0.10"
+
+jobs:
+  clean-only:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run cleaner
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          CMD="python cleaner.py --limit ${{ github.event.inputs.limit }} --quality-threshold ${{ github.event.inputs.quality_threshold }}"
+
+          if [ "${{ github.event.inputs.only_new }}" == "true" ]; then
+            CMD="$CMD --only-new"
+          fi
+
+          echo "$CMD"
+          eval "$CMD"
+
+      - name: Backfill embeddings for RAG retrieval
+        continue-on-error: true
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python backfill_embeddings.py --limit 500

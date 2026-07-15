@@ -145,7 +145,11 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python cleaner.py
+        # --limit 沒帶的話預設只吃 jd_raw 裡最新 500 筆，past_days 一直往前推，
+        # 舊資料只要被擠出這個窗口就永遠沒機會清洗（backlog 會一直卡住不會自己好）。
+        # 這裡固定給大 limit + --only-new，確保每次排程都會把 jd_raw 全部掃過一輪，
+        # 只處理還沒進 job_posting 的部分，不會每次都整張表重算一次。
+        run: python cleaner.py --limit 20000 --only-new
 
       # RAG 用：幫這次清洗出來的新職缺（embedding 欄位還是 NULL 的）算 embedding。
       # 前提是已經在 Supabase 手動跑過 sql/001_enable_pgvector_rag.sql，
