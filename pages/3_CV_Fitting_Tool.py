@@ -565,7 +565,17 @@ st.markdown("---")
 if not cv_text.strip():
     st.info("請輸入履歷內容後點擊「開始分析」")
     st.stop()
-if not st.button("🚀 開始分析", type="primary"):
+
+# Streamlit 每次任何 widget（包含下面的 AI 建議按鈕）被觸發都會讓整支程式重跑一次，
+# st.button() 的回傳值只有在「剛好是它被按下的那次重跑」才是 True，其他重跑一律是 False。
+# 如果直接拿它的即時回傳值當作整頁的顯示條件，按下面任何其他按鈕都會讓這裡重新判定成
+# False、觸發 st.stop()，導致整頁結果消失、看起來像『縮起來』。改用 session_state 記住
+# 「已經按過開始分析」這個狀態，之後不管重跑幾次、按了下面哪個按鈕，都不會再被這裡砍斷。
+if "cv_analysis_started" not in st.session_state:
+    st.session_state["cv_analysis_started"] = False
+if st.button("🚀 開始分析", type="primary"):
+    st.session_state["cv_analysis_started"] = True
+if not st.session_state["cv_analysis_started"]:
     st.stop()
 
 # ── extract skills ───────────────────────────────────────
