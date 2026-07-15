@@ -813,6 +813,65 @@ with st.expander("查看 LLM-ready diagnosis payload"):
     st.code(json.dumps(llm_payload, ensure_ascii=False, indent=2), language="json")
 
 st.markdown("---")
+st.markdown("### 🎯 為你推薦的實際職缺")
+st.caption(
+    "跟下面的 AI 建議是分開的功能：這裡直接用向量相似度，從真實職缺資料庫裡找出"
+    "最像這份履歷的具體職缺（不是統計出來的職能分類，是實際刊登過的職缺原文），"
+    "可以直接點連結去 104 看。"
+)
+
+if not rag_retrieval.is_available():
+    st.info(
+        "尚未設定 RAG 檢索（需要先跑過 sql/001_enable_pgvector_rag.sql，"
+        "並執行過 backfill_embeddings.py），這個功能暫時無法使用。"
+    )
+else:
+    _job_match_hash = hashlib.sha256(
+        json.dumps(llm_payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    ).hexdigest()
+    _job_match_cache_key = f"job_matches_{_job_match_hash}"
+
+    _match_count = st.slider("顯示筆數", 5, 20, 10, 5, key="job_match_count")
+
+    if st.button("🔍 找出最像你的實際職缺", type="secondary"):
+        # 跟下面 AI 建議用的查詢文字組法一致（最適職能 + 命中技能 + 履歷片段），
+        # 但這裡是獨立觸發、獨立快取，不需要先按過 AI 建議按鈕才能用。
+        _match_query_text = " ".join(
+            t for t in [
+                results[0]["role"] if results else "",
+                ", ".join(matched_target_skills[:15]),
+                cv_text[:800],
+            ] if t
+        )
+        with st.spinner("檢索中..."):
+            _job_matches = rag_retrieval.retrieve_similar_jobs(_match_query_text, match_count=_match_count)
+        st.session_state[_job_match_cache_key] = _job_matches
+
+    _job_matches = st.session_state.get(_job_match_cache_key, [])
+    if _job_matches:
+        st.markdown(f"共找到 **{len(_job_matches)}** 筆相關職缺（依相似度排序）：")
+        for _m in _job_matches:
+            _job_no = _m.get("job_no")
+            _similarity = _m.get("similarity")
+            _sim_txt = f"{_similarity:.2f}" if isinstance(_similarity, (int, float)) else "—"
+            _title = _m.get("title_clean") or "（無職稱）"
+            _role_n = _m.get("role_normalized") or ""
+            _desc = _m.get("job_description") or ""
+            _url_104 = f"https://www.104.com.tw/job/{_job_no}" if _job_no else ""
+
+            with st.expander(f"**{_title}**　·　相似度 {_sim_txt}", expanded=False):
+                if _role_n:
+                    st.markdown(f"<span class='tag tag-skill'>{_role_n}</span>", unsafe_allow_html=True)
+                if _desc:
+                    st.markdown(
+                        f"<div class='codebox' style='margin-top:8px;white-space:pre-wrap;'>"
+                        f"{_desc[:600]}{'…' if len(_desc) > 600 else ''}</div>",
+                        unsafe_allow_html=True,
+                    )
+                if _url_104:
+                    st.markdown(f"[104 查看原始職缺]({_url_104})")
+
+st.markdown("---")
 st.markdown("### 🤖 AI 智能建議（Gemini）")
 
 if not llm_advisor.is_configured():

@@ -9,6 +9,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 import streamlit as st
 import pandas as pd
 from utils.supabase_client import _get, get_jd_raw_count, get_job_posting_count
+from utils import rag_retrieval
 from utils.ui_taxonomy import (
     get_industry_parents, get_industry_subs,
     get_role_parents, get_role_subs, get_roles,
@@ -95,6 +96,183 @@ def parse_cat_raw(raw) -> list:
     s = str(raw).strip().strip("[]")
     items = re.findall(r"['\"]([^'\"]+)['\"]", s)
     return items if items else [x.strip() for x in s.split(",") if x.strip()]
+
+
+# ── Job Card renderer（結構化篩選結果 / 語意搜尋結果共用） ─────
+def render_job_card(job, extra_badge_html: str = ""):
+    title    = job.get("title_clean") or "（無職稱）"
+    company  = job.get("company_clean") or ""
+    loc      = job.get("location_county") or ""
+    role_n   = job.get("role_normalized") or ""
+    ind_b    = job.get("industry_bucket") or ""
+    skills   = job.get("skill_canonical") or []
+    sal_low  = job.get("salary_low")
+    sal_hi   = job.get("salary_high")
+    sal_u    = job.get("salary_unit") or "月薪"
+    exp_min  = job.get("work_exp_min")
+    exp_max  = job.get("work_exp_max")
+    edu      = job.get("edu_level") or ""
+    remote   = job.get("remote_work", 0)
+    date     = job.get("appear_date") or ""
+    quality  = job.get("quality_score") or 0
+    is_for   = job.get("is_foreign", False)
+    is_lst   = job.get("is_listed", False)
+    jd_text  = job.get("job_description") or ""
+    manage   = job.get("manage_resp") or ""
+    cat_raw  = job.get("job_category_raw") or ""
+    job_no   = job.get("job_no") or ""
+
+    salary_str = (
+        f"{sal_low//1000}K–{sal_hi//1000}K／{sal_u}" if sal_low and sal_hi else
+        f"{sal_low//1000}K+／{sal_u}"                 if sal_low            else "薪資面議"
+    )
+    exp_str  = (
+        f"{exp_min}–{exp_max} 年" if exp_min is not None and exp_max is not None else
+        f"{exp_min}+ 年"          if exp_min is not None                          else ""
+    )
+    meta_str = " · ".join(p for p in [company, loc, exp_str, edu] if p)
+    q_pct    = int(quality * 100)
+    q_bg     = "#d1fae5" if quality >= 0.7 else "#fef3c7" if quality >= 0.4 else "#f3f4f6"
+    q_fg     = "#065f46" if quality >= 0.7 else "#78350f" if quality >= 0.4 else "#6b7280"
+
+    flags = []
+    if is_for:                       flags.append("外商")
+    elif not is_for and not is_lst:  flags.append("本土")
+    if is_lst:                       flags.append("上市櫃")
+    if remote:                       flags.append("Remote")
+
+    role_tag   = f'<span class="tag tag-role">{role_n}</span>' if role_n and role_n != "Unclassified" else ""
+    ind_tag    = f'<span class="tag tag-ind">{ind_b}</span>'   if ind_b else ""
+    flag_tags  = " ".join(f'<span class="tag tag-flag">{f}</span>' for f in flags)
+    skill_tags = "".join(f'<span class="tag tag-skill">{s}</span>' for s in (skills[:5] if isinstance(skills, list) else []))
+    q_badge    = f'<span class="quality-badge" style="background:{q_bg};color:{q_fg};">品質 {q_pct}%</span>'
+
+    link_104_html = ""
+    if job_no:
+        url_104 = f"https://www.104.com.tw/job/{job_no}"
+        link_104_html = (
+            f'<a href="{url_104}" target="_blank" rel="noopener noreferrer" class="link-104">'
+            f'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" '
+            f'stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">'
+            f'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>'
+            f'<polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'
+            f'</svg>104 查看原始職缺</a>'
+        )
+
+    cat_items      = parse_cat_raw(cat_raw)
+    cat_chips_html = ""
+    if cat_items:
+        chips = "".join(f'<span class="tag-cat">{c}</span>' for c in cat_items)
+        cat_chips_html = f"<div class='detail-label'>職類</div><div style='margin-top:4px;'>{chips}</div>"
+
+    header = f"**{title}** · {company}　｜　{salary_str}　｜　{date}"
+
+    with st.expander(header, expanded=False):
+        st.markdown(f"""
+        <div style='padding:4px 0 10px 0;'>
+          <div class='job-meta'>{meta_str}</div>
+          <div style='margin-bottom:6px;display:flex;align-items:center;flex-wrap:wrap;gap:4px;'>
+            {role_tag}{ind_tag}{flag_tags}{extra_badge_html}&nbsp;&nbsp;{q_badge}
+            <span style='flex:1'></span>{link_104_html}
+          </div>
+          <div>{skill_tags}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if cat_chips_html:
+            st.markdown(cat_chips_html, unsafe_allow_html=True)
+
+        if jd_text:
+            st.markdown("<div class='detail-label'>職缺描述</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='detail-body' style='max-height:260px;overflow-y:auto;"
+                f"white-space:pre-wrap;border:1px solid #e5e2db;border-radius:6px;"
+                f"padding:12px;background:#fafaf8;'>"
+                f"{jd_text[:2500]}{'…' if len(jd_text) > 2500 else ''}</div>",
+                unsafe_allow_html=True,
+            )
+
+        if manage:
+            st.markdown(f"<div class='detail-label'>管理職責</div><div class='detail-body'>{manage}</div>",
+                        unsafe_allow_html=True)
+
+        if isinstance(skills, list) and len(skills) > 5:
+            all_skill_tags = "".join(f'<span class="tag tag-skill">{s}</span>' for s in skills)
+            st.markdown(
+                f"<div class='detail-label'>全部技能（{len(skills)} 項）</div>"
+                f"<div style='margin-top:4px;'>{all_skill_tags}</div>",
+                unsafe_allow_html=True,
+            )
+
+
+# ── 語意搜尋（AI，用向量相似度） ─────────────────────────
+st.markdown("### 🧠 語意搜尋（AI）")
+st.caption(
+    "用一句話描述你想找的工作，AI 會用向量相似度從真實職缺資料庫裡找出最相關的結果，"
+    "跟下面的結構化篩選是獨立的兩種找法，互不影響。"
+)
+
+if not rag_retrieval.is_available():
+    st.info("尚未設定 RAG 檢索（需要先跑過 sql/001_enable_pgvector_rag.sql 並執行過 backfill_embeddings.py），語意搜尋暫時無法使用。")
+else:
+    semantic_query = st.text_input(
+        "描述你想找的工作",
+        placeholder="例如：想找能用 Python 做行銷成效分析、不用寫太多 code 的工作",
+        key="semantic_query_input",
+    )
+    semantic_count = st.slider("語意搜尋顯示筆數", 5, 30, 10, 5, key="semantic_count")
+
+    if st.button("🔍 開始語意搜尋", type="primary") and semantic_query.strip():
+        with st.spinner("檢索中..."):
+            semantic_results = rag_retrieval.retrieve_similar_jobs(semantic_query, match_count=semantic_count)
+        st.session_state["semantic_search_results"] = semantic_results
+        st.session_state["semantic_search_query"] = semantic_query
+
+    semantic_results = st.session_state.get("semantic_search_results", [])
+    if semantic_results:
+        st.markdown(
+            f"「{st.session_state.get('semantic_search_query', '')}」共找到 "
+            f"**{len(semantic_results)}** 筆相關職缺（依相似度排序）："
+        )
+
+        all_jobs_by_no = {j.get("job_no"): j for j in all_jobs}
+
+        for r in semantic_results:
+            job_no     = r.get("job_no")
+            similarity = r.get("similarity")
+            sim_txt    = f"{similarity:.2f}" if isinstance(similarity, (int, float)) else "—"
+            sim_badge  = (
+                f'<span class="tag" style="background:#ecfdf5;border:1px solid #a7f3d0;'
+                f'color:#047857;">相似度 {sim_txt}</span>'
+            )
+
+            full_job = all_jobs_by_no.get(job_no)
+            if full_job:
+                # 資料在目前載入的 all_jobs（最新 3000 筆）裡，直接重用完整卡片渲染。
+                render_job_card(full_job, extra_badge_html=sim_badge)
+            else:
+                # RPC 是查整張 job_posting 表，可能撈到超過 all_jobs 3000 筆上限之外的
+                # 舊資料；這種情況用 RPC 本身回傳的精簡欄位做一個簡化卡片，
+                # 至少能看標題、角色分類、職缺描述片段跟 104 連結。
+                title  = r.get("title_clean") or "（無職稱）"
+                role_n = r.get("role_normalized") or ""
+                desc   = r.get("job_description") or ""
+                url_104 = f"https://www.104.com.tw/job/{job_no}" if job_no else ""
+
+                with st.expander(f"**{title}**　·　相似度 {sim_txt}", expanded=False):
+                    if role_n:
+                        st.markdown(f'<span class="tag tag-role">{role_n}</span>', unsafe_allow_html=True)
+                    if desc:
+                        st.markdown(
+                            f"<div class='detail-body' style='margin-top:8px;'>"
+                            f"{desc[:600]}{'…' if len(desc) > 600 else ''}</div>",
+                            unsafe_allow_html=True,
+                        )
+                    if url_104:
+                        st.markdown(f"[104 查看原始職缺]({url_104})")
+
+st.markdown("---")
+
 
 
 # ── Filters ───────────────────────────────────────────────
@@ -219,111 +397,9 @@ if not filtered:
     st.stop()
 
 
-# ── Job Cards ─────────────────────────────────────────────
+# ── Job Cards（結構化篩選結果） ─────────────────────────────
 for job in filtered:
-    title    = job.get("title_clean") or "（無職稱）"
-    company  = job.get("company_clean") or ""
-    loc      = job.get("location_county") or ""
-    role_n   = job.get("role_normalized") or ""
-    ind_b    = job.get("industry_bucket") or ""
-    skills   = job.get("skill_canonical") or []
-    sal_low  = job.get("salary_low")
-    sal_hi   = job.get("salary_high")
-    sal_u    = job.get("salary_unit") or "月薪"
-    exp_min  = job.get("work_exp_min")
-    exp_max  = job.get("work_exp_max")
-    edu      = job.get("edu_level") or ""
-    remote   = job.get("remote_work", 0)
-    date     = job.get("appear_date") or ""
-    quality  = job.get("quality_score") or 0
-    is_for   = job.get("is_foreign", False)
-    is_lst   = job.get("is_listed", False)
-    jd_text  = job.get("job_description") or ""
-    manage   = job.get("manage_resp") or ""
-    cat_raw  = job.get("job_category_raw") or ""
-    job_no   = job.get("job_no") or ""
-
-    salary_str = (
-        f"{sal_low//1000}K–{sal_hi//1000}K／{sal_u}" if sal_low and sal_hi else
-        f"{sal_low//1000}K+／{sal_u}"                 if sal_low            else "薪資面議"
-    )
-    exp_str  = (
-        f"{exp_min}–{exp_max} 年" if exp_min is not None and exp_max is not None else
-        f"{exp_min}+ 年"          if exp_min is not None                          else ""
-    )
-    meta_str = " · ".join(p for p in [company, loc, exp_str, edu] if p)
-    q_pct    = int(quality * 100)
-    q_bg     = "#d1fae5" if quality >= 0.7 else "#fef3c7" if quality >= 0.4 else "#f3f4f6"
-    q_fg     = "#065f46" if quality >= 0.7 else "#78350f" if quality >= 0.4 else "#6b7280"
-
-    flags = []
-    if is_for:                       flags.append("外商")
-    elif not is_for and not is_lst:  flags.append("本土")
-    if is_lst:                       flags.append("上市櫃")
-    if remote:                       flags.append("Remote")
-
-    role_tag   = f'<span class="tag tag-role">{role_n}</span>' if role_n and role_n != "Unclassified" else ""
-    ind_tag    = f'<span class="tag tag-ind">{ind_b}</span>'   if ind_b else ""
-    flag_tags  = " ".join(f'<span class="tag tag-flag">{f}</span>' for f in flags)
-    skill_tags = "".join(f'<span class="tag tag-skill">{s}</span>' for s in (skills[:5] if isinstance(skills, list) else []))
-    q_badge    = f'<span class="quality-badge" style="background:{q_bg};color:{q_fg};">品質 {q_pct}%</span>'
-
-    link_104_html = ""
-    if job_no:
-        url_104 = f"https://www.104.com.tw/job/{job_no}"
-        link_104_html = (
-            f'<a href="{url_104}" target="_blank" rel="noopener noreferrer" class="link-104">'
-            f'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" '
-            f'stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">'
-            f'<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>'
-            f'<polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>'
-            f'</svg>104 查看原始職缺</a>'
-        )
-
-    cat_items      = parse_cat_raw(cat_raw)
-    cat_chips_html = ""
-    if cat_items:
-        chips = "".join(f'<span class="tag-cat">{c}</span>' for c in cat_items)
-        cat_chips_html = f"<div class='detail-label'>職類</div><div style='margin-top:4px;'>{chips}</div>"
-
-    header = f"**{title}** · {company}　｜　{salary_str}　｜　{date}"
-
-    with st.expander(header, expanded=False):
-        st.markdown(f"""
-        <div style='padding:4px 0 10px 0;'>
-          <div class='job-meta'>{meta_str}</div>
-          <div style='margin-bottom:6px;display:flex;align-items:center;flex-wrap:wrap;gap:4px;'>
-            {role_tag}{ind_tag}{flag_tags}&nbsp;&nbsp;{q_badge}
-            <span style='flex:1'></span>{link_104_html}
-          </div>
-          <div>{skill_tags}</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        if cat_chips_html:
-            st.markdown(cat_chips_html, unsafe_allow_html=True)
-
-        if jd_text:
-            st.markdown("<div class='detail-label'>職缺描述</div>", unsafe_allow_html=True)
-            st.markdown(
-                f"<div class='detail-body' style='max-height:260px;overflow-y:auto;"
-                f"white-space:pre-wrap;border:1px solid #e5e2db;border-radius:6px;"
-                f"padding:12px;background:#fafaf8;'>"
-                f"{jd_text[:2500]}{'…' if len(jd_text) > 2500 else ''}</div>",
-                unsafe_allow_html=True,
-            )
-
-        if manage:
-            st.markdown(f"<div class='detail-label'>管理職責</div><div class='detail-body'>{manage}</div>",
-                        unsafe_allow_html=True)
-
-        if isinstance(skills, list) and len(skills) > 5:
-            all_skill_tags = "".join(f'<span class="tag tag-skill">{s}</span>' for s in skills)
-            st.markdown(
-                f"<div class='detail-label'>全部技能（{len(skills)} 項）</div>"
-                f"<div style='margin-top:4px;'>{all_skill_tags}</div>",
-                unsafe_allow_html=True,
-            )
+    render_job_card(job)
 
 
 st.markdown("---")
