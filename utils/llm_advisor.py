@@ -13,8 +13,8 @@ LLM 輔助建議（Gemini）
 設計原則：
 - 沒有設定 GEMINI_API_KEY -> is_configured() 回傳 False，呼叫端要 fallback
   回既有的規則式 structured diagnosis，不能讓頁面掛掉或空白。
-- Gemini 回傳格式不符 / API 出錯 -> generate_ai_advice() 回傳 None，
-  一樣讓呼叫端 fallback。
+- Gemini 回傳格式不符 / API 出錯 -> generate_ai_advice() 回傳 (None, error_message)，
+  error_message 是人類看得懂的失敗原因，呼叫端要顯示給使用者、同時 fallback。
 - 只根據傳入的 payload 做推論，不在這裡另外打 Supabase 或做爬蟲。
 """
 
@@ -106,15 +106,20 @@ def _extract_json(text: str) -> Optional[Dict[str, Any]]:
     return None
 
 
-def generate_ai_advice(payload: Dict[str, Any], timeout: int = DEFAULT_TIMEOUT) -> Optional[Dict[str, Any]]:
+def generate_ai_advice(payload: Dict[str, Any], timeout: int = DEFAULT_TIMEOUT):
     """
-    呼叫 Gemini，回傳結構化建議 dict（見 REQUIRED_KEYS）。
+    呼叫 Gemini，回傳 (advice_dict, error_message) 這個 tuple。
 
-    失敗時一律回傳 None（不丟例外），呼叫端應該 fallback 回規則式 structured
-    diagnosis，並可選擇性提示使用者「AI 建議暫時無法使用」。
+    - 成功：(dict，見 REQUIRED_KEYS, None)
+    - 失敗：(None, "人類看得懂的錯誤原因字串")
+
+    刻意回傳錯誤原因而不是把例外吞掉，是因為之前的版本失敗時只印在 server log
+    裡（Streamlit Cloud 上使用者完全看不到），導致每次失敗都要來回貼 log 才能
+    判斷是 API key 錯、model 名稱錯、額度用完、還是回傳格式跑掉。呼叫端應該把
+    error_message 直接顯示給使用者，同時 fallback 回規則式 structured diagnosis。
     """
     if not is_configured():
-        return None
+        return None, "GEMINI_API_KEY 未設定"
 
     prompt = _build_prompt(payload)
     body = {
@@ -133,26 +138,36 @@ def generate_ai_advice(payload: Dict[str, Any], timeout: int = DEFAULT_TIMEOUT) 
             json=body,
             timeout=timeout,
         )
-        resp.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"[llm_advisor] Gemini request failed: {e}")
+        return None, f"連線 Gemini API 失敗：{e}"
+
+    if resp.status_code != 200:
+        print(f"[llm_advisor] Gemini HTTP {resp.status_code}: {resp.text[:500]}")
+        return None, f"Gemini API 回傳 HTTP {resp.status_code}：{resp.text[:300]}"
+
+    try:
         data = resp.json()
-
-        candidates = data.get("candidates") or []
-        if not candidates:
-            return None
-
-        parts = (candidates[0].get("content") or {}).get("parts") or []
-        text = "".join(p.get("text", "") for p in parts)
-
-        result = _extract_json(text)
-        if not isinstance(result, dict):
-            return None
-
-        for key in REQUIRED_KEYS:
-            if key not in result:
-                result[key] = "" if key == "best_fit_role" else []
-
-        return result
-
     except Exception as e:
-        print(f"[llm_advisor] Gemini call failed: {e}")
-        return None
+        print(f"[llm_advisor] Gemini response not JSON: {e}")
+        return None, f"Gemini 回傳的內容不是合法 JSON：{e}"
+
+    candidates = data.get("candidates") or []
+    if not candidates:
+        prompt_feedback = data.get("promptFeedback")
+        print(f"[llm_advisor] Gemini returned no candidates. promptFeedback={prompt_feedback}")
+        return None, f"Gemini 沒有回傳任何結果（可能被安全過濾擋掉）。promptFeedback={prompt_feedback}"
+
+    parts = (candidates[0].get("content") or {}).get("parts") or []
+    text = "".join(p.get("text", "") for p in parts)
+
+    result = _extract_json(text)
+    if not isinstance(result, dict):
+        print(f"[llm_advisor] Gemini response could not be parsed as JSON: {text[:500]}")
+        return None, f"無法解析 Gemini 回傳的 JSON，原始回應前 300 字：{text[:300]}"
+
+    for key in REQUIRED_KEYS:
+        if key not in result:
+            result[key] = "" if key == "best_fit_role" else []
+
+    return result, None

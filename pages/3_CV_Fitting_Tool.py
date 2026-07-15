@@ -824,11 +824,11 @@ else:
 
     if st.button("✨ 產生 AI 智能建議", type="secondary"):
         with st.spinner("Gemini 分析中..."):
-            _ai_advice = llm_advisor.generate_ai_advice(llm_payload)
+            _ai_advice, _ai_error = llm_advisor.generate_ai_advice(llm_payload)
         if _ai_advice:
             st.session_state[_ai_cache_key] = _ai_advice
         else:
-            st.warning("AI 建議暫時產生失敗，請稍後再試，或參考下方規則式建議。")
+            st.warning(f"AI 建議產生失敗：{_ai_error}\n\n可先參考下方規則式建議。")
 
     _ai_advice = st.session_state.get(_ai_cache_key)
     if _ai_advice:
