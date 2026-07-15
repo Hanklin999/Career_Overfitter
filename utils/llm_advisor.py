@@ -126,8 +126,13 @@ def generate_ai_advice(payload: Dict[str, Any], timeout: int = DEFAULT_TIMEOUT):
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "temperature": 0.3,
-            "maxOutputTokens": 1500,
+            # gemini-2.5-flash 預設會開啟內部 thinking，thinking 用掉的 token 也算
+            # 進 maxOutputTokens 裡。把 thinkingBudget 設 0 關掉 thinking（這裡只是
+            # 結構化 JSON 抽取，不需要深度推理），並把 maxOutputTokens 拉高留一點
+            # 緩衝，避免 thinkingBudget 沒被完全遵守時還是把輸出截斷。
+            "maxOutputTokens": 2048,
             "responseMimeType": "application/json",
+            "thinkingConfig": {"thinkingBudget": 0},
         },
     }
 
