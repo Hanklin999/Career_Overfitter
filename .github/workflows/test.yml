@@ -1,0 +1,79 @@
+name: Test Pipeline (Single Keyword)
+
+# 給要單獨驗證「爬蟲 -> Supabase 寫入 -> cleaner 清洗」整條 pipeline 用的
+# 輕量測試 workflow，只打 1 個關鍵字、抓 1 頁、最多幾筆 detail，
+# 跑起來快、對 104 跟 Supabase 的負擔都很小，適合拿來確認連線是否恢復正常。
+#
+# 用法：GitHub 上開 Actions -> Test Pipeline (Single Keyword) -> Run workflow，
+# 可以直接用預設值，或改 keyword_offset 換成別的關鍵字測。
+
+on:
+  workflow_dispatch:
+    inputs:
+      keyword_offset:
+        description: "要測試的關鍵字索引（從 0 開始，對照 Job_taxonomy_forsearch.csv 的第幾行）"
+        required: true
+        default: "0"
+      max_pages:
+        description: "這個關鍵字要抓幾頁列表"
+        required: true
+        default: "1"
+      detail_limit:
+        description: "最多抓幾筆 detail（測試用，故意設小）"
+        required: true
+        default: "3"
+
+jobs:
+  test-scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper on a single keyword
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python scraper_104.py \
+            --keyword-offset ${{ github.event.inputs.keyword_offset }} \
+            --keyword-limit 1 \
+            --max-pages ${{ github.event.inputs.max_pages }} \
+            --past-days 30 \
+            --include-all-companies \
+            --detail-limit ${{ github.event.inputs.detail_limit }}
+
+  test-cleaner:
+    runs-on: ubuntu-latest
+    needs: test-scrape
+    if: always() && needs.test-scrape.result == 'success'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run cleaner on a tiny batch
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python cleaner.py --limit 20 --only-new
