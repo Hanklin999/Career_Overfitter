@@ -30,7 +30,7 @@ SUPABASE_KEY=your_anon_or_service_role_key
 
 # 選填：設定後 CV Fitting Tool 會啟用「AI 智能建議」區塊
 GEMINI_API_KEY=your_gemini_api_key
-GEMINI_MODEL=gemini-2.0-flash
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
 ### 3. 確認 CSV 檔案存在於專案根目錄
@@ -103,6 +103,17 @@ streamlit run app.py
    快照，把想要的職能大類 / 關鍵字複製回 `Job_taxonomy_forsearch.csv`。
 3. 視新的關鍵字總數，調整 `cleaner-weekly.yml` 的 `matrix.include`
    （每個 shard 抓 15-20 個關鍵字比較安全，超過就多加一個 shard）。
+
+## 清空全部資料（危險操作）
+
+`Weekly 104 Full Detail Pipeline`（`cleaner-weekly.yml`）手動觸發時，多了一個
+`truncate_before_run` 勾選框（預設關閉）。勾選後，workflow 會先跑 `clear-data`
+這個 job，執行 `clear_supabase_data.py` 把 `job_posting` + `jd_raw` **兩張表的
+全部資料清空**，清空成功才會繼續往下跑 `scrape-104` / `cleaner`；沒勾選則
+`clear-data` 這個 job 會直接跳過清空那個 step，其他流程照常執行，不受影響。
+
+⚠️ 這個操作不可復原，觸發前務必再三確認 Secrets 裡的 `SUPABASE_URL` 指向的是
+正確的專案。
 
 ## LLM 輔助功能（Gemini）
 

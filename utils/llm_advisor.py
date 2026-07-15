@@ -31,7 +31,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+# gemini-2.0-flash 已於 2026-06-01 被官方關閉（shut down），改用 gemini-2.5-flash
+# 當作預設：目前是穩定版、價格/效能平衡的 model，適合這種結構化 JSON 建議的任務。
+# 想換成別的 model（例如更新的 gemini-3.5-flash），設定 GEMINI_MODEL 這個環境變數即可，
+# 不用改程式碼。可用的 model 清單見 https://ai.google.dev/gemini-api/docs/models
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 GEMINI_API_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 )
