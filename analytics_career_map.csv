@@ -1,73 +1,73 @@
-role_normalized,domain,tech_depth
-Business Analyst,Business Analytics,BA
-Business Intelligence Analyst,Business Analytics,DA
-BI Analyst,Business Analytics,DA
-Analytics Consultant,Business Analytics,DA
-Strategy Analyst,Business Analytics,BA
-BI Developer,Business Analytics,DE
-Reporting Analyst,Business Analytics,DA
-Dashboard Analyst,Business Analytics,DA
-Data Visualization Analyst,Business Analytics,DA
-Data Analyst,Business Analytics,DA
-Financial Data Analyst,Business Analytics,DA
-FP&A Analyst,Business Analytics,DA
-Financial Planning Analyst,Business Analytics,DA
-Budget Analyst,Business Analytics,DA
-Corporate Finance Analyst,Business Analytics,BA
-Strategic Finance Analyst,Business Analytics,BA
-Commercial Finance Analyst,Business Analytics,DA
-Revenue Analyst,Business Analytics,DA
-Pricing Analyst,Business Analytics,DA
-Revenue Operations Analyst,Business Analytics,DA
-Corporate Strategy Analyst,Business Analytics,BA
-Strategic Planning Analyst,Business Analytics,BA
-Strategic Initiatives Analyst,Business Analytics,BA
-Business Transformation Analyst,Business Analytics,BA
-Data Engineer,Business Analytics,DE
-Data Pipeline Engineer,Business Analytics,DE
-ETL Developer,Business Analytics,DE
-Analytics Engineer,Business Analytics,DE
-BI Engineer,Business Analytics,DE
-Data Warehouse Analyst,Business Analytics,DE
-Database Analyst,Business Analytics,DE
-Data Platform Analyst,Business Analytics,DE
-Data Operations Analyst,Business Analytics,DE
-Product Analyst,Product Analytics,DA
-Growth Product Analyst,Product Analytics,DA
-Product Operations Analyst,Product Analytics,DA
-Product Strategy Analyst,Product Analytics,BA
-Marketplace Analyst,Product Analytics,DA
-CRM & Lifecycle Analyst,Product Analytics,DA
-Decision Scientist,Product Analytics,DS
-Customer Insights Analyst,Product Analytics,DA
-Data Scientist,Product Analytics,DS
-Statistical Analyst,Product Analytics,DS
-Statistician,Product Analytics,DS
-Forecasting Analyst,Product Analytics,DS
-Predictive Analytics Analyst,Product Analytics,DS
-Applied Scientist,Product Analytics,DS
-Machine Learning Analyst,Product Analytics,DS
-Quantitative Analyst,Product Analytics,DS
-Quantitative Research Analyst,Product Analytics,DS
-Risk Modeling Analyst,Product Analytics,DS
-Marketing Analyst,Marketing Analytics,DA
-Growth Marketing Analyst,Marketing Analytics,DA
-Performance Marketing Analyst,Marketing Analytics,DA
-Consumer Insights Analyst,Marketing Analytics,DA
-Market Research Analyst,Marketing Analytics,BA
-Survey Analyst,Marketing Analytics,DA
-Consumer Research Analyst,Marketing Analytics,BA
-User Research Analyst,Marketing Analytics,BA
-Competitive Intelligence Analyst,Marketing Analytics,BA
-Market Intelligence Analyst,Marketing Analytics,BA
-Industry Research Analyst,Marketing Analytics,BA
-Operations Analyst,Operations Analytics,BA
-Business Operations Analyst,Operations Analytics,DA
-Strategy & Operations Analyst,Operations Analytics,BA
-Supply Chain Analyst,Operations Analytics,DA
-Logistics Analyst,Operations Analytics,DA
-Distribution Analyst,Operations Analytics,DA
-Demand Planner,Operations Analytics,DS
-Inventory Analyst,Operations Analytics,DA
-PMO Analyst,Operations Analytics,BA
-Operations Excellence Analyst,Operations Analytics,BA
+role_normalized,domain,tech_depth,display_role
+Business Analyst,Business Analytics,BA,Business Analyst
+Business Intelligence Analyst,Business Analytics,DA,BI / Reporting Analyst
+BI Analyst,Business Analytics,DA,BI / Reporting Analyst
+Analytics Consultant,Business Analytics,DA,Analytics Consultant
+Strategy Analyst,Business Analytics,BA,Strategy Analyst
+BI Developer,Business Analytics,DE,BI Developer
+Reporting Analyst,Business Analytics,DA,BI / Reporting Analyst
+Dashboard Analyst,Business Analytics,DA,BI / Reporting Analyst
+Data Visualization Analyst,Business Analytics,DA,BI / Reporting Analyst
+Data Analyst,Business Analytics,DA,Data Analyst
+Financial Data Analyst,Business Analytics,DA,FP&A Analyst
+FP&A Analyst,Business Analytics,DA,FP&A Analyst
+Financial Planning Analyst,Business Analytics,DA,FP&A Analyst
+Budget Analyst,Business Analytics,DA,FP&A Analyst
+Corporate Finance Analyst,Business Analytics,BA,Corporate Finance Analyst
+Strategic Finance Analyst,Business Analytics,BA,Corporate Finance Analyst
+Commercial Finance Analyst,Business Analytics,DA,Commercial Finance Analyst
+Revenue Analyst,Business Analytics,DA,Revenue & Pricing Analyst
+Pricing Analyst,Business Analytics,DA,Revenue & Pricing Analyst
+Revenue Operations Analyst,Business Analytics,DA,Revenue & Pricing Analyst
+Corporate Strategy Analyst,Business Analytics,BA,Strategy Analyst
+Strategic Planning Analyst,Business Analytics,BA,Strategy Analyst
+Strategic Initiatives Analyst,Business Analytics,BA,Strategy Analyst
+Business Transformation Analyst,Business Analytics,BA,Strategy Analyst
+Data Engineer,Business Analytics,DE,Data Engineer
+Data Pipeline Engineer,Business Analytics,DE,Data Engineer
+ETL Developer,Business Analytics,DE,Data Engineer
+Analytics Engineer,Business Analytics,DE,Analytics Engineer
+BI Engineer,Business Analytics,DE,BI Developer
+Data Warehouse Analyst,Business Analytics,DE,Data Engineer
+Database Analyst,Business Analytics,DE,Data Engineer
+Data Platform Analyst,Business Analytics,DE,Data Engineer
+Data Operations Analyst,Business Analytics,DE,Data Engineer
+Product Analyst,Product Analytics,DA,Product Analyst
+Growth Product Analyst,Product Analytics,DA,Growth Product Analyst
+Product Operations Analyst,Product Analytics,DA,Product Operations Analyst
+Product Strategy Analyst,Product Analytics,BA,Product Strategy Analyst
+Marketplace Analyst,Product Analytics,DA,Marketplace Analyst
+CRM & Lifecycle Analyst,Product Analytics,DA,CRM & Lifecycle Analyst
+Decision Scientist,Product Analytics,DS,Data Scientist
+Customer Insights Analyst,Product Analytics,DA,Customer Insights Analyst
+Data Scientist,Product Analytics,DS,Data Scientist
+Statistical Analyst,Product Analytics,DS,Statistical Analyst
+Statistician,Product Analytics,DS,Statistical Analyst
+Forecasting Analyst,Product Analytics,DS,Forecasting Analyst
+Predictive Analytics Analyst,Product Analytics,DS,Forecasting Analyst
+Applied Scientist,Product Analytics,DS,Data Scientist
+Machine Learning Analyst,Product Analytics,DS,Machine Learning Analyst
+Quantitative Analyst,Product Analytics,DS,Quantitative Analyst
+Quantitative Research Analyst,Product Analytics,DS,Quantitative Analyst
+Risk Modeling Analyst,Product Analytics,DS,Risk Modeling Analyst
+Marketing Analyst,Marketing Analytics,DA,Marketing Analyst
+Growth Marketing Analyst,Marketing Analytics,DA,Growth Marketing Analyst
+Performance Marketing Analyst,Marketing Analytics,DA,Performance Marketing Analyst
+Consumer Insights Analyst,Marketing Analytics,DA,Consumer Insights Analyst
+Market Research Analyst,Marketing Analytics,BA,Market Research Analyst
+Survey Analyst,Marketing Analytics,DA,Survey Analyst
+Consumer Research Analyst,Marketing Analytics,BA,Consumer Research Analyst
+User Research Analyst,Marketing Analytics,BA,User Research Analyst
+Competitive Intelligence Analyst,Marketing Analytics,BA,Market Intelligence Analyst
+Market Intelligence Analyst,Marketing Analytics,BA,Market Intelligence Analyst
+Industry Research Analyst,Marketing Analytics,BA,Market Intelligence Analyst
+Operations Analyst,Operations Analytics,BA,Operations Analyst
+Business Operations Analyst,Operations Analytics,DA,Business Operations Analyst
+Strategy & Operations Analyst,Operations Analytics,BA,Operations Analyst
+Supply Chain Analyst,Operations Analytics,DA,Supply Chain Analyst
+Logistics Analyst,Operations Analytics,DA,Supply Chain Analyst
+Distribution Analyst,Operations Analytics,DA,Supply Chain Analyst
+Demand Planner,Operations Analytics,DS,Demand Planner
+Inventory Analyst,Operations Analytics,DA,Inventory Analyst
+PMO Analyst,Operations Analytics,BA,PMO Analyst
+Operations Excellence Analyst,Operations Analytics,BA,Operations Analyst

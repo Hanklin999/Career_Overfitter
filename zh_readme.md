@@ -57,7 +57,7 @@ Career Overfitter 是一個**以 AI 輔助的求職市場情報與 CV 決策支�
 - **領域（業務應用），4 個值**：Business Analytics、Product Analytics、Marketing Analytics、Operations Analytics — *這個角色在分析什麼類型的問題*
 - **工程深度，4 個等級**：BA → DA → DS → DE（Business Analyst → Data Analyst → Data Scientist → Data Engineer）— *這個角色離建模／工程有多近*
 
-目前橫跨四個領域共對應 72 個職稱（例如 Product Analytics 底下包含 Product Analyst、Growth Product Analyst、Marketplace Analyst、CRM & Lifecycle Analyst、Decision Scientist 等）。其中 **Marketplace Analyst** 與 **CRM & Lifecycle Analyst** 兩個職稱在原本的分類表裡不存在，是專門新增的，目的是讓 Product Analytics 有完整的子分類；`CRM & Lifecycle Analyst` 刻意取了跟既有 `CRM Analyst`（屬於另一個 parent category、偏 IT／CRM 系統導入的職稱）不同的名字，避免兩者混淆。
+目前橫跨四個領域，底層對應 72 個原始職稱（role_normalized），但地圖上實際顯示為 40 個合併後的子分類職稱（display_role）—— 近義詞、過度細分的原始職稱（例如 BI Analyst / Business Intelligence Analyst / Reporting Analyst，或 Data Engineer / Data Pipeline Engineer / ETL Developer）會合併顯示成同一個節點，職缺數是底下所有原始職稱的加總，不會遺漏任何職缺（合併邏輯定義在 `analytics_career_map.csv` 的 `display_role` 欄位）。例如 Product Analytics 底下包含 Product Analyst、Growth Product Analyst、Marketplace Analyst、CRM & Lifecycle Analyst、Data Scientist 等。其中 **Marketplace Analyst** 與 **CRM & Lifecycle Analyst** 兩個職稱在原本的分類表裡不存在，是專門新增的，目的是讓 Product Analytics 有完整的子分類；`CRM & Lifecycle Analyst` 刻意取了跟既有 `CRM Analyst`（屬於另一個 parent category、偏 IT／CRM 系統導入的職稱）不同的名字，避免兩者混淆。
 
 不屬於「分析類」的職稱（Product Manager、Sales 相關、一般 HR／財務職稱等）刻意不放進這張地圖 — 地圖的目的是幫使用者找到藏在陌生職稱底下的分析工作，不是要涵蓋所有職能。
 

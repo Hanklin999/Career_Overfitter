@@ -371,7 +371,10 @@ def job_passes(j) -> bool:
     if sel_career_domain != "全部":
         if ct.get_domain(role_n) != sel_career_domain:
             return False
-        if sel_career_roles and role_n not in sel_career_roles:
+        # sel_career_roles 是「合併後」的子分類職稱（display_role），
+        # role_n 是原始職稱，兩者要透過 get_display_role 對齊，
+        # 不然合併顯示後這裡永遠比對不到，篩選會整批漏掉。
+        if sel_career_roles and ct.get_display_role(role_n) not in sel_career_roles:
             return False
     if keyword and keyword.lower() not in (j.get("title_clean") or "").lower():
         return False

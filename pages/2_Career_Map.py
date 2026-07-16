@@ -58,25 +58,40 @@ st.markdown("---")
 rows = get_analytics_rows()
 
 # ── 建 sunburst 資料：root -> domain -> role ──────────────
-ids, labels, parents, values = [], [], [], []
-ids.append("Analytics"); labels.append("Analytics"); parents.append(""); values.append(0)
-
+# 注意：branchvalues="total" 要求每個父節點的 value 必須「大於等於」底下
+# 子節點 value 的總和，否則 Plotly 會判定資料不合法，整張圖直接畫成空白
+# （這正是子分類職稱節點被強制墊出 0.3 的最小視覺高度時，domain 節點與
+# root 節點原本各自寫死的 total / 0 常常兜不起來的原因）。
+# 修法：由下往上算 —— 先決定每個角色節點的 value，domain 節點的 value
+# 再用「自己底下角色 value 的總和」回推，root 節點同理，這樣父節點的
+# value 保證等於子節點總和，不會再出現空白圖。
 role_summaries_all = ct.build_role_summary(rows)
 summary_by_role = {s["role_normalized"]: s for s in role_summaries_all}
 
+ids, labels, parents, values = [], [], [], []
+root_value = 0
+
 for domain in ct.DOMAIN_ORDER:
     domain_id = f"domain::{domain}"
-    domain_total = sum(s["count"] for s in role_summaries_all if s["domain"] == domain)
-    ids.append(domain_id); labels.append(domain.replace(" Analytics", "")); parents.append("Analytics")
-    values.append(max(domain_total, 1))
+    role_ids, role_labels, role_values = [], [], []
 
     for role in ct.list_roles_in_domain(domain):
         s = summary_by_role.get(role)
         count = s["count"] if s else 0
-        ids.append(f"role::{domain}::{role}")
-        labels.append(role)
-        parents.append(domain_id)
-        values.append(max(count, 0.3))  # 給沒資料的角色留一點視覺空間
+        value = max(count, 0.3)  # 給沒資料的角色留一點視覺空間
+        role_ids.append(f"role::{domain}::{role}")
+        role_labels.append(role)
+        role_values.append(value)
+
+    domain_value = sum(role_values) if role_values else 1
+    ids.append(domain_id); labels.append(domain.replace(" Analytics", "")); parents.append("Analytics")
+    values.append(domain_value)
+    root_value += domain_value
+
+    for rid, rlabel, rvalue in zip(role_ids, role_labels, role_values):
+        ids.append(rid); labels.append(rlabel); parents.append(domain_id); values.append(rvalue)
+
+ids.insert(0, "Analytics"); labels.insert(0, "Analytics"); parents.insert(0, ""); values.insert(0, root_value or 1)
 
 fig = go.Figure(go.Sunburst(
     ids=ids, labels=labels, parents=parents, values=values,
@@ -134,6 +149,7 @@ summary = summary_by_role.get(picked_role, {
     "role_normalized": picked_role, "domain": picked_domain,
     "tech_depth": ct.get_tech_depth(picked_role), "count": 0,
     "median_salary": None, "top_skills": [], "top_companies": [], "jobs": [],
+    "raw_roles": ct.get_raw_roles_for_display(picked_role),
 })
 
 depth = summary["tech_depth"] or "DA"
@@ -148,6 +164,11 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+raw_roles = summary.get("raw_roles") or []
+other_raw_roles = [r for r in raw_roles if r != picked_role]
+if other_raw_roles:
+    st.caption("也常見於原始職缺標題：" + "、".join(other_raw_roles))
 
 # ── What do people actually do? ───────────────────────────
 st.markdown("#### 這個角色實際在做什麼？")
@@ -202,10 +223,17 @@ with sk2:
 st.markdown("---")
 
 # ── Resume Fit ────────────────────────────────────────────
+# cv_fit_scores 是在 Resume 頁用「原始」role_normalized 算出來的，
+# picked_role 現在是合併後的顯示名稱，所以要透過 raw_roles 回推、
+# 取底下所有原始職稱裡分數最高的那個，才不會因為職稱被合併顯示而找不到分數。
 st.markdown("#### Resume Fit")
 cv_fit_scores = st.session_state.get("cv_fit_scores")
-if cv_fit_scores and picked_role in cv_fit_scores:
-    st.success(f"你的履歷跟 {picked_role} 的適配分數：{cv_fit_scores[picked_role]:.0f} / 100")
+matched_scores = {
+    r: cv_fit_scores[r] for r in (raw_roles or [picked_role]) if cv_fit_scores and r in cv_fit_scores
+}
+if matched_scores:
+    best_raw, best_score = max(matched_scores.items(), key=lambda kv: kv[1])
+    st.success(f"你的履歷跟 {picked_role} 的適配分數：{best_score:.0f} / 100（依 {best_raw} 職缺計算）")
 else:
     st.info("還沒有履歷適配分數。")
     if st.button("上傳履歷看 Resume Fit →"):

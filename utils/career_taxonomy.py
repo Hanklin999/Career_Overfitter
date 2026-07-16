@@ -97,27 +97,64 @@ def _load_map() -> pd.DataFrame:
     df["role_normalized"] = df["role_normalized"].str.strip()
     df["domain"] = df["domain"].str.strip()
     df["tech_depth"] = df["tech_depth"].str.strip()
+    df["display_role"] = df["display_role"].str.strip()
     return df
 
 
 _MAP_DF = _load_map()
 _ROLE_TO_DOMAIN: Dict[str, str] = dict(zip(_MAP_DF["role_normalized"], _MAP_DF["domain"]))
 _ROLE_TO_DEPTH: Dict[str, str] = dict(zip(_MAP_DF["role_normalized"], _MAP_DF["tech_depth"]))
-_DOMAIN_TO_ROLES: Dict[str, List[str]] = defaultdict(list)
+
+# display_role：把近義詞、過度細分的原始職稱（role_normalized）合併成同一個
+# 「子分類職稱」節點顯示用（例如 BI Analyst / Business Intelligence Analyst /
+# Reporting Analyst 都合併顯示成「BI / Reporting Analyst」）。這一層只影響
+# UI 呈現與職缺數彙整方式，annotate_rows() 仍然保留原始 role_normalized，
+# 所以底下的職缺分類邏輯與職缺本身都不會被遺漏或改變。
+_ROLE_TO_DISPLAY: Dict[str, str] = dict(zip(_MAP_DF["role_normalized"], _MAP_DF["display_role"]))
+_DISPLAY_TO_ROLES: Dict[str, List[str]] = defaultdict(list)
+_DISPLAY_TO_DOMAIN: Dict[str, str] = {}
+_DISPLAY_TO_DEPTH: Dict[str, str] = {}
+_DOMAIN_TO_DISPLAY_ROLES: Dict[str, List[str]] = defaultdict(list)
+
 for _, _row in _MAP_DF.iterrows():
-    _DOMAIN_TO_ROLES[_row["domain"]].append(_row["role_normalized"])
+    _display = _row["display_role"]
+    _DISPLAY_TO_ROLES[_display].append(_row["role_normalized"])
+    _DISPLAY_TO_DOMAIN.setdefault(_display, _row["domain"])
+    _DISPLAY_TO_DEPTH.setdefault(_display, _row["tech_depth"])
+    if _display not in _DOMAIN_TO_DISPLAY_ROLES[_row["domain"]]:
+        _DOMAIN_TO_DISPLAY_ROLES[_row["domain"]].append(_display)
 
 
 def get_domain(role_normalized: Optional[str]) -> Optional[str]:
+    """接受原始 role_normalized 或（合併後的）display_role 都能查到 domain，
+    這樣像 pages/5_Jobs.py 從 session_state 拿到的 picked_role（display_role）
+    也能正確反查回領域，不會因為職稱被合併顯示而查不到。"""
     if not role_normalized:
         return None
-    return _ROLE_TO_DOMAIN.get(role_normalized.strip())
+    key = role_normalized.strip()
+    return _ROLE_TO_DOMAIN.get(key) or _DISPLAY_TO_DOMAIN.get(key)
 
 
 def get_tech_depth(role_normalized: Optional[str]) -> Optional[str]:
+    """同 get_domain()，同時接受原始職稱或 display_role。"""
     if not role_normalized:
         return None
-    return _ROLE_TO_DEPTH.get(role_normalized.strip())
+    key = role_normalized.strip()
+    return _ROLE_TO_DEPTH.get(key) or _DISPLAY_TO_DEPTH.get(key)
+
+
+def get_display_role(role_normalized: Optional[str]) -> Optional[str]:
+    """把原始 role_normalized 轉成地圖上顯示用的合併子分類職稱。"""
+    if not role_normalized:
+        return None
+    return _ROLE_TO_DISPLAY.get(role_normalized.strip())
+
+
+def get_raw_roles_for_display(display_role: Optional[str]) -> List[str]:
+    """回推一個顯示用子分類職稱底下，實際涵蓋哪些原始 role_normalized 值。"""
+    if not display_role:
+        return []
+    return sorted(_DISPLAY_TO_ROLES.get(display_role, []))
 
 
 def is_analytics_role(role_normalized: Optional[str]) -> bool:
@@ -129,11 +166,12 @@ def list_domains() -> List[str]:
 
 
 def list_roles_in_domain(domain: str) -> List[str]:
-    return sorted(_DOMAIN_TO_ROLES.get(domain, []))
+    """回傳某個領域底下的（合併後）子分類職稱清單。"""
+    return sorted(_DOMAIN_TO_DISPLAY_ROLES.get(domain, []))
 
 
 def annotate_rows(rows: List[Dict]) -> List[Dict]:
-    """幫一批 job_posting rows 加上 domain / tech_depth 欄位，
+    """幫一批 job_posting rows 加上 domain / tech_depth / display_role 欄位，
     並濾掉不在 Analytics Career Map 涵蓋範圍內的職稱。"""
     out = []
     for r in rows:
@@ -144,6 +182,7 @@ def annotate_rows(rows: List[Dict]) -> List[Dict]:
         r = dict(r)
         r["career_domain"] = domain
         r["career_tech_depth"] = get_tech_depth(role)
+        r["career_display_role"] = get_display_role(role)
         out.append(r)
     return out
 
@@ -166,18 +205,21 @@ def build_landscape(rows: List[Dict]) -> List[Dict]:
 
 
 def build_role_summary(rows: List[Dict], domain: Optional[str] = None) -> List[Dict]:
-    """依 role_normalized 彙整：職缺數、中位數薪資、Top skills、Top companies。
-    可選擇只看某個 domain。"""
+    """依（合併後的）display_role 彙整：職缺數、中位數薪資、Top skills、Top companies。
+    可選擇只看某個 domain。近義詞、過度細分的原始職稱（例如 BI Analyst /
+    Business Intelligence Analyst）會被合併成同一筆 summary，職缺數是底下
+    所有原始職稱的加總，不會遺漏任何職缺；summary 內另外保留 raw_roles
+    供需要時追溯原始職稱。"""
     annotated = annotate_rows(rows)
     if domain:
         annotated = [r for r in annotated if r["career_domain"] == domain]
 
     by_role: Dict[str, List[Dict]] = defaultdict(list)
     for r in annotated:
-        by_role[r["role_normalized"]].append(r)
+        by_role[r["career_display_role"]].append(r)
 
     summaries = []
-    for role, items in by_role.items():
+    for display_role, items in by_role.items():
         salaries = sorted(
             i["salary_low"] for i in items
             if isinstance(i.get("salary_low"), (int, float)) and i.get("salary_low")
@@ -196,10 +238,13 @@ def build_role_summary(rows: List[Dict], domain: Optional[str] = None) -> List[D
             if c:
                 company_counter[c] += 1
 
+        raw_roles = sorted({i["role_normalized"] for i in items if i.get("role_normalized")})
+
         summaries.append({
-            "role_normalized": role,
-            "domain": get_domain(role),
-            "tech_depth": get_tech_depth(role),
+            "role_normalized": display_role,
+            "raw_roles": raw_roles,
+            "domain": _DISPLAY_TO_DOMAIN.get(display_role) or get_domain(display_role),
+            "tech_depth": _DISPLAY_TO_DEPTH.get(display_role) or get_tech_depth(display_role),
             "count": len(items),
             "median_salary": median_salary,
             "top_skills": [s for s, _ in skill_counter.most_common(8)],
