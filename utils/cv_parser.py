@@ -390,6 +390,52 @@ _ACTION_HINTS = (
     "implemented", "launched", "reduced", "increased", "optimized",
 )
 
+# 「July 2019 ~ 現在」「May 2016 ~ June 2019」「2019 - Present」「2012 - 2014」
+# 這類日期區間，是經歷條目的結構性資訊，不是成果描述。
+_DATE_RANGE_RE = re.compile(
+    r"(19|20)\d{2}.{0,15}(~|-|–|至|to)\s*.{0,15}"
+    r"((19|20)\d{2}|現在|至今|Present|present|Now|now)"
+)
+
+
+def _looks_like_entry_meta_line(line: str) -> bool:
+    """
+    判斷是不是履歷經歷條目裡的『結構性資訊』行，例如：
+        'Lead Data Analyst • 104人力銀行'        （職稱 • 公司）
+        'July 2019 ~ 現在・7年 1個月 | 台北市'    （日期區間 | 地點）
+    這種行只是排版上的抬頭／中繼資料，本身沒有「做了什麼」的內容，
+    套用「補量化成果」的改寫建議沒有意義，長度雖然常常超過 20 字
+    但不該被當成 bullet。
+
+    判斷依據：
+    1. 如果行本身就是以 bullet 符號開頭（例如「• 管理並指導...」），代表
+       這是明確的列點格式，不是標題分隔符，直接視為非 meta 行
+    2. 符合日期區間的樣式（年份 + ~/-/至 + 年份或「現在」）
+    3. 或是含有「•」「｜」「|」這種行內分隔符，且沒有逗號類分句標點、
+       也不是以中文句尾標點結尾——代表比較像「職稱 • 公司」這種標題
+       格式，不是完整敘述句。
+
+       注意：這裡刻意不用「有沒有含動詞字樣」來判斷，因為中文職稱本身
+       常常就包含「分析」「設計」「管理」這些字（例如「數據分析師」），
+       用動詞字樣比對職稱行會誤判成不是 meta 行。改用「有沒有逗號分句」
+       更可靠：真正的成果描述幾乎都是「做了什麼，達成了什麼」的逗號
+       分句格式，職稱/公司抬頭通常沒有逗號。
+    """
+    stripped = line.strip()
+    if stripped.startswith(_BULLET_MARKERS):
+        return False
+
+    if _DATE_RANGE_RE.search(stripped):
+        return True
+
+    has_inline_separator = any(sep in stripped for sep in ("•", "·", "｜", "|"))
+    has_clause_punct = any(p in stripped for p in ("，", "、", ","))
+    ends_like_sentence = stripped.endswith(("。", "！", "!", "."))
+    if has_inline_separator and not has_clause_punct and not ends_like_sentence:
+        return True
+
+    return False
+
 
 def _looks_like_header_line(line: str) -> bool:
     """判斷是不是姓名 / 電話 / email / 地址這類履歷抬頭資訊，不是經歷 bullet。"""
@@ -435,7 +481,7 @@ def select_resume_bullets(cv_text: str, max_bullets: int = 3) -> list[str]:
 
     bullets: list[str] = []
     for ln in candidates:
-        if _looks_like_header_line(ln):
+        if _looks_like_header_line(ln) or _looks_like_entry_meta_line(ln):
             continue
         is_bulletish = (
             ln.startswith(_BULLET_MARKERS)
@@ -448,8 +494,11 @@ def select_resume_bullets(cv_text: str, max_bullets: int = 3) -> list[str]:
             break
 
     if not bullets:
-        # 找不到明顯 bullet 時，至少避免開天窗：退回用非抬頭行裡最長的幾行
-        non_header = [ln for ln in candidates if not _looks_like_header_line(ln)] or candidates
+        # 找不到明顯 bullet 時，至少避免開天窗：退回用非抬頭/非結構性行裡最長的幾行
+        non_header = [
+            ln for ln in candidates
+            if not _looks_like_header_line(ln) and not _looks_like_entry_meta_line(ln)
+        ] or candidates
         bullets = sorted(non_header, key=len, reverse=True)[:max_bullets]
 
     return bullets
