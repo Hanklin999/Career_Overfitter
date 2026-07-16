@@ -61,7 +61,7 @@ def get_job_postings(
             "industry_bucket,role_normalized,skill_canonical,"
             "salary_low,salary_high,salary_unit,"
             "work_exp_min,work_exp_max,edu_level,"
-            "remote_work,appear_date,quality_score,job_url"
+            "remote_work,appear_date,quality_score"
         ),
         "order": "appear_date.desc",
         "limit": limit,
@@ -153,7 +153,7 @@ def get_analytics_rows(limit: int = 5000) -> List[Dict]:
             "job_parent_category,job_sub_category,role_normalized,"
             "skill_canonical,salary_low,salary_high,salary_unit,"
             "work_exp_min,work_exp_max,edu_level,"
-            "remote_work,appear_date,quality_score,job_url"
+            "remote_work,appear_date,quality_score"
         ),
         "order": "appear_date.desc",
         "limit": limit,

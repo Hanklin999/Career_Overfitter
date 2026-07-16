@@ -221,7 +221,8 @@ else:
     for job in summary["jobs"][:15]:
         title = job.get("title_clean") or "（無職稱）"
         company = job.get("company_clean") or ""
-        url = job.get("job_url") or ""
+        job_no = job.get("job_no") or ""
+        url = f"https://www.104.com.tw/job/{job_no}" if job_no else ""
         sal_low, sal_hi = job.get("salary_low"), job.get("salary_high")
         sal_txt = f"NT$ {sal_low:,.0f} - {sal_hi:,.0f}" if sal_low and sal_hi else ""
         line = f"**{title}** — {company}　{sal_txt}"
