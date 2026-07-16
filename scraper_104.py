@@ -34,7 +34,8 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 
 SUPA_HEADERS = {
     "apikey": SUPABASE_KEY,
-    "Authorization": f"Bearer {SUPABASE_KEY}",
+    # 新版 sb_secret_... key 不是 JWT，不能塞進 Authorization: Bearer header
+    # （會被 PostgREST 判定不合法直接 401），只需要 apikey header。
     "Content-Type": "application/json",
     "Prefer": "resolution=merge-duplicates",
 }

@@ -37,7 +37,8 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 
 HEADERS = {
     "apikey": SUPABASE_KEY,
-    "Authorization": f"Bearer {SUPABASE_KEY}",
+    # 新版 sb_secret_... key 不是 JWT，不能塞進 Authorization: Bearer header
+    # （會被 PostgREST 判定不合法直接 401），只需要 apikey header。
     "Content-Type": "application/json",
 }
 
@@ -106,7 +107,20 @@ def main() -> None:
     rows = fetch_rows_missing_embedding(args.limit)
     print(f"待算 embedding：{len(rows)} 筆")
 
+    # 過濾掉組出來文字太短的列（沒有實際內容可 embed，例如 title_clean /
+    # role_normalized / job_description 全是空字串——not.is.null 擋不掉這種），
+    # 避免浪費 API call、也避免這種列汙染失敗統計數字。
+    MIN_TEXT_LEN = 10
+    skipped = [r for r in rows if len(build_embed_text(r)) < MIN_TEXT_LEN]
+    rows = [r for r in rows if len(build_embed_text(r)) >= MIN_TEXT_LEN]
+    if skipped:
+        print(
+            f"⚠️ 跳過 {len(skipped)} 筆內容過短/空白的資料："
+            f"{[r.get('job_no') for r in skipped[:10]]}{'...' if len(skipped) > 10 else ''}"
+        )
+
     ok = fail = 0
+    failed_job_nos: List[str] = []
     for batch in chunked(rows, EMBED_BATCH_SIZE):
         texts = [build_embed_text(r) for r in batch]
         embeddings = embed_texts_batch(texts, task_type="RETRIEVAL_DOCUMENT")
@@ -117,12 +131,15 @@ def main() -> None:
                 ok += 1
             else:
                 fail += 1
+                failed_job_nos.append(job_no)
                 print(f"❌ {job_no} embedding 失敗")
 
         # 對 Gemini embedding API 客氣一點，避免瞬間把免費額度的 rate limit 打爆
         time.sleep(4)
 
-    print(f"✅ 完成：成功 {ok}，失敗 {fail}")
+    print(f"✅ 完成：成功 {ok}，失敗 {fail}，跳過 {len(skipped)}")
+    if failed_job_nos:
+        print(f"失敗的 job_no（供後續用 diagnose_embedding_failures.py 檢查）：{failed_job_nos}")
 
 
 if __name__ == "__main__":

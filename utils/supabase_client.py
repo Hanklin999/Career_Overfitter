@@ -18,7 +18,9 @@ SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "")
 
 HEADERS = {
     "apikey": SUPABASE_KEY,
-    "Authorization": f"Bearer {SUPABASE_KEY}",
+    # 注意：新版 sb_secret_... key 不是 JWT，如果塞進 Authorization: Bearer
+    # header 會被 PostgREST 判定成不合法的 JWT 直接拒絕（401）。新版 key
+    # 只需要放在 apikey header，不要再加 Authorization header。
     "Content-Type": "application/json",
     "Accept": "application/json",
 }
