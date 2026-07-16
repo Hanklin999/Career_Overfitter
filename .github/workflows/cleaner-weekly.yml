@@ -58,30 +58,43 @@ jobs:
     if: always() && needs.clear-data.result == 'success'
     runs-on: ubuntu-latest
 
-    # Phase 1 scope (2026-07, updated same month): Job_taxonomy_forsearch.csv
-    # is intentionally kept small so a single shard covers it. Originally cut
-    # down from 147 keywords / 8 shards because the full-scope crawl was
-    # getting blocked by 104 too often (see FAKE_404_THRESHOLD handling in
-    # scraper_104.py). Current scope (12 keywords) is centered on
-    # "Product Data Analyst" (Product Management + Analytics / Data / BI).
-    # Previous Marketing/Brand/Growth + Analytics/Data/BI scope is preserved
-    # in Job_taxonomy_forsearch_marketing_analytics_backup.csv.
+    # Phase 2 scope (2026-07): Job_taxonomy_forsearch.csv expanded from the
+    # Product Data Analyst-only scope (12 keywords) to also cover Business
+    # Analytics, Marketing Analytics, and Operations Analytics (42 keywords
+    # total), so the Analytics Career Map has real market data across all
+    # four domains instead of just Product. Originally cut down from 147
+    # keywords / 8 shards because the full-scope crawl was getting blocked by
+    # 104 too often (see FAKE_404_THRESHOLD handling in scraper_104.py); the
+    # Product-only 12-keyword / 1-shard scope ran cleanly, so this expansion
+    # keeps each shard at ~14 keywords (slightly larger than the old
+    # 15-20/shard guidance, traded for fewer shards) rather than reverting to
+    # the original 8-shard/147-keyword setup. Watch the scrape-104 job logs
+    # for FAKE_404 warnings after this change; if blocking recurs, split each
+    # shard further (e.g. 6 shards of ~7) rather than reducing keyword count.
     #
-    # To re-expand or re-focus scope later:
-    #   1. Copy categories/keywords from Job_taxonomy_forsearch_full.csv (or
-    #      one of the *_backup.csv snapshots) back into
-    #      Job_taxonomy_forsearch.csv (validate the crawler stays healthy on
-    #      the current scope first).
+    # Prior scope snapshots are preserved for reference/rollback:
+    #   - Job_taxonomy_forsearch_marketing_analytics_backup.csv (18 keywords,
+    #     Marketing/Brand/Growth + Analytics/Data/BI)
+    #   - Job_taxonomy_forsearch_full.csv (full 147-keyword/18-category set)
+    #
+    # To re-expand or re-focus scope further:
+    #   1. Add/replace keywords in Job_taxonomy_forsearch.csv.
     #   2. Add matrix entries below in the same offset/limit/end shape,
-    #      keeping each shard at roughly 15-20 keywords.
+    #      keeping each shard at roughly 14-20 keywords.
     strategy:
       fail-fast: false
       max-parallel: 1
       matrix:
         include:
           - offset: 0
-            limit: 20
-            end: 12
+            limit: 14
+            end: 14
+          - offset: 14
+            limit: 14
+            end: 28
+          - offset: 28
+            limit: 14
+            end: 42
 
     name: Scrape 104 keywords ${{ matrix.offset }}-${{ matrix.end }}
 

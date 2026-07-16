@@ -4,9 +4,9 @@
 
 ## 這個產品是為誰而做
 
-Career Overfitter 的目標使用者是**台灣的早期職涯或轉職中的數據／商業專業人士，他們不確定自己的背景是否真的符合 Product Analytics、BI、Growth 或 Product Management 這類職務，且目前沒有可靠的方法把零散、用詞不一致的職缺資訊轉化成具體可執行的下一步**。
+Career Overfitter 的目標使用者是**明確想走數據分析，但不知道「數據分析」這件事其實藏在很多不同職稱與部門底下的人** — 一個 Business Analyst、一個 Product Analyst、一個 Data Scientist，實際做的工作內容可能高度重疊，但只靠職稱在人力銀行搜尋的人完全看不出這件事。這正是本產品目前定位為 **「Google Maps for Analytics Careers」** 的核心洞察：不從職缺列表開始，而是先給一張分析職涯的地圖，讓使用者先選一條路、看懂這條路實際在做什麼，最後才看個別職缺。
 
-這個定位直接對應到本專案的具體設計選擇：為什麼資料來源是 104 而非全球型求職平台、為什麼爬蟲範圍聚焦在 Product Data Analyst 相關關鍵字而非「所有職缺」、為什麼要建立職務／技能分類系統來正規化命名而非直接呈現原始職缺文字、以及為什麼 CV 比對工具是整個產品的核心，而不只是一個泛用的職缺搜尋介面。
+這個定位直接對應到本專案的具體設計選擇：為什麼資料來源是 104 而非全球型求職平台、為什麼爬蟲涵蓋四個分析領域（Business / Product / Marketing / Operations Analytics）而不是只有一個、為什麼要額外建立一層職務分類 overlay（`analytics_career_map.csv`）把原始職稱對應到「領域 x 工程深度」的座標系、以及為什麼 Career Map 和 Resume 兩頁才是整個產品的核心，而不是一個泛用的職缺搜尋框。
 
 ## 這個產品是什麼（以及不是什麼）
 
@@ -38,6 +38,7 @@ Career Overfitter 是一個**以 AI 輔助的求職市場情報與 CV 決策支�
 - [這個產品是為誰而做](#這個產品是為誰而做)
 - [這個產品是什麼（以及不是什麼）](#這個產品是什麼以及不是什麼)
 - [產品決策](#產品決策)
+- [Analytics Career Map](#analytics-career-map)
 - [功能特色](#功能特色)
 - [系統架構](#系統架構)
 - [專案結構](#專案結構)
@@ -49,31 +50,49 @@ Career Overfitter 是一個**以 AI 輔助的求職市場情報與 CV 決策支�
 - [維運注意事項](#維運注意事項)
 - [未來規劃](#未來規劃)
 
+## Analytics Career Map
+
+產品把所有「分析類」職稱，用兩個軸重新組織 — 定義在 `utils/career_taxonomy.py` 與 `analytics_career_map.csv`（疊加在既有 280 列 `Job_taxonomy_byRole.csv` 分類表之上的 overlay，不會改變職缺分類邏輯本身，只是把分類結果裡「分析相關」的 `role_normalized` 值重新組織成一張好瀏覽的地圖）：
+
+- **領域（業務應用），4 個值**：Business Analytics、Product Analytics、Marketing Analytics、Operations Analytics — *這個角色在分析什麼類型的問題*
+- **工程深度，4 個等級**：BA → DA → DS → DE（Business Analyst → Data Analyst → Data Scientist → Data Engineer）— *這個角色離建模／工程有多近*
+
+目前橫跨四個領域共對應 72 個職稱（例如 Product Analytics 底下包含 Product Analyst、Growth Product Analyst、Marketplace Analyst、CRM & Lifecycle Analyst、Decision Scientist 等）。其中 **Marketplace Analyst** 與 **CRM & Lifecycle Analyst** 兩個職稱在原本的分類表裡不存在，是專門新增的，目的是讓 Product Analytics 有完整的子分類；`CRM & Lifecycle Analyst` 刻意取了跟既有 `CRM Analyst`（屬於另一個 parent category、偏 IT／CRM 系統導入的職稱）不同的名字，避免兩者混淆。
+
+不屬於「分析類」的職稱（Product Manager、Sales 相關、一般 HR／財務職稱等）刻意不放進這張地圖 — 地圖的目的是幫使用者找到藏在陌生職稱底下的分析工作，不是要涵蓋所有職能。
+
 ## 功能特色
 
-### 🔍 職缺搜尋
+### 🗺️ Explore Careers
 
-- 結構化篩選：職稱關鍵字、公司性質（外商／本土、上市／未上市）、產業、職務類別、最低薪資、最低學歷、遠端工作偏好
-- **AI 語意搜尋**：直接用一句話描述你想要的工作（例如「想找用 Python 做行銷分析、不需要太多工程背景的職缺」），系統會根據向量相似度比對真實職缺內容排序結果，與結構化篩選條件互相獨立
-- 每筆結果都附技能標籤、品質分數，以及回到 104 原始頁面的連結
-- 一鍵匯出 CSV
+- Analytics Career Map 的入口頁：X/Y 市場分布圖，一軸是領域、一軸是工程深度，泡泡大小代表目前該象限的職缺數量
+- 點選或選擇一個領域，往下看該領域底下的子分類職稱與即時職缺數／薪資中位數，再往下才看個別職缺
 
-### 📊 技能儀表板
+### 🧭 Career Map
 
-- 依出現頻率排列 Top-N 熱門技能
-- 各職務的薪資中位數
-- 產業分布與遠端工作比例
-- 可排序的原始資料表
+- 以 sunburst 階層圖呈現 Analytics → Domain → Sub-role — 從整體地圖一路點到單一職稱
+- 選定一個職稱後，**依序**顯示：這個角色實際在做什麼（白話條列）、常見相關職稱、市場需求、薪資中位數、熱門技能、常見公司、你的履歷適配度（若已用過 Resume 頁）、最後才是這個職稱的真實職缺
 
-### 📄 CV 比對工具
+### 📄 Resume
 
 - 貼上履歷文字，或上傳 `.txt` / `.md` 檔案
 - 透過邊界安全的別名比對器（`skill_alias.csv`）擷取 canonical 技能，並對容易誤判的短英文縮寫（如 `AI`、`PM`、`UX`）套用 evidence 權重降權，降低誤判率
-- 對照職務分類，計算加權適配分數，並列出符合與缺口技能
+- 對照職務分類，計算加權適配分數；分數會寫入 session state，讓 Career Map 頁在瀏覽任何職稱時都能直接顯示「Resume Fit」，不用重新計算
 - 規則式改寫建議，離線即可使用，不依賴外部 API
-- **AI 建議（Gemini）**：最適配職務、適配原因、關鍵技能證據、主要缺口、履歷改寫建議、下一步學習方向 — 依需求即時產生，API 無法使用時會自動退回規則式建議
-- **推薦真實職缺**：獨立的功能按鈕，透過向量搜尋找出與你履歷最相似的實際職缺（而非僅是聚合後的職務輪廓），並附上回到 104 原始職缺的連結
+- **Career Advisor（Gemini）**：不是泛用的「問 AI」框，而是回答有範圍的職涯決策問題（這條路為什麼適合我、我還缺哪些技能、BI 跟 Product Analytics 差在哪）；有真實職缺可檢索時會用其內容佐證，API 無法使用時自動退回規則式建議
+- **推薦真實職缺**：獨立的功能按鈕，透過向量搜尋找出與你履歷最相似的實際職缺，並附上回到 104 原始職缺的連結
 - 適配分數與技能證據皆可匯出 CSV
+
+### 📈 Market Trends
+
+- **Compare Career Paths**：不是「Top SQL / Top Python」排行榜，而是技能 x 領域的星等比較矩陣，讓你看出同一個技能在不同路徑的相對重要程度 — 這才是使用者真正想問的「我要往哪一條路」，而不是「什麼技能最紅」
+- 各職稱薪資中位數、產業分布、遠端工作比例
+
+### 🎯 Jobs
+
+- 篩選的第一步是 **Career Path**（先選領域，再選底下的子分類職稱），不是原始的職稱關鍵字框
+- 「你想做什麼樣的工作？」— 用一句話描述你的興趣，系統會先告訴你這聽起來像哪些 Career Path，再列出對應職缺（賣的是 Path，不是關鍵字搜尋）
+- 每筆結果都附技能標籤、品質分數，以及回到 104 原始頁面的連結；可匯出 CSV
 
 ## 系統架構
 
@@ -99,27 +118,35 @@ Career Overfitter 是一個**以 AI 輔助的求職市場情報與 CV 決策支�
                                                      ▼
                                      utils/rag_retrieval.py + llm_advisor.py
                                     （Gemini generateContent + embedContent）
+                                                     │
+                                                     ▼
+                                 utils/career_taxonomy.py（領域 x 工程深度 overlay，
+                                 來自 analytics_career_map.csv）驅動 Explore Careers /
+                                 Career Map / Market Trends / Jobs 四個頁面
 ```
 
 系統使用兩組獨立的 Gemini API，共用同一組 `GEMINI_API_KEY`：
 
 - **Embedding（向量化）**（`gemini-embedding-001`，透過 `utils/embeddings.py`）— 將職缺與使用者查詢轉換為向量，存放於 Supabase 的 `pgvector` 擴充功能中
-- **生成（Generation）**（`gemini-2.5-flash`，透過 `utils/llm_advisor.py`）— 將結構化診斷結果與檢索到的職缺內容轉換為 CV 比對工具頁面顯示的 AI 建議
+- **生成（Generation）**（`gemini-2.5-flash`，透過 `utils/llm_advisor.py`）— 將結構化診斷結果與檢索到的職缺內容轉換為 Resume 頁面顯示的 Career Advisor 建議
 
 ## 專案結構
 
 ```
 Career_Overfitter/
-├── app.py                          # Streamlit 進入點（首頁）
+├── app.py                          # Streamlit 進入點（首頁，流程總覽）
 ├── pages/
-│   ├── 1_Job_Search.py             # 職缺瀏覽 + AI 語意搜尋
-│   ├── 2_Skill_Dashboard.py        # 市場技能／薪資／產業統計
-│   └── 3_CV_Fitting_Tool.py        # CV 解析、適配分數、AI 建議、職缺配對
+│   ├── 1_Explore_Careers.py        # 領域 x 工程深度市場地圖（XY 分布圖）
+│   ├── 2_Career_Map.py             # Sunburst 階層圖 + 單一職稱詳情面板
+│   ├── 3_Resume.py                 # CV 解析、適配分數、Career Advisor、職缺配對
+│   ├── 4_Market_Trends.py          # Compare Career Paths（技能 x 領域矩陣）、薪資、產業
+│   └── 5_Jobs.py                   # Career Path 優先的職缺瀏覽 + 自然語言路徑分流
 ├── utils/
 │   ├── supabase_client.py          # 帶快取的 Supabase REST 查詢
 │   ├── cv_parser.py                # 技能擷取與適配分數計算
 │   ├── ui_taxonomy.py              # UI 共用的篩選／分類輔助函式
-│   ├── llm_advisor.py              # Gemini generateContent 封裝（AI 建議）
+│   ├── career_taxonomy.py          # Analytics Career Map overlay（領域 x 工程深度）
+│   ├── llm_advisor.py              # Gemini generateContent 封裝（Career Advisor）
 │   ├── embeddings.py               # Gemini embedContent/batchEmbedContents 封裝
 │   └── rag_retrieval.py            # 透過 Supabase RPC 對 job_posting 做向量搜尋
 ├── scraper_104.py                  # 104 爬蟲 → jd_raw
@@ -128,10 +155,11 @@ Career_Overfitter/
 ├── clear_supabase_data.py          # 清空 jd_raw + job_posting（供「清空全部資料」選項使用）
 ├── sql/
 │   └── 001_enable_pgvector_rag.sql # 啟用 pgvector、新增 embedding 欄位、建立 RPC function
-├── Job_taxonomy_forsearch.csv      # 目前生效中的爬蟲關鍵字清單（目前 12 個關鍵字）
+├── Job_taxonomy_forsearch.csv      # 目前生效中的爬蟲關鍵字清單（42 個關鍵字，涵蓋 4 個領域）
 ├── Job_taxonomy_forsearch_full.csv # 完整 147 個關鍵字備份，供未來擴大範圍使用
 ├── Job_taxonomy_forsearch_marketing_analytics_backup.csv  # 前一版範圍快照
-├── Job_taxonomy_byRole.csv         # 用於分類的職務分類表
+├── Job_taxonomy_byRole.csv         # 用於分類的職務分類表（280 列）
+├── analytics_career_map.csv        # role_normalized → (領域, 工程深度) 對應表，供地圖使用
 ├── skill_alias.csv                 # 技能別名對照表
 ├── skill_taxonomy.csv              # 技能分類表
 ├── role_alias.csv                  # 職務名稱別名表
@@ -200,20 +228,19 @@ streamlit run app.py
 
 爬蟲最初使用 `Job_taxonomy_forsearch.csv` 中橫跨 18 個職務類別的全部 147 個關鍵字，並拆成 8 個 GitHub Actions matrix shard 平行執行 — 但總請求量過高，導致 104 開始封鎖流量（詳見 `scraper_104.py` 中的 `FAKE_404_THRESHOLD` 處理邏輯）。
 
-搜尋範圍已縮減兩次：
+搜尋範圍目前已調整三次：
 
 1. 第一次縮減為 `Marketing / Brand / Growth` + `Analytics / Data / BI`（18 個關鍵字）— 保存於 `Job_taxonomy_forsearch_marketing_analytics_backup.csv`。
-2. 目前聚焦於 **Product Data Analyst**（12 個關鍵字），橫跨 `Product Management` 與 `Analytics / Data / BI` 兩個類別。
+2. 進一步縮減為只聚焦 **Product Data Analyst**（12 個關鍵字），橫跨 `Product Management` 與 `Analytics / Data / BI` 兩個類別。
+3. **目前已擴大為橫跨四個領域、共 42 個關鍵字** — `Product Management`、`Analytics / Data / BI`（原本的 12 個關鍵字不變），加上新增的 `Business Analytics`、`Marketing Analytics`、`Operations Analytics` 三個類別（新增 30 個關鍵字），讓下方的 Analytics Career Map 能在四個分析領域都有真實市場資料，而不只是 Product 一個領域。
 
-完整的 147 個關鍵字清單保留在 `Job_taxonomy_forsearch_full.csv`，供未來擴大範圍時使用。`cleaner-weekly.yml` 目前只跑單一 matrix shard，對應目前縮減後的關鍵字數量。
+完整的 147 個關鍵字清單保留在 `Job_taxonomy_forsearch_full.csv`，供參考。`cleaner-weekly.yml` 目前跑 3 個 matrix shard，每個約 14 個關鍵字（`offset 0/14/28`、`limit 14`），對應目前 42 個關鍵字的範圍；刻意選擇「較少、較大」的 shard 數量（3 個而非更多），以降低每個 shard checkout／安裝依賴的重複開銷，代價是每個 shard 被 104 限速的風險比先前單一 12 關鍵字 shard 略高。調整後請留意 `scrape-104` job 的 log 是否出現 `FAKE_404` 警告 — 若再次被封鎖，建議拆成更多、更小的 shard（例如 6 個約 7 個關鍵字），而非刪減關鍵字數量。
 
-**若要擴大或重新聚焦搜尋範圍：**
+**若要進一步擴大或重新聚焦搜尋範圍：**
 
-1. 先確認目前範圍已能穩定執行、未再被封鎖。
-2. 從 `Job_taxonomy_forsearch_full.csv`（或某個 `*_backup.csv` 快照）複製想要的類別／關鍵字進 `Job_taxonomy_forsearch.csv`。
-3. 調整 `cleaner-weekly.yml` 中的 `matrix.include` — 建議每個 shard 維持在 15–20 個關鍵字左右，需要時再增加 shard 數量。
-
-建議採漸進式擴充（一次增加 1–2 個類別），而非一次恢復成完整清單；資料量的成長也不一定需要新增關鍵字，讓每週排程在目前範圍內持續累積資料同樣有效。
+1. 先確認目前四領域範圍已能穩定執行、未再被封鎖。
+2. 在 `Job_taxonomy_forsearch.csv` 新增或替換關鍵字（或從 `Job_taxonomy_forsearch_full.csv` 複製更多類別）。
+3. 調整 `cleaner-weekly.yml` 中的 `matrix.include` — 建議每個 shard 維持在 14–20 個關鍵字左右，需要時再增加 shard 數量。
 
 ## RAG 系統（檢索增強生成）
 

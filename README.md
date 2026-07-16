@@ -4,9 +4,9 @@ An AI-powered job market intelligence and CV decision-support product, built on 
 
 ## Who this is for
 
-Career Overfitter is built for **early-career and transitioning data/business professionals in Taiwan who are unsure whether their background actually fits Product Analytics, BI, Growth, or Product Management roles**, and who currently have no reliable way to translate scattered, inconsistent job postings into an actionable next step.
+Career Overfitter is built for **people who know they want to work in analytics but don't know that "analytics" hides behind dozens of different job titles and departments** — a Business Analyst, a Product Analyst, and a Data Scientist may all spend their day doing the same underlying work, and someone scanning job boards by title alone has no way to see that. This is the core insight behind the product's current framing as a **"Google Maps for Analytics Careers"**: instead of starting from a job list, the product starts from a map of the analytics landscape, lets the user pick a path, understand what that path actually involves, and only then shows them individual job postings.
 
-That framing drives the concrete choices in this repo: why the data source is 104 rather than a global job board, why the crawler is scoped to a Product Data Analyst-centered keyword set rather than "all jobs," why the taxonomy normalizes role/skill naming instead of showing raw postings, and why the CV Fitting Tool is the centerpiece rather than a generic job search UI.
+That framing drives the concrete choices in this repo: why the data source is 104 rather than a global job board, why the crawler covers four analytics domains (Business / Product / Marketing / Operations Analytics) rather than one, why there's a curated taxonomy overlay (`analytics_career_map.csv`) mapping raw job titles onto a domain x technical-depth grid, and why the Career Map and Resume pages — not a generic job search box — are the centerpiece.
 
 ## What this is (and isn't)
 
@@ -38,6 +38,7 @@ It is **not** an autonomous agent. There is no multi-step task planning, no dyna
 - [Who this is for](#who-this-is-for)
 - [What this is (and isn't)](#what-this-is-and-isnt)
 - [Product Decisions](#product-decisions)
+- [The Analytics Career Map](#the-analytics-career-map)
 - [Features](#features)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
@@ -49,31 +50,49 @@ It is **not** an autonomous agent. There is no multi-step task planning, no dyna
 - [Maintenance Notes](#maintenance-notes)
 - [Roadmap](#roadmap)
 
+## The Analytics Career Map
+
+The product organizes every analytics-flavored job title along two axes, defined in `utils/career_taxonomy.py` and `analytics_career_map.csv` (a curated overlay on top of the 280-row `Job_taxonomy_byRole.csv` classification taxonomy — it doesn't change how jobs get classified, it just re-organizes the analytics-relevant subset of `role_normalized` values into a browsable map):
+
+- **Domain (business application), 4 values**: Business Analytics, Product Analytics, Marketing Analytics, Operations Analytics — *what kind of problem the role analyzes*
+- **Technical depth, 4 tiers**: BA → DA → DS → DE (Business Analyst → Data Analyst → Data Scientist → Data Engineer) — *how close the role sits to modeling/engineering*
+
+72 role titles are currently mapped across the four domains (e.g. Product Analytics contains Product Analyst, Growth Product Analyst, Marketplace Analyst, CRM & Lifecycle Analyst, Decision Scientist, and others). Two titles — **Marketplace Analyst** and **CRM & Lifecycle Analyst** — don't appear in standard 104 postings verbatim often enough to have existed in the original taxonomy and were added specifically to give Product Analytics a complete sub-role set; `CRM & Lifecycle Analyst` is named distinctly from the pre-existing `CRM Analyst` (an IT/CRM-systems-implementation role under a different parent category) to avoid conflating the two.
+
+Titles that aren't analytics-flavored (Product Manager, Sales roles, generic HR/Finance roles, etc.) are deliberately excluded from this map — the map's purpose is surfacing analytics work hiding under unfamiliar titles, not cataloguing every job function.
+
 ## Features
 
-### 🔍 Job Search
+### 🗺️ Explore Careers
 
-- Structured filters: title keyword, company nature (foreign / local, listed / unlisted), industry, role category, salary floor, minimum education, remote preference
-- **AI semantic search**: describe the job you want in a sentence (e.g. *"looking for a role doing marketing analytics in Python without heavy engineering"*) and get results ranked by vector similarity against real job descriptions, independent of the structured filters
-- Skill tags, quality score, and a direct link back to the original 104 posting on every result
-- One-click CSV export
+- The landing view of the Analytics Career Map: an X/Y landscape plot, domain on one axis and technical depth on the other, bubble size showing how many current postings fall in each quadrant
+- Click or select a domain to drill into its named sub-roles with live counts and median salary, before looking at any individual job
 
-### 📊 Skill Dashboard
+### 🧭 Career Map
 
-- Top-N in-demand skills by frequency
-- Median salary by role
-- Industry distribution and remote-work ratio
-- Sortable raw data table
+- A sunburst hierarchy (Analytics → Domain → Sub-role) — click through from the whole landscape down to one specific title
+- Selecting a role shows, **in this order**: what people in this role actually do (plain-language bullets), common related titles, market demand, median salary, top skills, top companies, your resume fit (if you've used the Resume page), and — last, not first — real job postings for that title
 
-### 📄 CV Fitting Tool
+### 📄 Resume
 
 - Paste resume text or upload a `.txt` / `.md` file
 - Extracts canonical skills via a boundary-safe alias matcher (`skill_alias.csv`), with evidence-weight down-ranking for ambiguous short English tokens (e.g. `AI`, `PM`, `UX`) to reduce false positives
-- Computes a weighted fit score against every role in the taxonomy, with matched/gap skill breakdowns
+- Computes a weighted fit score against every role in the taxonomy; scores are written to session state so the Career Map page can show "Resume Fit" for whichever role you're looking at, without recomputing
 - Rule-based rewrite suggestions, always available offline
-- **AI advice (Gemini)**: best-fit role, why-it-fits reasoning, key skill evidence, biggest gaps, rewrite suggestions, and next learning actions — generated on demand, with a rule-based fallback if the API is unavailable
-- **Recommended real postings**: a separate, independent action that retrieves the actual job postings (not just an aggregated role profile) most similar to your resume via vector search, each with a link to the original 104 listing
+- **Career Advisor (Gemini)**: not a generic "ask AI" box — answers scoped career-decision questions (why does this path fit, what skills are missing, how does BI differ from Product Analytics), grounded in retrieved real postings where available, with a rule-based fallback if the API is unavailable
+- **Recommended real postings**: a separate, independent action that retrieves the actual job postings most similar to your resume via vector search, each linked to the original 104 listing
 - CSV export for both fit scores and skill evidence
+
+### 📈 Market Trends
+
+- **Compare Career Paths**: not a "Top SQL / Top Python" leaderboard — a skill x domain star-rating matrix, so you can see how important a given skill is on each path relative to the others, which is the question people actually have ("which path should I go down") rather than "what's popular"
+- Median salary by role, industry distribution, remote-work ratio
+
+### 🎯 Jobs
+
+- Filtering starts from **Career Path** (pick a domain, then its sub-roles), not a raw job-title keyword box
+- "What kind of work do you want to do?" — describe your interests in a sentence and the product first tells you which Career Path(s) that sounds like, then lists the matching postings underneath (path, not keyword search, is the product)
+- Skill tags, quality score, and a direct link back to the original 104 posting on every result; CSV export
 
 ## Architecture
 
@@ -99,27 +118,35 @@ It is **not** an autonomous agent. There is no multi-step task planning, no dyna
                                                      ▼
                                      utils/rag_retrieval.py + llm_advisor.py
                                         (Gemini generateContent + embedContent)
+                                                     │
+                                                     ▼
+                                   utils/career_taxonomy.py (domain x tech-depth
+                                   overlay, from analytics_career_map.csv) drives
+                                   Explore Careers / Career Map / Market Trends / Jobs
 ```
 
 Two independent Gemini API surfaces are used, sharing one `GEMINI_API_KEY`:
 
 - **Embeddings** (`gemini-embedding-001`, via `utils/embeddings.py`) — turn job postings and user queries into vectors, stored in Supabase's `pgvector` extension
-- **Generation** (`gemini-2.5-flash`, via `utils/llm_advisor.py`) — turn structured diagnosis + retrieved postings into the AI advice shown on the CV Fitting Tool page
+- **Generation** (`gemini-2.5-flash`, via `utils/llm_advisor.py`) — turn structured diagnosis + retrieved postings into the Career Advisor output shown on the Resume page
 
 ## Project Structure
 
 ```
 Career_Overfitter/
-├── app.py                          # Streamlit entry point (home page)
+├── app.py                          # Streamlit entry point (home page, flow overview)
 ├── pages/
-│   ├── 1_Job_Search.py             # Job browser + AI semantic search
-│   ├── 2_Skill_Dashboard.py        # Market-wide skill/salary/industry stats
-│   └── 3_CV_Fitting_Tool.py        # CV parsing, fit score, AI advice, job matching
+│   ├── 1_Explore_Careers.py        # Domain x tech-depth market landscape (XY plot)
+│   ├── 2_Career_Map.py             # Sunburst hierarchy + per-role detail panel
+│   ├── 3_Resume.py                 # CV parsing, fit score, Career Advisor, job matching
+│   ├── 4_Market_Trends.py          # Compare Career Paths (skill x domain matrix), salary, industry
+│   └── 5_Jobs.py                   # Career Path-first job browser + NL path routing
 ├── utils/
 │   ├── supabase_client.py          # Cached Supabase REST queries
 │   ├── cv_parser.py                # Skill extraction + fit score computation
 │   ├── ui_taxonomy.py              # Shared filter/taxonomy helpers for the UI
-│   ├── llm_advisor.py              # Gemini generateContent wrapper (AI advice)
+│   ├── career_taxonomy.py          # Analytics Career Map overlay (domain x tech-depth)
+│   ├── llm_advisor.py              # Gemini generateContent wrapper (Career Advisor)
 │   ├── embeddings.py               # Gemini embedContent/batchEmbedContents wrapper
 │   └── rag_retrieval.py            # Vector search against job_posting via Supabase RPC
 ├── scraper_104.py                  # 104 crawler → jd_raw
@@ -128,10 +155,11 @@ Career_Overfitter/
 ├── clear_supabase_data.py          # Wipes jd_raw + job_posting (used by the truncate option)
 ├── sql/
 │   └── 001_enable_pgvector_rag.sql # Enables pgvector, adds embedding column, RPC function
-├── Job_taxonomy_forsearch.csv      # Active crawler keyword list (currently 12 keywords)
+├── Job_taxonomy_forsearch.csv      # Active crawler keyword list (42 keywords, 4 domains)
 ├── Job_taxonomy_forsearch_full.csv # Full 147-keyword backup for re-expanding scope
 ├── Job_taxonomy_forsearch_marketing_analytics_backup.csv  # Previous scope snapshot
-├── Job_taxonomy_byRole.csv         # Role taxonomy used for classification
+├── Job_taxonomy_byRole.csv         # Role taxonomy used for classification (280 rows)
+├── analytics_career_map.csv        # role_normalized → (domain, tech_depth) overlay for the map
 ├── skill_alias.csv                 # Canonical skill alias table
 ├── skill_taxonomy.csv              # Skill category taxonomy
 ├── role_alias.csv                  # Role name aliases
@@ -200,20 +228,19 @@ Open http://localhost:8501.
 
 The crawler originally used all 147 keywords across 18 role categories in `Job_taxonomy_forsearch.csv`, split across 8 parallel GitHub Actions matrix shards — total request volume was high enough that 104 started blocking traffic (see the `FAKE_404_THRESHOLD` handling in `scraper_104.py`).
 
-Scope has been narrowed twice:
+Scope has since been adjusted three times:
 
-1. First to `Marketing / Brand / Growth` + `Analytics / Data / BI` (18 keywords) — preserved in `Job_taxonomy_forsearch_marketing_analytics_backup.csv`.
-2. Currently centered on **Product Data Analyst** (12 keywords) across `Product Management` and `Analytics / Data / BI`.
+1. First narrowed to `Marketing / Brand / Growth` + `Analytics / Data / BI` (18 keywords) — preserved in `Job_taxonomy_forsearch_marketing_analytics_backup.csv`.
+2. Narrowed further to **Product Data Analyst** only (12 keywords) across `Product Management` and `Analytics / Data / BI`.
+3. **Currently expanded to 42 keywords across four domains** — `Product Management`, `Analytics / Data / BI` (12 keywords, unchanged), plus new `Business Analytics`, `Marketing Analytics`, and `Operations Analytics` categories (30 new keywords) — so the Analytics Career Map (see below) has real market data across all four analytics domains instead of only Product.
 
-The full 147-keyword list is preserved in `Job_taxonomy_forsearch_full.csv` for re-expansion. `cleaner-weekly.yml` currently runs a single matrix shard to match the reduced keyword count.
+The full 147-keyword list is preserved in `Job_taxonomy_forsearch_full.csv` for reference. `cleaner-weekly.yml` runs 3 matrix shards of ~14 keywords each (`offset 0/14/28`, `limit 14`) to cover the current 42-keyword scope; shard count was deliberately kept low (3 large shards rather than more, smaller ones) to minimize per-shard checkout/setup overhead, at a slightly higher per-shard risk of 104 rate-limiting than the previous single 12-keyword shard. Watch `scrape-104` job logs for `FAKE_404` warnings after this change — if blocking recurs, split into more, smaller shards (e.g. 6 shards of ~7) rather than cutting keywords.
 
-**To expand or re-focus scope:**
+**To expand or re-focus scope further:**
 
-1. Confirm the current scope has been running without repeated blocking.
-2. Copy the desired categories/keywords from `Job_taxonomy_forsearch_full.csv` (or a `*_backup.csv` snapshot) into `Job_taxonomy_forsearch.csv`.
-3. Adjust `matrix.include` in `cleaner-weekly.yml` — keep each shard around 15–20 keywords, adding shards as needed.
-
-Recommended approach: expand gradually (1–2 categories at a time) rather than reverting to the full list at once, and let the weekly schedule accumulate postings over time within the current scope — dataset growth doesn't require adding keywords, just repeated runs against the same ones.
+1. Confirm the current 4-domain scope has been running without repeated blocking.
+2. Add or replace keywords in `Job_taxonomy_forsearch.csv` (or copy more categories from `Job_taxonomy_forsearch_full.csv`).
+3. Adjust `matrix.include` in `cleaner-weekly.yml` — keep each shard around 14–20 keywords, adding shards as needed.
 
 ## RAG System (Retrieval-Augmented Generation)
 

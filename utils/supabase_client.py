@@ -140,3 +140,21 @@ def get_job_posting_count() -> int:
         return int(content_range.split("/")[-1])
     except Exception:
         return 0
+
+
+@st.cache_data(ttl=300)
+def get_analytics_rows(limit: int = 5000) -> List[Dict]:
+    """Analytics Career Map 系列頁面共用的批次查詢。
+    欄位涵蓋 domain/tech-depth 分類、薪資、技能、公司等彙整所需的所有欄位。"""
+    return _get("job_posting", {
+        "select": (
+            "job_no,title_clean,company_clean,location_county,"
+            "industry_bucket,industry_raw,"
+            "job_parent_category,job_sub_category,role_normalized,"
+            "skill_canonical,salary_low,salary_high,salary_unit,"
+            "work_exp_min,work_exp_max,edu_level,"
+            "remote_work,appear_date,quality_score,job_url"
+        ),
+        "order": "appear_date.desc",
+        "limit": limit,
+    })
