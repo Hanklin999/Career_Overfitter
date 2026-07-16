@@ -24,7 +24,10 @@ import plotly.graph_objects as go
 ROOT = Path(__file__).resolve().parent.parent
 
 from utils.supabase_client import _get
-from utils.cv_parser import extract_skills_from_text, compute_fit_scores, build_role_skill_demand_from_db, select_resume_bullets
+from utils.cv_parser import (
+    extract_skills_from_text, compute_fit_scores, build_role_skill_demand_from_db,
+    extract_experience_entries, check_bullet_quality,
+)
 from utils import career_taxonomy as ct
 from utils import llm_advisor
 from utils import rag_retrieval
@@ -405,20 +408,18 @@ def build_structured_diagnosis(
         "biggest_gap": gap_skills[:6],
     }
 
-    rewrite_suggestions = []
-    # 用 select_resume_bullets() 挑「看起來像經歷 bullet」的行，而不是直接抓
-    # 前 3 個非空行——履歷開頭通常是姓名/地址/電話，直接抓前幾行永遠抓到
-    # 抬頭資訊，改寫建議套在姓名/地址上完全沒意義。
-    sample_lines = select_resume_bullets(cv_text, max_bullets=3)
-    for line in sample_lines[:3]:
-        rewritten = line
-        if not any(ch.isdigit() for ch in line):
-            rewritten = line + "，並以可量化成果呈現專案影響，例如提升效率、優化流程或改善決策品質。"
-        reason = "補上 impact 與 evidence，讓經歷更像目標職能會採信的履歷 bullet。"
-        rewrite_suggestions.append({
-            "original": line,
-            "rewritten": rewritten,
-            "reason": reason,
+    # Bullet 檢查器用：把履歷拆成「經歷條目 → bullet」，每條 bullet 附上
+    # 「有沒有量化成果 / 有沒有具體影響」的規則式檢查結果，取代原本單純
+    # 套用罐頭句改寫的做法——讓使用者自己看得出來哪條 bullet 缺什麼，
+    # 而不是被動接受一句制式建議。
+    bullet_checks = []
+    for entry in extract_experience_entries(cv_text, max_entries=6, max_bullets_per_entry=6):
+        bullet_checks.append({
+            "title": entry["title"],
+            "bullets": [
+                {"text": b, **check_bullet_quality(b)}
+                for b in entry["bullets"]
+            ],
         })
 
     return {
@@ -434,7 +435,7 @@ def build_structured_diagnosis(
         "gaps": gaps,
         "suggestions": suggestions,
         "role_explanation": role_explanation,
-        "rewrite_suggestions": rewrite_suggestions,
+        "bullet_checks": bullet_checks,
     }
 
 
@@ -996,13 +997,24 @@ else:
                 st.markdown(f"<div class='muted'>原因：{item.get('reason', '')}</div>", unsafe_allow_html=True)
 
 st.markdown("---")
-st.markdown("### ✍️ 規則式改寫建議（Rule-based，離線可用）")
-for i, item in enumerate(structured["rewrite_suggestions"], 1):
-    st.markdown(f"**{i}. 原始 bullet**")
-    st.markdown(f"<div class='codebox'>{item['original']}</div>", unsafe_allow_html=True)
-    st.markdown("**改寫建議**")
-    st.markdown(f"<div class='codebox'>{item['rewritten']}</div>", unsafe_allow_html=True)
-    st.markdown(f"<div class='muted'>原因：{item['reason']}</div>", unsafe_allow_html=True)
+st.markdown("### 🔍 Bullet 檢查器（Rule-based，離線可用）")
+st.caption("依經歷條目分段列出偵測到的 bullet，每條標示是否偵測到量化成果／具體影響——純規則判斷，不呼叫 LLM。")
+
+if not structured["bullet_checks"]:
+    st.info("沒有從履歷裡偵測到明確的經歷 bullet，可能是格式不常見或內容太短。")
+else:
+    for i, entry in enumerate(structured["bullet_checks"], 1):
+        entry_title = entry["title"] or "（未偵測到職稱／公司標題）"
+        st.markdown(f"**經驗 {i}　{entry_title}**")
+        for j, b in enumerate(entry["bullets"], 1):
+            quant_mark = "✅" if b["has_quantified_result"] else "⬜"
+            impact_mark = "✅" if b["has_concrete_impact"] else "⬜"
+            st.markdown(f"<div class='codebox'>bullet {j}　{b['text']}</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div class='muted'>{quant_mark} 偵測到量化成果　　{impact_mark} 偵測到具體影響</div>",
+                unsafe_allow_html=True,
+            )
+        st.markdown("")
 
 st.markdown("---")
 df_export = pd.DataFrame([{

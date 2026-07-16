@@ -502,3 +502,140 @@ def select_resume_bullets(cv_text: str, max_bullets: int = 3) -> list[str]:
         bullets = sorted(non_header, key=len, reverse=True)[:max_bullets]
 
     return bullets
+
+
+# ---------------------------------------------------------------------------
+# Bullet 檢查器：把履歷拆成「經歷條目 → 底下的 bullet」，並對每條 bullet
+# 做「有沒有量化成果 / 有沒有具體影響」的規則式檢查。
+# ---------------------------------------------------------------------------
+
+# 經歷區塊的結束點：出現這些關鍵字代表已經跳到學歷/技能/語言等其他章節，
+# 不該再繼續往下抓 bullet。
+_SECTION_END_KEYWORDS = (
+    "學歷", "教育背景", "技能", "證照", "資格認證", "語言能力", "語言",
+    "Education", "Skills", "Certifications", "Certificates", "Languages",
+)
+
+
+def extract_experience_entries(
+    cv_text: str,
+    max_entries: int = 6,
+    max_bullets_per_entry: int = 6,
+) -> list[dict]:
+    """
+    把履歷解析成「經歷條目」結構：每個條目有一個標題（職稱/公司行）跟底下
+    對應的 bullet 清單，例如：
+        [{"title": "Lead Data Analyst • 104人力銀行",
+          "bullets": ["管理並指導七人分析團隊...", "利用 Python 與 R ..."]},
+         {"title": "資深數據分析師 • 蝦皮購物", "bullets": [...]}]
+
+    跟 select_resume_bullets() 用同一套行分類規則（header / 日期區間 /
+    職稱・公司 / bullet），差別是這裡保留「哪個標題底下接哪些 bullet」的
+    分組關係，讓 UI 可以照「經驗 1 / 經驗 2 / ...」分段顯示，而不是把全
+    履歷的 bullet 打散成一個扁平清單。
+
+    遇到學歷/技能/語言等章節關鍵字就停止（經歷區塊視為結束）。
+    """
+    lines = [ln.strip() for ln in cv_text.splitlines() if ln.strip()]
+    if not lines:
+        return []
+
+    start_idx = 0
+    for i, ln in enumerate(lines):
+        if any(kw in ln for kw in _EXPERIENCE_SECTION_KEYWORDS):
+            start_idx = i + 1
+            break
+
+    candidates = lines[start_idx:] if start_idx else lines
+
+    entries: list[dict] = []
+    current: dict | None = None
+
+    for ln in candidates:
+        if any(kw in ln for kw in _SECTION_END_KEYWORDS):
+            break
+
+        if _looks_like_header_line(ln):
+            continue
+
+        if _DATE_RANGE_RE.search(ln):
+            continue  # 日期/地點行，不顯示，也不是新條目的標題
+
+        has_inline_separator = any(sep in ln for sep in ("•", "·", "｜", "|"))
+        has_clause_punct = any(p in ln for p in ("，", "、", ","))
+        ends_like_sentence = ln.endswith(("。", "！", "!", "."))
+        is_entry_title = (
+            not ln.startswith(_BULLET_MARKERS)
+            and has_inline_separator
+            and not has_clause_punct
+            and not ends_like_sentence
+        )
+
+        if is_entry_title:
+            if len(entries) >= max_entries:
+                break
+            current = {"title": ln, "bullets": []}
+            entries.append(current)
+            continue
+
+        is_bulletish = (
+            ln.startswith(_BULLET_MARKERS)
+            or any(h in ln for h in _ACTION_HINTS)
+            or len(ln) >= 20
+        )
+        if not is_bulletish:
+            continue
+
+        if current is None:
+            # 履歷開頭的自我介紹段落，還沒遇到任何「職稱 • 公司」標題行
+            # 就先出現看起來像 bullet 的句子，歸到一個沒有標題的條目
+            current = {"title": None, "bullets": []}
+            entries.append(current)
+
+        if len(current["bullets"]) < max_bullets_per_entry:
+            current["bullets"].append(ln)
+
+    return [e for e in entries if e["bullets"]]
+
+
+# 量化成果偵測：阿拉伯數字或中文數字 + 常見單位（%、人、個、次、萬、成...），
+# 或是獨立的兩位數以上數字（例如「提升 18」「節省 500」）。
+_QUANT_UNIT_RE = re.compile(
+    r"[0-9一二三四五六七八九十百千萬億]+\s*"
+    r"(%|％|倍|萬|億|人|次|個|件|小時|天|週|月|年|元|成|折|美元|新台幣)"
+)
+_PERCENT_RE = re.compile(r"\d+(\.\d+)?\s*%")
+_BARE_NUMBER_RE = re.compile(r"(?<![A-Za-z])\d{2,}(?![A-Za-z])")
+
+# 具體影響：描述「造成的改變/成效」的動詞，跟單純列工具名稱（例如「熟悉
+# SQL」）區分開來。
+_IMPACT_HINTS = (
+    "提升", "降低", "減少", "增加", "改善", "優化", "節省", "縮短", "增長",
+    "提高", "達成", "超越", "成長", "擴大", "縮減", "促進",
+    "increase", "decrease", "reduce", "improve", "save", "grow", "boost",
+    "cut", "lower", "raise",
+)
+
+
+def check_bullet_quality(bullet: str) -> dict:
+    """
+    對單一 bullet 做兩項規則式檢查（純字串比對，不牽涉 LLM）：
+    - has_quantified_result：有沒有具體數字/百分比/量級
+      （例如「18%」「七人」「500 萬元」「四成」）
+    - has_concrete_impact：有沒有描述「造成的改變/成效」的動詞
+      （提升、降低、節省...），而不只是列出用了什麼工具
+
+    這兩項合起來大致對應「做了什麼＋影響了什麼指標」這個好 bullet 的
+    判斷標準；兩項都沒有的 bullet，代表比較像是在列工作內容而非成果，
+    值得優先改寫。
+    """
+    has_quant = bool(
+        _QUANT_UNIT_RE.search(bullet)
+        or _PERCENT_RE.search(bullet)
+        or _BARE_NUMBER_RE.search(bullet)
+    )
+    has_impact = any(h in bullet for h in _IMPACT_HINTS)
+    return {
+        "has_quantified_result": has_quant,
+        "has_concrete_impact": has_impact,
+    }
