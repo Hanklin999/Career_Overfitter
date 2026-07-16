@@ -998,7 +998,7 @@ else:
 
 st.markdown("---")
 st.markdown("### 🔍 Bullet 檢查器（Rule-based，離線可用）")
-st.caption("依經歷條目分段列出偵測到的 bullet，每條標示是否偵測到量化成果／具體影響——純規則判斷，不呼叫 LLM。")
+st.caption("依經歷條目分段列出偵測到的 bullet。左側燈號：🟢 偵測到量化成果　🔵 偵測到具體影響（燈亮＝偵測到，燈暗＝沒偵測到）。純規則判斷，不呼叫 LLM。")
 
 if not structured["bullet_checks"]:
     st.info("沒有從履歷裡偵測到明確的經歷 bullet，可能是格式不常見或內容太短。")
@@ -1007,14 +1007,21 @@ else:
         entry_title = entry["title"] or "（未偵測到職稱／公司標題）"
         st.markdown(f"**經驗 {i}　{entry_title}**")
         for j, b in enumerate(entry["bullets"], 1):
-            quant_mark = "✅" if b["has_quantified_result"] else "⬜"
-            impact_mark = "✅" if b["has_concrete_impact"] else "⬜"
-            st.markdown(f"<div class='codebox'>bullet {j}　{b['text']}</div>", unsafe_allow_html=True)
+            quant_color = "#2e7d32" if b["has_quantified_result"] else "#ddd8cd"
+            impact_color = "#2563a8" if b["has_concrete_impact"] else "#ddd8cd"
             st.markdown(
-                f"<div class='muted'>{quant_mark} 偵測到量化成果　　{impact_mark} 偵測到具體影響</div>",
+                f"""
+                <div style="display:flex;align-items:flex-start;gap:10px;margin:4px 0 10px 0;">
+                    <div style="display:flex;gap:4px;flex-shrink:0;padding-top:5px;"
+                         title="🟢 偵測到量化成果　🔵 偵測到具體影響">
+                        <span style="width:9px;height:9px;border-radius:50%;background:{quant_color};display:inline-block;"></span>
+                        <span style="width:9px;height:9px;border-radius:50%;background:{impact_color};display:inline-block;"></span>
+                    </div>
+                    <div class="codebox" style="flex:1;margin:0;">{j}　{b['text']}</div>
+                </div>
+                """,
                 unsafe_allow_html=True,
             )
-        st.markdown("")
 
 st.markdown("---")
 df_export = pd.DataFrame([{
