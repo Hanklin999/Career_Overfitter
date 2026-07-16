@@ -1,6 +1,10 @@
 # Career Overfitter
 
+![Career Overfitter — Explore Careers heatmap](docs/screenshots/hero_landscape.png)
+
 An AI-powered job market intelligence and CV decision-support product, built on [104 Job Bank](https://www.104.com.tw/) data.
+
+> This README is written for a technical/recruiter audience — architecture, data pipeline, and product-decision rationale. For a user-facing walkthrough written for actual job seekers (in Traditional Chinese), see [README.zh-TW.md](README.zh-TW.md).
 
 ## Who this is for
 
@@ -83,13 +87,15 @@ Titles that aren't analytics-flavored (Product Manager, Sales roles, generic HR/
 
 ### 🗺️ Explore Careers
 
-- The landing view of the Analytics Career Map: an X/Y landscape plot, domain on one axis and technical depth on the other, bubble size showing how many current postings fall in each quadrant
-- Click or select a domain to drill into its named sub-roles with live counts and median salary, before looking at any individual job
+- The landing view of the Analytics Career Map: a 4×4 heatmap (domain × technical depth), cell color intensity showing how many current postings fall in each quadrant — chosen over a bubble/scatter layout because a heatmap makes it easier to compare all 16 quadrants' relative volume at a glance
+- Click a quadrant to drill into its named sub-roles with live counts and median salary, before looking at any individual job
 
 ### 🧭 Career Map
 
 - A sunburst hierarchy (Analytics → Domain → Sub-role) — click through from the whole landscape down to one specific title
 - Selecting a role shows, **in this order**: what people in this role actually do (plain-language bullets), common related titles, market demand, median salary, top skills, top companies, your resume fit (if you've used the Resume page), and — last, not first — real job postings for that title
+
+![Career Map — role detail panel](docs/screenshots/career_map_role_detail.png)
 
 ### 📄 Resume
 
@@ -97,6 +103,9 @@ Titles that aren't analytics-flavored (Product Manager, Sales roles, generic HR/
 - Extracts canonical skills via a boundary-safe alias matcher (`skill_alias.csv`), with evidence-weight down-ranking for ambiguous short English tokens (e.g. `AI`, `PM`, `UX`) to reduce false positives
 - Computes a weighted fit score against every role in the taxonomy; scores are written to session state so the Career Map page can show "Resume Fit" for whichever role you're looking at, without recomputing
 - Rule-based **Bullet Quality Checker**, always available offline: parses resume text into experience entries (title/company vs. date/location vs. content lines, disambiguated without relying on section formatting alone) and flags, per bullet, whether it contains a quantified result and a concrete stated impact — surfacing the gap rather than auto-rewriting it, so the user still owns the judgment call
+
+![Resume — Bullet Quality Checker](docs/screenshots/resume_bullet_checker.png)
+
 - **Career Advisor (Gemini)**: not a generic "ask AI" box — answers scoped career-decision questions (why does this path fit, what skills are missing, how does BI differ from Product Analytics), grounded in retrieved real postings where available, with a rule-based fallback if the API is unavailable
 - **Recommended real postings**: a separate, independent action that retrieves the actual job postings most similar to your resume via vector search, each linked to the original 104 listing
 - CSV export for both fit scores and skill evidence
