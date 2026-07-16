@@ -24,16 +24,15 @@ import plotly.graph_objects as go
 ROOT = Path(__file__).resolve().parent.parent
 
 from utils.supabase_client import _get
-from utils.cv_parser import extract_skills_from_text, compute_fit_scores, build_role_skill_demand_from_db
+from utils.cv_parser import extract_skills_from_text, compute_fit_scores, build_role_skill_demand_from_db, select_resume_bullets
 from utils import career_taxonomy as ct
 from utils import llm_advisor
 from utils import rag_retrieval
 from utils.ui_taxonomy import (
     build_skill_parent_colors,
     get_industry_parents, get_industry_subs,
-    get_role_parents, get_role_subs,
     filter_rows as ut_filter_rows,
-    format_industry_label, format_role_label,
+    format_industry_label,
     filter_label, FILTER_STYLE,
 )
 
@@ -407,7 +406,10 @@ def build_structured_diagnosis(
     }
 
     rewrite_suggestions = []
-    sample_lines = [ln.strip() for ln in cv_text.splitlines() if ln.strip()][:3]
+    # 用 select_resume_bullets() 挑「看起來像經歷 bullet」的行，而不是直接抓
+    # 前 3 個非空行——履歷開頭通常是姓名/地址/電話，直接抓前幾行永遠抓到
+    # 抬頭資訊，改寫建議套在姓名/地址上完全沒意義。
+    sample_lines = select_resume_bullets(cv_text, max_bullets=3)
     for line in sample_lines[:3]:
         rewritten = line
         if not any(ch.isdigit() for ch in line):
@@ -542,12 +544,16 @@ st.markdown("---")
 with st.expander("🎯 目標條件（選填）", expanded=True):
     st.caption("不選代表分析全市場；選擇後會優先對應指定產業 / 職能切片")
     st.markdown(filter_label("🎯 選擇職能", first=True), unsafe_allow_html=True)
-    c1, c2 = st.columns(2)
-    with c1:
-        t_role_par = st.selectbox("職能大類（選填）", ["全部"] + get_role_parents(all_rows), key="cv_rp")
-    with c2:
-        role_sub_opts = ["全部"] + (get_role_subs(all_rows, t_role_par) if t_role_par != "全部" else [])
-        t_role_sub = st.selectbox("職能中類（選填）", role_sub_opts, key="cv_rs", disabled=(t_role_par == "全部"))
+    # 職能大類改用 Analytics Career Map 的 tech_depth 軸（BA → DA → DS → DE，
+    # 由淺入深），取代原本套 job_parent_category（爬蟲關鍵字分類，例如
+    # "Consulting"）的做法——對目標是 Product/Business/Marketing/Operations
+    # Analytics 的使用者來說，BA/DA/DS/DE 更貼近實際找工作時在意的職能深度，
+    # 也不需要再有職能中類這一層。
+    _tech_depth_options = ["全部"] + [
+        f"{d}（{ct.TECH_DEPTH_LABEL[d]}）" for d in ct.TECH_DEPTH_ORDER
+    ]
+    _tech_depth_selected = st.selectbox("職能大類（選填）", _tech_depth_options, key="cv_rp")
+    t_role_par = "全部" if _tech_depth_selected == "全部" else _tech_depth_selected.split("（")[0]
 
     st.markdown(filter_label("🏭 選擇產業"), unsafe_allow_html=True)
     c3, c4 = st.columns(2)
@@ -559,13 +565,16 @@ with st.expander("🎯 目標條件（選填）", expanded=True):
 
 has_target = (t_role_par != "全部" or t_ind_par != "全部")
 if has_target:
-    target_rows = ut_filter_rows(all_rows,
-                                 industry_parent=t_ind_par, industry_sub=t_ind_sub,
-                                 role_parent=t_role_par, role_sub=t_role_sub)
-    target_label = " / ".join(p for p in [
-        format_role_label(t_role_par, t_role_sub),
-        format_industry_label(t_ind_par, t_ind_sub),
-    ] if p not in {"全部職能", "全部產業"}) or "指定切片"
+    # 產業條件維持原本 job_parent_category-based 篩選；職能條件改用
+    # tech_depth（透過 role_normalized 反查），兩者分開套用，缺一不可時
+    # 都要滿足（AND），跟原本行為一致。
+    target_rows = ut_filter_rows(all_rows, industry_parent=t_ind_par, industry_sub=t_ind_sub)
+    if t_role_par != "全部":
+        target_rows = [r for r in target_rows if ct.get_tech_depth(r.get("role_normalized")) == t_role_par]
+
+    _role_label = f"{t_role_par}（{ct.TECH_DEPTH_LABEL.get(t_role_par, '')}）" if t_role_par != "全部" else None
+    _industry_label = format_industry_label(t_ind_par, t_ind_sub) if t_ind_par != "全部" else None
+    target_label = " / ".join(p for p in [_role_label, _industry_label] if p) or "指定切片"
     st.info(f"目標市場切片：**{target_label}**｜{len(target_rows)} 筆職缺")
 else:
     target_rows = all_rows
