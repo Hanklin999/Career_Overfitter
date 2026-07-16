@@ -365,3 +365,91 @@ def compute_fit_scores(cv_skills: list[str], role_skill_demand: dict[str, Any], 
         })
 
     return sorted(results, key=lambda x: x["fit_score"], reverse=True)[:top_n]
+
+
+# ---------------------------------------------------------------------------
+# 規則式改寫建議用：從履歷全文挑出「看起來像經歷 bullet」的行
+# ---------------------------------------------------------------------------
+
+_PHONE_RE = re.compile(r"(\+?\d[\d\-\s]{7,}\d)")
+_EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+
+# 常見的「工作經歷 / 專案經驗」章節標題，找到之後從下一行開始找 bullet，
+# 避開履歷最上面姓名 / 地址 / 電話這種抬頭資訊。
+_EXPERIENCE_SECTION_KEYWORDS = (
+    "工作經歷", "工作經驗", "專業經歷", "職涯經歷", "專案經驗", "相關經驗",
+    "Experience", "Employment", "Work History", "Professional Experience",
+    "Projects", "Project Experience",
+)
+
+_BULLET_MARKERS = ("•", "-", "‣", "▪", "◦", "*", "●", "·")
+_ACTION_HINTS = (
+    "負責", "執行", "開發", "分析", "建置", "設計", "優化", "提升", "管理",
+    "帶領", "完成", "協助", "推動", "規劃", "導入", "維護", "撰寫", "整合",
+    "led", "built", "developed", "designed", "improved", "managed", "analyzed",
+    "implemented", "launched", "reduced", "increased", "optimized",
+)
+
+
+def _looks_like_header_line(line: str) -> bool:
+    """判斷是不是姓名 / 電話 / email / 地址這類履歷抬頭資訊，不是經歷 bullet。"""
+    stripped = line.strip()
+    if not stripped:
+        return True
+    if _EMAIL_RE.search(stripped):
+        return True
+    # 電話號碼：一串數字為主的短行（避免誤判含數字的正常 bullet，例如
+    # 「提升轉換率 15%」，所以只在整行夠短時才判定為電話）
+    if len(stripped) <= 20 and _PHONE_RE.search(stripped):
+        return True
+    # 短行（<=12 字）又沒有任何數字或行動詞，多半是姓名或地址片段
+    if len(stripped) <= 12 and not any(ch.isdigit() for ch in stripped):
+        if not any(h in stripped for h in _ACTION_HINTS):
+            return True
+    return False
+
+
+def select_resume_bullets(cv_text: str, max_bullets: int = 3) -> list[str]:
+    """
+    從履歷全文挑出適合拿去做規則式改寫建議的「經歷 bullet」，
+    取代原本直接抓「前 N 個非空行」的做法（那樣永遠抓到姓名/地址/電話）。
+
+    策略：
+    1. 過濾掉明顯是聯絡資訊 / 抬頭的行
+    2. 如果找得到「工作經歷 / 專案經驗」之類的章節標題，優先從標題之後找
+    3. 判斷一行像不像 bullet：有 bullet 符號開頭、含常見經歷動詞、
+       或長度夠長（>=20 字，通常代表有實質內容而非單一詞語）
+    4. 全部被濾掉時 fallback：退回用最長的幾行（至少不要開天窗）
+    """
+    lines = [ln.strip() for ln in cv_text.splitlines() if ln.strip()]
+    if not lines:
+        return []
+
+    start_idx = 0
+    for i, ln in enumerate(lines):
+        if any(kw in ln for kw in _EXPERIENCE_SECTION_KEYWORDS):
+            start_idx = i + 1
+            break
+
+    candidates = lines[start_idx:] if start_idx else lines
+
+    bullets: list[str] = []
+    for ln in candidates:
+        if _looks_like_header_line(ln):
+            continue
+        is_bulletish = (
+            ln.startswith(_BULLET_MARKERS)
+            or any(h in ln for h in _ACTION_HINTS)
+            or len(ln) >= 20
+        )
+        if is_bulletish:
+            bullets.append(ln)
+        if len(bullets) >= max_bullets:
+            break
+
+    if not bullets:
+        # 找不到明顯 bullet 時，至少避免開天窗：退回用非抬頭行裡最長的幾行
+        non_header = [ln for ln in candidates if not _looks_like_header_line(ln)] or candidates
+        bullets = sorted(non_header, key=len, reverse=True)[:max_bullets]
+
+    return bullets
