@@ -55,6 +55,8 @@ This is also why the README documents things a purely technical write-up wouldn'
 - Multi-turn conversational advisor
 - Salary predictions unsupported by retrieved postings
 
+A future roadmap item is to explore hosting agentic advisory flows on infra like Dedalus, where tool orchestration and reliability would be handled by persistent agent machines rather than a single RAG app.
+
 ## Table of Contents
 
 - [Who this is for](#who-this-is-for)
