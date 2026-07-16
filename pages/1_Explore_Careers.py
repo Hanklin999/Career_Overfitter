@@ -4,8 +4,8 @@
 
 「Google Maps for Analytics Careers」的入口頁。很多人想走數據分析，
 但不知道「數據分析」這件事藏在很多不同職稱、不同部門底下 — 這一頁先給
-一張市場地圖：X 軸是「業務應用領域」，Y 軸是「工程深度」，泡泡大小是
-目前資料庫裡這個象限有多少職缺。點一個象限，往下看細分職稱。
+一張市場地圖：X 軸是「業務應用領域」，Y 軸是「工程深度」，顏色深淺是
+目前資料庫裡這個象限有多少職缺（heatmap）。點一個象限，往下看細分職稱。
 """
 
 import sys
@@ -46,7 +46,7 @@ st.markdown(
     很多人想走數據分析，但「數據分析」這件事其實藏在很多不同的職稱與部門裡 —
     有人叫 Business Analyst，有人叫 Product Analyst，有人在做一模一樣的事卻叫 Data Scientist。
     這張地圖用兩個軸幫你先看懂市場：<b>橫軸是業務應用領域</b>（你分析的是什麼問題），
-    <b>縱軸是工程深度</b>（你的工作離工程／建模有多近）。泡泡越大，代表資料庫裡這個象限
+    <b>縱軸是工程深度</b>（你的工作離工程／建模有多近）。顏色越深，代表資料庫裡這個象限
     目前的職缺越多。
     </div>
     """,
@@ -60,56 +60,48 @@ landscape = ct.build_landscape(rows)
 domain_order = ct.DOMAIN_ORDER
 depth_order = ct.TECH_DEPTH_ORDER
 
-# ── XY 市場分布圖 ─────────────────────────────────────────
-counts = [d["count"] for d in landscape]
-max_count = max(counts) if counts else 1
-
-fig = go.Figure()
+# ── 市場分布 Heatmap（領域 x 工程深度） ─────────────────
+# 4x4 的小矩陣資料，heatmap 比泡泡圖更容易一眼比較 16 個象限的相對多寡，
+# 也不會有泡泡重疊、文字被蓋住的問題。
+z = [[0] * len(domain_order) for _ in depth_order]  # row=depth, col=domain
 for point in landscape:
-    x = domain_order.index(point["domain"])
-    y = depth_order.index(point["tech_depth"])
-    size = 18 + (point["count"] / max_count) * 62 if max_count else 18
-    fig.add_trace(go.Scatter(
-        x=[x], y=[y],
-        mode="markers+text",
-        marker=dict(
-            size=size,
-            color="#2563a8" if point["count"] > 0 else "#e5e2db",
-            line=dict(width=1, color="#1e3a5f"),
-            opacity=0.85 if point["count"] > 0 else 0.4,
-        ),
-        text=[str(point["count"])],
-        textposition="middle center",
-        textfont=dict(color="white" if point["count"] > 0 else "#999", size=13, family="DM Sans"),
-        hovertemplate=(
-            f"<b>{point['domain']}</b><br>"
-            f"{ct.TECH_DEPTH_LABEL[point['tech_depth']]} ({point['tech_depth']})<br>"
-            f"{point['count']} 筆職缺<extra></extra>"
-        ),
-        showlegend=False,
-        name="",
-    ))
+    xi = domain_order.index(point["domain"])
+    yi = depth_order.index(point["tech_depth"])
+    z[yi][xi] = point["count"]
+
+counts_flat = [v for row in z for v in row]
+max_count = max(counts_flat) if counts_flat else 1
+
+fig = go.Figure(go.Heatmap(
+    z=z,
+    x=[d.replace(" Analytics", "") for d in domain_order],
+    y=[f"{d} ({ct.TECH_DEPTH_LABEL[d]})" for d in depth_order],
+    text=[[str(v) for v in row] for row in z],
+    texttemplate="%{text}",
+    textfont=dict(family="DM Sans", size=15, color="#111"),
+    colorscale=[
+        [0.0, "#f4f2ee"],
+        [0.001, "#dce7f3"],
+        [0.5, "#7ba7d1"],
+        [1.0, "#1e3a5f"],
+    ],
+    zmin=0, zmax=max_count if max_count else 1,
+    xgap=6, ygap=6,
+    hovertemplate="<b>%{x}</b><br>%{y}<br>%{z} 筆職缺<extra></extra>",
+    colorbar=dict(title="職缺數", thickness=14),
+))
 
 fig.update_layout(
-    paper_bgcolor="white", plot_bgcolor="#fbfaf8",
+    paper_bgcolor="white", plot_bgcolor="white",
     font=dict(family="DM Sans", color="#111"),
     margin=dict(l=10, r=10, t=10, b=10),
-    height=440,
-    xaxis=dict(
-        tickmode="array", tickvals=list(range(len(domain_order))),
-        ticktext=[d.replace(" Analytics", "") for d in domain_order],
-        title="業務應用領域 →", range=[-0.6, len(domain_order) - 0.4],
-        showgrid=True, gridcolor="#eeece7", zeroline=False,
-    ),
-    yaxis=dict(
-        tickmode="array", tickvals=list(range(len(depth_order))),
-        ticktext=[f"{d} ({ct.TECH_DEPTH_LABEL[d]})" for d in depth_order],
-        title="← 工程深度 →", range=[-0.6, len(depth_order) - 0.4],
-        showgrid=True, gridcolor="#eeece7", zeroline=False,
-    ),
+    height=420,
+    xaxis=dict(title="業務應用領域 →", side="bottom", showgrid=False),
+    yaxis=dict(title="← 工程深度 →", showgrid=False, autorange="reversed"),
 )
 
 st.plotly_chart(fig, use_container_width=True, theme=None)
+st.caption("顏色越深代表這個象限目前的職缺數量越多；數字是實際筆數。")
 
 st.markdown("---")
 
