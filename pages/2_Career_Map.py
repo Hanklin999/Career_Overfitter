@@ -57,14 +57,19 @@ st.markdown("---")
 
 rows = get_analytics_rows()
 
-# ── 建 sunburst 資料：root -> domain -> role ──────────────
+# ── 建 sunburst 資料：root -> domain -> tech_depth ────────
+# 子分類職稱（display_role）合併到 40 個之後，Product/Business 底下還是
+# 有 12~13 個節點，sunburst 第三圈仍然過細、標籤會擠在一起。tech_depth
+# （BA/DA/DS/DE，「工程深度」）本來就是產品既有的第二個分類軸，只有
+# 4 個值，拿來當 sunburst 的第三圈粒度剛好、也不用再發明新的合併規則。
+# 真正的子分類職稱清單保留在下面的選擇器裡（領域 → 工程深度 → 子分類
+# 職稱），細節不會不見，只是圖表本身改看比較粗的顆粒度。
+#
 # 注意：branchvalues="total" 要求每個父節點的 value 必須「大於等於」底下
 # 子節點 value 的總和，否則 Plotly 會判定資料不合法，整張圖直接畫成空白
-# （這正是子分類職稱節點被強制墊出 0.3 的最小視覺高度時，domain 節點與
-# root 節點原本各自寫死的 total / 0 常常兜不起來的原因）。
-# 修法：由下往上算 —— 先決定每個角色節點的 value，domain 節點的 value
-# 再用「自己底下角色 value 的總和」回推，root 節點同理，這樣父節點的
-# value 保證等於子節點總和，不會再出現空白圖。
+# （這正是先前空白圖 bug 的成因）。修法：由下往上算 —— 先決定每個
+# tech_depth 節點的 value，domain 節點的 value 再用「自己底下 tech_depth
+# value 的總和」回推，root 節點同理，父節點的 value 保證等於子節點總和。
 role_summaries_all = ct.build_role_summary(rows)
 summary_by_role = {s["role_normalized"]: s for s in role_summaries_all}
 
@@ -73,23 +78,31 @@ root_value = 0
 
 for domain in ct.DOMAIN_ORDER:
     domain_id = f"domain::{domain}"
-    role_ids, role_labels, role_values = [], [], []
 
+    # 把這個 domain 底下的子分類職稱，依 tech_depth 分組加總職缺數
+    depth_counts = {}
     for role in ct.list_roles_in_domain(domain):
         s = summary_by_role.get(role)
         count = s["count"] if s else 0
-        value = max(count, 0.3)  # 給沒資料的角色留一點視覺空間
-        role_ids.append(f"role::{domain}::{role}")
-        role_labels.append(role)
-        role_values.append(value)
+        depth = ct.get_tech_depth(role) or "DA"
+        depth_counts[depth] = depth_counts.get(depth, 0) + count
 
-    domain_value = sum(role_values) if role_values else 1
+    depth_ids, depth_labels, depth_values = [], [], []
+    for depth in ct.TECH_DEPTH_ORDER:
+        if depth not in depth_counts:
+            continue
+        value = max(depth_counts[depth], 0.3)  # 給沒資料的深度留一點視覺空間
+        depth_ids.append(f"depth::{domain}::{depth}")
+        depth_labels.append(f"{depth} · {ct.TECH_DEPTH_LABEL[depth]}")
+        depth_values.append(value)
+
+    domain_value = sum(depth_values) if depth_values else 1
     ids.append(domain_id); labels.append(domain.replace(" Analytics", "")); parents.append("Analytics")
     values.append(domain_value)
     root_value += domain_value
 
-    for rid, rlabel, rvalue in zip(role_ids, role_labels, role_values):
-        ids.append(rid); labels.append(rlabel); parents.append(domain_id); values.append(rvalue)
+    for did, dlabel, dvalue in zip(depth_ids, depth_labels, depth_values):
+        ids.append(did); labels.append(dlabel); parents.append(domain_id); values.append(dvalue)
 
 ids.insert(0, "Analytics"); labels.insert(0, "Analytics"); parents.insert(0, ""); values.insert(0, root_value or 1)
 
@@ -106,7 +119,7 @@ fig.update_layout(
     paper_bgcolor="white", font=dict(family="DM Sans", color="#111", size=13),
 )
 
-clicked_role = None
+clicked_depth = None
 clicked_domain = st.session_state.get("career_map_domain")
 
 try:
@@ -119,8 +132,8 @@ try:
     if pts:
         last = pts[-1]
         pid = last.get("id") if isinstance(last, dict) else getattr(last, "id", None)
-        if pid and pid.startswith("role::"):
-            _, clicked_domain, clicked_role = pid.split("::", 2)
+        if pid and pid.startswith("depth::"):
+            _, clicked_domain, clicked_depth = pid.split("::", 2)
         elif pid and pid.startswith("domain::"):
             clicked_domain = pid.split("::", 1)[1]
 except Exception:
@@ -129,15 +142,30 @@ except Exception:
 st.markdown("---")
 
 # ── 選擇器（保證可操作，不依賴點擊事件） ───────────────────
-col_a, col_b = st.columns(2)
+# 領域 → 工程深度（跟圖表第三圈對齊）→ 子分類職稱，三層逐步縮小範圍。
+col_a, col_b, col_c = st.columns(3)
 with col_a:
     domain_options = ct.DOMAIN_ORDER
     default_domain_idx = domain_options.index(clicked_domain) if clicked_domain in domain_options else 0
     picked_domain = st.selectbox("領域", domain_options, index=default_domain_idx, key="cm_domain_pick")
+
+all_roles_in_domain = ct.list_roles_in_domain(picked_domain)
+depths_in_domain = [d for d in ct.TECH_DEPTH_ORDER if any(ct.get_tech_depth(r) == d for r in all_roles_in_domain)]
+
 with col_b:
-    role_options = ct.list_roles_in_domain(picked_domain)
-    default_role_idx = role_options.index(clicked_role) if clicked_role in role_options else 0
-    picked_role = st.selectbox("子分類職稱", role_options, index=default_role_idx if role_options else 0, key="cm_role_pick")
+    depth_options = ["全部"] + depths_in_domain
+    default_depth_idx = depth_options.index(clicked_depth) if clicked_depth in depth_options else 0
+    picked_depth = st.selectbox(
+        "工程深度", depth_options, index=default_depth_idx, key="cm_depth_pick",
+        format_func=lambda d: d if d == "全部" else f"{d} · {ct.TECH_DEPTH_LABEL[d]}",
+    )
+
+with col_c:
+    if picked_depth == "全部":
+        role_options = all_roles_in_domain
+    else:
+        role_options = [r for r in all_roles_in_domain if ct.get_tech_depth(r) == picked_depth]
+    picked_role = st.selectbox("子分類職稱", role_options, index=0 if role_options else 0, key="cm_role_pick")
 
 st.markdown("---")
 
