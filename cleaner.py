@@ -393,7 +393,18 @@ def alias_score_in_text(alias_norm, text_norm):
     return 0.0, ""
 
 
-def match_role_from_text(text, source_label):
+def match_role_from_text(text, source_label, min_alias_len=0):
+    """min_alias_len：alias 正規化後長度低於這個值就跳過，不拿來比對。
+
+    背景：Job_taxonomy_byRole.csv 的「中文職位名稱關鍵字」裡有大量
+    2~4 字的通用能力／任務描述詞（例如 Data Analyst 底下的「資料分析」
+    「數據分析」），這種詞幾乎任何技術職缺的 JD 都可能提到一句
+    「需具備數據分析能力」，拿來跟長達 1200 字的完整 JD 全文比對時，
+    只要「文字上有出現」就會被判定為 contain 命中、分數衝到 0.9+，
+    導致品保／製程工程師／系統工程師這類完全不相關的職缺被誤分類成
+    Data Analyst。title／skill 是短且受控的文字，短詞比對還算可信；
+    但 jd 全文屬於雜訊很高的長文字，只信任比較長、比較不容易巧合出現
+    的 alias（呼叫端目前對 jd 路徑設 min_alias_len=5）。"""
     text_norm = norm_for_match(text)
     if not text_norm:
         return None
@@ -402,6 +413,8 @@ def match_role_from_text(text, source_label):
     for entry in ROLE_INDEX:
         role_best = None
         for alias_raw, alias_norm in entry["aliases"]:
+            if min_alias_len and len(alias_norm) < min_alias_len:
+                continue
             score, why = alias_score_in_text(alias_norm, text_norm)
             if score <= 0:
                 continue
@@ -438,7 +451,10 @@ def try_rule_role(job, rule_skills):
         clean_text(job.get("description_snippet")) or "",
         (clean_text(job.get("job_description")) or "")[:1200],
     ])
-    jd_hit = match_role_from_text(jd_text, "jd")
+    # min_alias_len=5：JD 全文是最雜訊的比對來源，只信任比較長、比較不通用
+    # 的 alias（見 match_role_from_text 開頭的註解），避免短的通用能力詞
+    # 誤判成具體職稱。
+    jd_hit = match_role_from_text(jd_text, "jd", min_alias_len=5)
     if jd_hit and jd_hit["score"] >= 0.95:
         return jd_hit["parent"], jd_hit["sub"], jd_hit["role"], jd_hit["score"], jd_hit["reason"]
 

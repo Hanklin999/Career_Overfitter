@@ -136,16 +136,32 @@ def embed_texts_batch(
             resp.raise_for_status()
             data = resp.json()
             embeddings = data.get("embeddings") or []
+
             if len(embeddings) != len(texts):
                 print(
                     f"[embeddings] batch size mismatch: sent {len(texts)}, got {len(embeddings)}"
+                    f" — 改成逐筆重試找出真正壞掉的那幾筆"
                 )
-                return [None] * len(texts)
+                return _embed_one_by_one(texts, task_type, timeout)
+
             return [e.get("values") if isinstance(e, dict) else None for e in embeddings]
 
         except requests.exceptions.RequestException as e:
-            print(f"[embeddings] embed_texts_batch failed: {e}")
-            return [None] * len(texts)
+            print(f"[embeddings] embed_texts_batch 整批失敗: {e} — 改成逐筆重試找出真正壞掉的那幾筆")
+            return _embed_one_by_one(texts, task_type, timeout)
 
     print(f"[embeddings] embed_texts_batch 放棄：重試 {MAX_RETRIES_ON_429} 次仍被 rate limit（batch size={len(texts)}）")
     return [None] * len(texts)
+
+
+def _embed_one_by_one(
+    texts: List[str],
+    task_type: str,
+    timeout: int,
+) -> List[Optional[List[float]]]:
+    """batch 呼叫失敗時的 fallback：逐筆呼叫 embed_text()，互不拖累。"""
+    results: List[Optional[List[float]]] = []
+    for t in texts:
+        results.append(embed_text(t, task_type=task_type, timeout=timeout))
+        time.sleep(0.5)  # 逐筆呼叫比較密集，稍微間隔一下避免立刻撞 429
+    return results
