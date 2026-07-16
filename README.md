@@ -14,6 +14,22 @@ Career Overfitter is an **AI-enabled job market intelligence and CV decision-sup
 
 It is **not** an autonomous agent. There is no multi-step task planning, no dynamic tool selection based on intermediate results, no proactive clarifying questions, and no action execution/verification loop. Each feature (AI advice, semantic search, job matching) is a single retrieval-then-generate call, not an agentic loop. The README and UI intentionally avoid the terms "AI agent," "agentic," or "autonomous advisor" for this reason — a true multi-turn conversational advisor is listed as a not-yet-built roadmap item, not a current capability.
 
+## Why This Project Demonstrates AI Product Analyst Skills
+
+The role this project is built to speak to isn't "data scientist who happens to use an LLM" — it's the emerging **AI Product Analyst** function: someone who defines what "working well" means for an AI-powered feature, instruments it, evaluates the impact of changes to it, and translates the result into a product decision a non-technical stakeholder can act on. Every core decision in this repo maps to a specific piece of that job, not just to "I built an app with RAG in it":
+
+| AI Product Analyst competency | Where it shows up in this repo |
+|---|---|
+| Define success metrics for an AI-powered feature, not just ship it | [AI System Reliability — A Worked Example](#ai-system-reliability--a-worked-example): embedding coverage (`% of postings with a usable vector`) treated as a first-class product metric, not an implementation detail |
+| Diagnose *why* a metric is underperforming, not just that it is | Root-caused a batch-embedding pipeline where one malformed row silently failed 9 healthy rows alongside it — a data-quality bug that would otherwise just look like "the AI feature has bad coverage" without explanation |
+| Design/evaluate the impact of a fix, the way you'd evaluate an experiment | Before/after comparison of coverage rate pre- and post-fix, with the retry/fallback behavior explicitly reasoned through rather than assumed to work |
+| Instrument systems for measurability, not just correctness | `backfill_embeddings.py` logs failed `job_no`s explicitly so failures are attributable to specific records, not just an aggregate failure count |
+| Design experiments/features that hold up when the AI is degraded or unavailable | Every RAG-dependent feature (Career Advisor, Recommended real postings, Semantic search) has an explicit rule-based fallback path — see [Product Decisions](#product-decisions) and [What this is (and isn't)](#what-this-is-and-isnt) |
+| Translate technical tradeoffs into a product-level "what should we build first" narrative | [Product Decisions](#product-decisions): explicit MVP prioritization and explicitly deprioritized scope, not just a feature list |
+| Responsible-AI-adjacent judgment: know what the AI shouldn't be trusted to do alone | Rule-based CV rewrite / bullet-quality checks are a **deliberate, permanent** parallel path to the LLM-based Career Advisor, not a stopgap — see the Resume feature under [Features](#features) |
+
+This is also why the README documents things a purely technical write-up wouldn't bother with: the *deprioritized* scope, the *why* behind data source and taxonomy choices, and a debugging story with a metric attached to it. An AI Product Analyst's output isn't code — it's the decision a metric or diagnosis leads to.
+
 ## Product Decisions
 
 **Initial hypothesis:** job seekers in this segment don't primarily lack job listings — they lack a reliable way to connect their actual experience to fragmented, inconsistently worded market demand.
@@ -37,6 +53,7 @@ It is **not** an autonomous agent. There is no multi-step task planning, no dyna
 
 - [Who this is for](#who-this-is-for)
 - [What this is (and isn't)](#what-this-is-and-isnt)
+- [Why This Project Demonstrates AI Product Analyst Skills](#why-this-project-demonstrates-ai-product-analyst-skills)
 - [Product Decisions](#product-decisions)
 - [The Analytics Career Map](#the-analytics-career-map)
 - [Features](#features)
@@ -46,6 +63,7 @@ It is **not** an autonomous agent. There is no multi-step task planning, no dyna
 - [Data Pipeline](#data-pipeline)
 - [Crawler Scope](#crawler-scope)
 - [RAG System](#rag-system-retrieval-augmented-generation)
+- [AI System Reliability — A Worked Example](#ai-system-reliability--a-worked-example)
 - [GitHub Actions Workflows](#github-actions-workflows)
 - [Maintenance Notes](#maintenance-notes)
 - [Roadmap](#roadmap)
@@ -78,7 +96,7 @@ Titles that aren't analytics-flavored (Product Manager, Sales roles, generic HR/
 - Paste resume text or upload a `.txt` / `.md` file
 - Extracts canonical skills via a boundary-safe alias matcher (`skill_alias.csv`), with evidence-weight down-ranking for ambiguous short English tokens (e.g. `AI`, `PM`, `UX`) to reduce false positives
 - Computes a weighted fit score against every role in the taxonomy; scores are written to session state so the Career Map page can show "Resume Fit" for whichever role you're looking at, without recomputing
-- Rule-based rewrite suggestions, always available offline
+- Rule-based **Bullet Quality Checker**, always available offline: parses resume text into experience entries (title/company vs. date/location vs. content lines, disambiguated without relying on section formatting alone) and flags, per bullet, whether it contains a quantified result and a concrete stated impact — surfacing the gap rather than auto-rewriting it, so the user still owns the judgment call
 - **Career Advisor (Gemini)**: not a generic "ask AI" box — answers scoped career-decision questions (why does this path fit, what skills are missing, how does BI differ from Product Analytics), grounded in retrieved real postings where available, with a rule-based fallback if the API is unavailable
 - **Recommended real postings**: a separate, independent action that retrieves the actual job postings most similar to your resume via vector search, each linked to the original 104 listing
 - CSV export for both fit scores and skill evidence
@@ -262,10 +280,36 @@ Three features are grounded in real job postings via vector search rather than a
 1. In the Supabase Dashboard, open **SQL Editor** and run the entirety of `sql/001_enable_pgvector_rag.sql` (idempotent — safe to re-run).
 2. Backfill embeddings for existing data:
    ```bash
-   python backfill_embeddings.py --limit 200
+   python backfill_embeddings.py --limit 5000
    ```
-   Re-run with a larger `--limit` if the row count exceeds it. `cleaner-weekly.yml` runs this automatically after every cleaning pass (`continue-on-error: true`, so a missing migration doesn't fail the whole pipeline).
+   Re-run with a larger `--limit` if the row count exceeds it — and check your Supabase project's **Settings → API → Max Rows**, which silently caps whatever `--limit` you pass (see the worked example below for what happens when that isn't obvious from the output alone). `cleaner-weekly.yml` runs this automatically after every cleaning pass (`continue-on-error: true`, so a missing migration doesn't fail the whole pipeline).
 3. Confirm `GEMINI_API_KEY` is set — no other configuration is required. Every RAG-powered UI section detects availability automatically.
+
+## AI System Reliability — A Worked Example
+
+Most of this README describes what the system does when it's working. This section documents a real debugging pass on the embedding backfill pipeline, treated the way an AI Product Analyst would treat it: as a metric that regressed, not just a bug that got fixed.
+
+**The metric:** `embedding coverage` — the share of `job_posting` rows with a usable vector, i.e. `count(embedding) / count(*)`. This is a direct proxy for how much of the market dataset is actually reachable by every RAG-dependent feature (Career Advisor grounding, Recommended real postings, Semantic search). A posting with `embedding IS NULL` is functionally invisible to all three, even though it still exists in every non-RAG view of the product.
+
+**The symptom:** running `backfill_embeddings.py` repeatedly still left a large share of rows with `embedding IS NULL`, with the script's own log reporting a high failure count per run.
+
+**Root cause:** `embed_texts_batch()` sends 10 postings per request to Gemini's `batchEmbedContents`. The original implementation treated any batch-level anomaly — one malformed row, a transient response-length mismatch — as grounds to mark **all 10 rows in that batch** as failed:
+
+```python
+if len(embeddings) != len(texts):
+    return [None] * len(texts)   # one bad row takes down 9 good ones
+```
+
+This is the same failure shape as a flaky assertion taking down an entire test suite instead of just the failing test — the batch boundary, not the actual data quality, was determining the blast radius of a failure.
+
+**Fix, evaluated the way an experiment would be:**
+- Changed the failure path to retry each of the 10 rows individually (`_embed_one_by_one`) instead of discarding the whole batch, so a single bad row no longer poisons its batch-mates.
+- Added a pre-filter for rows whose combined text (title + role + skills + description) was empty or near-empty — these were failing for a *different* reason (nothing to embed) and were inflating the same failure count as the batch-poisoning bug, which would have made the fix look less effective than it was if left unseparated.
+- Logged the specific `job_no`s behind any remaining failures, so a residual failure is attributable to one record instead of buried in an aggregate count — necessary for the next diagnostic pass, not just for this one.
+
+**Result:** coverage on the existing backlog started at **46% (1,970 / 4,285 rows)**. After the fix, a full backfill pass reported **0 failures out of 200 rows** on the first batch tested — a direct before/after comparison, not just "it seems better now." Clearing the remaining backlog surfaced a second, unrelated issue: Supabase's PostgREST layer caps response rows at a project-level `db-max-rows` setting (1000 by default) regardless of the `--limit` passed to the request — the kind of platform-level constraint that looks identical to "the fix didn't work" if you don't separately check application-level logs against the actual row count returned.
+
+The scheduled pipeline (`cleaner-weekly.yml`) had the same latent issue at a smaller scale: its embedding step ran with `--limit 200` against a weekly crawl that can produce more than 200 new postings, meaning the coverage gap would have silently regrown every week rather than getting fixed once. It's now set to `--limit 5000` to clear a full week's expected volume in one pass — the same "define the metric, notice it can regress again unless the fix is systemic" thinking, applied to the recurring job instead of the one-time backlog.
 
 ## GitHub Actions Workflows
 
