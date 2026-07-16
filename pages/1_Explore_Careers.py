@@ -93,11 +93,17 @@ fig = go.Figure(go.Heatmap(
 
 fig.update_layout(
     paper_bgcolor="white", plot_bgcolor="white",
-    font=dict(family="DM Sans", color="#111"),
-    margin=dict(l=10, r=10, t=10, b=10),
-    height=420,
-    xaxis=dict(title="業務應用領域 →", side="bottom", showgrid=False),
-    yaxis=dict(title="← 工程深度 →", showgrid=False, autorange="reversed"),
+    font=dict(family="DM Sans", color="#111", size=13),
+    margin=dict(l=160, r=40, t=30, b=70),
+    height=440,
+    xaxis=dict(
+        title="業務應用領域 →", side="bottom", showgrid=False,
+        automargin=True, tickfont=dict(size=13),
+    ),
+    yaxis=dict(
+        title="← 工程深度 →", showgrid=False, autorange="reversed",
+        automargin=True, tickfont=dict(size=13),
+    ),
 )
 
 st.plotly_chart(fig, use_container_width=True, theme=None)
