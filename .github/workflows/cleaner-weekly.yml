@@ -29,6 +29,11 @@ on:
         default: false
         type: boolean
 
+      embedding_limit:
+        description: "這次最多幫幾筆補 embedding（原本寫死 200，改成可調；想清 backlog 就設大一點）"
+        required: true
+        default: "200"
+
 jobs:
   clear-data:
     runs-on: ubuntu-latest
@@ -174,4 +179,4 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python backfill_embeddings.py --limit 200
+        run: python backfill_embeddings.py --limit ${{ github.event.inputs.embedding_limit }}
