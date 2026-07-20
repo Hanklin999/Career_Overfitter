@@ -24,9 +24,13 @@ on:
         required: true
         default: "0.10"
       embedding_limit:
-        description: "這次最多幫幾筆補 embedding（原本寫死 500，改成可調；想清 backlog 就設大一點）"
+        description: "每一輪最多幫幾筆補 embedding"
         required: true
         default: "500"
+      embedding_rounds:
+        description: "embedding 補幾輪（每輪都是抓當下 embedding IS NULL 的資料，輪與輪之間會停一下讓 rate limit 額度回血，用來取代手動重複觸發 workflow）"
+        required: true
+        default: "5"
 
 jobs:
   clean-only:
@@ -66,4 +70,14 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python backfill_embeddings.py --limit ${{ github.event.inputs.embedding_limit }}
+        run: |
+          ROUNDS=${{ github.event.inputs.embedding_rounds }}
+          for i in $(seq 1 "$ROUNDS"); do
+            echo "=== embedding backfill round $i/$ROUNDS ==="
+            python backfill_embeddings.py --limit ${{ github.event.inputs.embedding_limit }}
+
+            if [ "$i" -lt "$ROUNDS" ]; then
+              echo "等待 60 秒讓 rate limit 額度回血再跑下一輪..."
+              sleep 60
+            fi
+          done
