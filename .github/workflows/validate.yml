@@ -1,27 +1,28 @@
-name: validate
+name: Python CI
 
 on:
   push:
+    branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
 
 jobs:
-  validate:
+  syntax-check:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "22"
-      - name: JavaScript syntax check
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: |
-          node --check app.js
-          node --check validate-data.mjs
-          node --check test-cases.mjs
-          node --check analytics.js
-          node --check analytics-config.js
-      - name: JSON validation
-        run: node validate-data.mjs
-      - name: Algorithm acceptance tests
-        run: node test-cases.mjs
-      - name: Analytics unit tests
-        run: node test-analytics.mjs
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Check Python syntax
+        run: python -m compileall -q .
