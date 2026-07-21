@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "source": "改編自 Hank 過去 Career_Overfitter 專案的 skill_taxonomy.csv，篩選出與數據科學/分析職涯較相關的分類與技能",
+    "source_url": "https://github.com/Hanklin999/Career_Overfitter/blob/main/skill_taxonomy.csv"
+  },
+  "categories": [
+    {
+      "category": "Programming & Scripting",
+      "skills": [
+        "Python",
+        "R",
+        "SQL",
+        "Bash/Shell",
+        "Scala"
+      ]
+    },
+    {
+      "category": "Statistics & Experimentation",
+      "skills": [
+        "A/B Testing",
+        "Causal Inference",
+        "Regression Analysis",
+        "Time Series Analysis",
+        "Hypothesis Testing",
+        "Exploratory Data Analysis",
+        "Statistical Modeling"
+      ]
+    },
+    {
+      "category": "Machine Learning & AI",
+      "skills": [
+        "Machine Learning",
+        "Deep Learning",
+        "XGBoost",
+        "Recommendation System",
+        "Anomaly Detection",
+        "Large Language Models",
+        "Feature Engineering",
+        "Forecasting",
+        "Demand Forecasting",
+        "Time Series Forecasting",
+        "Predictive Modeling"
+      ]
+    },
+    {
+      "category": "BI & Data Visualization",
+      "skills": [
+        "Tableau",
+        "Power BI",
+        "Looker",
+        "Dashboard Development",
+        "KPI Reporting",
+        "Data Storytelling"
+      ]
+    },
+    {
+      "category": "Data Engineering & Cloud",
+      "skills": [
+        "ETL",
+        "Data Pipeline",
+        "Airflow",
+        "dbt",
+        "Spark",
+        "AWS",
+        "GCP",
+        "Azure",
+        "Data Governance",
+        "Data Catalog",
+        "Data Quality",
+        "Master Data Management",
+        "Git",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "category": "Database & Query Languages",
+      "skills": [
+        "SQL",
+        "BigQuery",
+        "Snowflake",
+        "PostgreSQL",
+        "Data Modeling"
+      ]
+    },
+    {
+      "category": "Product & User Analytics",
+      "skills": [
+        "Product Analytics",
+        "Funnel Analysis",
+        "Cohort Analysis",
+        "User Behavior Analysis",
+        "Retention Analysis"
+      ]
+    },
+    {
+      "category": "Operations & Supply Chain",
+      "skills": [
+        "Demand Planning",
+        "Supply Chain Analytics",
+        "Inventory Management",
+        "Route Optimization",
+        "S&OP"
+      ],
+      "generic_synonyms": [
+        "Supply Chain Management",
+        "Logistics"
+      ]
+    },
+    {
+      "category": "Risk / Compliance / Actuarial",
+      "skills": [
+        "Risk Modeling",
+        "Fraud Detection",
+        "Credit Scoring",
+        "Stress Testing",
+        "Compliance"
+      ]
+    },
+    {
+      "category": "Consulting & Strategy",
+      "skills": [
+        "Business Strategy",
+        "Market Sizing",
+        "Business Case",
+        "Benchmarking",
+        "Problem Structuring"
+      ]
+    },
+    {
+      "category": "Marketing & Growth",
+      "skills": [
+        "Marketing Analytics",
+        "Growth Marketing",
+        "Conversion Optimization",
+        "Customer Segmentation"
+      ]
+    }
+  ]
+}

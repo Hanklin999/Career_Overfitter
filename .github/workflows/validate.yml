@@ -1,0 +1,27 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: JavaScript syntax check
+        run: |
+          node --check app.js
+          node --check validate-data.mjs
+          node --check test-cases.mjs
+          node --check analytics.js
+          node --check analytics-config.js
+      - name: JSON validation
+        run: node validate-data.mjs
+      - name: Algorithm acceptance tests
+        run: node test-cases.mjs
+      - name: Analytics unit tests
+        run: node test-analytics.mjs
